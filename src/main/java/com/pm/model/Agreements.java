@@ -3,30 +3,30 @@ package com.pm.model;
 import java.util.Date;
 
 /**
- * emp_name			Ô±¹¤ĞÕÃû
- * emp_id			Ô±¹¤±àºÅ
- * emp_department				ËùÊô²¿ÃÅ
- * emp_job				Ö°Îñ
- * emp_academic_title	Ö°³Æ
- * emp_work_category				¹¤ÖÖ
- * emp_grade			µÈ¼¶
- * emp_idnumber			Éí·İÖ¤ºÅ
- * agreementno		ºÏÍ¬±àºÅ
- * aname			ºÏÍ¬Ãû³Æ
- * atype			ºÏÍ¬ÀàĞÍ
- * regular			ÊÇ·ñ×ªÕı
- * signdata			Ç©Ô¼Ê±¼ä
- * probation_period	ÊÔÓÃÆÚÏŞ
- * probation_begindata	ÊÔÓÃÉúĞ§Ê±¼ä
- * probation_sal		ÊÔÓÃ¹¤×Ê
- * probation_overdata	ÊÔÓÃµ½ÆÚÊ±¼ä
- * agreementperiod				ºÏÍ¬ÆÚÏŞ
- * starttime			ºÏÍ¬ÉúĞ§Ê±¼ä
- * regularsal			×ªÕı¹¤×Ê
- * endtime			µ½ÆÚÊ±¼ä
- * documents				ºÏÍ¬ÎÄ¼ş
- * notes				ºÏÍ¬±¸×¢
- * @author ºìÁ«ÌìÎè
+ * emp_name			å‘˜å·¥å§“å
+ * emp_id			å‘˜å·¥ç¼–å·
+ * emp_department				æ‰€å±éƒ¨é—¨
+ * emp_job				èŒåŠ¡
+ * emp_academic_title	èŒç§°
+ * emp_work_category				å·¥ç§
+ * emp_grade			ç­‰çº§
+ * emp_idnumber			èº«ä»½è¯å·
+ * agreementno		åˆåŒç¼–å·
+ * aname			åˆåŒåç§°
+ * atype			åˆåŒç±»å‹
+ * regular			æ˜¯å¦è½¬æ­£
+ * signdata			ç­¾çº¦æ—¶é—´
+ * probation_period	è¯•ç”¨æœŸé™
+ * probation_begindata	è¯•ç”¨ç”Ÿæ•ˆæ—¶é—´
+ * probation_sal		è¯•ç”¨å·¥èµ„
+ * probation_overdata	è¯•ç”¨åˆ°æœŸæ—¶é—´
+ * agreementperiod				åˆåŒæœŸé™
+ * starttime			åˆåŒç”Ÿæ•ˆæ—¶é—´
+ * regularsal			è½¬æ­£å·¥èµ„
+ * endtime			åˆ°æœŸæ—¶é—´
+ * documents				åˆåŒæ–‡ä»¶
+ * notes				åˆåŒå¤‡æ³¨
+ * @author çº¢è²å¤©èˆ
  *
  */
 public class Agreements {

@@ -2,18 +2,18 @@ package com.pm.model;
 
 import java.util.Date;
 /**
- * planno			¼Æ»®±àºÅ
- * planname			¼Æ»®Ãû³Æ
- * resruimentway	ÕĞÆ¸·½Ê½
- * Budget			Ô¤¼Æ·ÑÓÃ
- * recruitmentnum	ÕĞÆ¸ÈËÊı
- * registerdate		µÇ¼ÇÈÕÆÚ
- * begindate		¿ªÊ¼ÈÕÆÚ
- * overdate			½áÊøÈÕÆÚ
- * recruimentshow	ÕĞÆ¸ËµÃ÷
- * recruimentnote	ÕĞÆ¸±¸×¢
- * registerter		µÇ¼ÇÈË
- * @author ºìÁ«ÌìÎè
+ * planno			è®¡åˆ’ç¼–å·
+ * planname			è®¡åˆ’åç§°
+ * resruimentway	æ‹›è˜æ–¹å¼
+ * Budget			é¢„è®¡è´¹ç”¨
+ * recruitmentnum	æ‹›è˜äººæ•°
+ * registerdate		ç™»è®°æ—¥æœŸ
+ * begindate		å¼€å§‹æ—¥æœŸ
+ * overdate			ç»“æŸæ—¥æœŸ
+ * recruimentshow	æ‹›è˜è¯´æ˜
+ * recruimentnote	æ‹›è˜å¤‡æ³¨
+ * registerter		ç™»è®°äºº
+ * @author çº¢è²å¤©èˆ
  *
  */
 public class Recruitment_plan {
