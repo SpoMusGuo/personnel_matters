@@ -1,43 +1,37 @@
 package com.pm.ctrl;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+@Controller
+public class LoginCtrl {
+		//跳转到登录界面
+		@RequestMapping("/login")
+		public String goLogin(Model model) {
 
-/**
- * Servlet implementation class LoginCtrl
- */
-@WebServlet("/LoginCtrl")
-public class LoginCtrl extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginCtrl() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+			return "login";
+		}
+		//跳转到主页面
+		@RequestMapping("/index")
+		public String goIndex(Model model) {
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request,response);
-	}
+			return "index";
+		}
+		@RequestMapping("/index_body")
+		public String goIndex_body(Model model) {
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.sendRedirect("index");
-	}
+			return "index_body";
+		}
+		@RequestMapping("/index_menu")
+		public String goIndex_menu(Model model) {
+
+			return "index_menu";
+		}
+		@RequestMapping("/index_head")
+		public String goIndex_head(Model model) {
+
+			return "index_head";
+		}
 
 }

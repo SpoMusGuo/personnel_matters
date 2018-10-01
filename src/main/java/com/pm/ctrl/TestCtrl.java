@@ -19,6 +19,7 @@ public class TestCtrl {
 	@Autowired
 	private TestServiceImpl tServiceImpl;
 
+<<<<<<< HEAD
 	@RequestMapping("/test")
 	public String queryAll(Model model) {
 
@@ -70,6 +71,8 @@ public class TestCtrl {
 		return "index_head";
 
 	}
+=======
+>>>>>>> b9ccc3c7c7b17ed7701d7002cf6907099f4e1883
 
 	// 处理日期
 	@InitBinder
