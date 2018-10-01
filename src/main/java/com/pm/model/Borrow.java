@@ -2,7 +2,7 @@ package com.pm.model;
 
 import java.util.Date;
 
-public class borrow {
+public class Borrow {
 	/**
 	 * borrow: 物品领用表
 	 * emp_id			员工编号(外键)(员工姓名	员工编号	所属部门	职务	职称	工种	等级	身份证号)
@@ -11,24 +11,22 @@ public class borrow {
 	 * borrow_date		领用日期
 	 * borrow_notes		备注信息
 	 */
-	//private int emp_id;
-	//private String good_id;
-	private Emp emp;
-	private Good good;
+	private int emp_id;
+	private String good_id;
 	private int borrow_count;
 	private Date borrow_date;
 	private String borrow_notes;
-	public Emp getEmp() {
-		return emp;
+	public int getEmp_id() {
+		return emp_id;
 	}
-	public void setEmp(Emp emp) {
-		this.emp = emp;
+	public void setEmp_id(int emp_id) {
+		this.emp_id = emp_id;
 	}
-	public Good getGood() {
-		return good;
+	public String getGood_id() {
+		return good_id;
 	}
-	public void setGood(Good good) {
-		this.good = good;
+	public void setGood_id(String good_id) {
+		this.good_id = good_id;
 	}
 	public int getBorrow_count() {
 		return borrow_count;
