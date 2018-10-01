@@ -18,15 +18,13 @@ public class TestCtrl {
 
 	@Autowired
 	private TestServiceImpl tServiceImpl;
-<<<<<<< HEAD
 
 	@RequestMapping("/test")
 	public String queryAll(Model model) {
 
 		model.addAttribute("list", tServiceImpl.query());
 		return "test";
-=======
-	
+	}
 /*	@RequestMapping("/index")
 	public String queryAll(Model model) {
 
@@ -70,7 +68,6 @@ public class TestCtrl {
 
 		// model.addAttribute("list", tServiceImpl.query());
 		return "index_head";
->>>>>>> ec0e0117c2a7d144a9df7358ec3950687db6a07a
 
 	}
 
