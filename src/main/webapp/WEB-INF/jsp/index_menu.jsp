@@ -41,7 +41,6 @@
         <TABLE cellSpacing=0 cellPadding=0 width=210 align=center border=0>
             <TBODY>
                 <TR>
-
                     <TD width=15 background=${pageContext.request.contextPath }/images/new_008.jpg></TD>
                     <TD vAlign=top width=180 bgColor=#ffffff>
                         <TABLE cellSpacing=0 cellPadding=3 width=165 align=center border=0>
@@ -58,7 +57,7 @@
                                             <TBODY>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2
-                                                                       href="#"
+                                                                       href="https://www.hao123.com"
                                                                        target=dmMain>－ 有驾照的员工</A></TD></TR>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2
