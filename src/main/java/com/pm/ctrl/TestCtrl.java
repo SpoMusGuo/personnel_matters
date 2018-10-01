@@ -19,52 +19,8 @@ public class TestCtrl {
 	@Autowired
 	private TestServiceImpl tServiceImpl;
 	
-/*	@RequestMapping("/index")
-	public String queryAll(Model model) {
 
-		// model.addAttribute("list", tServiceImpl.query());
-		return "index";
-
-	}*/
-	//跳转到登录界面
-	@RequestMapping("/login")
-	public String goLogin(Model model) {
-
-		// model.addAttribute("list", tServiceImpl.query());
-		return "login";
-
-	}
 	
-	//跳转到主页面
-	@RequestMapping("/index")
-	public String goIndex(Model model) {
-
-		// model.addAttribute("list", tServiceImpl.query());
-		return "index";
-
-	}
-	@RequestMapping("/index_body")
-	public String goIndex_body(Model model) {
-
-		// model.addAttribute("list", tServiceImpl.query());
-		return "index_body";
-
-	}
-	@RequestMapping("/index_menu")
-	public String goIndex_menu(Model model) {
-
-		// model.addAttribute("list", tServiceImpl.query());
-		return "index_menu";
-
-	}
-	@RequestMapping("/index_head")
-	public String goIndex_head(Model model) {
-
-		// model.addAttribute("list", tServiceImpl.query());
-		return "index_head";
-
-	}
-
 	// 处理日期
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
