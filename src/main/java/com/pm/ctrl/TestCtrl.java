@@ -18,9 +18,8 @@ public class TestCtrl {
 
 	@Autowired
 	private TestServiceImpl tServiceImpl;
-	
 
-	
+
 	// 处理日期
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
