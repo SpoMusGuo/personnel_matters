@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 	<img src="images/捕获.PNG" />
 	<br />
 	<table border="1">
@@ -24,5 +25,9 @@
 		<h1>${pageContext.request.contextPath }</h1>
 		<h1><%= request.getContextPath() %></h1>
 	</table>
+=======
+	进来了
+	
+>>>>>>> ec0e0117c2a7d144a9df7358ec3950687db6a07a
 </body>
 </html>
