@@ -9,18 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<img src="images/捕获.PNG" />
-	<br />
-	<table border="1">
-		<c:forEach items="${list }" var="stu">
-			<tr>
-				<td>${stu.sno }</td>
-				<td>${stu.sname }</td>
-				<td>${stu.sage }</td>
-				<td><fmt:formatDate value="${stu.sdate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-				<td><a href="delete/${stu.sno }">删除</a></td>
-			</tr>
-		</c:forEach>
-	</table>
+	进来了
+	
 </body>
 </html>

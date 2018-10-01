@@ -19,11 +19,35 @@ public class TestCtrl {
 	@Autowired
 	private TestServiceImpl tServiceImpl;
 
-	@RequestMapping("/test")
+	@RequestMapping("/index")
 	public String queryAll(Model model) {
 
-		model.addAttribute("list", tServiceImpl.query());
-		return "test";
+		// model.addAttribute("list", tServiceImpl.query());
+		return "index";
+
+	}
+
+	@RequestMapping("/index_body")
+	public String goIndex_body(Model model) {
+
+		// model.addAttribute("list", tServiceImpl.query());
+		return "index_body";
+
+	}
+
+	@RequestMapping("/index_menu")
+	public String goIndex_menu(Model model) {
+
+		// model.addAttribute("list", tServiceImpl.query());
+		return "index_menu";
+
+	}
+
+	@RequestMapping("/index_head")
+	public String goIndex_head(Model model) {
+
+		// model.addAttribute("list", tServiceImpl.query());
+		return "index_head";
 
 	}
 

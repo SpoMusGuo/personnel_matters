@@ -3,6 +3,62 @@ package com.pm.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * 员工信息表：emp
+ * 
+ * 		emp_id				员工编号
+ * 		emp_id_number		身份证号
+ * 		emp_name			员工姓名
+ * 		emp_native_place	籍贯
+ * 		emp_sex				性别
+ * 		emp_birthday		生日
+ * 		emp_used_name		曾用名
+ * 		emp_nation			民族
+ * 		emp_age				年龄
+ * 		emp_english_name	英文名
+ * 		emp_political_status 政治面貌
+ * 		emp_marriage		婚否
+ * 		emp_education_st	第一学历
+ * 		emp_major_st		第一专业
+ * 		emp_graduated_st	第一毕业院校
+ * 		emp_education_nd	第二学历
+ * 		emp_major_nd		第二专业
+ * 		emp_graduated_nd	第二毕业院校
+ * 		emp_degree			学位
+ * 		emp_graduate_time	毕业时间
+ * 		emp_computer_level	电脑水平
+ * 		emp_foreign_1		外语语种1
+ * 		emp_foreign_2		外语语种2
+ * 		emp_foreign_3		外语语种3
+ * 		emp_foreign_level_1	外语水平1
+ * 		emp_foreign_level_2	外语水平2
+ * 		emp_foreign_level_3	外语水平3
+ * 		emp_apartment		住房情况
+ * 		emp_inhabitant		常住人口
+ * 		emp_foreigners		外籍人士
+ * 		emp_telphone		联系电话
+ * 		emp_mobilephone		手机号码
+ * 		emp_email			电子邮件
+ * 		emp_home_address	家庭住址
+ * 		emp_speciality		特长
+ * 		emp_department		所属部门
+ * 		emp_academic_title	职称
+ * 		emp_job				职务
+ * 		emp_grade			等级
+ * 		emp_job_category	在职类别
+ * 		emp_work_category	工种
+ * 		emp_hiredate		参加工作时间
+ * 		emp_transfer_time	调入时间
+ * 		emp_sum_seniority	总工龄
+ * 		emp_unit_seniorty	本单位工龄
+ * 		emp_bank_account	银行帐号
+ * 		emp_base_salary		基本工资
+ * 		emp_register_time	录入时间
+ * 		emp_photo			照片
+ * 
+ * @author Z
+ *
+ */
 public class Emp {
 
 	private int empId;
