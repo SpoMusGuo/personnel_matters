@@ -18,23 +18,22 @@ public class TestCtrl {
 
 	@Autowired
 	private TestServiceImpl tServiceImpl;
-<<<<<<< HEAD
 
 	@RequestMapping("/test")
 	public String queryAll(Model model) {
 
 		model.addAttribute("list", tServiceImpl.query());
 		return "test";
-=======
-	
-/*	@RequestMapping("/index")
-	public String queryAll(Model model) {
+	}
 
-		// model.addAttribute("list", tServiceImpl.query());
-		return "index";
-
-	}*/
-	//跳转到登录界面
+	/*
+	 * @RequestMapping("/index") public String queryAll(Model model) {
+	 * 
+	 * // model.addAttribute("list", tServiceImpl.query()); return "index";
+	 * 
+	 * }
+	 */
+	// 跳转到登录界面
 	@RequestMapping("/login")
 	public String goLogin(Model model) {
 
@@ -42,8 +41,8 @@ public class TestCtrl {
 		return "login";
 
 	}
-	
-	//跳转到主页面
+
+	// 跳转到主页面
 	@RequestMapping("/index")
 	public String goIndex(Model model) {
 
@@ -51,6 +50,7 @@ public class TestCtrl {
 		return "index";
 
 	}
+
 	@RequestMapping("/index_body")
 	public String goIndex_body(Model model) {
 
@@ -58,6 +58,7 @@ public class TestCtrl {
 		return "index_body";
 
 	}
+
 	@RequestMapping("/index_menu")
 	public String goIndex_menu(Model model) {
 
@@ -65,12 +66,12 @@ public class TestCtrl {
 		return "index_menu";
 
 	}
+
 	@RequestMapping("/index_head")
 	public String goIndex_head(Model model) {
 
 		// model.addAttribute("list", tServiceImpl.query());
 		return "index_head";
->>>>>>> ec0e0117c2a7d144a9df7358ec3950687db6a07a
 
 	}
 
