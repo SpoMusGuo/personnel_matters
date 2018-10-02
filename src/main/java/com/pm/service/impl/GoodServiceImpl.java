@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.pm.mapper.GoodMapper;
 import com.pm.model.Good;
+import com.pm.model.Pager;
 import com.pm.service.GoodService;
 @Service(value="goodService")
 public class GoodServiceImpl implements GoodService {
@@ -60,6 +61,12 @@ public class GoodServiceImpl implements GoodService {
 	public int getCount(String good_id) {
 		// TODO Auto-generated method stub
 		return mapper.getCount(good_id);
+	}
+
+	@Override
+	public List<Good> listPager(Pager<Good> pager) {
+		// TODO Auto-generated method stub
+		return mapper.listPager(pager);
 	}
 
 }

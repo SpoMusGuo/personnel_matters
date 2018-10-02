@@ -36,4 +36,7 @@
 	<select id="getCount" parameterType="String" resultType="int">
 		select good_count from good where goodf_id=#{good_id}
 	</select>
+	<select id="listPager" resultType="good" parameterType="Pager">
+		select * from good limit #{startindex},#{pagesize};
+	</select>
 </mapper>
