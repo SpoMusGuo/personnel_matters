@@ -17,7 +17,7 @@ public class Paging {
 	
 	
 	/**
-	 * 在controller层方法里调用此构造方法实例化，然后放入ModelAndView传给jsp。
+	 * 在controller层方法里调用此构造方法实例化，然后放入ModelAndView传给jsp（参考PersonnelManageCtrl）。
 	 * @param sumRow
 	 * @param currentPage
 	 * @param pageSize
