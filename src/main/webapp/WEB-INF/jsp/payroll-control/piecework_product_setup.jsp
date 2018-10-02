@@ -9,6 +9,7 @@
 
     <SCRIPT language=javascript src="${pageContext.request.contextPath }/js/Common.js"></SCRIPT>
 	
+	
 	<script type="text/javascript">
 		function showMenu(){
 			var open = document.getElementById('open');
@@ -88,7 +89,7 @@
 		                <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
 			                <div class="place">
 			                 	<TR>
-			                        <TD class=manageHead>当前位置：工资管理 &gt; 个人所得税设置 </TD>
+			                        <TD class=manageHead>当前位置：工资管理 &gt; 计件产品设置 </TD>
 			                    </TR>
 			                    <TR>
 			                     	<TD height=1></TD>
@@ -124,19 +125,15 @@
 			                            <TABLE id=grid cellSpacing=1 cellPadding=2 rules=all border=0>
 			                                <TBODY>
 			                                <TR class="title" tyle="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;">
-			                                    <TD style="width:28px;">全选</TD>
 			                                    <TD style="width:48px;white-space:nowrap;font-size:20;color:#FF9900;"></TD>
 			                                    <TD>锁状态</TD>
-			                                    <TD>级数</TD>
-			                                    <TD>起始金额</TD>
-			                                    <TD>结束金额</TD>
-			                                    <TD>税率</TD>
-			                                    <TD>速扣</TD>
+			                                    <TD>产品编号</TD>
+			                                    <TD>产品名称</TD>
+			                                    <TD>计量单位</TD>
 			                                </TR>
 			                                <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
-			                                    <TD style="width:28px;font-size:20;color:#FF9900;"><input name="" type="checkbox" id="" style="WIDTH: 28px"></TD>
 			                                    <TD>
-			                                    	<A id="open" href="javascript:showMenu()" target=_blank style="text-decoration: underline;">打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A> 
+			                                    	<A id="open" href="javascript:showMenu()" target=_blank style="text-decoration: underline;">打开 <img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A>
 			                                    	<ul style="visibility: hidden;">
 			                                    		<li><img></img><a href="#">修改</a></li>
 			                                    		<li><a href="#">删除</a></li>
@@ -144,11 +141,9 @@
 			                                    	</ul>
 			                                    </TD>
 			                                    <TD>        </TD>
-			                                    <TD>8</TD>
-			                                    <TD>80000</TD>
-			                                    <TD>100000</TD>
-			                                    <TD>0.4</TD>
-			                                    <TD>103758</TD>
+			                                    <TD>1103蒙皮</TD>
+			                                    <TD>蒙皮</TD>
+			                                    <TD>个</TD>
 			                                 </TR>
 			                               
 			                              </TBODY>

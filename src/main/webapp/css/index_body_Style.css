@@ -111,6 +111,7 @@ A:hover {
 }
 .normal td{
 	text-align:right;
+	position:relative;
 }
 .normal td a{
 	position:relative;
@@ -118,8 +119,41 @@ A:hover {
 	color:black;
 	
 }
+.normal td ul{
+	padding:1px;
+	border: 1px solid #718bb7;
+	width:77px;
+	height:74px;
+	position:absolute;
+	top:5px;
+	left:-5px;
+	background-image:url(../images/menu.gif);
+	
+}
+.normal td ul li{
+	list-style-type:none;
+}
+.normal td ul a{
+	display:block;
+	line-height: 24px;
+    text-decoration: none;
+    color: #233d6d;
+	height:24px;
+	width:77px;
+	text-decoration: underline; 
+	position:relative;
+	top:0px;
+	left:5px;
+	text-align:center;
+}
+.normal td ul li:hover{
+	background:#c3daf9;
+	border:1px solid #8BB8F3;
+}
 .normal td img{
 	cursor:pointer;
+	position:relative;
+	top:5px;
 }
 .fileupload {
 	BORDER-RIGHT: #eeeeee 1px solid; BORDER-TOP: #999999 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #999999 1px solid; COLOR: #333333; BORDER-BOTTOM: #eeeeee 1px solid

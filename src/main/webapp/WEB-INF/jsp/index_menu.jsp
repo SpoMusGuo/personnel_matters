@@ -83,11 +83,11 @@
                                             <TBODY>
                                                 <TR>
                                                     <TD class=menuSmall><A class=style2
-                                                                           href="#"
+                                                                           href="PersonalIncomeTaxSetting"
                                                                            target=dmMain>－ 个人所得税设置</A></TD></TR>
                                                 <TR>
                                                     <TD class=menuSmall><A class=style2
-                                                                           href="#"
+                                                                           href="PieceworkProductSetup"
                                                                            target=dmMain>－ 计件产品设置</A></TD></TR>
                                                 <TR>
                                                     <TD class=menuSmall><A class=style2

@@ -1,13 +1,10 @@
-package com.pm.mapper;
+package com.pm.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
-
 import com.pm.model.Good;
-@Repository(value="goodMapper")
-public interface GoodMapper {
+
+public interface GoodService {
 	public List<Good> listAll();//查找所有物品
 	public List<Good> listType(String good_type);//查找某种类型物品
 	public Good get(String good_id);//通过编号查找某个物品
