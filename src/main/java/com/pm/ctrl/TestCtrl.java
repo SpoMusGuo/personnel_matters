@@ -18,10 +18,6 @@ public class TestCtrl {
 
 	@Autowired
 	private TestServiceImpl tServiceImpl;
-<<<<<<< HEAD
-=======
-
->>>>>>> f1b394857c5e7553e58d10bafcbbabaed4f10121
 
 	@RequestMapping("/test")
 	public String queryAll(Model model) {
@@ -29,16 +25,15 @@ public class TestCtrl {
 		model.addAttribute("list", tServiceImpl.query());
 		return "test";
 	}
-<<<<<<< HEAD
-=======
-/*	@RequestMapping("/index")
-	public String queryAll(Model model) {
-
-		// model.addAttribute("list", tServiceImpl.query());
-		return "index";
->>>>>>> f1b394857c5e7553e58d10bafcbbabaed4f10121
 
 	/*
+	 * @RequestMapping("/index") public String queryAll(Model model) {
+	 * 
+	 * // model.addAttribute("list", tServiceImpl.query()); return "index"; >>>>>>>
+	 * f1b394857c5e7553e58d10bafcbbabaed4f10121
+	 * 
+	 * /*
+	 * 
 	 * @RequestMapping("/index") public String queryAll(Model model) {
 	 * 
 	 * // model.addAttribute("list", tServiceImpl.query()); return "index";
@@ -83,14 +78,10 @@ public class TestCtrl {
 	public String goIndex_head(Model model) {
 
 		// model.addAttribute("list", tServiceImpl.query());
-<<<<<<< HEAD
+
 		return "index_head";
-=======
-		return "index_head";
->>>>>>> f1b394857c5e7553e58d10bafcbbabaed4f10121
 
 	}
-
 
 	// 处理日期
 	@InitBinder
