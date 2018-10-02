@@ -7,7 +7,7 @@ import java.util.Date;
  * 员工信息表：emp
  * 
  * 		emp_id				员工编号
- * 		emp_id_number		身份证号
+ * 		emp_idnumber		身份证号
  * 		emp_name			员工姓名
  * 		emp_native_place	籍贯
  * 		emp_sex				性别

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pm.mapper.WorkExpMapper">
+        
+  <resultMap type="workExp" id="workExpResultMap">
+      <id column="work_exp_id" property="workExpId"/>
+      <result column="emp_id" property="empId"/>
+      <result column="work_exp_unit" property="workExpUnit"/>
+      <result column="work_exp_job" property="workExpJob"/>
+	  <result column="work_exp_hiredate" property="workExpHiredate"/>
+      <result column="work_exp_end_date" property="workExpEndDate"/>
+      <result column="work_exp_content" property="workExpContent"/>
+	  <result column="work_exp_leave_reason" property="workExpLeaveReason"/>
+      <result column="work_exp_certifier" property="workExpCertifier"/>
+      <result column="work_exp_notes" property="workExpNotes"/>
+  </resultMap>  
+  
+  <select id="queryWorkExp" resultMap="workExpResultMap" parameterType="String">
+    select * from work_exp where work_exp_id = #{work_exp_id}
+  </select>
+    
+  <select id="queryWorkExpList" resultMap="workExpResultMap">
+    select * from work_exp
+  </select>
+  
+</mapper>

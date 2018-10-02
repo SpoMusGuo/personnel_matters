@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pm.mapper.EmpMapper">
+        
+  <resultMap type="emp" id="empResultMap">
+      <id column="emp_id" property="empId"/>
+      <result column="emp_idnumber" property="empIdNumber"/>
+      <result column="emp_name" property="empName"/>
+      <result column="emp_native_place" property="empNativePlace"/>
+	  <result column="emp_sex" property="empSex"/>
+      <result column="emp_birthday" property="empBirthday"/>
+      <result column="emp_used_name" property="empUsedName"/>
+      <result column="emp_nation" property="empNation"/>
+	  <result column="emp_age" property="empAge"/>
+      <result column="emp_english_name" property="empEnglishName"/>
+      <result column="emp_political_status" property="empPoliticalStatus"/>
+      <result column="emp_marriage" property="empMarriage"/>
+	  <result column="emp_education_st" property="empEducationSt"/>
+      <result column="emp_major_st" property="empMajorSt"/>
+      <result column="emp_graduated_st" property="empGraduatedSt"/>
+      <result column="emp_education_nd" property="empEducationNd"/>
+	  <result column="emp_major_nd" property="empMajorNd"/>
+      <result column="emp_graduated_nd" property="empGraduatedNd"/>
+      <result column="emp_degree" property="empDegree"/>
+      <result column="emp_graduate_time" property="empGraduateTime"/>
+	  <result column="emp_computer_level" property="empComputerLevel"/>
+      <result column="emp_foreign_1" property="empForeign1"/>
+      <result column="emp_foreign_2" property="empForeign2"/>
+      <result column="emp_foreign_3" property="empForeign3"/>
+	  <result column="emp_foreign_level_1" property="empForeignLevel1"/>
+      <result column="emp_foreign_level_2" property="empForeignLevel2"/>
+      <result column="emp_foreign_level_3" property="empForeignLevel3"/>
+      <result column="emp_apartment" property="empApartment"/>
+	  <result column="emp_inhabitant" property="empInhabitant"/>
+      <result column="emp_foreigners" property="empForeigners"/>
+      <result column="emp_telphone" property="empTelphone"/>
+      <result column="emp_mobilephone" property="empMobilePhone"/>
+	  <result column="emp_email" property="empEmail"/>
+      <result column="emp_home_address" property="empHomeAddress"/>
+      <result column="emp_speciality" property="empSpeciality"/>
+      <result column="emp_department" property="empDepartment"/>
+	  <result column="emp_academic_title" property="empAcademicTitle"/>
+      <result column="emp_job" property="empJob"/>
+      <result column="emp_grade" property="empGrade"/>
+      <result column="emp_job_category" property="empJobCategory"/>
+	  <result column="emp_work_category" property="empWorkCategory"/>
+      <result column="emp_hiredate" property="empHiredate"/>
+      <result column="emp_transfer_time" property="empTransferTime"/>
+      <result column="emp_sum_seniority" property="empSumSeniorty"/>
+	  <result column="emp_unit_seniorty" property="empUnitSeniorty"/>
+      <result column="emp_bank_account" property="empBankAccount"/>
+      <result column="emp_base_salary" property="empBaseSalary"/>
+      <result column="emp_register_time" property="empRegisterTime"/>
+	  <result column="emp_photo" property="empPhoto"/>
+  </resultMap>  
+  
+  <select id="queryEmp" resultMap="empResultMap" parameterType="String">
+    select * from emp where emp_id = #{emp_id}
+  </select>
+    
+  <select id="queryEmpList" resultMap="empResultMap">
+    select * from emp
+  </select>
+  
+</mapper>
