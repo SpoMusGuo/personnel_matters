@@ -33,4 +33,7 @@
 		good_count=#{good_count},good_repetory=#{good_repetory},good_register_date=#{good_register_date},
 		good_notes=#{good_notes} where good_id=#{good_id}
 	</update>
+	<select id="getCount" parameterType="String" resultType="int">
+		select good_count from good where goodf_id=#{good_id}
+	</select>
 </mapper>
