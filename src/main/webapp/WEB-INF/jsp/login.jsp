@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1>
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+<HEAD id=Head1>
+	<TITLE>人力资源管理系统</TITLE>
     <META http-equiv=Content-Type content="text/html; charset=utf-8">
+    
     <STYLE type=text/css>BODY {
         FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: 宋体
     }
@@ -11,10 +14,11 @@
     }
     </STYLE>
 
-    <META content="MSHTML 6.00.6000.16809" name=GENERATOR></HEAD>
+    <META content="MSHTML 6.00.6000.16809" name=GENERATOR>
+</HEAD>
 <BODY>
-<FORM id=form1 name=form1 onsubmit="javascript:return loginCheck;"
-      action="${pageContext.request.contextPath }/LoginCtrl" method=post>
+<FORM id=form1 name=form1
+      action="${pageContext.request.contextPath }/index" method=post onSubmit="return loginCheck()">
     <DIV id=UpdatePanel1>
         <DIV id=div1
              style="LEFT: 0px; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #0066ff"></DIV>
@@ -88,7 +92,7 @@
 	                                                        <TD>
 	                                                            <INPUT id=btn
 	                                                                   style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px"
-	                                                                   onclick='javascript:loginCheck()'
+	                                                                   
 	                                                                   type=image src="${pageContext.request.contextPath }/images/login_button.gif" name=btn>
 	                                                        </TD>
 	                                                    </TR>
@@ -114,8 +118,23 @@
 </FORM>
 <script type="text/javascript">
 	function loginCheck(){
-		alert("判断开始");
-		return true;
+		var form = document.getElementById("form1");
+		var userName = document.getElementById("txtName").value;
+		var userPassword = document.getElementById("txtPwd").value;
+		var cueUserName = document.getElementById("RequiredFieldValidator3");
+		var cueUserPassword = document.getElementById("RequiredFieldValidator4");
+		if(userName.trim().length==0||userPassword.trim().length==0){
+			cueUserName.style.visibility = "hidden";
+			cueUserPassword.style.visibility = "hidden";
+			if(userName.trim().length==0){
+				cueUserName.style.visibility = "visible";
+			}
+			if(userPassword.trim().length==0){
+				cueUserPassword.style.visibility = "visible";
+			}
+			return false;
+		}
+		return true; 
 	}
 </script>
 </BODY>

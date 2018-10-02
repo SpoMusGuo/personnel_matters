@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pm.mapper.GoodMapper">
+	<!-- 查找所有物品 -->
+	<select id="listAll" resultType="good">
+		select * from good;
+	</select>
+	<!-- 查找某种类型物品 -->
+	<select id="listType" resultType="good" parameterType="String">
+		select * from good where good_type=#{good_type}
+	</select>
+	<!-- 通过编号查找某个物品 -->
+	<select id="get" resultType="good" parameterType="String">
+		select * from good where good_id=#{good_id}
+	</select>
+	<!-- 通过物品名称查找物品 -->
+	<select id="listName" resultType="good" parameterType="String">
+		select * from good where good_name=#{good_name}
+	</select>
+	<!-- 插入新物品 -->
+	<insert id="insertGood" parameterType="good">
+		insert into good values(#{good_id},#{good_name},#{good_type},#{good_price},#{good_count},#{good_repetory},#{good_register_date},#{good_notes})
+	</insert>
+	<!-- 删除某个物品 -->
+	<delete id="deleteGood" parameterType="String">
+		delete form good where good_id=#{good_id}
+	</delete>
+	<!-- 修改物品信息 -->
+	<update id="updateGood" parameterType="good">
+		update good set good_name=#{good_name},good_type=#{good_type},good_price=#{good_price},
+		good_count=#{good_count},good_repetory=#{good_repetory},good_register_date=#{good_register_date},
+		good_notes=#{good_notes} where good_id=#{good_id}
+	</update>
+</mapper>
