@@ -2,15 +2,17 @@ package com.pm.service.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pm.mapper.GoodMapper;
 import com.pm.model.Good;
 import com.pm.service.GoodService;
-@Service
+@Service(value="goodService")
 public class GoodServiceImpl implements GoodService {
-	@Autowired
+	@Resource(name="goodMapper")
 	private GoodMapper mapper;
 	@Override
 	public List<Good> listAll() {

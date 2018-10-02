@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.pm.model.Good;
-@Repository
+@Repository(value="goodMapper")
 public interface GoodMapper {
 	public List<Good> listAll();//查找所有物品
 	public List<Good> listType(String good_type);//查找某种类型物品
