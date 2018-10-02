@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pm.mapper.Recruitment_planMapper">
+	<select id="getRecruitment_plan" parameterType="java.lang.String" resultType="recruitment_plan" >
+		select * from recruitment_plan where planno=#{planno}
+	</select>
+
+	<select id="getRecruitment_plans" parameterType="recruitment_planSelectRequirement" resultType="recruitment_plan" >
+		select * from recruitment_plan 
+		<where>
+			<if test="planno != null">
+				<choose>
+					<when test="splanno == '='">
+						planno = #{planno}
+					</when>
+					<when test="splanno == '!='">
+						planno != #{planno}
+					</when>
+					<when test="splanno == '>'">
+						planno &gt; #{planno}
+					</when>
+					<when test="splanno == '>='">
+						planno &gt;= #{planno}
+					</when>
+					<when test="splanno == '小于'">
+						planno &lt; #{planno}
+					</when>
+					<when test="splanno == '小于等于'">
+						planno &lt;= #{planno}
+					</when>
+					<when test="splanno == '介于'">
+						planno between #{planno} and #{planno1}
+					</when>
+					<when test="splanno == '形如'">
+						planno like ${%planno%}
+					</when>
+					<when test="splanno == '非空'">
+					 	planno is not null
+					</when>
+					<when test="splanno == '为空'">
+						planno is null
+					</when>
+					<otherwise>
+						planno is null
+					</otherwise>
+				</choose>
+			</if>
+			<if test="planname != null">
+				and
+				<choose>
+					<when test="splanname == '='">
+						planname = #{planname}
+					</when>
+					<when test="splanname == '!='">
+						planname != #{planname}
+					</when>
+					<when test="splanname == '>'">
+						planname &gt; #{planname}
+					</when>
+					<when test="splanname == '>='">
+						planname &gt;= #{planname}
+					</when>
+					<when test="splanname == '小于'">
+						planname &lt; #{planname}
+					</when>
+					<when test="splanname == '小于等于'">
+						planname &lt;= #{planname}
+					</when>
+					<when test="splanname == '介于'">
+						planname between #{planname} and #{planname1}
+					</when>
+					<when test="splanname == '形如'">
+						planname like ${%planname%}
+					</when>
+					<when test="splanname == '非空'">
+					 	planname is not null
+					</when>
+					<when test="splanname == '为空'">
+						planname is null
+					</when>
+					<otherwise>
+						planname is null
+					</otherwise>
+				</choose>
+			</if>
+			<if test="resruimentway != null">
+				and
+				<choose>
+					<when test="sresruimentway == '='">
+						resruimentway = #{resruimentway}
+					</when>
+					<when test="sresruimentway == '!='">
+						resruimentway != #{resruimentway}
+					</when>
+					<when test="sresruimentway == '>'">
+						resruimentway &gt; #{resruimentway}
+					</when>
+					<when test="sresruimentway == '>='">
+						resruimentway &gt;= #{resruimentway}
+					</when>
+					<when test="sresruimentway == '小于'">
+						resruimentway &lt; #{resruimentway}
+					</when>
+					<when test="sresruimentway == '小于等于'">
+						resruimentway &lt;= #{resruimentway}
+					</when>
+					<when test="sresruimentway == '介于'">
+						resruimentway between #{resruimentway} and #{resruimentway1}
+					</when>
+					<when test="sresruimentway == '形如'">
+						resruimentway like ${%resruimentway%}
+					</when>
+					<when test="sresruimentway == '非空'">
+					 	resruimentway is not null
+					</when>
+					<when test="sresruimentway == '为空'">
+						resruimentway is null
+					</when>
+					<otherwise>
+						resruimentway is null
+					</otherwise>
+				</choose>
+			</if>
+			<if test="Budget != null">
+				and
+				<choose>
+					<when test="sBudget == '='">
+						Budget = #{Budget}
+					</when>
+					<when test="sBudget == '!='">
+						Budget != #{Budget}
+					</when>
+					<when test="sBudget == '>'">
+						Budget &gt; #{Budget}
+					</when>
+					<when test="sBudget == '>='">
+						Budget &gt;= #{Budget}
+					</when>
+					<when test="sBudget == '小于'">
+						Budget &lt; #{Budget}
+					</when>
+					<when test="sBudget == '小于等于'">
+						Budget &lt;= #{Budget}
+					</when>
+					<when test="sBudget == '介于'">
+						Budget between #{Budget} and #{Budget1}
+					</when>
+					<when test="sBudget == '形如'">
+						Budget like ${%Budget%}
+					</when>
+					<when test="sBudget == '非空'">
+					 	Budget is not null
+					</when>
+					<when test="sBudget == '为空'">
+						Budget is null
+					</when>
+					<otherwise>
+						Budget is null
+					</otherwise>
+				</choose>
+			</if>
+			<if test="recruitmentnum != null">
+				and
+				<choose>
+					<when test="srecruitmentnum == '='">
+						recruitmentnum = #{recruitmentnum}
+					</when>
+					<when test="srecruitmentnum == '!='">
+						recruitmentnum != #{recruitmentnum}
+					</when>
+					<when test="srecruitmentnum == '>'">
+						recruitmentnum &gt; #{recruitmentnum}
+					</when>
+					<when test="srecruitmentnum == '>='">
+						recruitmentnum &gt;= #{recruitmentnum}
+					</when>
+					<when test="srecruitmentnum == '小于'">
+						recruitmentnum &lt; #{recruitmentnum}
+					</when>
+					<when test="srecruitmentnum == '小于等于'">
+						recruitmentnum &lt;= #{recruitmentnum}
+					</when>
+					<when test="srecruitmentnum == '介于'">
+						recruitmentnum between #{recruitmentnum} and #{recruitmentnum1}
+					</when>
+					<when test="srecruitmentnum == '形如'">
+						recruitmentnum like ${%recruitmentnum%}
+					</when>
+					<when test="srecruitmentnum == '非空'">
+					 	recruitmentnum is not null
+					</when>
+					<when test="srecruitmentnum == '为空'">
+						recruitmentnum is null
+					</when>
+					<otherwise>
+						recruitmentnum is null
+					</otherwise>
+				</choose>
+			</if>
+			<if test="registerdate != null">
+				and
+				<choose>
+					<when test="sregisterdate == '='">
+						registerdate = #{registerdate}
+					</when>
+					<when test="sregisterdate == '!='">
+						registerdate != #{registerdate}
+					</when>
+					<when test="sregisterdate == '>'">
+						registerdate &gt; #{registerdate}
+					</when>
+					<when test="sregisterdate == '>='">
+						registerdate &gt;= #{registerdate}
+					</when>
+					<when test="sregisterdate == '小于'">
+						registerdate &lt; #{registerdate}
+					</when>
+					<when test="sregisterdate == '小于等于'">
+						registerdate &lt;= #{registerdate}
+					</when>
+					<when test="sregisterdate == '介于'">
+						registerdate between #{registerdate} and #{registerdate1}
+					</when>
+					<when test="sregisterdate == '形如'">
+						registerdate like ${%registerdate%}
+					</when>
+					<when test="sregisterdate == '非空'">
+					 	registerdate is not null
+					</when>
+					<when test="sregisterdate == '为空'">
+						registerdate is null
+					</when>
+					<otherwise>
+						registerdate is null
+					</otherwise>
+				</choose>
+			</if>
+			<if test="begindate != null">
+				and
+				<choose>
+					<when test="sbegindate == '='">
+						begindate = #{begindate}
+					</when>
+					<when test="sbegindate == '!='">
+						begindate != #{begindate}
+					</when>
+					<when test="sbegindate == '>'">
+						begindate &gt; #{begindate}
+					</when>
+					<when test="sbegindate == '>='">
+						begindate &gt;= #{begindate}
+					</when>
+					<when test="sbegindate == '小于'">
+						begindate &lt; #{begindate}
+					</when>
+					<when test="sbegindate == '小于等于'">
+						begindate &lt;= #{begindate}
+					</when>
+					<when test="sbegindate == '介于'">
+						begindate between #{begindate} and #{begindate1}
+					</when>
+					<when test="sbegindate == '形如'">
+						begindate like ${%begindate%}
+					</when>
+					<when test="sbegindate == '非空'">
+					 	begindate is not null
+					</when>
+					<when test="sbegindate == '为空'">
+						begindate is null
+					</when>
+					<otherwise>
+						begindate is null
+					</otherwise>
+				</choose>
+			</if>
+			<if test="overdate != null">
+				and
+				<choose>
+					<when test="soverdate == '='">
+						overdate = #{overdate}
+					</when>
+					<when test="soverdate == '!='">
+						overdate != #{overdate}
+					</when>
+					<when test="soverdate == '>'">
+						overdate &gt; #{overdate}
+					</when>
+					<when test="soverdate == '>='">
+						overdate &gt;= #{overdate}
+					</when>
+					<when test="soverdate == '小于'">
+						overdate &lt; #{overdate}
+					</when>
+					<when test="soverdate == '小于等于'">
+						overdate &lt;= #{overdate}
+					</when>
+					<when test="soverdate == '介于'">
+						overdate between #{overdate} and #{overdate1}
+					</when>
+					<when test="soverdate == '形如'">
+						overdate like ${%overdate%}
+					</when>
+					<when test="soverdate == '非空'">
+					 	overdate is not null
+					</when>
+					<when test="soverdate == '为空'">
+						overdate is null
+					</when>
+					<otherwise>
+						overdate is null
+					</otherwise>
+				</choose>
+			</if>
+			<if test="recruimentshow != null">
+				and
+				<choose>
+					<when test="srecruimentshow == '='">
+						recruimentshow = #{recruimentshow}
+					</when>
+					<when test="srecruimentshow == '!='">
+						recruimentshow != #{recruimentshow}
+					</when>
+					<when test="srecruimentshow == '>'">
+						recruimentshow &gt; #{recruimentshow}
+					</when>
+					<when test="srecruimentshow == '>='">
+						recruimentshow &gt;= #{recruimentshow}
+					</when>
+					<when test="srecruimentshow == '小于'">
+						recruimentshow &lt; #{recruimentshow}
+					</when>
+					<when test="srecruimentshow == '小于等于'">
+						recruimentshow &lt;= #{recruimentshow}
+					</when>
+					<when test="srecruimentshow == '介于'">
+						recruimentshow between #{recruimentshow} and #{recruimentshow1}
+					</when>
+					<when test="srecruimentshow == '形如'">
+						recruimentshow like ${%recruimentshow%}
+					</when>
+					<when test="srecruimentshow == '非空'">
+					 	recruimentshow is not null
+					</when>
+					<when test="srecruimentshow == '为空'">
+						recruimentshow is null
+					</when>
+					<otherwise>
+						recruimentshow is null
+					</otherwise>
+				</choose>
+			</if>
+			<if test="recruimentnote != null">
+				and
+				<choose>
+					<when test="srecruimentnote == '='">
+						recruimentnote = #{recruimentnote}
+					</when>
+					<when test="srecruimentnote == '!='">
+						recruimentnote != #{recruimentnote}
+					</when>
+					<when test="srecruimentnote == '>'">
+						recruimentnote &gt; #{recruimentnote}
+					</when>
+					<when test="srecruimentnote == '>='">
+						recruimentnote &gt;= #{recruimentnote}
+					</when>
+					<when test="srecruimentnote == '小于'">
+						recruimentnote &lt; #{recruimentnote}
+					</when>
+					<when test="srecruimentnote == '小于等于'">
+						recruimentnote &lt;= #{recruimentnote}
+					</when>
+					<when test="srecruimentnote == '介于'">
+						recruimentnote between #{recruimentnote} and #{recruimentnote1}
+					</when>
+					<when test="srecruimentnote == '形如'">
+						recruimentnote like ${%recruimentnote%}
+					</when>
+					<when test="srecruimentnote == '非空'">
+					 	recruimentnote is not null
+					</when>
+					<when test="srecruimentnote == '为空'">
+						recruimentnote is null
+					</when>
+					<otherwise>
+						recruimentnote is null
+					</otherwise>
+				</choose>
+			</if>
+			<if test="registerter != null">
+				and
+				<choose>
+					<when test="sregisterter == '='">
+						registerter = #{registerter}
+					</when>
+					<when test="sregisterter == '!='">
+						registerter != #{registerter}
+					</when>
+					<when test="sregisterter == '>'">
+						registerter &gt; #{registerter}
+					</when>
+					<when test="sregisterter == '>='">
+						registerter &gt;= #{registerter}
+					</when>
+					<when test="sregisterter == '小于'">
+						registerter &lt; #{registerter}
+					</when>
+					<when test="sregisterter == '小于等于'">
+						registerter &lt;= #{registerter}
+					</when>
+					<when test="sregisterter == '介于'">
+						registerter between #{registerter} and #{registerter1}
+					</when>
+					<when test="sregisterter == '形如'">
+						registerter like ${%registerter%}
+					</when>
+					<when test="sregisterter == '非空'">
+					 	registerter is not null
+					</when>
+					<when test="sregisterter == '为空'">
+						registerter is null
+					</when>
+					<otherwise>
+						registerter is null
+					</otherwise>
+				</choose>
+			</if>
+		</where>
+		<if test="columnname != null">
+		order by #{columnname} #{sort}
+		</if>
+		limit #{startIndex},#{pageCount}
+	</select>
+	
+	<update id="updateRecruitment_plan" parameterType="recruitment_plan">
+		update recruitment_plan set planno=#{planno}, planname=#{planname}, resruimentway=#{resruimentway}, Budget=#{Budget}, 
+		recruitmentnum=#{recruitmentnum}, registerdate=#{registerdate}, begindate=#{begindate}, overdate=#{overdate}, recruimentshow=#{recruimentshow},
+		recruimentnote=#{recruimentnote}, registerter=#{registerter}, status=#{status} where planno=#{planno}
+	</update>
+	
+	<delete id="deleteRecruitment_plan" parameterType="java.lang.String">
+		delete from recruitment_plan  where planno=#{planno}
+	</delete>
+	
+	<insert id="inertRecruitment_plan" parameterType="recruitment_plan">
+		insert into Recruitment_plan(planno, planname, resruimentway, Budget, recruitmentnum,registerdate, begindate, overdate, recruimentshow, 
+		recruimentnote, registerter, status) values(#{planno},#{planname},#{resruimentway},#{Budget},#{recruitmentnum},#{registerdate},#{begindate},
+		#{overdate},#{recruimentshow},#{recruimentnote},#{registerter},#{status})
+	</insert>
+</mapper>
