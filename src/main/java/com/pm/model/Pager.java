@@ -1,88 +1,48 @@
 package com.pm.model;
 
-public class Pager {
+import java.util.List;
 
-	/**
-	 * currentPage		当前页（传入）
-	 * pageSize			每页记录行数（传入）
-	 * startIndex		记录起始索引
-	 * sumRow			记录总行数（handler传入）
-	 * sumPage			总页数
-	 */
-	private int currentPage;
-	private int pageSize;
-	private int startIndex;
-	private int sumRow;
-	private int sumPage;
-	
-	
-	/**
-	 * 在controller层方法里调用此构造方法实例化，然后放入ModelAndView传给jsp。
-	 * @param sumRow
-	 * @param currentPage
-	 * @param pageSize
-	 */
-	public Pager(int sumRow, int currentPage, int pageSize) {
-		this.sumRow = sumRow;
-		this.currentPage = currentPage;
-		this.pageSize = pageSize;
-		this.startIndex = (currentPage - 1) * pageSize;
-		this.sumPage = sumRow / pageSize;
-		if(sumRow % pageSize > 0) {
-			this.sumPage++;
-		}
+public class Pager<T> {
+	private int pageindex;
+	private int pagesize;
+	private int records;
+	private int pagecount;
+	private int startindex;
+	private List<T> datas;
+	public int getPageindex() {
+		return pageindex;
 	}
-
-
-	
-	public int getCurrentPage() {
-		return currentPage;
+	public void setPageindex(int pageindex) {
+		this.pageindex = pageindex;
 	}
-
-
-	public void setCurrentPage(int currentPage) {
-		this.currentPage = currentPage;
+	public int getPagesize() {
+		return pagesize;
 	}
-
-
-	public int getPageSize() {
-		return pageSize;
+	public void setPagesize(int pagesize) {
+		this.pagesize = pagesize;
 	}
-
-
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
+	public int getRecords() {
+		return records;
 	}
-
-
-	public int getStartIndex() {
-		return startIndex;
+	public void setRecords(int records) {
+		this.records = records;
 	}
-
-
-	public void setStartIndex(int startIndex) {
-		this.startIndex = startIndex;
+	public int getPagecount() {
+		return pagecount;
 	}
-
-
-	public int getSumRow() {
-		return sumRow;
+	public void setPagecount(int pagecount) {
+		this.pagecount = pagecount;
 	}
-
-
-	public void setSumRow(int sumRow) {
-		this.sumRow = sumRow;
+	public List<T> getDatas() {
+		return datas;
 	}
-
-
-	public int getSumPage() {
-		return sumPage;
+	public void setDatas(List<T> datas) {
+		this.datas = datas;
 	}
-
-
-	public void setSumPage(int sumPage) {
-		this.sumPage = sumPage;
+	public int getStartindex() {
+		return startindex;
 	}
-	
-	
+	public void setStartindex(int startindex) {
+		this.startindex = startindex;
+	}
 }

@@ -9,17 +9,22 @@
 
     <SCRIPT language=javascript src="${pageContext.request.contextPath }/js/Common.js"></SCRIPT>
 	
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.min.js"></script>
 	<script type="text/javascript">
-		function showMenu(){
-			var open = document.getElementById('open');
-			var td = open.parentNode;
-			var ul = td.children[1];
-			if(ul.style.visibility=="visible"){
-				ul.style.visibility= "hidden";
-			}else{
-				ul.style.visibility= "visible";
-			}
-		}
+		$(function(){
+			var open = $(".open");
+			open.click(function(){
+				var ul = $(this).siblings("ul");
+				if(ul.css("visibility")=="visible"){
+					ul.css("visibility","hidden");
+				}else{
+					ul.css("visibility","visible");
+				}
+				
+				
+			})
+		})
+
 	</script>
     <SCRIPT language=javascript>
         function selectallbox()
@@ -136,7 +141,7 @@
 			                                <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
 			                                    <TD style="width:28px;font-size:20;color:#FF9900;"><input name="" type="checkbox" id="" style="WIDTH: 28px"></TD>
 			                                    <TD>
-			                                    	<A id="open" href="javascript:showMenu()" target=_blank style="text-decoration: underline;">打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A> 
+			                                    	<A class="open" href="javascript:showMenu()" target=_blank style="text-decoration: underline;">打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A> 
 			                                    	<ul style="visibility: hidden;">
 			                                    		<li><img></img><a href="#">修改</a></li>
 			                                    		<li><a href="#">删除</a></li>

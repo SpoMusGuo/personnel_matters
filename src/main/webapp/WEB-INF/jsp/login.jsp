@@ -136,7 +136,6 @@
 		}
 		return true; 
 	}
-	index_body.jsp
 </script>
 </BODY>
 </HTML>

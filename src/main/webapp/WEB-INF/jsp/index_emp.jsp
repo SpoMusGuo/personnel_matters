@@ -168,7 +168,7 @@
                                     <TD>录入时间</TD>
                                     <TD>照片</TD>
                                 </TR>
-            					<c:set var="pager" value="${requestScope.PAGER }"></c:set>
+            					<c:set var="pager" value="${requestScope.PAGING }"></c:set>
                                 <c:forEach items="${requestScope.EMPS }" var="emp" varStatus="status"
                                 	begin="${pager.startIndex }"
 									end="${pager.startIndex + pager.pageSize - 1 }">

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pm.model.Emp;
-import com.pm.model.Pager;
+import com.pm.model.Paging;
 import com.pm.service.EmpService;
 
 @Controller
@@ -22,7 +22,7 @@ public class PersonnelManageCtrl {
 		
 		List<Emp> emps = empservice.queryEmpList();
 		map.put("EMPS", emps);
-		map.put("PAGER", new Pager(emps.size(), 2, 10));
+		map.put("PAGING", new Paging(emps.size(), 2, 10));
 		return "index_emp";
 	}
 }
