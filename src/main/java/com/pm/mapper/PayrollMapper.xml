@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pm.mapper.PayrollMapper">
+	<!-- 查找所有个人所得税 -->
+	<select id="TaxGradeList" resultType="TaxGrade" parameterType="com.pm.model.Pager">
+		select *from taxgrade order by taxgrade_grade desc limit #{startindex},#{pagesize}
+	</select>
+	<!--  查找个人所得税总数 -->
+	<select id="getTaxGradeCount" resultType="java.lang.Integer">
+		select count(taxgrade_grade) from taxgrade		
+	</select>
+	<!--  通过税等级删除个人所得税-->
+	<delete id="removeTaxGrade" parameterType="Integer">
+		delete from taxgrade where taxgrade_grade=#{taxgrade_grade}
+	</delete>
+</mapper>

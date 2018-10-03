@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pm.mapper.ProTitleMapper">
+        
+  <resultMap type="proTitle" id="proTitleResultMap">
+      <id column="pro_title_id" property="proTitleId"/>
+      <result column="emp_id" property="empId"/>
+      <result column="pro_title_obtain" property="proTitleObtain"/>
+      <result column="pro_title_obtain_way" property="proTitleObtainWay"/>
+	  <result column="pro_title_obtain_date" property="proTitleObtainDate"/>
+      <result column="pro_title_next" property="proTitleNext"/>
+      <result column="pro_title_notes" property="proTitleNotes"/>
+  </resultMap>  
+  
+  <select id="queryProTitle" resultMap="proTitleResultMap" parameterType="String">
+    select * from pro_title where pro_title_id = #{pro_title_id}
+  </select>
+    
+  <select id="queryProTitleList" resultMap="proTitleResultMap">
+    select * from pro_title
+  </select>
+  
+</mapper>

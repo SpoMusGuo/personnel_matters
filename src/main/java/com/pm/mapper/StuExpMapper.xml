@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pm.mapper.StuExpMapper">
+        
+  <resultMap type="stuExp" id="stuExpResultMap">
+      <id column="stu_exp_id" property="stuExpId"/>
+      <result column="emp_id" property="empId"/>
+      <result column="stu_exp_name" property="stuExpName"/>
+      <result column="stu_exp_type" property="stuExpType"/>
+	  <result column="stu_exp_start_date" property="stuExpStartDate"/>
+      <result column="stu_exp_end_date" property="stuExpEndDate"/>
+      <result column="stu_exp_address" property="stuExpAddress"/>
+	  <result column="stu_exp_major" property="stuExpMajor"/>
+      <result column="stu_exp_grade" property="stuExpGrade"/>
+      <result column="stu_exp_notes" property="stuExpNotes"/>
+  </resultMap>  
+  
+  <select id="queryStuExp" resultMap="stuExpResultMap" parameterType="String">
+    select * from stu_exp where stu_exp_id = #{stu_exp_id}
+  </select>
+    
+  <select id="queryStuExpList" resultMap="stuExpResultMap">
+    select * from stu_exp
+  </select>
+  
+</mapper>

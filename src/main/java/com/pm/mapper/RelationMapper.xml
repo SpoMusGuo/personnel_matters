@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pm.mapper.RelationMapper">
+        
+  <resultMap type="relation" id="relationResultMap">
+      <id column="relation_id" property="relationId"/>
+      <result column="emp_id" property="empId"/>
+      <result column="relation_name" property="relationName"/>
+      <result column="relation_who" property="relationWho"/>
+	  <result column="relation_birthday" property="relationBirthday"/>
+      <result column="relation_politics" property="relationPolitics"/>
+      <result column="relation_work_unit" property="relationWorkUnit"/>
+      <result column="relation_job" property="relationJob"/>
+	  <result column="relation_contact_way" property="relationContactWay"/>
+      <result column="relation_notes" property="relationNotes"/>
+  </resultMap>  
+  
+  <select id="queryRelation" resultMap="relationResultMap" parameterType="String">
+    select * from relation where relation_id = #{relation_id}
+  </select>
+    
+  <select id="queryRelationList" resultMap="relationResultMap">
+    select * from relation
+  </select>
+  
+</mapper>

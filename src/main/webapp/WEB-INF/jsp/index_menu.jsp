@@ -83,7 +83,7 @@
                                             <TBODY>
                                                 <TR>
                                                     <TD class=menuSmall><A class=style2
-                                                                           href="PersonalIncomeTaxSetting"
+                                                                           href="PersonalIncomeTaxSetting/1"
                                                                            target=dmMain>－ 个人所得税设置</A></TD></TR>
                                                 <TR>
                                                     <TD class=menuSmall><A class=style2
@@ -205,7 +205,7 @@
                                             <TBODY>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2
-                                                                       href="#"
+                                                                       href="index_emp"
                                                                        target=dmMain>－ 员工信息表</A></TD></TR>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2

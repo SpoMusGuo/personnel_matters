@@ -128,7 +128,7 @@ A:hover {
 	top:5px;
 	left:-5px;
 	background-image:url(../images/menu.gif);
-	
+	z-index:500;
 }
 .normal td ul li{
 	list-style-type:none;

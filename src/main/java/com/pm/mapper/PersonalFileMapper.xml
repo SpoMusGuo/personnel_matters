@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pm.mapper.PersonalFileMapper">
+        
+  <resultMap type="personalFile" id="personalFileResultMap">
+      <id column="personal_file_id" property="personalFileId"/>
+      <result column="emp_id" property="empId"/>
+      <result column="personal_file_approve" property="personalFileApprove"/>
+      <result column="personal_file_check" property="personalFileCheck"/>
+	  <result column="personal_file_writer" property="personalFileWriter"/>
+      <result column="personal_file_date" property="personalFileDate"/>
+  </resultMap>  
+  
+  <select id="queryPersonalFile" resultMap="personalFileResultMap" parameterType="String">
+    select * from personal_file where personal_file_id = #{personal_file_id}
+  </select>
+    
+  <select id="queryPersonalFileList" resultMap="personalFileResultMap">
+    select * from personal_file
+  </select>
+
+</mapper>

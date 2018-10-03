@@ -1,5 +1,6 @@
 package com.pm.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 /**
  * planno			计划编号
@@ -13,6 +14,7 @@ import java.util.Date;
  * recruimentshow	招聘说明
  * recruimentnote	招聘备注
  * registerter		登记人
+ * status			锁状态
  * @author 红莲天舞
  *
  */
@@ -20,7 +22,7 @@ public class Recruitment_plan {
 	private String planno;
 	private String planname;
 	private String resruimentway;
-	private Double Budget;
+	private BigDecimal Budget;
 	private int recruitmentnum;
 	private Date registerdate;
 	private Date begindate;
@@ -28,7 +30,7 @@ public class Recruitment_plan {
 	private String recruimentshow;
 	private String recruimentnote;
 	private String registerter;
-	
+	private String status;
 	/**
 	 * @return the planno
 	 */
@@ -68,13 +70,13 @@ public class Recruitment_plan {
 	/**
 	 * @return the budget
 	 */
-	public Double getBudget() {
+	public BigDecimal getBudget() {
 		return Budget;
 	}
 	/**
 	 * @param budget the budget to set
 	 */
-	public void setBudget(Double budget) {
+	public void setBudget(BigDecimal budget) {
 		Budget = budget;
 	}
 	/**
@@ -160,6 +162,18 @@ public class Recruitment_plan {
 	 */
 	public void setRegisterter(String registerter) {
 		this.registerter = registerter;
+	}
+	/**
+	 * @return status
+	 */
+	public String getStatus() {
+		return status;
+	}
+	/**
+	 * @param status 要设置的 status
+	 */
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }

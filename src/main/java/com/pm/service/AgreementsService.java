@@ -1,13 +1,12 @@
-package com.pm.mapper;
+package com.pm.service;
 
 import java.util.List;
 
 import com.pm.model.Agreements;
 import com.pm.model.AgreementsSelectRequirement;
 
-public interface AgreementsMapper {
-	
-	public Agreements getAgreement(String agreementno);
+public interface AgreementsService {
+public Agreements getAgreement(String agreementno);
 	
 	public List<Agreements> getAgreements(AgreementsSelectRequirement agreementsSelectRequirement);
 	
@@ -16,5 +15,4 @@ public interface AgreementsMapper {
 	public void deleteAgreement(String agreementno);
 	
 	public void insertAgreement(Agreements agreements);
-	
 }

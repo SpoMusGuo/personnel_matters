@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><TITLE>模板</TITLE>
     <META http-equiv=Content-Type content="text/html; charset=utf-8"><LINK
@@ -8,18 +9,22 @@
     <SCRIPT language=javascript src="${pageContext.request.contextPath }/js/FrameDiv.js"></SCRIPT>
 
     <SCRIPT language=javascript src="${pageContext.request.contextPath }/js/Common.js"></SCRIPT>
-	
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.min.js"></script>
 	<script type="text/javascript">
-		function showMenu(){
-			var open = document.getElementById('open');
-			var td = open.parentNode;
-			var ul = td.children[1];
-			if(ul.style.visibility=="visible"){
-				ul.style.visibility= "hidden";
-			}else{
-				ul.style.visibility= "visible";
-			}
-		}
+		$(function(){
+			var open = $(".open");
+			open.click(function(){
+				var ul = $(this).siblings("ul");
+				if(ul.css("visibility")=="visible"){
+					ul.css("visibility","hidden");
+				}else{
+					ul.css("visibility","visible");
+				}
+				
+				
+			})
+		})
+
 	</script>
     <SCRIPT language=javascript>
         function selectallbox()
@@ -67,7 +72,6 @@
 	        }
 	        //]]>
 	    </SCRIPT>
-
 	    <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 	        <TBODY>
 		        <TR>
@@ -133,23 +137,26 @@
 			                                    <TD>税率</TD>
 			                                    <TD>速扣</TD>
 			                                </TR>
-			                                <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
+			                                <c:forEach items="${taxGrades}" var="taxGrade">
+			                                	 <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
 			                                    <TD style="width:28px;font-size:20;color:#FF9900;"><input name="" type="checkbox" id="" style="WIDTH: 28px"></TD>
 			                                    <TD>
-			                                    	<A id="open" href="javascript:showMenu()" target=_blank style="text-decoration: underline;">打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A> 
+			                                    	<A class="open" href="javascript:" target=_blank style="text-decoration: underline;">打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A> 
 			                                    	<ul style="visibility: hidden;">
 			                                    		<li><img></img><a href="#">修改</a></li>
-			                                    		<li><a href="#">删除</a></li>
+			                                    		<li><a href="${pageContext.request.contextPath}/removeTaxGrade/${taxGrade.taxgrade_grade}">删除</a></li>
 			                                    		<li><a href="#">上锁</a></li>
 			                                    	</ul>
 			                                    </TD>
 			                                    <TD>        </TD>
-			                                    <TD>8</TD>
-			                                    <TD>80000</TD>
-			                                    <TD>100000</TD>
-			                                    <TD>0.4</TD>
-			                                    <TD>103758</TD>
+			                                    <TD>${ taxGrade.taxgrade_grade}</TD>
+			                                    <TD>${ taxGrade.taxgrade_start}</TD>
+			                                    <TD>${ taxGrade.taxgrade_end}</TD>
+			                                    <TD>${ taxGrade.taxgrade_rate}</TD>
+			                                    <TD>${ taxGrade.taxgrade_speed}</TD>
 			                                 </TR>
+			                                </c:forEach>
+			                               
 			                               
 			                              </TBODY>
 			                          </TABLE>
@@ -158,7 +165,7 @@
 			                    <TR>
 			                        <TD>
 				                        <SPAN id=pagelink>
-				           					 <DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">[<B>84</B>]条记录
+				           					 <DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">[<B>${taxGrades_sum}</B>]条记录
 				                [6]页 当前是[46-60]条 [<A
 				                        href="#">前一页</A>]
 				                <A class=""

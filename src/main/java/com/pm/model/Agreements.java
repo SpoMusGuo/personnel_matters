@@ -1,35 +1,37 @@
 package com.pm.model;
 
 import java.util.Date;
-
+import java.math.BigDecimal;
 /**
- * emp_name			员工姓名
- * emp_id			员工编号
- * emp_department				所属部门
+ * emp_name				员工姓名
+ * emp_id				员工编号
+ * emp_department		所属部门
  * emp_job				职务
  * emp_academic_title	职称
- * emp_work_category				工种
+ * emp_work_category	工种
  * emp_grade			等级
  * emp_idnumber			身份证号
- * agreementno		合同编号
- * aname			合同名称
- * atype			合同类型
- * regular			是否转正
- * signdata			签约时间
- * probation_period	试用期限
+ * agreementno			合同编号
+ * aname				合同名称
+ * atype				合同类型
+ * regular				是否转正
+ * signdata				签约时间
+ * probation_period		试用期限
  * probation_begindata	试用生效时间
  * probation_sal		试用工资
  * probation_overdata	试用到期时间
- * agreementperiod				合同期限
+ * agreementperiod		合同期限
  * starttime			合同生效时间
  * regularsal			转正工资
- * endtime			到期时间
- * documents				合同文件
+ * endtime				到期时间
+ * documents			合同文件
  * notes				合同备注
+ * status				锁状态
  * @author 红莲天舞
  *
  */
 public class Agreements {
+	
 	private String emp_name;
 	private String emp_id;
 	private String emp_department;
@@ -45,14 +47,15 @@ public class Agreements {
 	private Date signdata;
 	private Double probation_period;
 	private Date probation_begindata;
-	private Double probation_sal;
+	private BigDecimal probation_sal;
 	private Date probation_overdata;
 	private String agreementperiod;
 	private Date starttime;
-	private Double regularsal;
+	private BigDecimal  regularsal;
 	private Date endtime;
 	private String documents;
 	private String notes;
+	private String status;
 	/**
 	 * @return the emp_name
 	 */
@@ -236,13 +239,13 @@ public class Agreements {
 	/**
 	 * @return the probation_sal
 	 */
-	public Double getProbation_sal() {
+	public BigDecimal getProbation_sal() {
 		return probation_sal;
 	}
 	/**
 	 * @param probation_sal the probation_sal to set
 	 */
-	public void setProbation_sal(Double probation_sal) {
+	public void setProbation_sal(BigDecimal probation_sal) {
 		this.probation_sal = probation_sal;
 	}
 	/**
@@ -284,13 +287,13 @@ public class Agreements {
 	/**
 	 * @return the regularsal
 	 */
-	public Double getRegularsal() {
+	public BigDecimal getRegularsal() {
 		return regularsal;
 	}
 	/**
 	 * @param regularsal the regularsal to set
 	 */
-	public void setRegularsal(Double regularsal) {
+	public void setRegularsal(BigDecimal regularsal) {
 		this.regularsal = regularsal;
 	}
 	/**
@@ -329,6 +332,30 @@ public class Agreements {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	
-	
+	/**
+	 * @return status
+	 */
+	public String getStatus() {
+		return status;
+	}
+	/**
+	 * @param status 要设置的 status
+	 */
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	/* （非 Javadoc）
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Agreements [emp_name=" + emp_name + ", emp_id=" + emp_id + ", emp_department=" + emp_department
+				+ ", emp_job=" + emp_job + ", emp_academic_title=" + emp_academic_title + ", emp_work_category="
+				+ emp_work_category + ", emp_grade=" + emp_grade + ", emp_idnumber=" + emp_idnumber + ", agreementno="
+				+ agreementno + ", aname=" + aname + ", atype=" + atype + ", regular=" + regular + ", signdata="
+				+ signdata + ", probation_period=" + probation_period + ", probation_begindata=" + probation_begindata
+				+ ", probation_sal=" + probation_sal + ", probation_overdata=" + probation_overdata
+				+ ", agreementperiod=" + agreementperiod + ", starttime=" + starttime + ", regularsal=" + regularsal
+				+ ", endtime=" + endtime + ", documents=" + documents + ", notes=" + notes + ", status=" + status + "]";
+	}
 }
