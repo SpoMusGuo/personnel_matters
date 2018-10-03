@@ -3,8 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id=Head1>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
     <META http-equiv=Content-Type content="text/html; charset=utf-8"><LINK
@@ -13,18 +13,22 @@
     <SCRIPT language=javascript src="${pageContext.request.contextPath }/js/FrameDiv.js"></SCRIPT>
 
     <SCRIPT language=javascript src="${pageContext.request.contextPath }/js/Common.js"></SCRIPT>
-	
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.min.js"></script>
 	<script type="text/javascript">
-		function showMenu(){
-			var open = document.getElementByClass('open');
-			var td = open.parentNode;
-			var ul = td.children[1];
-			if(ul.style.visibility=="visible"){
-				ul.style.visibility= "hidden";
-			}else{
-				ul.style.visibility= "visible";
-			}
-		}
+		$(function(){
+			var open = $(".open");
+			open.click(function(){
+				var ul = $(this).siblings("ul");
+				if(ul.css("visibility")=="visible"){
+					ul.css("visibility","hidden");
+				}else{
+					ul.css("visibility","visible");
+				}
+				
+				
+			})
+		})
+
 	</script>
     <SCRIPT language=javascript>
         function selectallbox()
@@ -113,7 +117,7 @@
 			                                <TBODY>
 				                                <TR>
 				                                	<div class="add">
-				                                		<INPUT class=button id="add" type=button value=新增 name=add>
+				                                		<a href="${pageContext.request.contextPath }/good/addGood"><INPUT class=button id="add" type=button value=新增 name=add></a>
 				                                	</div>
 					                                <div class="search">
 					                                    <img src="${pageContext.request.contextPath }/images/icon_search.gif">
@@ -147,7 +151,7 @@
 			                                <c:forEach items="${pager.datas}" var="good">
 				                                <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">			                                    
 				                                    <TD>
-				                                    	<A Class="open" href="javascript:showMenu()" target=_blank style="text-decoration: underline;">
+				                                    	<A class="open" href="javascript:showMenu()" target=_blank style="text-decoration: underline;">
 				                                    		打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif">
 				                                    	</A> 
 				                                    	<ul style="visibility: hidden;">
@@ -175,36 +179,35 @@
 			                   <TR>
 			                       <TD>
 				                   	   <SPAN id=pagelink>
-				           				   <DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">
-				           				   		<c:set var="pageindex" scope="session" value="${pager.pageindex}"/>				           				   	
+				           				   <DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">				           				 				           				   	
 				           					 	[<B>${pager.records}</B>]条记录共[${pager.pagecount}]页 								                
-								                <c:if test="${pageindex==pager.pagecount}">
+								                <c:if test="${pager.pageindex==pager.pagecount}">
 								                	当前是[${pager.startindex+1}-${pager.records}]条 
 								                </c:if>
-								                <c:if test="${pageindex!=pager.pagecount}">
+								                <c:if test="${pager.pageindex!=pager.pagecount}">
 								                	当前是[${pager.startindex+1}-${pager.startindex+pager.pagesize}]条 
 								                </c:if>		               		 
-								                <c:if test="${pageindex!=1 }">
-				           				   			[<A href="${pageContext.request.contextPath}/good/list/${pageindex-1}">前一页</A>]
+								                <c:if test="${pager.pageindex!=1 }">
+				           				   			[<A href="${pageContext.request.contextPath}/good/list/${pager.pageindex-1}">前一页</A>]
 				           				   		</c:if>
 								                <c:forEach begin="1" end="${pager.pagecount}" var="i">
-								                	<c:if test="${i==pageindex}">
+								                	<c:if test="${i==pager.pageindex}">
 								                		<B><c:out value="${i}"/></B> 
 								                	</c:if>
-								                	<c:if test="${i!=pageindex}">
+								                	<c:if test="${i!=pager.pageindex}">
 								                		<A class="" href="${pageContext.request.contextPath}/good/list/${i}"><c:out value="${i}"/></A> 
 								                	</c:if>								                	
 								                </c:forEach>
-								                <c:if test="${pageindex!=pager.pagecount}">
-								                	[<A class="" href="${pageContext.request.contextPath}/good/list/${pageindex+1}">后一页</A>]
+								                <c:if test="${pager.pageindex!=pager.pagecount}">
+								                	[<A class="" href="${pageContext.request.contextPath}/good/list/${pager.pageindex+1}">后一页</A>]
 								                </c:if>						             
 								                
 								                <SELECT>
 								                	<c:forEach begin="1" end="${pager.pagecount}" var="i">
-									                	<c:if test="${i==pageindex}">
+									                	<c:if test="${i==pager.pageindex}">
 									                		<OPTION value="${i}" selected>第<c:out value="${i}"/>页</OPTION> 
 									                	</c:if>
-									                	<c:if test="${i!=pageindex}">
+									                	<c:if test="${i!=pager.pageindex}">
 									                		<OPTION value="${i}">第<c:out value="${i}"/>页</OPTION>
 									                	</c:if>								                	
 								                	</c:forEach>

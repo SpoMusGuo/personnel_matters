@@ -244,7 +244,7 @@
                                             <TBODY>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2
-                                                                       href="#"
+                                                                       href="good/list/1"
                                                                        target=dmMain>－ 物品资料信息</A></TD></TR>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2
