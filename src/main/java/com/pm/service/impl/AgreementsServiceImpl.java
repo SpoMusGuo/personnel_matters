@@ -26,21 +26,31 @@ public class AgreementsServiceImpl implements AgreementsService {
 	}
 
 	@Override
-	public void updateAgreement(Agreements agreements) {
-		agreementsMapper.updateAgreement(agreements);
+	public String updateAgreement(Agreements agreements) {
+		Agreements agreements2 =  agreementsMapper.getAgreement(agreements.getAgreementno());
+		if (agreements2.getStatus().equals("未锁定")) {
+			agreementsMapper.updateAgreement(agreements);
+			return "true";
+		} else {
+			return "false";
+		}
 	}
 
 	@Override
 	public void deleteAgreement(String agreementno) {
-		agreementsMapper.deleteAgreement(agreementno);
+		Agreements agreements2 =  agreementsMapper.getAgreement(agreementno);
+		if (agreements2.getStatus().equals("未锁定")) {
+			agreementsMapper.deleteAgreement(agreementno);
+		}
 	}
 
 	@Override
 	public void insertAgreement(Agreements agreements) {
 		agreementsMapper.insertAgreement(agreements);
-		
 	}
-	
-	
-	
+
+	@Override
+	public void updateAgreementLock(String agreementno) {
+		agreementsMapper.updateAgreementLock(agreementno);
+	}
 }

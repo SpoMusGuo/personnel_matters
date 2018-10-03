@@ -17,4 +17,5 @@ public interface Recruitment_planMapper {
 	
 	public void inertRecruitment_plan(Recruitment_plan recruitment_plan);
 	
+	public void updateRecruitment_planLock(String planno);
 }

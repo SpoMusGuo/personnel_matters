@@ -11,9 +11,11 @@ public interface AgreementsService {
 	
 	public List<Agreements> getAgreements(AgreementsSelectRequirement agreementsSelectRequirement);
 	
-	public void updateAgreement(Agreements agreements);
+	public String updateAgreement(Agreements agreements);
 	
 	public void deleteAgreement(String agreementno);
 	
 	public void insertAgreement(Agreements agreements);
+	
+	public void updateAgreementLock(String agreementno);
 }

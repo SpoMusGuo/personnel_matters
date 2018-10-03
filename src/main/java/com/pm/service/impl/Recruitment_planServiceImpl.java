@@ -26,18 +26,35 @@ public class Recruitment_planServiceImpl implements Recruitment_planService {
 	}
 
 	@Override
-	public void updateRecruitment_plan(Recruitment_plan recruitment_plan) {
-		recruitment_planMapper.updateRecruitment_plan(recruitment_plan);
+	public String updateRecruitment_plan(Recruitment_plan recruitment_plan) {
+		Recruitment_plan recruitment_plan2 =  recruitment_planMapper.getRecruitment_plan(recruitment_plan.getPlanno());
+		if (recruitment_plan2.getStatus().equals("未锁定")) {
+			recruitment_planMapper.updateRecruitment_plan(recruitment_plan);
+			return "true";
+		} else {
+			return "false";
+		}
 	}
 
 	@Override
-	public void deleteRecruitment_plan(String planno) {
-		recruitment_planMapper.deleteRecruitment_plan(planno);
+	public String deleteRecruitment_plan(String planno) {
+		Recruitment_plan recruitment_plan2 =  recruitment_planMapper.getRecruitment_plan(planno);
+		if (recruitment_plan2.getStatus().equals("未锁定")) {
+			recruitment_planMapper.deleteRecruitment_plan(planno);
+			return "true";
+		} else {
+			return "false";
+		}
 	}
 
 	@Override
 	public void inertRecruitment_plan(Recruitment_plan recruitment_plan) {
 		recruitment_planMapper.inertRecruitment_plan(recruitment_plan);
+	}
+
+	@Override
+	public void updateRecruitment_planLock(String planno) {
+		recruitment_planMapper.updateRecruitment_planLock(planno);
 	}
 
 }
