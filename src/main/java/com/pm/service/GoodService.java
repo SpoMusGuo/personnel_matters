@@ -15,4 +15,5 @@ public interface GoodService {
 	public int updateGood(Good good);//修改物品信息
 	public int getCount(String good_id);//查看物品余量
 	public List<Good> listPager(Pager<Good> pager);//分页查找物品
+	public int getRecords();//查询总记录条数
 }

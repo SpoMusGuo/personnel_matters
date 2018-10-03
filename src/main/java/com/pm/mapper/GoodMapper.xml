@@ -39,4 +39,7 @@
 	<select id="listPager" resultType="good" parameterType="Pager">
 		select * from good limit #{startindex},#{pagesize};
 	</select>
+	<select id="getRecords" resultType="int">
+		select count(*) from good 
+	</select>
 </mapper>
