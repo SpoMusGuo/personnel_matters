@@ -6,7 +6,8 @@ import com.pm.model.Agreements;
 import com.pm.model.AgreementsSelectRequirement;
 
 public interface AgreementsService {
-public Agreements getAgreement(String agreementno);
+
+	public Agreements getAgreement(String agreementno);
 	
 	public List<Agreements> getAgreements(AgreementsSelectRequirement agreementsSelectRequirement);
 	

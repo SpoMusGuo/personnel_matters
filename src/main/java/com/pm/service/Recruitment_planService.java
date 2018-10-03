@@ -2,6 +2,8 @@ package com.pm.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.pm.model.Recruitment_plan;
 import com.pm.model.Recruitment_planSelectRequirement;
 

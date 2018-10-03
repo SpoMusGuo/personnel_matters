@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.pm.model.Agreements;
 import com.pm.model.AgreementsSelectRequirement;
 import com.pm.service.AgreementsService;
-
 @Service(value="agreementsService")
 public class AgreementsServiceImpl implements AgreementsService {
 

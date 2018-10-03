@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import com.pm.model.Recruitment_plan;
 import com.pm.model.Recruitment_planSelectRequirement;
 import com.pm.service.Recruitment_planService;
-
+@Service(value="recruitment_planService")
 public class Recruitment_planServiceImpl implements Recruitment_planService {
 
 	@Resource(name="recruitment_planMapper")

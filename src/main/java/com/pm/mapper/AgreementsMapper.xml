@@ -8,7 +8,7 @@
 	</select>
 	
 	<select id="getAgreements" parameterType="agreementsSelectRequirement" resultType="agreements" >
-		select * from getAgreements 
+		select * from agreements 
 		<where>
 			<if test="emp_name != null">
 				<choose>

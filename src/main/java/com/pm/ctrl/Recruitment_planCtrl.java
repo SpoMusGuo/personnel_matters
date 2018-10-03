@@ -7,20 +7,22 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.alibaba.fastjson.JSON;
 import com.pm.model.Recruitment_planSelectRequirement;
 
-@RequestMapping(value="/recruitment_plan")
+@RequestMapping(value="/recruitment")
 @Controller
 public class Recruitment_planCtrl {
 
-//	@Resource(name="recruitment_planMapper")
-	private com.pm.mapper.Recruitment_planMapper recruitment_planMapper;
+	@Resource(name="recruitment_planService")
+	private com.pm.service.Recruitment_planService recruitment_planService;
 	
 	@RequestMapping(value="/index")
 	public void getRecruitment_plan(Recruitment_planSelectRequirement recruitment_planSelectRequirement,HttpServletRequest request, 
 			HttpServletResponse response) throws Exception {
-		request.setAttribute("recruitment_plan",recruitment_planMapper.getRecruitment_plans(recruitment_planSelectRequirement));
-		request.getRequestDispatcher("/WEB-INF/jsp/agreements/recruitment_plan.jsp").forward(request, response);
+//		request.setAttribute("recruitments",recruitment_planService.getRecruitment_plans(recruitment_planSelectRequirement));
+		request.setAttribute("recruitment",recruitment_planService.getRecruitment_plan("10000"));
+		request.getRequestDispatcher("/WEB-INF/jsp/recruitment/recruitment.jsp").forward(request, response);
 		
 	}
 }

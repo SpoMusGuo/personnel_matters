@@ -31,7 +31,6 @@ import java.math.BigDecimal;
  *
  */
 public class Agreements {
-	
 	private String emp_name;
 	private String emp_id;
 	private String emp_department;
