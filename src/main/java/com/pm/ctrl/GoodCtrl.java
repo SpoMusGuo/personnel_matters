@@ -37,4 +37,10 @@ public class GoodCtrl {
 		model.addAttribute("pager", pager);
 		return "good/goods";
 	}
+	@RequestMapping("/addGood")
+	public String addGood(Model model) {
+		return "good/addGood";
+	}
+	
+
 }

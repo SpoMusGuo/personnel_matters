@@ -26,33 +26,16 @@
 		})
 
 	</script>
-    <SCRIPT language=javascript>
-        function selectallbox()
-        {
-            var list = document.getElementsByName('setlist');
-            var listAllValue='';
-            if(document.getElementById('checkAll').checked)
-            {
-                for(var i=0;i<list.length;i++)
-                {
-                    list[i].checked = true;
-                    if(listAllValue=='')
-                        listAllValue=list[i].value;
-                    else
-                        listAllValue = listAllValue + ',' + list[i].value;
-                }
-                document.getElementById('boxListValue').value=listAllValue;
-            }
-            else
-            {
-                for(var i=0;i<list.length;i++)
-                {
-                    list[i].checked = false;
-                }
-                document.getElementById('boxListValue').value='';
-            }
-        }
-    </SCRIPT>
+    <script type="text/javascript">
+    	$(function(){
+    		var search = $("#search");
+    		var input = $("#txtSearch");
+    		search.click(function(){
+    			var keyWord = input.val();
+    			window.location.href = "${pageContext.request.contextPath }/searchTaxGrade/"+keyWord+"/1";
+    		})
+    	})
+    </script>
 
     <META content="MSHTML 6.00.2900.3492" name=GENERATOR></HEAD>
 <BODY>
@@ -114,7 +97,7 @@
 					                                <div class="search">
 					                                    <img src="${pageContext.request.contextPath }/images/icon_search.gif">
 					                                    <input name="txtSearch" type="text" size="30" id="txtSearch">
-					                                    <INPUT class=button id="add" type=button value=搜索 name=add>
+					                                    <INPUT class=button id="search" type=button value=搜索 name=add>
 					                                    <a id="" href="" style="text-decoration: underline; color:black">查询条件...</a>
 					                                </div>
 				                                    <span id="lbl0" align="left" style="color:#FF9900;font-weight:bold;margin-left:40px;">[ 个人所得税设置 ]</span>
@@ -128,7 +111,6 @@
 			                            <TABLE id=grid cellSpacing=1 cellPadding=2 rules=all border=0>
 			                                <TBODY>
 			                                <TR class="title" tyle="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;">
-			                                    <TD style="width:28px;">全选</TD>
 			                                    <TD style="width:48px;white-space:nowrap;font-size:20;color:#FF9900;"></TD>
 			                                    <TD>锁状态</TD>
 			                                    <TD>级数</TD>
@@ -137,9 +119,8 @@
 			                                    <TD>税率</TD>
 			                                    <TD>速扣</TD>
 			                                </TR>
-			                                <c:forEach items="${taxGrades}" var="taxGrade">
-			                                	 <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
-			                                    <TD style="width:28px;font-size:20;color:#FF9900;"><input name="" type="checkbox" id="" style="WIDTH: 28px"></TD>
+			                                <c:forEach items="${pager.datas}" var="taxGrade">
+			                                 <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
 			                                    <TD>
 			                                    	<A class="open" href="javascript:" target=_blank style="text-decoration: underline;">打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A> 
 			                                    	<ul style="visibility: hidden;">
@@ -165,23 +146,44 @@
 			                    <TR>
 			                        <TD>
 				                        <SPAN id=pagelink>
-				           					 <DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">[<B>${taxGrades_sum}</B>]条记录
-				                [6]页 当前是[46-60]条 [<A
-				                        href="#">前一页</A>]
-				                <A class=""
-				                   href="#">1</A>
-				                <A class=""
-				                   href="#">2</A>
-				                <A class=""
-				                   href="#">3</A>
-				                <B>4</B> 
-				                <A class="" href="#">5</A>
-				                <A class="" href="#">6</A>
-				                [<A class="" href="#">后一页</A>]
-				                <SELECT>
-				                <OPTION value=1>第1页</OPTION><OPTION value=2>第2页</OPTION>
-				                <OPTION value=3>第3页</OPTION><OPTION value=4 selected>第4页</OPTION>
-				                <OPTION value=5>第5页</OPTION><OPTION value=6>第6页</OPTION>
+				           					 <DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">
+				           					 [<B>${pager.records}</B>]条记录
+				           					 <c:choose>
+				           					 	<c:when test="${pager.pageindex==pager.pagecount}">
+				           					 		共${pager.pagecount}页 当前是[${pager.startindex+1 }-${pager.records }]条 
+				           					 	</c:when>
+				           					 	<c:otherwise>
+				           					 		共${pager.pagecount}页 当前是[${pager.startindex+1 }-${pager.startindex+pager.pagesize }]条  	
+				           					 	</c:otherwise>
+				           					 </c:choose>
+				           					 <c:if test="${pager.pageindex!=1}">
+				           					 	[<A href="${pager.pageindex-1 }" target=dmMain>前一页</A>]
+				           					 </c:if>
+				                			<c:forEach begin="1" end="${pager.pagecount}" var="i">
+				                				 <c:choose>
+				                				 	<c:when test="${i==pager.pageindex}">
+				                				 		 <B>${i}</B> 
+				                				 	</c:when>
+				                				 	<c:otherwise>
+				                				 		<A class="" href="#"><c:out value="${i}"></c:out></A>
+				                				 	</c:otherwise>
+				                				 </c:choose>
+				                			</c:forEach>
+				                			<c:if test="${pager.pageindex!=pager.pagecount}">
+				           					 	[<A class="" href="${pager.pageindex+1 }" target=dmMain>后一页</A>]
+				           					</c:if>
+				                
+				                <SELECT onchange="window.location=this.value">
+					                <c:forEach begin="1" end="${pager.pagecount}" var="i">
+					                	<c:choose>
+					                		<c:when test="${i==pager.pageindex}">
+					                			<OPTION value="${i}" selected>第${i}页</OPTION>
+					                		</c:when>
+					                		<c:otherwise>
+					                			<OPTION value="${i}">第${i}页</OPTION>
+					                		</c:otherwise>
+					                	</c:choose>
+					                </c:forEach>
 				                </SELECT>
 				             </DIV>
 				              			</SPAN>
