@@ -69,4 +69,10 @@ public class GoodServiceImpl implements GoodService {
 		return mapper.listPager(pager);
 	}
 
+	@Override
+	public int getRecords() {
+		// TODO Auto-generated method stub
+		return mapper.getRecords();
+	}
+
 }

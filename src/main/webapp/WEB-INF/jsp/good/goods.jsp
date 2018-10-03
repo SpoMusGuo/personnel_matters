@@ -16,7 +16,7 @@
 	
 	<script type="text/javascript">
 		function showMenu(){
-			var open = document.getElementById('open');
+			var open = document.getElementByClass('open');
 			var td = open.parentNode;
 			var ul = td.children[1];
 			if(ul.style.visibility=="visible"){
@@ -144,10 +144,10 @@
 												<td>登记时间</td>
 												<td>备注</td>
 			                                </TR>
-			                                <c:forEach items="${listpager}" var="good">
+			                                <c:forEach items="${pager.datas}" var="good">
 				                                <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">			                                    
 				                                    <TD>
-				                                    	<A id="open" href="javascript:showMenu()" target=_blank style="text-decoration: underline;">
+				                                    	<A Class="open" href="javascript:showMenu()" target=_blank style="text-decoration: underline;">
 				                                    		打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif">
 				                                    	</A> 
 				                                    	<ul style="visibility: hidden;">
@@ -177,7 +177,7 @@
 				                   	   <SPAN id=pagelink>
 				           				   <DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">
 				           				   		<c:set var="pageindex" scope="session" value="${pager.pageindex}"/>				           				   	
-				           					 	[<B>${goods.size()}</B>]条记录共[${pager.pagecount}]页 								                
+				           					 	[<B>${pager.records}</B>]条记录共[${pager.pagecount}]页 								                
 								                <c:if test="${pageindex==pager.pagecount}">
 								                	当前是[${pager.startindex+1}-${pager.records}]条 
 								                </c:if>
@@ -185,18 +185,18 @@
 								                	当前是[${pager.startindex+1}-${pager.startindex+pager.pagesize}]条 
 								                </c:if>		               		 
 								                <c:if test="${pageindex!=1 }">
-				           				   			[<A href="${pageContext.request.contextPath}/good/list?currentPageindex=${pageindex-1}">前一页</A>]
+				           				   			[<A href="${pageContext.request.contextPath}/good/list/${pageindex-1}">前一页</A>]
 				           				   		</c:if>
 								                <c:forEach begin="1" end="${pager.pagecount}" var="i">
 								                	<c:if test="${i==pageindex}">
 								                		<B><c:out value="${i}"/></B> 
 								                	</c:if>
 								                	<c:if test="${i!=pageindex}">
-								                		<A class="" href="${pageContext.request.contextPath}/good/list?currentPageindex=${i}"><c:out value="${i}"/></A> 
+								                		<A class="" href="${pageContext.request.contextPath}/good/list/${i}"><c:out value="${i}"/></A> 
 								                	</c:if>								                	
 								                </c:forEach>
 								                <c:if test="${pageindex!=pager.pagecount}">
-								                	[<A class="" href="${pageContext.request.contextPath}/good/list?currentPageindex=${pageindex+1}">后一页</A>]
+								                	[<A class="" href="${pageContext.request.contextPath}/good/list/${pageindex+1}">后一页</A>]
 								                </c:if>						             
 								                
 								                <SELECT>
