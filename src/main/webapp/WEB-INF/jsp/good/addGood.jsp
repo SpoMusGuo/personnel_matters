@@ -41,6 +41,21 @@
 	        }
 	        //]]>
 	    </SCRIPT>
+	    <script>
+	    	$(function(){
+	    		$('#good_id').val("${good_id}");
+	    		$('#price').blur(function () {
+		           var price=$(this).val();
+		           var count=$('#count').val();
+		           $('#sumPrice').val(price*count);
+		        });
+	    		$('#count').blur(function () {
+	    			var price=$('#price').val();
+			        var count=$(this).val();
+			        $('#sumPrice').val(price*count);
+		        });
+	    	})
+	    </script>
 
 	    <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 	        <TBODY>
@@ -71,7 +86,7 @@
 		            					<tr><td colspan="4">&nbsp;</td></tr>
 		            					<tr>
 		            						<td width="25%">物品编号</td>
-		            						<td width="25%"><input disabled="disabled" type="text" style="width:90%" value="WP0006"></td>
+		            						<td width="25%"><input id="good_id" disabled="disabled" type="text" style="width:90%" ></td>
 		            						<td width="25%">物品名称</td>
 		            						<td width="25%"><input type="text" style="width:90%"></td></tr>
 		            					<tr><td colspan="4">&nbsp;</td></tr>
@@ -88,21 +103,21 @@
 												</select>
 											</td>
 											<td>单价</td>
-											<td><input type="text" style="width:90%"></td>
+											<td><input id="price" type="number" style="width:90%"></td>
 										</tr>
 		            					<tr><td colspan="4">&nbsp;</td></tr>
 		            					<tr>
 		            						<td>数量</td>
-		            						<td><input type="text" style="width:90%"></td>
+		            						<td><input id="count" type="number" style="width:90%"></td>
 		            						<td>金额</td>
-		            						<td><input type="text" style="width:90%"></td>
+		            						<td><input id="sumPrice" disabled="disabled" type="number" style="width:90%"></td>
 		            					</tr>
 		            					<tr><td colspan="4">&nbsp;</td></tr>
 		            					<tr>
 		            						<td>计算库存</td>
-		            						<td><input type="text" style="width:90%"></td>
+		            						<td><input type="number" style="width:90%"></td>
 		            						<td>登记时间</td>
-		            						<td><input type="text" style="width:90%"></td>
+		            						<td><input type="date" style="width:90%"></td>
 		            					</tr>
 		            					<tr><td colspan="4">&nbsp;</td></tr>
 		            					<tr>
@@ -117,6 +132,9 @@
 		            					<tr></tr>
 		            					<tr></tr>
 		            					<tr></tr>
+		            					<tr><td colspan="4">&nbsp;</td></tr>
+		            					<tr><td></td><td><input type="submit" value="提交"/></td><td></td><td></td></tr>
+		            					<tr><td colspan="4">&nbsp;</td></tr>
 		            				</table>
 		            			</td>
 		            			<td>			  

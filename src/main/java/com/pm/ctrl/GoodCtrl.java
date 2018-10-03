@@ -38,6 +38,16 @@ public class GoodCtrl {
 	}
 	@RequestMapping("/addGood")
 	public String addGood(Model model) {
+		String good_id=goodService.getLastId();
+		int num=(Integer.parseInt(good_id.split("WP")[1]))+1;
+		if(num>=1000) {
+			good_id="WP"+num;
+		}else if(num>=100) {
+			good_id="WP"+0+num;
+		}else if(num>=10) {
+			good_id="WP"+0+0+num;
+		}
+		model.addAttribute("good_id", good_id);
 		return "good/addGood";
 	}
 	
