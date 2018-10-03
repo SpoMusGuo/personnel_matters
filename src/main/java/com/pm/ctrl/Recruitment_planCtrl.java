@@ -13,7 +13,7 @@ import com.pm.model.Recruitment_planSelectRequirement;
 @Controller
 public class Recruitment_planCtrl {
 
-	@Resource(name="recruitment_planMapper")
+//	@Resource(name="recruitment_planMapper")
 	private com.pm.mapper.Recruitment_planMapper recruitment_planMapper;
 	
 	@RequestMapping(value="/index")

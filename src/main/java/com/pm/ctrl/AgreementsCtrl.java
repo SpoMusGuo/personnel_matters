@@ -13,11 +13,15 @@ import com.pm.model.AgreementsSelectRequirement;
 @Controller
 public class AgreementsCtrl {
 	
-	@Resource(name="agreementsMapper")
+//	@Resource(name="agreementsMapper")
 	private com.pm.service.AgreementsService agreementsService;
 	
 	@RequestMapping(value="/index")
-	public void getAgreements(AgreementsSelectRequirement agreementsSelectRequirement,HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void getAgreements(String SelectRequirement, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		AgreementsSelectRequirement agreementsSelectRequirement = new AgreementsSelectRequirement();
+		
+		
+		
 		request.setAttribute("agreements", agreementsService.getAgreements(agreementsSelectRequirement));
 		request.getRequestDispatcher("/WEB-INF/jsp/agreements/agreements.jsp").forward(request, response);
 	}
