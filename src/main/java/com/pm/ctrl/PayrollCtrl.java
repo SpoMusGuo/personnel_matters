@@ -28,25 +28,81 @@ public class PayrollCtrl {
 	 */
 	@RequestMapping("/PersonalIncomeTaxSetting/{pageNum}")
 	public String registerPersonalIncomeTaxSetting(@PathVariable(value="pageNum")int pageNum,ModelMap map) {
-		//分页
-		Pager pager = new Pager();
-		int pageSize = 8;
-		int startIndex = (pageNum-1)*pageSize;
+		//通过页码获得该页个人税务表
+		List<TaxGrade> taxGrades = new ArrayList<TaxGrade>();
+		
+		//获取个人税表的总数
+		int taxGradesCount = payrollService.getTaxGradeCount();
+		//封装分页
+		Pager<TaxGrade> pager = new Pager<TaxGrade>();
+		int pageSize = 2;//每页的容量
+		int startIndex = (pageNum-1)*pageSize;//每页开始的序号
+		int endIndex = pageNum*pageSize-1;
+		int pageCount;//总页码
+		if(taxGradesCount%pageSize==0) {
+			pageCount = taxGradesCount/pageSize;
+		}else {
+			pageCount = taxGradesCount/pageSize+1;
+		}
 		pager.setStartindex(startIndex);
 		pager.setPagesize(pageSize);
-		List<TaxGrade> TaxGrades = new ArrayList<TaxGrade>();
-		TaxGrades = payrollService.getTaxGrade(pager);
-		map.put("taxGrades", TaxGrades);
-		map.put("taxGrades_count", TaxGrades.size());
-		map.put("taxGrades_sum", payrollService.getTaxGradeCount());
+		pager.setPageindex(pageNum);
+		pager.setPagecount(pageCount);
+		pager.setRecords(taxGradesCount);
+		taxGrades = payrollService.getTaxGrade(pager);
+		pager.setDatas(taxGrades);
+		
+		
+		//传到页面
+		map.put("pager", pager);
 		return "payroll-control/personal_income_taxsetting";
 	}
+	/**
+	 * 删除个人税设置
+	 * @param taxgrade_grade:个人税等级
+	 * @param 
+	 * @return
+	 */
 	@RequestMapping("/removeTaxGrade/{taxgrade_grade}")
 	public String removeTaxGrade(@PathVariable(value="taxgrade_grade")int taxgrade_grade,ModelMap map) {
+		
 		payrollService.removeTaxGrade(taxgrade_grade);
 		return "redirect:/PersonalIncomeTaxSetting";
 	}
-	
+	/**
+	 * 通过关键字查找需要查看的税务
+	 * @param keyword:关键字
+	 * @param 
+	 * @return
+	 */
+	@RequestMapping("/searchTaxGrade/{keyWord}/{pageNum}")
+	public String searchTaxGrade(@PathVariable(value="keyWord")String keyWord,@PathVariable(value="pageNum")int pageNum,ModelMap map) {
+		
+		List<TaxGrade> taxGrade = payrollService.getSearchTaxGrade(keyWord);
+		//获取查找的个人税表的总数
+		int taxGradesCount = taxGrade.size();
+		//封装Pager
+		Pager<TaxGrade> pager = new Pager<TaxGrade>();
+		int pageSize = 2;//每页的容量
+		int startIndex = (pageNum-1)*pageSize;//每页开始的序号
+		int endIndex = pageNum*pageSize-1;
+		int pageCount;//总页码
+		if(taxGradesCount%pageSize==0) {
+			pageCount = taxGradesCount/pageSize;
+		}else {
+			pageCount = taxGradesCount/pageSize+1;
+		}
+		pager.setDatas(taxGrade);
+		pager.setStartindex(startIndex);
+		pager.setPagesize(pageSize);
+		pager.setPageindex(pageNum);
+		pager.setPagecount(pageCount);
+		pager.setRecords(taxGradesCount);
+		//传到页面
+		map.put("pager", pager);
+		return "payroll-control/personal_income_taxsetting";
+		
+	}
 	
 	@RequestMapping("/PieceworkProductSetup")
 	public String registerPieceworkProductSetup() {

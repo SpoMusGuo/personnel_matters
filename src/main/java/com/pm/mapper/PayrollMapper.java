@@ -12,4 +12,5 @@ public interface PayrollMapper {
 	public List<TaxGrade> TaxGradeList(Pager pager);
 	public void removeTaxGrade(int taxgrade_grade);
 	public Integer getTaxGradeCount();
+	public List<TaxGrade> SearchTaxGrades(String keyWord);
 }

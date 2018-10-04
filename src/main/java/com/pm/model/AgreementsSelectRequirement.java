@@ -966,6 +966,38 @@ public class AgreementsSelectRequirement {
 	public void setSort(String sort) {
 		this.sort = sort;
 	}
+	/* （非 Javadoc）
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "AgreementsSelectRequirement [startIndex=" + startIndex + ", pageCount=" + pageCount + ", emp_name="
+				+ emp_name + ", semp_name=" + semp_name + ", emp_name1=" + emp_name1 + ", emp_id=" + emp_id
+				+ ", semp_id=" + semp_id + ", emp_id1=" + emp_id1 + ", emp_department=" + emp_department
+				+ ", semp_department=" + semp_department + ", emp_department1=" + emp_department1 + ", emp_job="
+				+ emp_job + ", semp_job=" + semp_job + ", emp_job1=" + emp_job1 + ", emp_academic_title="
+				+ emp_academic_title + ", semp_academic_title=" + semp_academic_title + ", emp_academic_title1="
+				+ emp_academic_title1 + ", emp_work_category=" + emp_work_category + ", semp_work_category="
+				+ semp_work_category + ", emp_work_category1=" + emp_work_category1 + ", emp_grade=" + emp_grade
+				+ ", semp_grade=" + semp_grade + ", emp_grade1=" + emp_grade1 + ", emp_idnumber=" + emp_idnumber
+				+ ", semp_idnumber=" + semp_idnumber + ", emp_idnumber1=" + emp_idnumber1 + ", agreementno="
+				+ agreementno + ", sagreementno=" + sagreementno + ", agreementno1=" + agreementno1 + ", aname=" + aname
+				+ ", saname=" + saname + ", aname1=" + aname1 + ", atype=" + atype + ", satype=" + satype + ", atype1="
+				+ atype1 + ", regular=" + regular + ", sregular=" + sregular + ", regular1=" + regular1 + ", signdata="
+				+ signdata + ", ssigndata=" + ssigndata + ", signdata1=" + signdata1 + ", probation_period="
+				+ probation_period + ", sprobation_period=" + sprobation_period + ", probation_period1="
+				+ probation_period1 + ", probation_begindata=" + probation_begindata + ", sprobation_begindata="
+				+ sprobation_begindata + ", probation_begindata1=" + probation_begindata1 + ", probation_sal="
+				+ probation_sal + ", sprobation_sal=" + sprobation_sal + ", probation_sal1=" + probation_sal1
+				+ ", probation_overdata=" + probation_overdata + ", sprobation_overdata=" + sprobation_overdata
+				+ ", probation_overdata1=" + probation_overdata1 + ", agreementperiod=" + agreementperiod
+				+ ", sagreementperiod=" + sagreementperiod + ", agreementperiod1=" + agreementperiod1 + ", starttime="
+				+ starttime + ", sstarttime=" + sstarttime + ", starttime1=" + starttime1 + ", regularsal=" + regularsal
+				+ ", sregularsal=" + sregularsal + ", regularsal1=" + regularsal1 + ", endtime=" + endtime
+				+ ", sendtime=" + sendtime + ", endtime1=" + endtime1 + ", documents=" + documents + ", sdocuments="
+				+ sdocuments + ", documents1=" + documents1 + ", notes=" + notes + ", snotes=" + snotes + ", notes1="
+				+ notes1 + ", columnname=" + columnname + ", sort=" + sort + "]";
+	}
 	
 	
 }

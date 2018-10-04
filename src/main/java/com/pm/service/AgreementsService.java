@@ -6,13 +6,16 @@ import com.pm.model.Agreements;
 import com.pm.model.AgreementsSelectRequirement;
 
 public interface AgreementsService {
-public Agreements getAgreement(String agreementno);
+
+	public Agreements getAgreement(String agreementno);
 	
 	public List<Agreements> getAgreements(AgreementsSelectRequirement agreementsSelectRequirement);
 	
-	public void updateAgreement(Agreements agreements);
+	public String updateAgreement(Agreements agreements);
 	
 	public void deleteAgreement(String agreementno);
 	
 	public void insertAgreement(Agreements agreements);
+	
+	public void updateAgreementLock(String agreementno);
 }

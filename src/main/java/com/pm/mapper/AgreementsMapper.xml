@@ -8,7 +8,7 @@
 	</select>
 	
 	<select id="getAgreements" parameterType="agreementsSelectRequirement" resultType="agreements" >
-		select * from getAgreements 
+		select * from agreements 
 		<where>
 			<if test="emp_name != null">
 				<choose>
@@ -897,6 +897,10 @@
 		probation_begindata=#{probation_begindata}, probation_sal=#{probation_sal}, probation_overdata=#{probation_overdata}, 
 		agreementperiod=#{agreementperiod}, starttime=#{starttime}, regularsal=#{regularsal}, endtime=#{endtime}, documents=#{documents}, 
 		notes=#{notes}, status=#{status} where agreementno=#{agreementno}
+	</update>
+	
+	<update id="updateAgreementLock" parameterType="java.lang.String">
+		update agreements set status=#{status} where agreementno=#{agreementno}
 	</update>
 	
 	<delete id="deleteAgreement" parameterType="java.lang.String">
