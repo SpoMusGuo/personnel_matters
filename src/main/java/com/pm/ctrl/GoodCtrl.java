@@ -3,12 +3,11 @@ package com.pm.ctrl;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-<<<<<<< HEAD
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-=======
->>>>>>> ddbb5a2462306965583462d40484e139a5df8fec
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
