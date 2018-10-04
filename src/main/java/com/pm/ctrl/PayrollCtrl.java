@@ -1,5 +1,6 @@
 package com.pm.ctrl;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class PayrollCtrl {
 		int taxGradesCount = payrollService.getTaxGradeCount();
 		//封装分页
 		Pager<TaxGrade> pager = new Pager<TaxGrade>();
-		int pageSize = 2;//每页的容量
+		int pageSize = 5;//每页的容量
 		int startIndex = (pageNum-1)*pageSize;//每页开始的序号
 		int endIndex = pageNum*pageSize-1;
 		int pageCount;//总页码
@@ -49,7 +50,7 @@ public class PayrollCtrl {
 		pager.setPageindex(pageNum);
 		pager.setPagecount(pageCount);
 		pager.setRecords(taxGradesCount);
-		taxGrades = payrollService.getTaxGrade(pager);
+		taxGrades = payrollService.getTaxGrades(pager);
 		pager.setDatas(taxGrades);
 		
 		
@@ -67,7 +68,7 @@ public class PayrollCtrl {
 	public String removeTaxGrade(@PathVariable(value="taxgrade_grade")int taxgrade_grade,ModelMap map) {
 		
 		payrollService.removeTaxGrade(taxgrade_grade);
-		return "redirect:/PersonalIncomeTaxSetting";
+		return "redirect:/PersonalIncomeTaxSetting/1";
 	}
 	/**
 	 * 通过关键字查找需要查看的税务
@@ -83,7 +84,7 @@ public class PayrollCtrl {
 		int taxGradesCount = taxGrade.size();
 		//封装Pager
 		Pager<TaxGrade> pager = new Pager<TaxGrade>();
-		int pageSize = 2;//每页的容量
+		int pageSize = 5;//每页的容量
 		int startIndex = (pageNum-1)*pageSize;//每页开始的序号
 		int endIndex = pageNum*pageSize-1;
 		int pageCount;//总页码
@@ -103,7 +104,27 @@ public class PayrollCtrl {
 		return "payroll-control/personal_income_taxsetting";
 		
 	}
-	
+	/**
+	 * 修改个人所得税设置表
+	 * @return
+	 */
+	@RequestMapping("/updateTaxGradeView/{taxgradeGrade}")
+	public String goUpdateTaxGrade(@PathVariable(value="taxgradeGrade")String taxgradeGrade,ModelMap map) {
+		map.put("taxGrade", payrollService.getTaxGrade(taxgradeGrade));
+		return "payroll-control/update_taxgrade";
+	}
+	@RequestMapping("/updateTaxGrade")
+	public String updateTaxGrade(TaxGrade taxGrade) {
+		System.out.println("进来");
+		TaxGrade newTaxGrade = new TaxGrade();
+		newTaxGrade.setTaxgrade_grade(taxGrade.getTaxgrade_grade());
+		newTaxGrade.setTaxgrade_end(taxGrade.getTaxgrade_end());
+		newTaxGrade.setTaxgrade_start(taxGrade.getTaxgrade_start());
+		newTaxGrade.setTaxgrade_speed(taxGrade.getTaxgrade_speed());
+		newTaxGrade.setTaxgrade_rate(taxGrade.getTaxgrade_rate());
+		payrollService.updateTaxGrade(newTaxGrade);
+		return "redirect:/PersonalIncomeTaxSetting/1";
+	}
 	@RequestMapping("/PieceworkProductSetup")
 	public String registerPieceworkProductSetup() {
 		return "payroll-control/piecework_product_setup";
