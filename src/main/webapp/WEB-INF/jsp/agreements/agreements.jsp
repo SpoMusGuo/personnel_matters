@@ -87,7 +87,7 @@
 			                                </TR>
 			                                <c:forEach items="${agreements }" var="agreements">
 			                               
-			                                <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
+			                                <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none;height: 64px">
 			                                    <TD>
 			                                    	<A class="open" href="javascript:showMenu()" target=_blank style="text-decoration: underline;">打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A> 
 			                                    	<ul style="visibility: hidden;">

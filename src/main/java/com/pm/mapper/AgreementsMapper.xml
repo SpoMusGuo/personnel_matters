@@ -899,6 +899,10 @@
 		notes=#{notes}, status=#{status} where agreementno=#{agreementno}
 	</update>
 	
+	<update id="updateAgreementLock" parameterType="java.lang.String">
+		update agreements set status=#{status} where agreementno=#{agreementno}
+	</update>
+	
 	<delete id="deleteAgreement" parameterType="java.lang.String">
 		delete from agreements where agreementno=#{agreementno}
 	</delete>

@@ -440,6 +440,10 @@
 		recruimentnote=#{recruimentnote}, registerter=#{registerter}, status=#{status} where planno=#{planno}
 	</update>
 	
+	<update id="updateRecruitment_planLock" parameterType="java.lang.String">
+		update recruitment_plan set tatus=#{status} where planno=#{planno}
+	</update>
+	
 	<delete id="deleteRecruitment_plan" parameterType="java.lang.String">
 		delete from recruitment_plan  where planno=#{planno}
 	</delete>

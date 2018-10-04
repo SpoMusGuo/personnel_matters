@@ -3,9 +3,12 @@ package com.pm.ctrl;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+<<<<<<< HEAD
 import javax.annotation.Resource;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+=======
+>>>>>>> ddbb5a2462306965583462d40484e139a5df8fec
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -16,18 +19,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.pm.model.Good;
 import com.pm.model.Pager;
 import com.pm.service.GoodService;
+
 @RequestMapping("/good")
 @Controller
 public class GoodCtrl {
-	@Resource(name="goodService")
+	@Resource(name = "goodService")
 	private GoodService goodService;
+
 	@RequestMapping("/list/{currentPageindex}")
-	public String list(Model model,@PathVariable(value="currentPageindex")Integer currentPageindex) {
+	public String list(Model model, @PathVariable(value = "currentPageindex") Integer currentPageindex) {
 		Pager<Good> pager = new Pager<Good>();
-//		从前端传来的当前页和每页记录条数
-		int pagesize=2;
-		if(currentPageindex==null) {
-			currentPageindex=1;
+		// 从前端传来的当前页和每页记录条数
+		int pagesize = 2;
+		if (currentPageindex == null) {
+			currentPageindex = 1;
 		}
 		int startindex=(currentPageindex-1)*pagesize;
 		int records=goodService.getRecords();

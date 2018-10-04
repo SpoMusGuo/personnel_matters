@@ -30,5 +30,10 @@ public class PayrollServiceImpl implements PayrollService{
 		// TODO Auto-generated method stub
 		return payollMapper.getTaxGradeCount();
 	}
+	@Override
+	public List<TaxGrade> getSearchTaxGrade(String keyWord) {
+		// TODO Auto-generated method stub
+		return payollMapper.SearchTaxGrades(keyWord);
+	}
 
 }
