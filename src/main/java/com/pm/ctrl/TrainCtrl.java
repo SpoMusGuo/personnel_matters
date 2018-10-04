@@ -1,24 +1,56 @@
 package com.pm.ctrl;
 
-import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pm.model.Train;
-import com.pm.model.Pager;
+import com.pm.model.Paging;
 import com.pm.service.TrainService;
 
-@RequestMapping("/train")
 @Controller
 public class TrainCtrl {
-	@Resource(name = "trainService")
+	
+	@Autowired
+	private TrainService trainservice;
+
+	@RequestMapping("/index_train")
+	public String queryTrainList(String pageSize, String currentPage, List<Train> trainsa, Map map) {
+
+		Integer iPageSize;
+		Integer iCurrentPage;
+		
+		if(pageSize != null) {
+			iPageSize = Integer.parseInt(pageSize);
+		} else {
+			iPageSize = 15;
+		}
+		if(currentPage != null) {
+			iCurrentPage = Integer.parseInt(currentPage);
+		} else {
+			iCurrentPage = 1;
+		}
+		List<Train> trains = trainservice.listAll();
+		
+		map.put("TRAINS", trains);
+		map.put("PAGING", new Paging(trains.size(), iCurrentPage, iPageSize));
+		return "index_train";
+	}
+
+}
+
+
+/*@Controller
+public class TrainCtrl {
+	@Autowired
 	private TrainService trainService;
 
-	@RequestMapping("/list/{currentPageindex}")
-	public String list(Model model, @PathVariable(value = "currentPageindex") Integer currentPageindex) {
+	@RequestMapping("/index_train")
+	public String list(Model model, Integer currentPageindex) {
 		Pager<Train> pager = new Pager<Train>();
 		// 从前端传来的当前页和每页记录条数
 		int pagesize = 2;
@@ -35,12 +67,12 @@ public class TrainCtrl {
 		pager.setRecords(records);
 		pager.setDatas(trainService.listPager(pager));
 		model.addAttribute("pager", pager);
-		return "train/trains";
+		return "index_train";
 	}
-	/*@RequestMapping("/addTrain")
-	public String addTrain(Model model) {
-		return "train/addTrain";
-	}*/
-	
 
-}
+	@RequestMapping("/addTrain")
+	public String addTrain(Model model) {
+		return "index_train";
+	}
+
+}*/

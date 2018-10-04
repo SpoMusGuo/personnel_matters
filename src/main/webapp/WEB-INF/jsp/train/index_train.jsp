@@ -102,7 +102,7 @@
 		                <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
 			                <div class="place">
 			                 	<TR>
-			                        <TD class=manageHead>当前位置： &gt; 物品资料信息 </TD>
+			                        <TD class=manageHead>当前位置： &gt; 培训计划表 </TD>
 			                    </TR>
 			                    <TR>
 			                     	<TD height=1></TD>
@@ -125,7 +125,7 @@
 					                                    <INPUT class=button id="add" type=button value=搜索 name=add>
 					                                    <a id="" href="" style="text-decoration: underline; color:black">查询条件...</a>
 					                                </div>
-				                                    <span id="lbl0" align="left" style="color:#FF9900;font-weight:bold;margin-left:40px;">[ 物品资料信息 ]</span>
+				                                    <span id="lbl0" align="left" style="color:#FF9900;font-weight:bold;margin-left:40px;">[ 培训计划表 ]</span>
 				                                </TR>
 			                                </TBODY>
 			                            </TABLE>

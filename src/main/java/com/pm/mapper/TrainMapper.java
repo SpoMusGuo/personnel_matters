@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.pm.model.Pager;
 import com.pm.model.Train;
 
-@Repository(value="trainMapper")
+@Repository
 public interface TrainMapper {
 
 	public List<Train> listAll();// 查找所有培训
