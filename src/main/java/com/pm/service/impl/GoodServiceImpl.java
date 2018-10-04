@@ -75,4 +75,10 @@ public class GoodServiceImpl implements GoodService {
 		return mapper.getRecords();
 	}
 
+	@Override
+	public String getLastId() {
+		// TODO Auto-generated method stub
+		return mapper.getLastId();
+	}
+
 }

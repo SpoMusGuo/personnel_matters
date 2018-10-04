@@ -25,22 +25,37 @@
     <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </head>
 <body>
-	<FORM id=form1 name=form1 action=??? method=post>
-	    <SCRIPT type=text/javascript>
-	        //<![CDATA[
-	        var theForm = document.forms['form1'];
-	        if (!theForm) {
-	            theForm = document.form1;
+	<FORM id=form1 name=form1 action="${pageContext.request.contextPath }/good/insertGood" method=post onsubmit="return check()">
+	    <SCRIPT>
+	    function check(){
+	    	var value1=$("[name='good_name']").val();
+	        var value2=$("[name='good_price']").val();
+	        var value3=$("[name='good_count']").val();
+	        var value4=$("[name='good_repetory']").val();
+	        var value5=$("[name='good_register_date']").val();
+	        if((value1!="")&&(value2!="")&&(value3!="")&&(value4!="")&&(value5!="")){
+	        	return true;
+	        }else{
+	        	alert("请输入完整信息");
+	        	return false;
 	        }
-	        function __doPostBack(eventTarget, eventArgument) {
-	            if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
-	                theForm.__EVENTTARGET.value = eventTarget;
-	                theForm.__EVENTARGUMENT.value = eventArgument;
-	                theForm.submit();
-	            }
-	        }
-	        //]]>
+	    }
 	    </SCRIPT>
+	    <script>
+	    	$(function(){
+	    		$('#good_id').val("${good_id}");
+	    		$('#price').blur(function () {
+		           var price=$(this).val();
+		           var count=$('#count').val();
+		           $('#sumPrice').val(price*count);
+		        });
+	    		$('#count').blur(function () {
+	    			var price=$('#price').val();
+			        var count=$(this).val();
+			        $('#sumPrice').val(price*count);
+		        });
+	    	})
+	    </script>
 
 	    <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 	        <TBODY>
@@ -71,14 +86,14 @@
 		            					<tr><td colspan="4">&nbsp;</td></tr>
 		            					<tr>
 		            						<td width="25%">物品编号</td>
-		            						<td width="25%"><input disabled="disabled" type="text" style="width:90%" value="WP0006"></td>
+		            						<td width="25%"><input name="good_id" id="good_id" disabled="disabled" type="text" style="width:90%" ></td>
 		            						<td width="25%">物品名称</td>
-		            						<td width="25%"><input type="text" style="width:90%"></td></tr>
+		            						<td width="25%"><input name="good_name" type="text" style="width:90%"></td></tr>
 		            					<tr><td colspan="4">&nbsp;</td></tr>
 		            					<tr>
 		            						<td>物品类型</td>
 		            						<td>
-		            							<select style="width:90%;height:100%;display:block" >
+		            							<select name="good_type" style="width:90%;height:100%;display:block" >
 													  <option value ="电脑类">电脑类</option>
 													  <option value ="文具">文具类</option>
 													  <option value="服装类">服装类</option>
@@ -88,27 +103,27 @@
 												</select>
 											</td>
 											<td>单价</td>
-											<td><input type="text" style="width:90%"></td>
+											<td><input name="good_price" id="price" type="number" style="width:90%"></td>
 										</tr>
 		            					<tr><td colspan="4">&nbsp;</td></tr>
 		            					<tr>
 		            						<td>数量</td>
-		            						<td><input type="text" style="width:90%"></td>
+		            						<td><input name="good_count" id="count" type="number" style="width:90%"></td>
 		            						<td>金额</td>
-		            						<td><input type="text" style="width:90%"></td>
+		            						<td><input  id="sumPrice" disabled="disabled" type="number" style="width:90%"></td>
 		            					</tr>
 		            					<tr><td colspan="4">&nbsp;</td></tr>
 		            					<tr>
 		            						<td>计算库存</td>
-		            						<td><input type="text" style="width:90%"></td>
+		            						<td><input name="good_repetory" type="number" style="width:90%"></td>
 		            						<td>登记时间</td>
-		            						<td><input type="text" style="width:90%"></td>
+		            						<td><input name="good_register_date" type="date" style="width:90%"></td>
 		            					</tr>
 		            					<tr><td colspan="4">&nbsp;</td></tr>
 		            					<tr>
 		            						<td rowspan="1">备注</td>
 		            						<td colspan="3" rowspan="7">
-		            							<textarea rows="6" cols="" style="width:95%"></textarea>
+		            							<textarea name="good_notes" rows="6" cols="" style="width:95%"></textarea>
 		            						</td>
 		            					</tr>
 		            					<tr><td rowspan="6"></td></tr>
@@ -117,6 +132,9 @@
 		            					<tr></tr>
 		            					<tr></tr>
 		            					<tr></tr>
+		            					<tr><td colspan="4">&nbsp;</td></tr>
+		            					<tr><td></td><td><input type="submit" value="提交"/></td><td></td><td></td></tr>
+		            					<tr><td colspan="4">&nbsp;</td></tr>
 		            				</table>
 		            			</td>
 		            			<td>			  

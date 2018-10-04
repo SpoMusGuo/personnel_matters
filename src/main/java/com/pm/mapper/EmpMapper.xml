@@ -57,12 +57,63 @@
 	  <result column="emp_photo" property="empPhoto"/>
   </resultMap>  
   
-  <select id="queryEmp" resultMap="empResultMap" parameterType="String">
+  <select id="queryEmp" resultMap="empResultMap" parameterType="int">
     select * from emp where emp_id = #{emp_id}
   </select>
     
   <select id="queryEmpList" resultMap="empResultMap">
     select * from emp
+  </select>
+    
+  <select id="queryEmpVague" resultMap="empResultMap" parameterType="String">
+    select * from emp where locate(#{keyword}, emp_id)>0 OR
+      locate(#{keyword}, emp_idnumber)>0 OR
+      locate(#{keyword}, emp_name)>0 OR
+      locate(#{keyword}, emp_native_place)>0 OR
+	  locate(#{keyword}, emp_sex)>0 OR
+      locate(#{keyword}, date_format(emp_birthday,"%Y-%m-%d"))>0 OR
+      locate(#{keyword}, emp_used_name)>0 OR
+      locate(#{keyword}, emp_nation)>0 OR
+	  locate(#{keyword}, emp_age)>0 OR
+      locate(#{keyword}, emp_english_name)>0 OR
+      locate(#{keyword}, emp_political_status)>0 OR
+      locate(#{keyword}, emp_marriage)>0 OR
+	  locate(#{keyword}, emp_education_st)>0 OR
+      locate(#{keyword}, emp_major_st)>0 OR
+      locate(#{keyword}, emp_graduated_st)>0 OR
+      locate(#{keyword}, emp_education_nd)>0 OR
+	  locate(#{keyword}, emp_major_nd)>0 OR
+      locate(#{keyword}, emp_graduated_nd)>0 OR
+      locate(#{keyword}, emp_degree)>0 OR
+      locate(#{keyword}, date_format(emp_graduate_time,"%Y-%m-%d"))>0 OR
+	  locate(#{keyword}, emp_computer_level)>0 OR
+      locate(#{keyword}, emp_foreign_1)>0 OR
+      locate(#{keyword}, emp_foreign_2)>0 OR
+      locate(#{keyword}, emp_foreign_3)>0 OR
+	  locate(#{keyword}, emp_foreign_level_1)>0 OR
+      locate(#{keyword}, emp_foreign_level_2)>0 OR
+      locate(#{keyword}, emp_foreign_level_3)>0 OR
+      locate(#{keyword}, emp_apartment)>0 OR
+	  locate(#{keyword}, emp_inhabitant)>0 OR
+      locate(#{keyword}, emp_foreigners)>0 OR
+      locate(#{keyword}, emp_telphone)>0 OR
+      locate(#{keyword}, emp_mobilephone)>0 OR
+	  locate(#{keyword}, emp_email)>0 OR
+      locate(#{keyword}, emp_home_address)>0 OR
+      locate(#{keyword}, emp_speciality)>0 OR
+      locate(#{keyword}, emp_department)>0 OR
+	  locate(#{keyword}, emp_academic_title)>0 OR
+      locate(#{keyword}, emp_job)>0 OR
+      locate(#{keyword}, emp_grade)>0 OR
+      locate(#{keyword}, emp_job_category)>0 OR
+	  locate(#{keyword}, emp_work_category)>0 OR
+      locate(#{keyword}, date_format(emp_hiredate,"%Y-%m-%d"))>0 OR
+      locate(#{keyword}, date_format(emp_transfer_time,"%Y-%m-%d"))>0 OR
+      locate(#{keyword}, emp_sum_seniority)>0 OR
+	  locate(#{keyword}, emp_unit_seniorty)>0 OR
+      locate(#{keyword}, emp_bank_account)>0 OR
+      locate(#{keyword}, emp_base_salary)>0 OR
+      locate(#{keyword}, date_format(emp_register_time,"%Y-%m-%d"))>0
   </select>
   
 </mapper>

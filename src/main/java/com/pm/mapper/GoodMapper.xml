@@ -42,4 +42,7 @@
 	<select id="getRecords" resultType="int">
 		select count(*) from good 
 	</select>
+	<select id="getLastId" resultType="String">
+		select good_id from good order by good_id desc limit 0,1
+	</select>
 </mapper>

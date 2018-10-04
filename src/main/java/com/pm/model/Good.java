@@ -69,6 +69,12 @@ public class Good {
 	public void setGood_notes(String good_notes) {
 		this.good_notes = good_notes;
 	}
+	@Override
+	public String toString() {
+		return "Good [good_id=" + good_id + ", good_name=" + good_name + ", good_type=" + good_type + ", good_price="
+				+ good_price + ", good_count=" + good_count + ", good_repetory=" + good_repetory
+				+ ", good_register_date=" + good_register_date + ", good_notes=" + good_notes + "]";
+	}
 	
 	
 }
