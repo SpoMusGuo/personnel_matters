@@ -17,15 +17,21 @@ public class EmpServiceImpl implements EmpService {
 
 	
 	@Override
-	public Emp queryEmp() {
+	public Emp queryEmp(int empId) {
 		
-		return empMapper.queryEmp();
+		return empMapper.queryEmp(empId);
 	}
 
 	@Override
 	public List<Emp> queryEmpList() {
 		
 		return empMapper.queryEmpList();
+	}
+
+	@Override
+	public List<Emp> queryEmpVague(String keyword) {
+		
+		return empMapper.queryEmpVague(keyword);
 	}
 
 }

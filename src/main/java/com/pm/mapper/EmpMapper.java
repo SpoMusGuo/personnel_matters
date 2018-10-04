@@ -9,6 +9,7 @@ import com.pm.model.Emp;
 @Repository
 public interface EmpMapper {
 
-	Emp queryEmp();
+	Emp queryEmp(int empId);
 	List<Emp> queryEmpList();
+	List<Emp> queryEmpVague(String keyword);
 }
