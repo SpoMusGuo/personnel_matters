@@ -26,7 +26,7 @@
 		        var value3=$("[name='good_count']").val();
 		        var value4=$("[name='good_repetory']").val();
 		        var value5=$("[name='good_register_date']").val();
-		        if((value1!="")&&(value2!="")&&(value3!="")&&(value4!="")&&(value5!="")){
+		        if((value1.trim()!="")&&(value2.trim()!="")&&(value3.trim()!="")&&(value4.trim()!="")&&(value5.trim()!="")){
 		        	return true;
 		        }else{
 		        	alert("请输入完整信息");

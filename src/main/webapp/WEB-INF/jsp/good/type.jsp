@@ -17,14 +17,13 @@
 		$(function(){
 			var open = $(".open");
 			open.click(function(){
-				$(".open").siblings("ul").css("visibility","hidden");
 				var ul = $(this).siblings("ul");
-				if(ul.css("visibility")=="visible"){
-					ul.css("visibility","hidden");
-				}else{
+				if(ul.css("visibility")=="hidden"){
+					$(".open").siblings("ul").css("visibility","hidden");
 					ul.css("visibility","visible");
+				}else{
+					ul.css("visibility","hidden");
 				}
-				
 			})
 			$("#selectPage").change(function(){
         	var index=$(this).children('option:selected').val(); 
@@ -49,33 +48,6 @@
         	});
 		})
 	</script>
-    <SCRIPT language=javascript>
-        function selectallbox()
-        {
-            var list = document.getElementsByName('setlist');
-            var listAllValue='';
-            if(document.getElementById('checkAll').checked)
-            {
-                for(var i=0;i<list.length;i++)
-                {
-                    list[i].checked = true;
-                    if(listAllValue=='')
-                        listAllValue=list[i].value;
-                    else
-                        listAllValue = listAllValue + ',' + list[i].value;
-                }
-                document.getElementById('boxListValue').value=listAllValue;
-            }
-            else
-            {
-                for(var i=0;i<list.length;i++)
-                {
-                    list[i].checked = false;
-                }
-                document.getElementById('boxListValue').value='';
-            }
-        }
-    </SCRIPT>
 	<SCRIPT type=text/javascript>
 	        var theForm = document.forms['form1'];
 	        if (!theForm) {
@@ -248,9 +220,9 @@
 	       	</TBODY>
 	    </TABLE>
 	</FORM>
-	<div id="chooseSelect" style="width:150px;background-color:pink;padding:30px 50px 10px 60px;position:fixed;left:35%; top:10%; display:none">
+	<div id="chooseSelect" style="width:150px;background-color:#C3D5E0;border:2px #80B2CC solid;padding:30px 50px 10px 60px;position:fixed;left:35%; top:10%; display:none">
 		<form>
-			<table border=1>
+			<table>
 				<tr>
 					<td>种类：</td>
 					<td>
