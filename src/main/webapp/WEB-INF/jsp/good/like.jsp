@@ -11,13 +11,13 @@
             href="${pageContext.request.contextPath }/css/index_body_Manage.css" type=text/css rel=stylesheet><LINK
             href="${pageContext.request.contextPath }/css/index_body_Style.css" type=text/css rel=stylesheet>
     <SCRIPT language=javascript src="${pageContext.request.contextPath }/js/FrameDiv.js"></SCRIPT>
-
     <SCRIPT language=javascript src="${pageContext.request.contextPath }/js/Common.js"></SCRIPT>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			var open = $(".open");
 			open.click(function(){
+				$(".open").siblings("ul").css("visibility","hidden");
 				var ul = $(this).siblings("ul");
 				if(ul.css("visibility")=="visible"){
 					ul.css("visibility","hidden");
@@ -36,8 +36,18 @@
         	$("#chaxun").click(function(){
         		$("#chooseSelect").show();
         	})
+        	$("#search").click(function(){
+        		var value=$("#txtSearch").val();
+       			if(value==null||value==""){
+       				value=" ";
+       			}	        		
+        		window.location.href="${pageContext.request.contextPath }/good/likeGood/"+value+"/1";
+        	});
+        	$("#select_btn").click(function(){
+        		var value=$("#selectType").val();
+        		window.location.href="${pageContext.request.contextPath }/good/typeGood/"+value+"/1";
+        	});
 		})
-
 	</script>
     <SCRIPT language=javascript>
         function selectallbox()
@@ -66,13 +76,7 @@
             }
         }
     </SCRIPT>
-
-    <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
-</head>
-<body>
-	<FORM id=form1 name=form1 action=??? method=post>
-	    <SCRIPT type=text/javascript>
-	        //<![CDATA[
+	<SCRIPT type=text/javascript>
 	        var theForm = document.forms['form1'];
 	        if (!theForm) {
 	            theForm = document.form1;
@@ -84,22 +88,11 @@
 	                theForm.submit();
 	            }
 	        }
-	        $(function(){
-	        	$("#search").click(function(){
-	        		var value=$("#txtSearch").val();
-	       			if(value==null||value==""){
-	       				value=" ";
-	       			}	        		
-	        		window.location.href="${pageContext.request.contextPath }/good/likeGood/"+value+"/1";
-	        	});
-	        	$("#select_btn").click(function(){
-	        		var value=$("#selectType").val();
-	        		window.location.href="${pageContext.request.contextPath }/good/typeGood/"+value+"/1";
-	        	});
-	        })
-	        //]]>
 	    </SCRIPT>
-
+    <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
+</head>
+<body>
+	<FORM id=form1 name=form1 action=??? method=post>	    
 	    <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 	        <TBODY>
 		        <TR>

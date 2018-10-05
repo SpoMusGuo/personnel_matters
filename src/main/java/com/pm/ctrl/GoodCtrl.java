@@ -26,7 +26,7 @@ import com.pm.service.GoodService;
 public class GoodCtrl {
 	@Resource(name = "goodService")
 	private GoodService goodService;
-
+	//初始页面，显示所有记录
 	@RequestMapping("/list/{currentPageindex}")
 	public String list(Model model, @PathVariable(value = "currentPageindex") Integer currentPageindex) {
 		Pager<Good> pager = new Pager<Good>();
@@ -47,6 +47,7 @@ public class GoodCtrl {
 		model.addAttribute("pager", pager);
 		return "good/goods";
 	}
+	//新增物品 跳转添加商品页面
 	@RequestMapping("/addGood")
 	public String addGood(Model model) {
 		String good_id=goodService.getLastId();
@@ -63,6 +64,7 @@ public class GoodCtrl {
 		model.addAttribute("good_id", good_id);
 		return "good/addGood";
 	}
+	//插入物品
 	@RequestMapping("/insertGood")
 	public String insertdGood(Model model,String good_name,String good_type,double good_price,int good_count,int good_repetory,Date good_register_date,String good_notes){
 		String good_id=goodService.getLastId();
@@ -89,21 +91,25 @@ public class GoodCtrl {
 		int result=goodService.insertGood(good);
 		return "redirect:/good/list/1";
 	}
+	//编辑物品 跳转编辑页面
 	@RequestMapping("/editGood/{good_id}")
 	public String editGood(Model model,@PathVariable(value = "good_id") String good_id) {
 		model.addAttribute("good", goodService.get(good_id));
 		return "good/editGood";
 	}
+	//修改物品
 	@RequestMapping("/updateGood")
 	public String updateGood(Model model,Good good) {
 		int reslut=goodService.updateGood(good);
 		return "redirect:/good/list/1";
 	}
+	//删除物品
 	@RequestMapping("/deleteGood/{good_id}")
 	public String deleteGood(Model model,@PathVariable(value = "good_id") String good_id) {
 		int reslut=goodService.deleteGood(good_id);
 		return "redirect:/good/list/1";
 	}
+	//模糊搜索
 	@RequestMapping("/likeGood/{value}/{pageindex}")
 	public String likeGood(Model model,@PathVariable(value = "pageindex") int pageindex,@PathVariable(value = "value") String value) {
 		List<Good> goodlist=goodService.listLike(value);
@@ -147,6 +153,7 @@ public class GoodCtrl {
 			return "good/like";
 		}
 	}
+	//查询条件 按种类查询
 	@RequestMapping("/typeGood/{type}/{pageindex}")
 	public String typeGood(Model model,@PathVariable(value = "pageindex") int pageindex,@PathVariable(value = "type") String good_type) {
 		List<Good> goodlist=goodService.listType(good_type);
