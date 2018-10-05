@@ -1,10 +1,15 @@
 package com.pm.ctrl;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.ProcessBuilder.Redirect;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -105,17 +110,21 @@ public class PayrollCtrl {
 		
 	}
 	/**
-	 * 修改个人所得税设置表
-	 * @return
+	 * 跳转至修改个人所得税页面
+	 * @return:要修改的个人所得税等级信息
 	 */
 	@RequestMapping("/updateTaxGradeView/{taxgradeGrade}")
 	public String goUpdateTaxGrade(@PathVariable(value="taxgradeGrade")String taxgradeGrade,ModelMap map) {
 		map.put("taxGrade", payrollService.getTaxGrade(taxgradeGrade));
 		return "payroll-control/update_taxgrade";
 	}
+	/**
+	 * 修改个人所得税等级信息
+	 * @param taxGrade:修改后的该等级个人所得税信息
+	 * @return：返回个人税设置界面
+	 */
 	@RequestMapping("/updateTaxGrade")
 	public String updateTaxGrade(TaxGrade taxGrade) {
-		System.out.println("进来");
 		TaxGrade newTaxGrade = new TaxGrade();
 		newTaxGrade.setTaxgrade_grade(taxGrade.getTaxgrade_grade());
 		newTaxGrade.setTaxgrade_end(taxGrade.getTaxgrade_end());
@@ -125,6 +134,45 @@ public class PayrollCtrl {
 		payrollService.updateTaxGrade(newTaxGrade);
 		return "redirect:/PersonalIncomeTaxSetting/1";
 	}
+	//跳到新增个人税务界面
+	@RequestMapping("/addTaxGradeView")
+	public String addTaxGrade() {
+		return "payroll-control/add_taxgrade";
+	}
+	/**
+	 * 检测输入的税务等级是否重复
+	 * @param grade:前台输入的税务等级
+	 * 
+	 */
+	@RequestMapping("/checkTaxGrade")
+	public void checkTaxGrade(String grade,HttpServletRequest request,HttpServletResponse response) {
+		try {
+			PrintWriter out = response.getWriter();
+			TaxGrade taxGrade = payrollService.getTaxGrade(grade);
+			//ajax返回前台结果为"true"时，表示无此税务等级，可以添加该税务等级
+			if(taxGrade==null) {
+				out.print("true");
+			}else {
+				out.print("false");
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	/**
+	 * 添加新的个人税务等级信息进入数据库
+	 * @param taxGrade:新的个人税务等级
+	 * @return:不跳转继续输入
+	 */
+	@RequestMapping("/addTaxGrade")
+	public String addTaxGrade(TaxGrade taxGrade) {
+		payrollService.addTaxGrade(taxGrade);
+		return "payroll-control/add_taxgrade";
+	}
+	
+	
 	@RequestMapping("/PieceworkProductSetup")
 	public String registerPieceworkProductSetup() {
 		return "payroll-control/piecework_product_setup";

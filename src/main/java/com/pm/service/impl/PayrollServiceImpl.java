@@ -45,5 +45,10 @@ public class PayrollServiceImpl implements PayrollService{
 		// TODO Auto-generated method stub
 		return payollMapper.getTaxGrade(taxgradeGrade);
 	}
+	@Override
+	public void addTaxGrade(TaxGrade taxGrade) {
+		// TODO Auto-generated method stub
+		payollMapper.addTaxGrade(taxGrade);
+	}
 
 }

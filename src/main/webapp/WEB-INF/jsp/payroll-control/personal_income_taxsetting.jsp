@@ -95,7 +95,7 @@
 			                                <TBODY>
 				                                <TR>
 				                                	<div class="add">
-				                                		<INPUT class=button id="add" type=button value=新增 name=add>
+				                                		<a href="${pageContext.request.contextPath }/addTaxGradeView"><INPUT class=button id="add" type=button value=新增 name=add></a>
 				                                	</div>
 				                                	
 					                                <div class="search">

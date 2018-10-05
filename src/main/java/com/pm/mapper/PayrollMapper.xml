@@ -29,4 +29,8 @@
 	<select id="getTaxGrade" parameterType="java.lang.String" resultType="taxGrade">
 		select *from taxgrade where taxgrade_grade=#{taxgrade_grade}
 	</select>
+	<!--  增加一条税务信息-->
+	<insert id="addTaxGrade" parameterType="taxGrade">
+		insert into taxgrade values(#{taxgrade_grade},#{taxgrade_start},#{taxgrade_end},#{taxgrade_rate},#{taxgrade_speed})
+	</insert>
 </mapper>
