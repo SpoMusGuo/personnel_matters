@@ -2,8 +2,6 @@ package com.pm.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.pm.model.Train;
 import com.pm.model.Pager;
 

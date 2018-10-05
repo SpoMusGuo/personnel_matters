@@ -69,12 +69,10 @@
 
 	<!-- ??? -->
 	<select id="getCount" parameterType="String" resultType="int">
-		select
-		count(*) from train
+		select count(*) from train
 	</select>
 	<select id="listPager" resultType="train" parameterType="Pager">
-		select *
-		from train limit #{startindex},#{pagesize};
+		select * from train limit #{startindex},#{pagesize};
 	</select>
 	<select id="getRecords" resultType="int">
 		select count(*) from train
