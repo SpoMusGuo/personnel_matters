@@ -16,9 +16,9 @@ public class PayrollServiceImpl implements PayrollService{
 	@Resource(name="payrollMapper")
 	private PayrollMapper payollMapper;
 	@Override
-	public List<TaxGrade> getTaxGrade(Pager pager) {
+	public List<TaxGrade> getTaxGrades(Pager pager) {
 		// TODO Auto-generated method stub
-		return payollMapper.TaxGradeList(pager);
+		return payollMapper.taxGradeList(pager);
 	}
 	@Override
 	public void removeTaxGrade(int taxgrade_grade) {
@@ -29,6 +29,21 @@ public class PayrollServiceImpl implements PayrollService{
 	public Integer getTaxGradeCount() {
 		// TODO Auto-generated method stub
 		return payollMapper.getTaxGradeCount();
+	}
+	@Override
+	public List<TaxGrade> getSearchTaxGrade(String keyWord) {
+		// TODO Auto-generated method stub
+		return payollMapper.searchTaxGrades(keyWord);
+	}
+	@Override
+	public void updateTaxGrade(TaxGrade taxGrade) {
+		// TODO Auto-generated method stub
+		payollMapper.updateTaxGrade(taxGrade);
+	}
+	@Override
+	public TaxGrade getTaxGrade(String taxgradeGrade) {
+		// TODO Auto-generated method stub
+		return payollMapper.getTaxGrade(taxgradeGrade);
 	}
 
 }

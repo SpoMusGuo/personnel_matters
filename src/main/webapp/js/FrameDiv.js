@@ -5,7 +5,7 @@ document.writeln('<iframe id=ddd____meizzDateLayer Author=wayx frameborder=0 scr
 var ddd____outObject;
 var ddd____outButton;		//点击的按钮
 var ddd____outDate="";		//存放对象的日期
-var ddd____odatelayer=window.frames.ddd____meizzDateLayer.document.all;		//存放日历对象
+
 function setwindows(tt,page,left,top,width,height) //主调函数
 {
 	if (arguments.length >  6){alert("对不起！传入本控件的参数太多！");return;}

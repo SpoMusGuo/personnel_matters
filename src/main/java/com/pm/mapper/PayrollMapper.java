@@ -9,7 +9,10 @@ import com.pm.model.TaxGrade;
 
 @Repository(value="payrollMapper")
 public interface PayrollMapper {
-	public List<TaxGrade> TaxGradeList(Pager pager);
+	public List<TaxGrade> taxGradeList(Pager pager);
 	public void removeTaxGrade(int taxgrade_grade);
 	public Integer getTaxGradeCount();
+	public List<TaxGrade> searchTaxGrades(String keyWord);
+	public void updateTaxGrade(TaxGrade taxGrade);
+	public TaxGrade getTaxGrade(String taxgradeGrade);
 }

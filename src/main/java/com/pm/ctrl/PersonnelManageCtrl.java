@@ -18,11 +18,34 @@ public class PersonnelManageCtrl {
 	private EmpService empservice;
 
 	@RequestMapping("/index_emp")
-	public String queryEmp(Map map) {
+	public String queryEmpList(String pageSize, String currentPage, List<Emp> empsa, Map map) {
+
+		Integer iPageSize;
+		Integer iCurrentPage;
 		
+		if(pageSize != null) {
+			iPageSize = Integer.parseInt(pageSize);
+		} else {
+			iPageSize = 15;
+		}
+		if(currentPage != null) {
+			iCurrentPage = Integer.parseInt(currentPage);
+		} else {
+			iCurrentPage = 1;
+		}
+//		if(emps == null) {
 		List<Emp> emps = empservice.queryEmpList();
+//		}
+		
 		map.put("EMPS", emps);
-		map.put("PAGING", new Paging(emps.size(), 2, 10));
+		map.put("PAGING", new Paging(emps.size(), iCurrentPage, iPageSize));
 		return "index_emp";
 	}
+	
+//	@RequestMapping("/emp_search")
+//	public String queryEmpVague(String pageSize, String currentPage, String keyword, Map map) {
+//
+//		List<Emp> emps = empservice.queryEmpVague(keyword);
+//		return this.queryEmpList(pageSize, currentPage, emps, map);
+//	}
 }

@@ -24,10 +24,11 @@
 				}else{
 					ul.css("visibility","visible");
 				}
+				
 			})
 			$("#selectPage").change(function(){
         	var index=$(this).children('option:selected').val(); 
-        	window.location.href='${pageContext.request.contextPath}/good/list/'+index;
+        	window.location.href='${pageContext.request.contextPath}/good/likeGood/${value}/'+index;
         	})
         	$("#close").click(function(){
         		$("#chooseSelect").hide();
@@ -37,9 +38,9 @@
         	})
         	$("#search").click(function(){
         		var value=$("#txtSearch").val();
-        		if(value==null||value==""){
+       			if(value==null||value==""){
        				value=" ";
-       			}
+       			}	        		
         		window.location.href="${pageContext.request.contextPath }/good/likeGood/"+value+"/1";
         	});
         	$("#select_btn").click(function(){
@@ -47,7 +48,6 @@
         		window.location.href="${pageContext.request.contextPath }/good/typeGood/"+value+"/1";
         	});
 		})
-
 	</script>
     <SCRIPT language=javascript>
         function selectallbox()
@@ -75,7 +75,6 @@
                 document.getElementById('boxListValue').value='';
             }
         }
-        
     </SCRIPT>
 	<SCRIPT type=text/javascript>
 	        var theForm = document.forms['form1'];
@@ -152,7 +151,7 @@
 			                            <TABLE id=grid cellSpacing=1 cellPadding=2 rules=all border=0>
 			                                <TBODY>
 			                                <TR class="title" tyle="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;">
-			                                    <TD style="width:48px;white-space:nowrap;font-size:20;color:#FF9900;"></TD>			                             
+			                                    <TD style="width:48px;white-space:nowrap;font-size:20;color:#FF9900;"></TD>			                                    
 			                                    <td>物品编号</td>
 												<td>物品名称</td>
 												<td>物品类型</td>
@@ -173,7 +172,7 @@
 				                                    		<li><img></img><a href="${pageContext.request.contextPath }/good/editGood/${good.good_id}">修改</a></li>
 				                                    		<li><a href="${pageContext.request.contextPath }/good/deleteGood/${good.good_id}">删除</a></li>				                                    		
 				                                    	</ul>
-				                                    </TD>			                                    
+				                                    </TD>				                                    
 				                                    <td>${good.good_id}</td>
 													<td>${good.good_name}</td>
 													<td>${good.good_type}</td>
@@ -201,18 +200,18 @@
 								                	当前是[${pager.startindex+1}-${pager.startindex+pager.pagesize}]条 
 								                </c:if>		               		 
 								                <c:if test="${pager.pageindex!=1 }">
-				           				   			[<A href="${pageContext.request.contextPath}/good/list/${pager.pageindex-1}">前一页</A>]
+				           				   			[<A href="${pageContext.request.contextPath}/good/likeGood/${value}/${pager.pageindex-1}">前一页</A>]
 				           				   		</c:if>
 								                <c:forEach begin="1" end="${pager.pagecount}" var="i">
 								                	<c:if test="${i==pager.pageindex}">
 								                		<B><c:out value="${i}"/></B> 
 								                	</c:if>
 								                	<c:if test="${i!=pager.pageindex}">
-								                		<A class="" href="${pageContext.request.contextPath}/good/list/${i}"><c:out value="${i}"/></A> 
+								                		<A class="" href="${pageContext.request.contextPath}/good/likeGood/${value}/${i}"><c:out value="${i}"/></A> 
 								                	</c:if>								                	
 								                </c:forEach>
 								                <c:if test="${pager.pageindex!=pager.pagecount}">
-								                	[<A class="" href="${pageContext.request.contextPath}/good/list/${pager.pageindex+1}">后一页</A>]
+								                	[<A class="" href="${pageContext.request.contextPath}/good/likeGood/${value}/${pager.pageindex+1}">后一页</A>]
 								                </c:if>						             
 								                
 								                <SELECT id="selectPage">
@@ -221,7 +220,7 @@
 									                		<OPTION value="${i}" selected>第<c:out value="${i}"/>页</OPTION> 
 									                	</c:if>
 									                	<c:if test="${i!=pager.pageindex}">
-									                		<OPTION value="${i}" >第<c:out value="${i}"/>页</OPTION>
+									                		<OPTION value="${i}">第<c:out value="${i}"/>页</OPTION>
 									                	</c:if>								                	
 								                	</c:forEach>
 									               

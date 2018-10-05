@@ -8,7 +8,7 @@
 	</select>
 	
 	<select id="getAgreements" parameterType="agreementsSelectRequirement" resultType="agreements" >
-		select * from getAgreements 
+		select * from agreements 
 		<where>
 			<if test="emp_name != null">
 				<choose>
@@ -887,7 +887,7 @@
 		<if test="columnname != null">
 		order by #{columnname} #{sort}
 		</if>
-		limit #{startIndex},#{pageCount}
+		<!-- limit #{startIndex},#{pageCount} -->
 	</select>
 	
 	<update id="updateAgreement" parameterType="agreements" >
@@ -897,6 +897,14 @@
 		probation_begindata=#{probation_begindata}, probation_sal=#{probation_sal}, probation_overdata=#{probation_overdata}, 
 		agreementperiod=#{agreementperiod}, starttime=#{starttime}, regularsal=#{regularsal}, endtime=#{endtime}, documents=#{documents}, 
 		notes=#{notes}, status=#{status} where agreementno=#{agreementno}
+	</update>
+	
+	<update id="updateAgreementLock" parameterType="java.lang.String">
+		update agreements set status="已锁定" where agreementno=#{agreementno}
+	</update>
+	
+	<update id="updateAgreementUnLock" parameterType="java.lang.String">
+		update agreements set status="未锁定" where agreementno=#{agreementno}
 	</update>
 	
 	<delete id="deleteAgreement" parameterType="java.lang.String">

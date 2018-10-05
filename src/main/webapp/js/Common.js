@@ -83,3 +83,22 @@ function check(obj,items)
 		}
 	}
 }
+
+function MenuDisplay(obj)
+{
+    for(var i=1;i<=2;i++)
+    {
+        document.getElementById('table_'+i).style.display='none';
+        document.getElementById('table_'+i+'Span').innerText='＋';
+    }
+    if(document.getElementById(obj).style.display=='none')
+    {
+        document.getElementById(obj).style.display='block';
+        document.getElementById(obj+'Span').innerText='－';
+    }
+    else
+    {
+        document.getElementById(obj).style.display='none';
+        document.getElementById(obj+'Span').innerText='＋';
+    }
+}

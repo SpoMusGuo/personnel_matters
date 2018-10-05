@@ -115,7 +115,7 @@
 					                                <div class="search">
 					                                    <img src="${pageContext.request.contextPath }/images/icon_search.gif">
 					                                    <input name="txtSearch" type="text" size="30" id="txtSearch">
-					                                    <INPUT class=button id="add" type=button value=搜索 name=add>
+					                                    <INPUT class=button id="search" type=button value=搜索 name=add>
 					                                    <a id="" href="" style="text-decoration: underline; color:black">查询条件...</a>
 					                                </div>
 				                                    <span id="lbl0" align="left" style="color:#FF9900;font-weight:bold;margin-left:40px;">[ 个人所得税设置 ]</span>
