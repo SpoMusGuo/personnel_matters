@@ -42,7 +42,7 @@
 <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </HEAD>
 <BODY>
-	<FORM id=form1 name=form1 action=??? method=post>
+	<FORM id=form1 name=form1 action=??? method=post onkeydown="if(event.keyCode==13)return false;">
 		<SCRIPT type=text/javascript>
 			//<![CDATA[
 			var theForm = document.forms['form1'];
@@ -103,11 +103,11 @@
 													</div>
 
 													<div class="search">
-														<img
-															src="${pageContext.request.contextPath }/images/icon_search.gif">
-														<input name="txtSearch" type="text" size="30"
-															id="txtSearch"> <INPUT class=button id="add"
-															type=button value=搜索 name=add> <a id="" href=""
+														<img src="${pageContext.request.contextPath }/images/icon_search.gif">
+														<input type="text" size="30" id="txtSearch" value=${requestScope.KEYWORD }>
+														<INPUT class=button id="search_botton" onclick="search()"
+															type=button value=搜索 name=add> 
+														<a id="" href="search_condition"
 															style="text-decoration: underline; color: black">查询条件...</a>
 													</div>
 													<span id="lbl0" align="left"
@@ -250,11 +250,22 @@
 									<TD><SPAN id=pagelink>
 											<div
 												style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right; position: fixed; right: 40px;">
-												[<B>${pager.sumRow }</B>]条记录 [${pager.sumPage }]页
-												当前是[${pager.startIndex + 1 }-${pager.startIndex + pager.pageSize }]条
+												[<B>${pager.sumRow }</B>]条记录 <B>[${pager.sumPage }</B>]页
+												当前是[ ${pager.startIndex + 1 }-
+												<c:choose>
+													<c:when test="${pager.currentPage == pager.sumPage }">
+														${pager.sumRow }
+													</c:when>
+													<c:otherwise>
+														${pager.startIndex + pager.pageSize }
+													</c:otherwise>
+												</c:choose>]
+												条
+												<!-- 选择页码 -->
 												<c:if test="${pager.currentPage != 1 }">
-													[<A href="index_emp?pageSize=15&currentPage=${pager.currentPage - 1}">前一页</A>]
+													[<A href="index_emp?keyword=${requestScope.KEYWORD }&currentPage=${pager.currentPage - 1}">前一页</A>]
 												</c:if>
+												
 												<c:forEach begin="1" end="${pager.sumPage }"
 													varStatus="status">
 													<c:choose>
@@ -263,14 +274,15 @@
 														</c:when>
 														<c:otherwise>
 															<A class=""
-																href="index_emp?pageSize=15&currentPage=${status.index}">${status.index}</A>
+																href="index_emp?keyword=${requestScope.KEYWORD }&currentPage=${status.index}">${status.index}</A>
 														</c:otherwise>
 													</c:choose>
-
 												</c:forEach>
+												
 												<c:if test="${pager.currentPage != pager.sumPage }">
-													[<A class="" href="index_emp?pageSize=15&currentPage=${pager.currentPage + 1}">后一页</A>]
+													[<A class="" href="index_emp?keyword=${requestScope.KEYWORD }&currentPage=${pager.currentPage + 1}">后一页</A>]
 												</c:if>
+												<!-- 下拉选择页码 -->
 												<SELECT id="pageSelect">
 													<c:forEach begin="1" end="${pager.sumPage }"
 														varStatus="status">
