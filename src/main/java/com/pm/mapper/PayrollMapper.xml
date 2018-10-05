@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pm.mapper.PayrollMapper">
 	<!-- 查找所有个人所得税 -->
-	<select id="TaxGradeList" resultType="TaxGrade" parameterType="com.pm.model.Pager">
+	<select id="taxGradeList" resultType="taxGrade" parameterType="com.pm.model.Pager">
 		select *from taxgrade order by taxgrade_grade desc limit #{startindex},#{pagesize}
 	</select>
 	<!--  查找个人所得税总数 -->
@@ -16,8 +16,17 @@
 		delete from taxgrade where taxgrade_grade=#{taxgrade_grade}
 	</delete>
 	<!--  通过输入关键字搜索个人所得税设置-->
-	<select id="SearchTaxGrades" parameterType="java.lang.String" resultType="TaxGrade">
+	<select id="searchTaxGrades" parameterType="java.lang.String" resultType="taxGrade">
 		select * from taxgrade where taxgrade_rate like "%"#{keyword}"%" or taxgrade_grade like "%"#{keyword}"%" or
 		 taxgrade_start like "%"#{keyword}"%" or taxgrade_end like "%"#{keyword}"%" or taxgrade_speed like "%"#{keyword}"%";
+	</select>
+	<!--  修改个人所得税设置-->
+	<update id="updateTaxGrade" parameterType="taxGrade">
+		update taxgrade set taxgrade_start=#{taxgrade_start},taxgrade_end=#{taxgrade_end},
+		  taxgrade_rate=#{taxgrade_rate},taxgrade_speed=#{taxgrade_speed} where taxgrade_grade=#{taxgrade_grade}
+	</update>
+	<!--  通过税务等级获得某一条税务信息-->
+	<select id="getTaxGrade" parameterType="java.lang.String" resultType="taxGrade">
+		select *from taxgrade where taxgrade_grade=#{taxgrade_grade}
 	</select>
 </mapper>

@@ -75,16 +75,16 @@
 	                theForm.submit();
 	            }
 	        }
-	        //]]>
 	        $(function(){
 	        	$("#search").click(function(){
 	        		var value=$("#txtSearch").val();
-	        		if(value==null||value==""){
+	       			if(value==null||value==""){
 	       				value=" ";
-	       			}
+	       			}	        		
 	        		window.location.href="${pageContext.request.contextPath }/good/likeGood/"+value+"/1";
 	        	});
 	        })
+	        //]]>
 	    </SCRIPT>
 
 	    <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
@@ -197,18 +197,18 @@
 								                	当前是[${pager.startindex+1}-${pager.startindex+pager.pagesize}]条 
 								                </c:if>		               		 
 								                <c:if test="${pager.pageindex!=1 }">
-				           				   			[<A href="${pageContext.request.contextPath}/good/list/${pager.pageindex-1}">前一页</A>]
+				           				   			[<A href="${pageContext.request.contextPath}/good/likeGood/${value}/${pager.pageindex-1}">前一页</A>]
 				           				   		</c:if>
 								                <c:forEach begin="1" end="${pager.pagecount}" var="i">
 								                	<c:if test="${i==pager.pageindex}">
 								                		<B><c:out value="${i}"/></B> 
 								                	</c:if>
 								                	<c:if test="${i!=pager.pageindex}">
-								                		<A class="" href="${pageContext.request.contextPath}/good/list/${i}"><c:out value="${i}"/></A> 
+								                		<A class="" href="${pageContext.request.contextPath}/good/likeGood/${value}/${i}"><c:out value="${i}"/></A> 
 								                	</c:if>								                	
 								                </c:forEach>
 								                <c:if test="${pager.pageindex!=pager.pagecount}">
-								                	[<A class="" href="${pageContext.request.contextPath}/good/list/${pager.pageindex+1}">后一页</A>]
+								                	[<A class="" href="${pageContext.request.contextPath}/good/likeGood/${value}/${pager.pageindex+1}">后一页</A>]
 								                </c:if>						             
 								                
 								                <SELECT>

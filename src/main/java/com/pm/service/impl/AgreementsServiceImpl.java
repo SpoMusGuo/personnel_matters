@@ -53,4 +53,9 @@ public class AgreementsServiceImpl implements AgreementsService {
 	public void updateAgreementLock(String agreementno) {
 		agreementsMapper.updateAgreementLock(agreementno);
 	}
+
+	@Override
+	public void updateAgreementUnLock(String agreementno) {
+		agreementsMapper.updateAgreementUnLock(agreementno);
+	}
 }

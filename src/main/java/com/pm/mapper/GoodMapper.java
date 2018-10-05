@@ -20,4 +20,5 @@ public interface GoodMapper {
 	public List<Good> listPager(Pager<Good> pager);//分页查找物品
 	public int getRecords();//查询总记录条数
 	public String getLastId();//查询最后一个物品的id
+	public List<Good> listLike(String value);//模糊查找物品
 }

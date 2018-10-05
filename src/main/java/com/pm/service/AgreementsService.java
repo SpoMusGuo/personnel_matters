@@ -18,4 +18,6 @@ public interface AgreementsService {
 	public void insertAgreement(Agreements agreements);
 	
 	public void updateAgreementLock(String agreementno);
+
+	public void updateAgreementUnLock(String agreementno);
 }

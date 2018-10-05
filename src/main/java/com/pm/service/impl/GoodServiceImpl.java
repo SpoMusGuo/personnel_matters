@@ -81,4 +81,10 @@ public class GoodServiceImpl implements GoodService {
 		return mapper.getLastId();
 	}
 
+	@Override
+	public List<Good> listLike(String value) {
+		// TODO Auto-generated method stub
+		return mapper.listLike(value);
+	}
+
 }
