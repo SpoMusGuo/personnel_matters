@@ -164,7 +164,7 @@
                                             <TBODY>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2
-                                                                       href="#"
+                                                                       href="index_train"
                                                                        target=dmMain>－ 培训计划表</A></TD></TR>
                                             </TBODY>
                                         </TABLE>

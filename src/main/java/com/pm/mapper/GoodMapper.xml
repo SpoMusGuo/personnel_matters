@@ -25,7 +25,7 @@
 	</insert>
 	<!-- 删除某个物品 -->
 	<delete id="deleteGood" parameterType="String">
-		delete form good where good_id=#{good_id}
+		delete from good where good_id=#{good_id}
 	</delete>
 	<!-- 修改物品信息 -->
 	<update id="updateGood" parameterType="good">
@@ -34,12 +34,20 @@
 		good_notes=#{good_notes} where good_id=#{good_id}
 	</update>
 	<select id="getCount" parameterType="String" resultType="int">
-		select good_count from good where goodf_id=#{good_id}
+		select good_count from good where good_id=#{good_id}
 	</select>
 	<select id="listPager" resultType="good" parameterType="Pager">
 		select * from good limit #{startindex},#{pagesize};
 	</select>
 	<select id="getRecords" resultType="int">
 		select count(*) from good 
+	</select>
+	<select id="getLastId" resultType="String">
+		select good_id from good order by good_id desc limit 0,1
+	</select>
+	<select id="listLike" resultType="good" parameterType="String">
+		select * from good where good_id like '%${value}%' or good_name like '%${value}%' or 
+		good_type like '%${value}%' or good_count like '%${value}%' or good_price like '%${value}%' or
+		good_repetory like '%${value}%' or date_format(good_register_date, '%Y-%m-%d') like '%${value}%' or good_notes like '%${value}%'
 	</select>
 </mapper>

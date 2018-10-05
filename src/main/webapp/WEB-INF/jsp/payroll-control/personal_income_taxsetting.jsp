@@ -32,7 +32,11 @@
     		var input = $("#txtSearch");
     		search.click(function(){
     			var keyWord = input.val();
-    			window.location.href = "${pageContext.request.contextPath }/searchTaxGrade/"+keyWord+"/1";
+    			if(keyWord.trim().length==0){
+    				alert("输入不能为空")
+    			}else{
+        			window.location.href = "${pageContext.request.contextPath }/searchTaxGrade/"+keyWord+"/1";
+    			}
     		})
     	})
     </script>
@@ -110,32 +114,50 @@
 			                        <TD>
 			                            <TABLE id=grid cellSpacing=1 cellPadding=2 rules=all border=0>
 			                                <TBODY>
-			                                <TR class="title" tyle="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;">
+			                                <TR class="title" style="FONT-WEIGHT: bold; FONT-STYLE: normal;  TEXT-DECORATION: none;">
 			                                    <TD style="width:48px;white-space:nowrap;font-size:20;color:#FF9900;"></TD>
-			                                    <TD>锁状态</TD>
 			                                    <TD>级数</TD>
 			                                    <TD>起始金额</TD>
 			                                    <TD>结束金额</TD>
 			                                    <TD>税率</TD>
 			                                    <TD>速扣</TD>
 			                                </TR>
-			                                <c:forEach items="${pager.datas}" var="taxGrade">
-			                                 <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
-			                                    <TD>
-			                                    	<A class="open" href="javascript:" target=_blank style="text-decoration: underline;">打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A> 
-			                                    	<ul style="visibility: hidden;">
-			                                    		<li><img></img><a href="#">修改</a></li>
-			                                    		<li><a href="${pageContext.request.contextPath}/removeTaxGrade/${taxGrade.taxgrade_grade}">删除</a></li>
-			                                    		<li><a href="#">上锁</a></li>
-			                                    	</ul>
-			                                    </TD>
-			                                    <TD>        </TD>
-			                                    <TD>${ taxGrade.taxgrade_grade}</TD>
-			                                    <TD>${ taxGrade.taxgrade_start}</TD>
-			                                    <TD>${ taxGrade.taxgrade_end}</TD>
-			                                    <TD>${ taxGrade.taxgrade_rate}</TD>
-			                                    <TD>${ taxGrade.taxgrade_speed}</TD>
-			                                 </TR>
+			                                <c:forEach items="${pager.datas}" var="taxGrade" varStatus="status">
+				                                 <c:choose>
+				                                 	<c:when test="${(status.index+1)%2!=0 }">
+				                                 <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
+				                                    <TD>
+				                                    	<A class="open" href="javascript:" target=_blank style="text-decoration: underline;">打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A> 
+				                                    	<ul style="visibility: hidden;height:49px;">
+				                                    		<li><img></img><a href="${pageContext.request.contextPath}/updateTaxGradeView/${ taxGrade.taxgrade_grade}">修改</a></li>
+				                                    		<li><a href="${pageContext.request.contextPath}/removeTaxGrade/${taxGrade.taxgrade_grade}">删除</a></li>
+				                                    	</ul>
+				                                    </TD>
+				                                    <TD>${ taxGrade.taxgrade_grade}</TD>
+				                                    <TD>${ taxGrade.taxgrade_start}</TD>
+				                                    <TD>${ taxGrade.taxgrade_end}</TD>
+				                                    <TD>${ taxGrade.taxgrade_rate}</TD>
+				                                    <TD>${ taxGrade.taxgrade_speed}</TD>
+				                                 </TR>
+			                                 </c:when>
+			                               	 <c:otherwise>
+				                               	 <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none">
+				                                    <TD>
+				                                    	<A class="open" href="javascript:" target=_blank style="text-decoration: underline;">打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A> 
+				                                    	<ul style="visibility: hidden;height:49px;">
+				                                    		<li><img></img><a href="${pageContext.request.contextPath}/updateTaxGradeView/${ taxGrade.taxgrade_grade}">修改</a></li>
+				                                    		<li><a href="${pageContext.request.contextPath}/removeTaxGrade/${taxGrade.taxgrade_grade}">删除</a></li>
+				                                    	</ul>
+				                                    </TD>
+				                                    <TD>${ taxGrade.taxgrade_grade}</TD>
+				                                    <TD>${ taxGrade.taxgrade_start}</TD>
+				                                    <TD>${ taxGrade.taxgrade_end}</TD>
+				                                    <TD>${ taxGrade.taxgrade_rate}</TD>
+				                                    <TD>${ taxGrade.taxgrade_speed}</TD>
+				                                 </TR>
+			                               	 </c:otherwise>
+				                                 </c:choose>
+			                                 
 			                                </c:forEach>
 			                               
 			                               
@@ -146,7 +168,7 @@
 			                    <TR>
 			                        <TD>
 				                        <SPAN id=pagelink>
-				           					 <DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">
+				           					 <DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right;margin-top:10px">
 				           					 [<B>${pager.records}</B>]条记录
 				           					 <c:choose>
 				           					 	<c:when test="${pager.pageindex==pager.pagecount}">

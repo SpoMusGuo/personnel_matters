@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pm.mapper.TrainMapper">
+
+	<!-- 查找所有培训 -->
+	<select id="listAll" resultType="train">
+		select * from train;
+	</select>
+	<!-- 查找某种类型培训 -->
+	<select id="listType" resultType="train" parameterType="String">
+		select *
+		from train where train_type=#{train_type}
+	</select>
+	<!-- 通过计划名称查找某个培训 -->
+	<select id="get" resultType="train" parameterType="String">
+		select * from
+		train where train_id=#{train_plan_name}
+	</select>
+	<!-- 通过培训部门查找培训 -->
+	<select id="listName" resultType="train" parameterType="String">
+		select *
+		from train where train_name=#{train_sponsoring_dept}
+	</select>
+
+	<!-- 插入新培训 -->
+	<insert id="insertTrain" parameterType="train">
+		insert into train
+		values(#{train_plan_name},
+		#{train_sponsoring_dept},
+		#{train_course},
+		#{train_organization},
+		#{train_type},
+		#{train_form},
+		#{train_address},
+		#{train_teacher},
+		#{train_periods},
+		#{train_start_time},
+		#{train_finish_time},
+		#{train_plan_cost},
+		#{train_join_people},
+		#{train_object})
+	</insert>
+	<!-- 删除某个培训 -->
+	<delete id="deleteTrain" parameterType="String">
+		delete form train where
+		train_id=#{train_plan_name}
+	</delete>
+	<!-- 修改培训信息 -->
+	<update id="updateTrain" parameterType="train">
+		update train set
+		train_sponsoring_dept=#{train_sponsoring_dept},
+		train_course=#{train_course},
+		train_organization=#{train_organization},
+		train_type=#{train_type},
+		train_form=#{train_form},
+		train_address=#{train_address},
+		train_teacher=#{train_teacher},
+		train_periods=#{train_periods},
+		train_start_time=#{train_start_time},
+		train_finish_time=#{train_finish_time},
+		train_plan_cost=#{train_plan_cost},
+		train_join_people=#{train_join_people},
+		train_object=#{train_object}
+		where train_plan_name=#{train_plan_name}
+	</update>
+
+	<!-- ??? -->
+	<select id="getCount" parameterType="String" resultType="int">
+		select
+		count(*) from train
+	</select>
+	<select id="listPager" resultType="train" parameterType="Pager">
+		select *
+		from train limit #{startindex},#{pagesize};
+	</select>
+	<select id="getRecords" resultType="int">
+		select count(*) from train
+	</select>
+
+</mapper>

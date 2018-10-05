@@ -76,15 +76,6 @@
 	            }
 	        }
 	        //]]>
-	        $(function(){
-	        	$("#search").click(function(){
-	        		var value=$("#txtSearch").val();
-	        		if(value==null||value==""){
-	       				value=" ";
-	       			}
-	        		window.location.href="${pageContext.request.contextPath }/good/likeGood/"+value+"/1";
-	        	});
-	        })
 	    </SCRIPT>
 
 	    <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
@@ -111,7 +102,7 @@
 		                <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
 			                <div class="place">
 			                 	<TR>
-			                        <TD class=manageHead>当前位置： &gt; 物品资料信息 </TD>
+			                        <TD class=manageHead>当前位置： &gt; 培训计划表 </TD>
 			                    </TR>
 			                    <TR>
 			                     	<TD height=1></TD>
@@ -126,15 +117,15 @@
 			                                <TBODY>
 				                                <TR>
 				                                	<div class="add">
-				                                		<a href="${pageContext.request.contextPath }/good/addGood"><INPUT class=button id="add" type=button value=新增 name=add></a>
+				                                		<a href="${pageContext.request.contextPath }/train/addGood"><INPUT class=button id="add" type=button value=新增 name=add></a>
 				                                	</div>
 					                                <div class="search">
 					                                    <img src="${pageContext.request.contextPath }/images/icon_search.gif">
 					                                    <input name="txtSearch" type="text" size="30" id="txtSearch">
-					                                    <INPUT class=button id="search" type=button value=搜索 name=add>
+					                                    <INPUT class=button id="add" type=button value=搜索 name=add>
 					                                    <a id="" href="" style="text-decoration: underline; color:black">查询条件...</a>
 					                                </div>
-				                                    <span id="lbl0" align="left" style="color:#FF9900;font-weight:bold;margin-left:40px;">[ 物品资料信息 ]</span>
+				                                    <span id="lbl0" align="left" style="color:#FF9900;font-weight:bold;margin-left:40px;">[ 培训计划表 ]</span>
 				                                </TR>
 			                                </TBODY>
 			                            </TABLE>
@@ -147,38 +138,65 @@
 			                                <TR class="title" tyle="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;">
 			                                    <TD style="width:48px;white-space:nowrap;font-size:20;color:#FF9900;"></TD>
 			                                    <TD>锁状态</TD>
-			                                    <td>物品编号</td>
-												<td>物品名称</td>
-												<td>物品类型</td>
-												<td>单价</td>
-												<td>数量</td>
-												<td>金额</td>
-												<td>计算库存</td>
-												<td>登记时间</td>
-												<td>备注</td>
+			                                    <td>计划名称</td>
+												<td>主办部门</td>
+												<td>培训课程</td>
+												<td>培训机构</td>
+												<td>培训类型</td>
+												<td>培训形式</td>
+												<td>培训地址</td>
+												<td>授课老师</td>
+												<td>授课时数</td>
+												<td>起始时间</td>
+												<td>结束时间</td>
+												<td>计划费用</td>
+												<td>参加人数</td>
+												<td>培训对象</td>
+		<!-- 
+		计划名称	train_plan_name	
+		主办部门	train_sponsoring_dept
+		培训课程	train_course	
+		培训机构	train_organization	
+		培训类型	train_type	
+		培训形式	train_form	
+		培训地址	train_address	
+		授课老师	train_teacher	
+		授课时数	train_periods	
+		起始时间	train_start_time			
+		结束时间	train_finish_time			
+		计划费用	train_plan_cost
+		参加人数	train_join_people
+		培训对象	train_object	
+		 -->
+
 			                                </TR>
-			                                <c:forEach items="${pager.datas}" var="good">
+			                                <c:forEach items="${pager.datas}" var="train">
 				                                <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">			                                    
 				                                    <TD>
 				                                    	<A class="open" href="javascript:showMenu()" target=_blank style="text-decoration: underline;">
 				                                    		打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif">
 				                                    	</A> 
 				                                    	<ul style="visibility: hidden;">
-				                                    		<li><img></img><a href="${pageContext.request.contextPath }/good/editGood/${good.good_id}">修改</a></li>
-				                                    		<li><a href="${pageContext.request.contextPath }/good/deleteGood/${good.good_id}">删除</a></li>
+				                                    		<li><img></img><a href="#">修改</a></li>
+				                                    		<li><a href="#">删除</a></li>
 				                                    		<li><a href="#">上锁</a></li>
 				                                    	</ul>
 				                                    </TD>
 				                                    <TD></TD>
-				                                    <td>${good.good_id}</td>
-													<td>${good.good_name}</td>
-													<td>${good.good_type}</td>
-													<td>${good.good_price}</td>
-													<td>${good.good_count}</td>
-													<td>${good.good_count*good.good_price}</td>
-													<td>${good.good_repetory}</td>
-													<td><fmt:formatDate value="${good.good_register_date}"  pattern="yyyy-MM-dd HH:mm:ss"/></td>
-													<td>${good.good_notes}</td>
+				                                    <td>${train.train_plan_name}</td>
+													<td>${train.train_sponsoring_dept}</td>
+													<td>${train.train_course}</td>
+													<td>${train.train_organization}</td>
+													<td>${train.train_type}</td>
+													<td>${train.train_form}</td>
+													<td>${train.train_address}</td>
+													<td>${train.train_teacher}</td>
+													<td>${train.train_periods}</td>
+													<td>${train.train_start_time}</td>
+													<td>${train.train_finish_time}</td>
+													<td>${train.train_plan_cost}</td>
+													<td>${train.train_join_people}</td>
+													<td>${train.train_object}</td>
 				                                </TR>
 			                               	</c:forEach>
 			                              </TBODY>
@@ -197,18 +215,18 @@
 								                	当前是[${pager.startindex+1}-${pager.startindex+pager.pagesize}]条 
 								                </c:if>		               		 
 								                <c:if test="${pager.pageindex!=1 }">
-				           				   			[<A href="${pageContext.request.contextPath}/good/list/${pager.pageindex-1}">前一页</A>]
+				           				   			[<A href="${pageContext.request.contextPath}/train/list/${pager.pageindex-1}">前一页</A>]
 				           				   		</c:if>
 								                <c:forEach begin="1" end="${pager.pagecount}" var="i">
 								                	<c:if test="${i==pager.pageindex}">
 								                		<B><c:out value="${i}"/></B> 
 								                	</c:if>
 								                	<c:if test="${i!=pager.pageindex}">
-								                		<A class="" href="${pageContext.request.contextPath}/good/list/${i}"><c:out value="${i}"/></A> 
+								                		<A class="" href="${pageContext.request.contextPath}/train/list/${i}"><c:out value="${i}"/></A> 
 								                	</c:if>								                	
 								                </c:forEach>
 								                <c:if test="${pager.pageindex!=pager.pagecount}">
-								                	[<A class="" href="${pageContext.request.contextPath}/good/list/${pager.pageindex+1}">后一页</A>]
+								                	[<A class="" href="${pageContext.request.contextPath}/train/list/${pager.pageindex+1}">后一页</A>]
 								                </c:if>						             
 								                
 								                <SELECT>
