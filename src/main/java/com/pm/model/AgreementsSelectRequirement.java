@@ -16,7 +16,7 @@ import java.util.Date;
  */
 public class AgreementsSelectRequirement {
 	private int startIndex = 0;
-	private int pageCount = 10;
+	private int pageCount = 1;
 	
 	private String emp_name;
 	private String semp_name;

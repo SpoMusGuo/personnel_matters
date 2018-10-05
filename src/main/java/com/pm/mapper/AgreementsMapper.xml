@@ -887,7 +887,7 @@
 		<if test="columnname != null">
 		order by #{columnname} #{sort}
 		</if>
-		limit #{startIndex},#{pageCount}
+		<!-- limit #{startIndex},#{pageCount} -->
 	</select>
 	
 	<update id="updateAgreement" parameterType="agreements" >
@@ -900,7 +900,11 @@
 	</update>
 	
 	<update id="updateAgreementLock" parameterType="java.lang.String">
-		update agreements set status=#{status} where agreementno=#{agreementno}
+		update agreements set status="已锁定" where agreementno=#{agreementno}
+	</update>
+	
+	<update id="updateAgreementUnLock" parameterType="java.lang.String">
+		update agreements set status="未锁定" where agreementno=#{agreementno}
 	</update>
 	
 	<delete id="deleteAgreement" parameterType="java.lang.String">
