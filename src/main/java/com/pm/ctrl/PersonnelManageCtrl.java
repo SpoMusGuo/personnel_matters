@@ -120,30 +120,7 @@ public class PersonnelManageCtrl {
 			conditionList.add(condition);
 			condition = new Condition();
 			
-//			String cboop = request.getParameter("cboop1_" + i);
-			
-			//	根据选择的按钮的值生成对应的sql条件，并存入集合中。
-//			if(cboop.equals("between")) {
-//				sqls.add(entry.getValue() + " between " + request.getParameter("txtv1_" + i) + " and " +
-//						request.getParameter("txtv2_" + i));
-//			} else if(cboop.equals("like")) {
-//				sqls.add(entry.getValue() + " like %" + request.getParameter("txtv1_" + i) + "%");
-//			} else if(cboop.equals("is not null")) {
-//				sqls.add(entry.getValue() + " is not null");
-//			} else if(cboop.equals("is null")) {
-//				sqls.add(entry.getValue() + " is null");
-//			} else {
-//				sqls.add(entry.getValue() + " " + cboop + " " + request.getParameter("txtv1_" + i));
-//			}
 		}
-
-		
-//		String sql = "select * from emp where ";
-//		
-//		for(Object s: sqls) {
-//			sql = sql + s;
-//		}
-//		System.out.println(sql);
 		
 		List<Emp> emps = empservice.queryEmpStrict(conditionList);
 		map.put("EMPS", emps);
