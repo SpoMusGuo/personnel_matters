@@ -31,7 +31,7 @@ public class GoodCtrl {
 	public String list(Model model, @PathVariable(value = "currentPageindex") Integer currentPageindex) {
 		Pager<Good> pager = new Pager<Good>();
 		// 从前端传来的当前页和每页记录条数
-		int pagesize = 5;
+		int pagesize = 10;
 		if (currentPageindex == null) {
 			currentPageindex = 1;
 		}
@@ -107,30 +107,88 @@ public class GoodCtrl {
 	@RequestMapping("/likeGood/{value}/{pageindex}")
 	public String likeGood(Model model,@PathVariable(value = "pageindex") int pageindex,@PathVariable(value = "value") String value) {
 		List<Good> goodlist=goodService.listLike(value);
+		Pager<Good> pager = new Pager<Good>();
 		if(goodlist.size()==0) {
 			pageindex=1;
-		}
-		Pager<Good> pager = new Pager<Good>();
-		int pagesize = 5;
-		int startindex=(pageindex-1)*pagesize;
-		int records=goodlist.size();
-		int pagecount=(int)Math.ceil((double)records/pagesize);
-		pager.setPagesize(pagesize);
-		pager.setPageindex(pageindex);
-		pager.setStartindex(startindex);
-		pager.setPagecount(pagecount);
-		pager.setRecords(records);
-		List<Good> list = new ArrayList<Good>();
-		for(int i=startindex;i<(pagesize+startindex);i++) {
-			if(i>=records) {
-				break;
+			int pagesize =1;
+			int startindex=-1;
+			int records=0;
+			int pagecount=1;
+			pager.setPagesize(pagesize);
+			pager.setPageindex(pageindex);
+			pager.setStartindex(startindex);
+			pager.setPagecount(pagecount);
+			pager.setRecords(records);
+			List<Good> list = new ArrayList<Good>();
+			pager.setDatas(list);
+			model.addAttribute("value", value);
+			model.addAttribute("pager", pager);
+			return "good/like";
+		}else {
+			int pagesize = 10;
+			int startindex=(pageindex-1)*pagesize;
+			int records=goodlist.size();
+			int pagecount=(int)Math.ceil((double)records/pagesize);
+			pager.setPagesize(pagesize);
+			pager.setPageindex(pageindex);
+			pager.setStartindex(startindex);
+			pager.setPagecount(pagecount);
+			pager.setRecords(records);
+			List<Good> list = new ArrayList<Good>();
+			for(int i=startindex;i<(pagesize+startindex);i++) {
+				if(i>=records) {
+					break;
+				}
+				list.add(goodlist.get(i));
 			}
-			list.add(goodlist.get(i));
+			pager.setDatas(list);
+			model.addAttribute("value", value);
+			model.addAttribute("pager", pager);
+			return "good/like";
 		}
-		pager.setDatas(list);
-		model.addAttribute("value", value);
-		model.addAttribute("pager", pager);
-		return "good/like";
+	}
+	@RequestMapping("/typeGood/{type}/{pageindex}")
+	public String typeGood(Model model,@PathVariable(value = "pageindex") int pageindex,@PathVariable(value = "type") String good_type) {
+		List<Good> goodlist=goodService.listType(good_type);
+		Pager<Good> pager = new Pager<Good>();
+		if(goodlist.size()==0) {
+			pageindex=1;
+			int pagesize =1;
+			int startindex=-1;
+			int records=0;
+			int pagecount=1;
+			pager.setPagesize(pagesize);
+			pager.setPageindex(pageindex);
+			pager.setStartindex(startindex);
+			pager.setPagecount(pagecount);
+			pager.setRecords(records);
+			List<Good> list = new ArrayList<Good>();
+			pager.setDatas(list);
+			model.addAttribute("value", good_type);
+			model.addAttribute("pager", pager);
+			return "good/type";
+		}else {
+			int pagesize = 10;
+			int startindex=(pageindex-1)*pagesize;
+			int records=goodlist.size();
+			int pagecount=(int)Math.ceil((double)records/pagesize);
+			pager.setPagesize(pagesize);
+			pager.setPageindex(pageindex);
+			pager.setStartindex(startindex);
+			pager.setPagecount(pagecount);
+			pager.setRecords(records);
+			List<Good> list = new ArrayList<Good>();
+			for(int i=startindex;i<(pagesize+startindex);i++) {
+				if(i>=records) {
+					break;
+				}
+				list.add(goodlist.get(i));
+			}
+			pager.setDatas(list);
+			model.addAttribute("value", good_type);
+			model.addAttribute("pager", pager);
+			return "good/type";
+		}
 	}
 	@InitBinder  
 	public void initBinder(WebDataBinder binder) {  

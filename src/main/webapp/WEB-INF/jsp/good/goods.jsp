@@ -27,6 +27,16 @@
 				
 				
 			})
+			$("#selectPage").change(function(){
+        	var index=$(this).children('option:selected').val(); 
+        	window.location.href='${pageContext.request.contextPath}/good/list/'+index;
+        	})
+        	$("#close").click(function(){
+        		$("#chooseSelect").hide();
+        	})
+        	$("#chaxun").click(function(){
+        		$("#chooseSelect").show();
+        	})
 		})
 
 	</script>
@@ -56,6 +66,7 @@
                 document.getElementById('boxListValue').value='';
             }
         }
+        
     </SCRIPT>
 
     <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
@@ -83,6 +94,10 @@
 	       				value=" ";
 	       			}
 	        		window.location.href="${pageContext.request.contextPath }/good/likeGood/"+value+"/1";
+	        	});
+	        	$("#select_btn").click(function(){
+	        		var value=$("#selectType").val();
+	        		window.location.href="${pageContext.request.contextPath }/good/typeGood/"+value+"/1";
 	        	});
 	        })
 	    </SCRIPT>
@@ -132,7 +147,7 @@
 					                                    <img src="${pageContext.request.contextPath }/images/icon_search.gif">
 					                                    <input name="txtSearch" type="text" size="30" id="txtSearch">
 					                                    <INPUT class=button id="search" type=button value=搜索 name=add>
-					                                    <a id="" href="" style="text-decoration: underline; color:black">查询条件...</a>
+					                                    <a id="chaxun" style="text-decoration: underline; color:black;cursor:pointer">查询条件...</a>
 					                                </div>
 				                                    <span id="lbl0" align="left" style="color:#FF9900;font-weight:bold;margin-left:40px;">[ 物品资料信息 ]</span>
 				                                </TR>
@@ -145,8 +160,7 @@
 			                            <TABLE id=grid cellSpacing=1 cellPadding=2 rules=all border=0>
 			                                <TBODY>
 			                                <TR class="title" tyle="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;">
-			                                    <TD style="width:48px;white-space:nowrap;font-size:20;color:#FF9900;"></TD>
-			                                    <TD>锁状态</TD>
+			                                    <TD style="width:48px;white-space:nowrap;font-size:20;color:#FF9900;"></TD>			                             
 			                                    <td>物品编号</td>
 												<td>物品名称</td>
 												<td>物品类型</td>
@@ -163,13 +177,11 @@
 				                                    	<A class="open" href="javascript:showMenu()" target=_blank style="text-decoration: underline;">
 				                                    		打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif">
 				                                    	</A> 
-				                                    	<ul style="visibility: hidden;">
+				                                    	<ul style="visibility: hidden;height: 50px">
 				                                    		<li><img></img><a href="${pageContext.request.contextPath }/good/editGood/${good.good_id}">修改</a></li>
-				                                    		<li><a href="${pageContext.request.contextPath }/good/deleteGood/${good.good_id}">删除</a></li>
-				                                    		<li><a href="#">上锁</a></li>
+				                                    		<li><a href="${pageContext.request.contextPath }/good/deleteGood/${good.good_id}">删除</a></li>				                                    		
 				                                    	</ul>
-				                                    </TD>
-				                                    <TD></TD>
+				                                    </TD>			                                    
 				                                    <td>${good.good_id}</td>
 													<td>${good.good_name}</td>
 													<td>${good.good_type}</td>
@@ -211,13 +223,13 @@
 								                	[<A class="" href="${pageContext.request.contextPath}/good/list/${pager.pageindex+1}">后一页</A>]
 								                </c:if>						             
 								                
-								                <SELECT>
+								                <SELECT id="selectPage">
 								                	<c:forEach begin="1" end="${pager.pagecount}" var="i">
 									                	<c:if test="${i==pager.pageindex}">
 									                		<OPTION value="${i}" selected>第<c:out value="${i}"/>页</OPTION> 
 									                	</c:if>
 									                	<c:if test="${i!=pager.pageindex}">
-									                		<OPTION value="${i}">第<c:out value="${i}"/>页</OPTION>
+									                		<OPTION value="${i}" >第<c:out value="${i}"/>页</OPTION>
 									                	</c:if>								                	
 								                	</c:forEach>
 									               
@@ -245,5 +257,27 @@
 	       	</TBODY>
 	    </TABLE>
 	</FORM>
+	<div id="chooseSelect" style="width:150px;background-color:pink;padding:30px 50px 10px 60px;position:fixed;left:35%; top:10%; display:none">
+		<form>
+			<table border=1>
+				<tr>
+					<td>种类：</td>
+					<td>
+						<select id="selectType">
+							<option value ="电脑类">电脑类</option>
+						  	<option value ="文具类">文具类</option>
+						  	<option value="服装类">服装类</option>
+						  	<option value="饮料类">饮料类</option>
+						  	<option value="食品类">食品类</option>
+						  	<option value="汽车类">汽车类</option>	
+						</select>
+					</td>
+				</tr>
+			</table>
+			<br><br>
+			<input id="select_btn" type="button" value="查询">&nbsp;&nbsp;
+			<input id="close" type="reset" value="取消">
+		</form>	
+	</div>
 </body>
 </html>
