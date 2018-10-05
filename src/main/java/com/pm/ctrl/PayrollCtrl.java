@@ -41,6 +41,7 @@ public class PayrollCtrl {
 		map.put("taxGrades_sum", payrollService.getTaxGradeCount());
 		return "payroll-control/personal_income_taxsetting";
 	}
+	
 	@RequestMapping("/removeTaxGrade/{taxgrade_grade}")
 	public String removeTaxGrade(@PathVariable(value="taxgrade_grade")int taxgrade_grade,ModelMap map) {
 		payrollService.removeTaxGrade(taxgrade_grade);

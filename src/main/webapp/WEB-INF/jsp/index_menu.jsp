@@ -182,11 +182,11 @@
                                             <TBODY>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2
-                                                                       href="#"
+                                                                       href="transfer/1"
                                                                        target=dmMain>－ 员工调动表</A></TD></TR>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2
-                                                                       href="#"
+                                                                       href="turnover/1"
                                                                        target=dmMain>－ 员工离职表</A></TD></TR>
 
                                             </TBODY>

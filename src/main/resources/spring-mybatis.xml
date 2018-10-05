@@ -14,10 +14,10 @@
     <context:property-placeholder location="classpath:mysql.properties"/>
     <!-- 配置c3p0连接池 -->     
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-    	<property name="driverClass" value="${driver}"></property>
-    	<property name="jdbcUrl" value="${url}"></property>
-    	<property name="user" value="${user}"></property>
-    	<property name="password" value="${password}"></property>
+    	<property name="driverClass" value="${jdbc.driver}"></property>
+    	<property name="jdbcUrl" value="${jdbc.url}"></property>
+    	<property name="user" value="${jdbc.user}"></property>
+    	<property name="password" value="${jdbc.password}"></property>
     </bean>
     
     <!-- 配置SqlSessionFactory -->
