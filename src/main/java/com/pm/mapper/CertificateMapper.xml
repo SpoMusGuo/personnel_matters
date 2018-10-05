@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.pm.mapper.CertificateMapper">
+
+	<!--通过嵌套查询,查询emp表和certificate表 -->
+	<resultMap type="Certificate" id="certificateResultMap">
+		<!-- 完成certificate表的自定义映射 -->
+		<id column="certificate_id" property="certificateId" />
+		<result column="certificate_name" property="certificateName"/>
+		<result column="certificate_type" property="certificateType"/>
+		<result column="certificate_is_deadline" property="certificateIsDeadline"/>
+		<result column="certificate_office" property="certificateOffice"/>
+		<result column="certificate_get_date" property="certificateGetDate"/>
+		<result column="certificate_effective_date" property="certificateEffectiveDate"/>
+		<result column="certificate_deadline" property="certificateDeadline"/>
+		<result column="certificate_notes" property="certificateNotes"/>
+		<result column="certificate_pic" property="certificatePic"/>
+		<association column="emp_id" property="emp" javaType="Emp" select="com.pm.mapper.EmpMapper.queryEmp"></association>
+	</resultMap>
+
+	<!--查询所有与证照有关的员工信息 -->
+<!-- 	<select id="getAllEmp" resultType="Emp"> -->
+<!-- 		select emp_id,emp_idnumber,emp_name,emp_department,emp_academic_title,emp_job,emp_work_category,emp_grade from emp; -->
+<!-- 	</select> -->
+	
+	<!-- 分页查询员工的证照信息 -->
+	<select id="getAllEmpCertificate" resultMap="certificateResultMap" parameterType="GpjPager">
+		select * from certificate limit #{startIndex}, #{pageSize};
+	</select>
+	
+	<!-- 通过id获取某一个员工的记录 -->
+	<select id="selectOne" parameterType="String" resultMap="certificateResultMap">
+		select * from certificate where certificate_id = #{certificateId};
+	</select>
+	
+	<!-- 查询证照信息表行数 -->
+	<select id="getRowCount" resultType="int">
+		select count(*) from certificate;
+	</select>
+	
+	<!-- 符合查询条件的记录数 -->
+	<select id="likeSearchCount" parameterType="String" resultType="int">
+		select count(*) from certificate c ,emp e where e.emp_id = c.emp_id and  (c.emp_id like "%"#{searchText}"%" or e.emp_idnumber like "%"#{searchText}"%"  or
+		e.emp_name like "%"#{searchText}"%" or e.emp_job like "%"#{searchText}"%" or e.emp_job_category like "%"#{searchText}"%" or
+		e.emp_department like "%"#{searchText}"%" or e.emp_academic_title like "%"#{searchText}"%" or e.emp_grade like "%"#{searchText}"%" or 
+		certificate_id like "%"#{searchText}"%" or certificate_name like "%"#{searchText}"%"  or certificate_type like "%"#{searchText}"%" or certificate_office like "%"#{searchText}"%"
+		or certificate_notes like "%"#{searchText}"%");
+	</select>
+	
+	<!-- 符合查询条件的记录 -->
+	<select id="likeSearch" parameterType="GpjPager" resultMap="certificateResultMap">
+		select * from certificate c ,emp e where e.emp_id = c.emp_id and  (c.emp_id like "%"#{searchText}"%" or e.emp_idnumber like "%"#{searchText}"%"  or
+		e.emp_name like "%"#{searchText}"%" or e.emp_job like "%"#{searchText}"%" or e.emp_job_category like "%"#{searchText}"%" or
+		e.emp_department like "%"#{searchText}"%" or e.emp_academic_title like "%"#{searchText}"%" or e.emp_grade like "%"#{searchText}"%" or 
+		certificate_id like "%"#{searchText}"%" or certificate_name like "%"#{searchText}"%"  or certificate_type like "%"#{searchText}"%" or certificate_office like "%"#{searchText}"%"
+		or certificate_notes like "%"#{searchText}"%") limit #{startIndex}, #{pageSize};
+	</select>
+	
+	<!-- 删除某一条员工的记录 -->
+	<delete id="deleteById" parameterType="String">
+		delete from certificate where certificate_id = #{certificateId};
+	</delete>
+</mapper>

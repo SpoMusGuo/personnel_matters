@@ -1,5 +1,7 @@
 package com.pm.ctrl;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,9 +16,10 @@ public class TestCtrl {
 	private TestServiceImpl tServiceImpl;
 
 	@RequestMapping("/test")
-	public String queryAll(Model model) {
+	public String queryAll(Model model, HttpServletRequest request) {
 
-		model.addAttribute("list", tServiceImpl.query());
+		request.setAttribute("name", "gpj");
+		// model.addAttribute("list", tServiceImpl.query());
 		return "test";
 	}
 
