@@ -1,21 +1,26 @@
 package com.pm.ctrl;
 
+import java.awt.print.Paper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.ProcessBuilder.Redirect;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.pm.model.Condition;
 import com.pm.model.Pager;
 import com.pm.model.TaxGrade;
 import com.pm.service.PayrollService;
@@ -61,6 +66,7 @@ public class PayrollCtrl {
 		
 		//传到页面
 		map.put("pager", pager);
+		map.put("type", "searchAll");
 		return "payroll-control/personal_income_taxsetting";
 	}
 	/**
@@ -84,26 +90,28 @@ public class PayrollCtrl {
 	@RequestMapping("/searchTaxGrade/{keyWord}/{pageNum}")
 	public String searchTaxGrade(@PathVariable(value="keyWord")String keyWord,@PathVariable(value="pageNum")int pageNum,ModelMap map) {
 		
-		List<TaxGrade> taxGrade = payrollService.getSearchTaxGrade(keyWord);
-		//获取查找的个人税表的总数
-		int taxGradesCount = taxGrade.size();
+		List<TaxGrade> taxGrade;
 		//封装Pager
 		Pager<TaxGrade> pager = new Pager<TaxGrade>();
 		int pageSize = 5;//每页的容量
 		int startIndex = (pageNum-1)*pageSize;//每页开始的序号
 		int endIndex = pageNum*pageSize-1;
 		int pageCount;//总页码
+		//获取查找的个人税表的总数
+		int taxGradesCount = payrollService.getSearchTaxGradeCount(keyWord);
 		if(taxGradesCount%pageSize==0) {
 			pageCount = taxGradesCount/pageSize;
 		}else {
 			pageCount = taxGradesCount/pageSize+1;
 		}
-		pager.setDatas(taxGrade);
 		pager.setStartindex(startIndex);
 		pager.setPagesize(pageSize);
 		pager.setPageindex(pageNum);
 		pager.setPagecount(pageCount);
 		pager.setRecords(taxGradesCount);
+		taxGrade= payrollService.getSearchTaxGrade(keyWord,pager);
+		pager.setDatas(taxGrade);
+		
 		//传到页面
 		map.put("pager", pager);
 		return "payroll-control/personal_income_taxsetting";
@@ -171,8 +179,107 @@ public class PayrollCtrl {
 		payrollService.addTaxGrade(taxGrade);
 		return "payroll-control/add_taxgrade";
 	}
-	
-	
+	//跳转到查询条件页面
+	@RequestMapping("/conditionSearchView")
+	public String conditionSearchView() {
+		return "payroll-control/condition_taxGrade";
+	}
+	//条件查询
+	@RequestMapping("/conditionSearch/{pageNum}")
+	public String conditionSearch(@PathVariable(value="pageNum")int pageNum,ModelMap map,HttpServletRequest request,HttpServletResponse rpsponse) {
+		//从前台获取条件查询条件与字段
+		List<Condition> conditionList = new ArrayList<Condition>();
+		//获取选中的选项
+		Map<Integer,String> chkAliasList = new TreeMap<Integer,String>();
+		for(int i=0;i<6;i++) {
+			String chkAlias = request.getParameter("chkAlias_"+i);
+			if(chkAlias!=null) {
+				String fieldName = request.getParameter("chkAlias_"+i);
+				String symbol = request.getParameter("cboop1_"+i);
+				String parameter1 = request.getParameter("txtv"+1+"_"+i);
+				String parameter2 = request.getParameter("txtv"+2+"_"+i);
+				Condition condition = new Condition();
+				condition.setFieldName(fieldName);
+				condition.setSymbol(symbol);
+				condition.setParameter1(parameter1);
+				condition.setParameter2(parameter2);
+				conditionList.add(condition);
+			}
+			chkAlias=null;
+		}
+		
+		//查询
+		List<TaxGrade> resultTaxGradeList = payrollService.getSpecialTaxGrade(conditionList);
+		for(TaxGrade t:resultTaxGradeList) {
+			System.out.println(t);
+		}
+		HttpSession session = request.getSession();
+		session.setAttribute("resultTaxGradeList", resultTaxGradeList);
+		
+		List<TaxGrade> pageTaxGradeList = new ArrayList<TaxGrade>();
+		//查询的数量
+		int taxGradesCount = resultTaxGradeList.size();
+		int pageSize = 5;//每页的容量
+		int startIndex = (pageNum-1)*pageSize;//每页开始的序号
+		int endIndex = pageNum*pageSize-1;
+		int pageCount;//总页码
+		if(taxGradesCount%pageSize==0) {
+			pageCount = taxGradesCount/pageSize;
+		}else {
+			pageCount = taxGradesCount/pageSize+1;
+		}
+		Pager pager = new Pager();
+		//根据分页设置将内容放入即将传入页面的容器
+		for(int i=startIndex;i<(pageSize+startIndex);i++) {
+			if(i>=taxGradesCount) {
+				break;
+			}
+			pageTaxGradeList.add(resultTaxGradeList.get(i));
+		}
+		pager.setDatas(pageTaxGradeList);
+		pager.setStartindex(startIndex);
+		pager.setPagesize(pageSize);
+		pager.setPageindex(pageNum);
+		pager.setPagecount(pageCount);
+		pager.setRecords(taxGradesCount);
+		map.put("pager", pager);
+		map.put("type", "search");
+		return "payroll-control/personal_income_taxsetting";
+	}
+	@RequestMapping("/conditionSearchPageNum/{pageNum}")
+	public String conditionSearchPageNum(@PathVariable(value="pageNum")int pageNum,ModelMap map,HttpServletRequest request,HttpServletResponse rpsponse) {
+		HttpSession session = request.getSession();
+		List<TaxGrade> resultTaxGradeList= (List<TaxGrade>) session.getAttribute("resultTaxGradeList");
+		List<TaxGrade> pageTaxGradeList= new ArrayList<TaxGrade>();
+		//查询的数量
+		int taxGradesCount = resultTaxGradeList.size();
+		int pageSize = 5;//每页的容量
+		int startIndex = (pageNum-1)*pageSize;//每页开始的序号
+		int endIndex = pageNum*pageSize-1;
+		int pageCount;//总页码
+		if(taxGradesCount%pageSize==0) {
+			pageCount = taxGradesCount/pageSize;
+		}else {
+			pageCount = taxGradesCount/pageSize+1;
+		}
+		Pager pager = new Pager();
+		//根据分页设置将内容放入即将传入页面的容器
+		for(int i=startIndex;i<(pageSize+startIndex);i++) {
+			if(i>=taxGradesCount) {
+				break;
+			}
+			pageTaxGradeList.add(resultTaxGradeList.get(i));
+		}
+		pager.setDatas(pageTaxGradeList);
+		pager.setStartindex(startIndex);
+		pager.setPagesize(pageSize);
+		pager.setPageindex(pageNum);
+		pager.setPagecount(pageCount);
+		pager.setRecords(taxGradesCount);
+		map.put("pager", pager);
+		map.put("type", "search");
+		return "payroll-control/personal_income_taxsetting";
+	}
 	@RequestMapping("/PieceworkProductSetup")
 	public String registerPieceworkProductSetup() {
 		return "payroll-control/piecework_product_setup";

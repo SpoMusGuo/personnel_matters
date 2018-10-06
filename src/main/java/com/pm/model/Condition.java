@@ -11,6 +11,11 @@ public class Condition {
 	public String getFieldName() {
 		return fieldName;
 	}
+	@Override
+	public String toString() {
+		return "Condition [fieldName=" + fieldName + ", parameter1=" + parameter1 + ", parameter2=" + parameter2
+				+ ", symbol=" + symbol + "]";
+	}
 	public void setFieldName(String fieldName) {
 		this.fieldName = fieldName;
 	}
