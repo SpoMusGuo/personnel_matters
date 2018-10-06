@@ -8,16 +8,8 @@
   <head>
 		<title>cond</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" type="text/css" href="../styles/style.css"  />
-		<link rel="stylesheet" type="text/css" href="../styles/calendar-system.css" />
-		<script type="text/javascript"  language="javascript" src="../Inc/prototype.js"></script>	
-        <script type="text/javascript" language="javascript" src="../Inc/jquery-release.js"></script>      
-        <script type="text/javascript" language="javascript" src="../Inc/jquery-ces-plugin.js "></script>
-		<script type="text/javascript"  language="javascript" src="../Inc/calendar.js"></script>
+		<SCRIPT language=javascript src="${pageContext.request.contextPath }/js/jquery.min.js"></SCRIPT>
 		
-		<script type="text/javascript"  language="javascript" src="../Inc/calendar-zh.js"></script>
-		<script type="text/javascript"  language="javascript" src="../Inc/calendar-setup.js"></script>
-
 		<script type="text/vbscript" language="vbscript" >
 		    'delete on 2013.11.30, 没用了
 '			function popUpDate(value)
@@ -102,7 +94,7 @@
 		</script>
 </head>
 	<body>
-		<form name="Form1" method="post" action="search_strict" onsubmit="javascript:return WebForm_OnSubmit();" id="Form1">
+		<form name="Form1" method="post" action="search_strict?SEARCH=1" onsubmit="javascript:return WebForm_OnSubmit();" id="Form1">
 <div>
 <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
 <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
@@ -847,162 +839,6 @@ return true;
 				</tr>
 			</table>
 			</div>
-		
-<script type="text/javascript">
-//<![CDATA[
-var Page_ValidationSummaries =  new Array(document.getElementById("ValidationSummary1"));
-var Page_Validators =  new Array(document.getElementById("cpv1_6"), document.getElementById("cpv2_6"), document.getElementById("cpv1_9"), document.getElementById("cpv2_9"), document.getElementById("cpv1_20"), document.getElementById("cpv2_20"), document.getElementById("cpv1_42"), document.getElementById("cpv2_42"), document.getElementById("cpv1_43"), document.getElementById("cpv2_43"), document.getElementById("cpv1_44"), document.getElementById("cpv2_44"), document.getElementById("cpv1_45"), document.getElementById("cpv2_45"), document.getElementById("cpv1_47"), document.getElementById("cpv2_47"), document.getElementById("cpv1_48"), document.getElementById("cpv2_48"));
-//]]>
-</script>
-
-<script type="text/javascript">
-//<![CDATA[
-var cpv1_6 = document.all ? document.all["cpv1_6"] : document.getElementById("cpv1_6");
-cpv1_6.controltovalidate = "txtv1_6_a";
-cpv1_6.errormessage = "[员工信息表] - [出生日期] 条件第一个文本框的值请输入类似 [2018-10-4] 类型的日期。";
-cpv1_6.display = "Dynamic";
-cpv1_6.type = "Double";
-cpv1_6.decimalchar = ".";
-cpv1_6.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv1_6.valuetocompare = "1";
-var cpv2_6 = document.all ? document.all["cpv2_6"] : document.getElementById("cpv2_6");
-cpv2_6.controltovalidate = "txtv2_6_a";
-cpv2_6.errormessage = "[员工信息表] - [出生日期] 条件第二个文本框的值请输入类似 [2018-10-4] 类型的日期。";
-cpv2_6.display = "Dynamic";
-cpv2_6.type = "Double";
-cpv2_6.decimalchar = ".";
-cpv2_6.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv2_6.valuetocompare = "1";
-var cpv1_9 = document.all ? document.all["cpv1_9"] : document.getElementById("cpv1_9");
-cpv1_9.controltovalidate = "txtv1_9";
-cpv1_9.errormessage = "[员工信息表] - [年龄] 条件第一个文本框的值请输入数值。";
-cpv1_9.display = "Dynamic";
-cpv1_9.type = "Double";
-cpv1_9.decimalchar = ".";
-cpv1_9.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv1_9.operator = "DataTypeCheck";
-var cpv2_9 = document.all ? document.all["cpv2_9"] : document.getElementById("cpv2_9");
-cpv2_9.controltovalidate = "txtv2_9";
-cpv2_9.errormessage = "[员工信息表] - [年龄] 条件第二个文本框的值请输入数值。";
-cpv2_9.display = "Dynamic";
-cpv2_9.type = "Double";
-cpv2_9.decimalchar = ".";
-cpv2_9.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv2_9.operator = "DataTypeCheck";
-var cpv1_20 = document.all ? document.all["cpv1_20"] : document.getElementById("cpv1_20");
-cpv1_20.controltovalidate = "txtv1_20_a";
-cpv1_20.errormessage = "[员工信息表] - [毕业时间] 条件第一个文本框的值请输入类似 [2018-10-4] 类型的日期。";
-cpv1_20.display = "Dynamic";
-cpv1_20.type = "Double";
-cpv1_20.decimalchar = ".";
-cpv1_20.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv1_20.valuetocompare = "1";
-var cpv2_20 = document.all ? document.all["cpv2_20"] : document.getElementById("cpv2_20");
-cpv2_20.controltovalidate = "txtv2_20_a";
-cpv2_20.errormessage = "[员工信息表] - [毕业时间] 条件第二个文本框的值请输入类似 [2018-10-4] 类型的日期。";
-cpv2_20.display = "Dynamic";
-cpv2_20.type = "Double";
-cpv2_20.decimalchar = ".";
-cpv2_20.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv2_20.valuetocompare = "1";
-var cpv1_42 = document.all ? document.all["cpv1_42"] : document.getElementById("cpv1_42");
-cpv1_42.controltovalidate = "txtv1_42_a";
-cpv1_42.errormessage = "[员工信息表] - [参加工作时间] 条件第一个文本框的值请输入类似 [2018-10-4] 类型的日期。";
-cpv1_42.display = "Dynamic";
-cpv1_42.type = "Double";
-cpv1_42.decimalchar = ".";
-cpv1_42.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv1_42.valuetocompare = "1";
-var cpv2_42 = document.all ? document.all["cpv2_42"] : document.getElementById("cpv2_42");
-cpv2_42.controltovalidate = "txtv2_42_a";
-cpv2_42.errormessage = "[员工信息表] - [参加工作时间] 条件第二个文本框的值请输入类似 [2018-10-4] 类型的日期。";
-cpv2_42.display = "Dynamic";
-cpv2_42.type = "Double";
-cpv2_42.decimalchar = ".";
-cpv2_42.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv2_42.valuetocompare = "1";
-var cpv1_43 = document.all ? document.all["cpv1_43"] : document.getElementById("cpv1_43");
-cpv1_43.controltovalidate = "txtv1_43_a";
-cpv1_43.errormessage = "[员工信息表] - [调入时间] 条件第一个文本框的值请输入类似 [2018-10-4] 类型的日期。";
-cpv1_43.display = "Dynamic";
-cpv1_43.type = "Double";
-cpv1_43.decimalchar = ".";
-cpv1_43.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv1_43.valuetocompare = "1";
-var cpv2_43 = document.all ? document.all["cpv2_43"] : document.getElementById("cpv2_43");
-cpv2_43.controltovalidate = "txtv2_43_a";
-cpv2_43.errormessage = "[员工信息表] - [调入时间] 条件第二个文本框的值请输入类似 [2018-10-4] 类型的日期。";
-cpv2_43.display = "Dynamic";
-cpv2_43.type = "Double";
-cpv2_43.decimalchar = ".";
-cpv2_43.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv2_43.valuetocompare = "1";
-var cpv1_44 = document.all ? document.all["cpv1_44"] : document.getElementById("cpv1_44");
-cpv1_44.controltovalidate = "txtv1_44";
-cpv1_44.errormessage = "[员工信息表] - [总工龄] 条件第一个文本框的值请输入数值。";
-cpv1_44.display = "Dynamic";
-cpv1_44.type = "Double";
-cpv1_44.decimalchar = ".";
-cpv1_44.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv1_44.operator = "DataTypeCheck";
-var cpv2_44 = document.all ? document.all["cpv2_44"] : document.getElementById("cpv2_44");
-cpv2_44.controltovalidate = "txtv2_44";
-cpv2_44.errormessage = "[员工信息表] - [总工龄] 条件第二个文本框的值请输入数值。";
-cpv2_44.display = "Dynamic";
-cpv2_44.type = "Double";
-cpv2_44.decimalchar = ".";
-cpv2_44.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv2_44.operator = "DataTypeCheck";
-var cpv1_45 = document.all ? document.all["cpv1_45"] : document.getElementById("cpv1_45");
-cpv1_45.controltovalidate = "txtv1_45";
-cpv1_45.errormessage = "[员工信息表] - [本单位工龄] 条件第一个文本框的值请输入数值。";
-cpv1_45.display = "Dynamic";
-cpv1_45.type = "Double";
-cpv1_45.decimalchar = ".";
-cpv1_45.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv1_45.operator = "DataTypeCheck";
-var cpv2_45 = document.all ? document.all["cpv2_45"] : document.getElementById("cpv2_45");
-cpv2_45.controltovalidate = "txtv2_45";
-cpv2_45.errormessage = "[员工信息表] - [本单位工龄] 条件第二个文本框的值请输入数值。";
-cpv2_45.display = "Dynamic";
-cpv2_45.type = "Double";
-cpv2_45.decimalchar = ".";
-cpv2_45.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv2_45.operator = "DataTypeCheck";
-var cpv1_47 = document.all ? document.all["cpv1_47"] : document.getElementById("cpv1_47");
-cpv1_47.controltovalidate = "txtv1_47";
-cpv1_47.errormessage = "[员工信息表] - [基本工资] 条件第一个文本框的值请输入数值。";
-cpv1_47.display = "Dynamic";
-cpv1_47.type = "Double";
-cpv1_47.decimalchar = ".";
-cpv1_47.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv1_47.operator = "DataTypeCheck";
-var cpv2_47 = document.all ? document.all["cpv2_47"] : document.getElementById("cpv2_47");
-cpv2_47.controltovalidate = "txtv2_47";
-cpv2_47.errormessage = "[员工信息表] - [基本工资] 条件第二个文本框的值请输入数值。";
-cpv2_47.display = "Dynamic";
-cpv2_47.type = "Double";
-cpv2_47.decimalchar = ".";
-cpv2_47.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv2_47.operator = "DataTypeCheck";
-var cpv1_48 = document.all ? document.all["cpv1_48"] : document.getElementById("cpv1_48");
-cpv1_48.controltovalidate = "txtv1_48_a";
-cpv1_48.errormessage = "[员工信息表] - [录入时间] 条件第一个文本框的值请输入类似 [2018-10-4] 类型的日期。";
-cpv1_48.display = "Dynamic";
-cpv1_48.type = "Double";
-cpv1_48.decimalchar = ".";
-cpv1_48.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv1_48.valuetocompare = "1";
-var cpv2_48 = document.all ? document.all["cpv2_48"] : document.getElementById("cpv2_48");
-cpv2_48.controltovalidate = "txtv2_48_a";
-cpv2_48.errormessage = "[员工信息表] - [录入时间] 条件第二个文本框的值请输入类似 [2018-10-4] 类型的日期。";
-cpv2_48.display = "Dynamic";
-cpv2_48.type = "Double";
-cpv2_48.decimalchar = ".";
-cpv2_48.evaluationfunction = "CompareValidatorEvaluateIsValid";
-cpv2_48.valuetocompare = "1";
-//]]>
-</script>
 
 
 <script type="text/javascript">
@@ -1024,5 +860,12 @@ function ValidatorOnSubmit() {
         //]]>
 </script>
 </form>
+<c:forEach items="${sessionScope.CONDI }" var="condition">
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("")
+		}
+	</script>
+</c:forEach>
 	</body>
 </html>
