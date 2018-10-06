@@ -262,9 +262,9 @@
 												</c:choose>]
 												条
 												
-												<!-- 判断是是什么查询 -->
+												<!-- 判断是什么查询 -->
 												<c:choose>
-													<c:when test="${sessionScope.CONDI == null }">
+													<c:when test="${requestScope.SEARCH == null }">
 														<c:set var="addr" value="index_emp"/>
 													</c:when>
 													<c:otherwise>

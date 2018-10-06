@@ -51,11 +51,19 @@ public class PersonnelManageCtrl {
 	}
 
 	
+	/**
+	 * 	查询所有员工信息
+	 * @param pageSize
+	 * @param currentPage
+	 * @param keyword
+	 * @param map
+	 * @return
+	 */
 	@RequestMapping("/index_emp")
 	public String queryEmpList(String pageSize, String currentPage, String keyword, Map map) {
 		
 		List<Emp> emps;
-		
+		//	是否模糊查询
 		if(keyword == null || keyword.equals("")) {
 			emps = empservice.queryEmpList();
 		} else {
@@ -66,17 +74,18 @@ public class PersonnelManageCtrl {
 		map.put("PAGING", this.getPaging(pageSize, currentPage, emps));
 		map.put("KEYWORD", keyword);
 		
-		return "index_emp";
+		return "personnel/index_emp";
 	}
 	
-//	@RequestMapping("/emp_search")
-//	public String queryEmpVague(String pageSize, String currentPage, String keyword, Map map) {
-//
-//		List<Emp> emps = empservice.queryEmpVague(keyword);
-//		this.query(pageSize, currentPage, emps, map);
-//		return "index_emp";
-//	}
 	
+	/**
+	 * 	条件查询
+	 * @param pageSize
+	 * @param currentPage
+	 * @param request
+	 * @param map
+	 * @return
+	 */
 	@RequestMapping("/search_strict")
 	public String queryEmpStrict(String pageSize, String currentPage, HttpServletRequest request, Map map) {
 
@@ -121,16 +130,25 @@ public class PersonnelManageCtrl {
 		List<Emp> emps = empservice.queryEmpStrict(conditionList);
 		map.put("EMPS", emps);
 		map.put("PAGING", this.getPaging(pageSize, currentPage, emps));
+		map.put("SEARCH", "1");		//	告诉前端这是条件查询的结果（使用分页时需要知道）
 		
-		return "index_emp";
+		return "personnel/index_emp";
 	}
 	
+	
+	/**
+	 * 	打开条件查询页面
+	 * @param request
+	 * @param map
+	 * @return
+	 */
 	@RequestMapping("/search_condition")
 	public String queryEmpCondition(HttpServletRequest request, Map map) {
 		
+		//	返回session保存的条件查询记录
 		HttpSession session = request.getSession();
 		map.put("CONDI", session.getAttribute("CONDI"));
 		
-		return "condition_emp";
+		return "personnel/condition_emp";
 	}
 }

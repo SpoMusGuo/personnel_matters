@@ -10,25 +10,6 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<SCRIPT language=javascript src="${pageContext.request.contextPath }/js/jquery.min.js"></SCRIPT>
 		
-		<script type="text/vbscript" language="vbscript" >
-		    'delete on 2013.11.30, 没用了
-'			function popUpDate(value)
-'				a=showModalDialog("popupDate.aspx?value=" & encodeURI(value) ,0,"dialogWidth:320px;dialogHeight:150px;")
-'				if a<>"" then
-'					popUpDate= a
-'				else 
-'					popUpDate= value
-'				end if			
-'			end function
-			function chkDateType(v)
-				chkDateType=0
-				if trim(v)="" then
-					chkDateType=1
-				elseif isdate(v) then
-					chkDateType=1
-				end if
-			end function
-		</script>
 		<script type="text/javascript" language="javascript">
 
         function getBrowserLang() {
@@ -119,7 +100,6 @@ function __doPostBack(eventTarget, eventArgument) {
 
 
 
-<script src="/esweb/WebResource.axd?d=CsshuQOrF1UMaNI6nS1DEC5WBbgBgtrnqIIlWt-ihhE1&amp;t=636320251895468750" type="text/javascript"></script>
 <script type="text/javascript">
 //<![CDATA[
 function WebForm_OnSubmit() {
@@ -159,11 +139,11 @@ return true;
 	</tr><tr>
 		<td style="white-space:nowrap;"><input id="chkAlias_1" type="checkbox" value="emp_id" name="chkAlias_1" /><label for="chkAlias_1">编号</label></td><td><select name="cboop1_1" id="cboop1_1">
 			<option selected="selected" value="=">=</option>
-			<option value="<>">&lt;&gt;</option>
-			<option value=">">&gt;</option>
-			<option value=">=">&gt;=</option>
-			<option value="<">&lt;</option>
-			<option value="<=">&lt;=</option>
+			<option value="&lt;&gt;">&lt;&gt;</option>
+			<option value="&gt;">&gt;</option>
+			<option value="&gt;=">&gt;=</option>
+			<option value="&lt;">&lt;</option>
+			<option value="&lt;=">&lt;=</option>
 			<option value="between">介于</option>
 			<option value="like">形如</option>
 			<option value="is not null">有值</option>
@@ -173,9 +153,9 @@ return true;
 	</tr><tr>
 		<td style="white-space:nowrap;"><input id="chkAlias_2" type="checkbox" value="emp_idnumber" name="chkAlias_2" /><label for="chkAlias_2">身份证号</label></td><td><select name="cboop1_2" id="cboop1_2">
 			<option value="=">=</option>
-			<option value="&lt;>">&lt;&gt;</option>
-			<option value=">">&gt;</option>
-			<option value=">=">&gt;=</option>
+			<option value="&lt;&gt;">&lt;&gt;</option>
+			<option value="&gt;">&gt;</option>
+			<option value="&gt;=">&gt;=</option>
 			<option value="&lt;">&lt;</option>
 			<option value="&lt;=">&lt;=</option>
 			<option value="between">介于</option>
@@ -187,9 +167,9 @@ return true;
 	</tr><tr>
 		<td style="white-space:nowrap;"><input id="chkAlias_3" type="checkbox" value="emp_native_place" name="chkAlias_3" /><label for="chkAlias_3">籍贯</label></td><td><select name="cboop1_3" id="cboop1_3">
 			<option value="=">=</option>
-			<option value="&lt;>">&lt;&gt;</option>
-			<option value=">">&gt;</option>
-			<option value=">=">&gt;=</option>
+			<option value="&lt;&gt;">&lt;&gt;</option>
+			<option value="&gt;">&gt;</option>
+			<option value="&gt;=">&gt;=</option>
 			<option value="&lt;">&lt;</option>
 			<option value="&lt;=">&lt;=</option>
 			<option value="between">介于</option>
@@ -201,9 +181,9 @@ return true;
 	</tr><tr>
 		<td style="white-space:nowrap;"><input id="chkAlias_4" type="checkbox" value="emp_name" name="chkAlias_4" /><label for="chkAlias_4">姓名</label></td><td><select name="cboop1_4" id="cboop1_4">
 			<option value="=">=</option>
-			<option value="&lt;>">&lt;&gt;</option>
-			<option value=">">&gt;</option>
-			<option value=">=">&gt;=</option>
+			<option value="&lt;&gt;">&lt;&gt;</option>
+			<option value="&gt;">&gt;</option>
+			<option value="&gt;=">&gt;=</option>
 			<option value="&lt;">&lt;</option>
 			<option value="&lt;=">&lt;=</option>
 			<option value="between">介于</option>
@@ -215,9 +195,9 @@ return true;
 	</tr><tr>
 		<td style="white-space:nowrap;"><input id="chkAlias_5" type="checkbox" value="emp_sex" name="chkAlias_5" /><label for="chkAlias_5">性别</label></td><td><select name="cboop1_5" id="cboop1_5">
 			<option value="=">=</option>
-			<option value="&lt;>">&lt;&gt;</option>
-			<option value=">">&gt;</option>
-			<option value=">=">&gt;=</option>
+			<option value="&lt;&gt;">&lt;&gt;</option>
+			<option value="&gt;">&gt;</option>
+			<option value="&gt;=">&gt;=</option>
 			<option value="&lt;">&lt;</option>
 			<option value="&lt;=">&lt;=</option>
 			<option value="between">介于</option>
@@ -789,9 +769,9 @@ return true;
 	</tr><tr>
 		<td style="white-space:nowrap;"><input id="chkAlias_46" type="checkbox" value="    " name="chkAlias_46" /><label for="chkAlias_46">银行帐号</label></td><td><select name="cboop1_46" id="cboop1_46">
 			<option value="=">=</option>
-			<option value="&lt;>">&lt;&gt;</option>
-			<option value=">">&gt;</option>
-			<option value=">=">&gt;=</option>
+			<option value="&lt;&gt;">&lt;&gt;</option>
+			<option value="&gt;">&gt;</option>
+			<option value="&gt;=">&gt;=</option>
 			<option value="&lt;">&lt;</option>
 			<option value="&lt;=">&lt;=</option>
 			<option value="between">介于</option>
@@ -860,11 +840,16 @@ function ValidatorOnSubmit() {
         //]]>
 </script>
 </form>
+
+<!-- 还原之前保存的条件选择记录 -->
 <c:forEach items="${sessionScope.CONDI }" var="condition">
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("")
-		}
+			var i = $("[value='${condition.fieldName}']").prop("checked", "checked").prop("name").split("_")[1];
+			$("#cboop1_" + i + " option[value='${condition.symbol}']").prop("selected", "selected");
+			$("#txtv1_" + i).val("${condition.parameter1}");
+			$("#txtv2_" + i).val("${condition.parameter2}");
+		});
 	</script>
 </c:forEach>
 	</body>

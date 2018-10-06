@@ -268,59 +268,61 @@
    	  </choose>
   </sql>
   <select id="queryEmpStrict" resultMap="empResultMap" parameterType="list">
-      select * from emp where
-    	<foreach collection="list" item="condition" separator="AND">
-    	    <choose>
-	    		<when test='condition.symbol == "="'>
-	    			<include refid="translate"></include> = #{condition.parameter1}
-	   			</when>
-   			</choose>
-    	    <choose>
-	    		<when test='condition.symbol == "&lt;&gt;"'>
-	    			<include refid="translate"></include> != #{condition.parameter1}
-	   			</when>
-   			</choose>
-    	    <choose>
-	    		<when test='condition.symbol == "&lt;"'>
-	    			<include refid="translate"></include> &lt; #{condition.parameter1}
-	   			</when>
-   			</choose>
-    	    <choose>
-	    		<when test='condition.symbol == "&gt;"'>
-	    			<include refid="translate"></include> &gt; #{condition.parameter1}
-	   			</when>
-   			</choose>
-    	    <choose>
-	    		<when test='condition.symbol == "&lt;="'>
-	    			<include refid="translate"></include> &lt;= #{condition.parameter1}
-	   			</when>
-   			</choose>
-    	    <choose>
-	    		<when test='condition.symbol == "&gt;="'>
-	    			<include refid="translate"></include> &gt;= #{condition.parameter1}
-	   			</when>
-   			</choose>
-    	    <choose>
-	    		<when test='condition.symbol == "between"'>
-	    			<include refid="translate"></include> between #{condition.parameter1} and #{condition.parameter2}
-	   			</when>
-   			</choose>
-    	    <choose>
-	    		<when test='condition.symbol == "like"'>
-	    			locate(#{condition.parameter1}, <include refid="translate"></include>)>0
-	   			</when>
-   			</choose>
-    	    <choose>
-	    		<when test='condition.symbol == "is not null"'>
-	    			<include refid="translate"></include> is not null
-	   			</when>
-   			</choose>
-    	    <choose>
-	    		<when test='condition.symbol == "is null"'>
-	    			<include refid="translate"></include> is null
-	   			</when>
-   			</choose>
-    	</foreach>
+      select * from emp
+	      <where>
+	    	<foreach collection="list" item="condition" separator="AND">
+	    	    <choose>
+		    		<when test='condition.symbol == "="'>
+		    			<include refid="translate"></include> = #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "&lt;&gt;"'>
+		    			<include refid="translate"></include> != #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "&lt;"'>
+		    			<include refid="translate"></include> &lt; #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "&gt;"'>
+		    			<include refid="translate"></include> &gt; #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "&lt;="'>
+		    			<include refid="translate"></include> &lt;= #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "&gt;="'>
+		    			<include refid="translate"></include> &gt;= #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "between"'>
+		    			<include refid="translate"></include> between #{condition.parameter1} and #{condition.parameter2}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "like"'>
+		    			locate(#{condition.parameter1}, <include refid="translate"></include>)>0
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "is not null"'>
+		    			<include refid="translate"></include> is not null
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "is null"'>
+		    			<include refid="translate"></include> is null
+		   			</when>
+	   			</choose>
+	    	</foreach>
+	    </where>
   </select>
   
   <select id="test" resultMap="empResultMap" parameterType="String">
