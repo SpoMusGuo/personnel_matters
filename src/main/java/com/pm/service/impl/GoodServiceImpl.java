@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pm.mapper.GoodMapper;
+import com.pm.model.Condition;
+import com.pm.model.Emp;
 import com.pm.model.Good;
 import com.pm.model.Pager;
 import com.pm.service.GoodService;
@@ -85,6 +87,12 @@ public class GoodServiceImpl implements GoodService {
 	public List<Good> listLike(String value) {
 		// TODO Auto-generated method stub
 		return mapper.listLike(value);
+	}
+
+	@Override
+	public List<Good> queryGoodStrict(List<Condition> conditionList) {
+		// TODO Auto-generated method stub
+		return mapper.queryGoodStrict(conditionList);
 	}
 
 }

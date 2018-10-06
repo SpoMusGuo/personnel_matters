@@ -2,6 +2,8 @@ package com.pm.service;
 
 import java.util.List;
 
+import com.pm.model.Condition;
+import com.pm.model.Emp;
 import com.pm.model.Good;
 import com.pm.model.Pager;
 
@@ -18,4 +20,5 @@ public interface GoodService {
 	public int getRecords();//查询总记录条数
 	public String getLastId();//查询最后一个物品的id
 	public List<Good> listLike(String value);//模糊查找物品
+	public List<Good> queryGoodStrict(List<Condition> conditionList);//条件查询
 }

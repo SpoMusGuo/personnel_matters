@@ -261,9 +261,20 @@
 													</c:otherwise>
 												</c:choose>]
 												条
+												
+												<!-- 判断是什么查询 -->
+												<c:choose>
+													<c:when test="${requestScope.SEARCH == null }">
+														<c:set var="addr" value="index_emp"/>
+													</c:when>
+													<c:otherwise>
+														<c:set var="addr" value="search_strict"/>
+													</c:otherwise>
+												</c:choose>
+												
 												<!-- 选择页码 -->
 												<c:if test="${pager.currentPage != 1 }">
-													[<A href="index_emp?keyword=${requestScope.KEYWORD }&currentPage=${pager.currentPage - 1}">前一页</A>]
+													[<A href="${addr }?keyword=${requestScope.KEYWORD }&currentPage=${pager.currentPage - 1}">前一页</A>]
 												</c:if>
 												
 												<c:forEach begin="1" end="${pager.sumPage }"
@@ -273,15 +284,16 @@
 															<B>${status.index}</B>
 														</c:when>
 														<c:otherwise>
-															<A class=""
-																href="index_emp?keyword=${requestScope.KEYWORD }&currentPage=${status.index}">${status.index}</A>
+															<A class="page_num"
+																href="${addr }?keyword=${requestScope.KEYWORD }&currentPage=${status.index}">${status.index}</A>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>
 												
 												<c:if test="${pager.currentPage != pager.sumPage }">
-													[<A class="" href="index_emp?keyword=${requestScope.KEYWORD }&currentPage=${pager.currentPage + 1}">后一页</A>]
+													[<A class="" href="${addr }?keyword=${requestScope.KEYWORD }&currentPage=${pager.currentPage + 1}">后一页</A>]
 												</c:if>
+												
 												<!-- 下拉选择页码 -->
 												<SELECT id="pageSelect">
 													<c:forEach begin="1" end="${pager.sumPage }"
