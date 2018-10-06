@@ -1,18 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
 <head id=Head1>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
     <META http-equiv=Content-Type content="text/html; charset=utf-8"><LINK
-            href="${pageContext.request.contextPath }/css/index_body_Manage.css" type=text/css rel=stylesheet><LINK
-            href="${pageContext.request.contextPath }/css/index_body_Style.css" type=text/css rel=stylesheet>
-    <SCRIPT language=javascript src="${pageContext.request.contextPath }/js/FrameDiv.js"></SCRIPT>
-    <SCRIPT language=javascript src="${pageContext.request.contextPath }/js/Common.js"></SCRIPT>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.min.js"></script>
+            href="/personnel_matters/css/index_body_Manage.css" type=text/css rel=stylesheet><LINK
+            href="/personnel_matters/css/index_body_Style.css" type=text/css rel=stylesheet>
+    <SCRIPT language=javascript src="/personnel_matters/js/FrameDiv.js"></SCRIPT>
+    <SCRIPT language=javascript src="/personnel_matters/js/Common.js"></SCRIPT>
+	<script type="text/javascript" src="/personnel_matters/js/jquery.min.js"></script>
 	<style>
 		*{
 		padding:0;
@@ -34,7 +32,7 @@
 		        }
 		    }
 	    	$(function(){
-	    		$('#good_id').val("${good_id}");
+	    		$('#good_id').val("WP0026");
 	    		$('#price').blur(function () {
 		           var price=$(this).val();
 		           var count=$('#count').val();
@@ -50,17 +48,17 @@
     <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </head>
 <body>
-	<FORM id=form1 name=form1 action="${pageContext.request.contextPath }/good/insertGood" method=post onsubmit="return check()">	    
+	<FORM id=form1 name=form1 action="/personnel_matters/good/insertGood" method=post onsubmit="return check()">	    
 	    <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 	        <TBODY>
 		        <TR>
 		            <TD width=15>
-		            	<IMG src="${pageContext.request.contextPath }/images/new_019.jpg" border=0>
+		            	<IMG src="/personnel_matters/images/new_019.jpg" border=0>
 		            </TD>
-		            <TD width="100%" background=${pageContext.request.contextPath }/images/new_020.jpg height=20>
+		            <TD width="100%" background=/personnel_matters/images/new_020.jpg height=20>
 		            </TD>
 		            <TD width=15>
-		            	<IMG src="${pageContext.request.contextPath }/images/new_021.jpg" border=0>
+		            	<IMG src="/personnel_matters/images/new_021.jpg" border=0>
 		            </TD>
 		        </TR>
 	        </TBODY>
@@ -68,15 +66,15 @@
 	    <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 	        <TBODY>
 		        <TR>
-		            <TD width=15 background=${pageContext.request.contextPath }/images/new_022.jpg>
-		            	<IMG src="${pageContext.request.contextPath }/images/new_022.jpg" border=0>
+		            <TD width=15 background=/personnel_matters/images/new_022.jpg>
+		            	<IMG src="/personnel_matters/images/new_022.jpg" border=0>
 		            </TD>
 		            <TD vAlign=top width="100%" bgColor=#ffffff>
 		            	<table  width="100%" >
 		            		<tr  width="100%">
 		            			<td  width="50%">
 		            				<table width="100%" bgColor=pink >
-		            					<tr><th colspan="4">物品资料信息</th></tr>
+		            					<tr><th colspan="4">员工基本信息</th></tr>
 		            					<tr><td colspan="4">&nbsp;</td></tr>
 		            					<tr>
 		            						<td width="25%">物品编号</td>
@@ -89,7 +87,7 @@
 		            						<td>
 		            							<select name="good_type" style="width:90%;height:100%;display:block" >
 													  <option value ="电脑类">电脑类</option>
-													  <option value ="文具类">文具类</option>
+													  <option value ="文具">文具类</option>
 													  <option value="服装类">服装类</option>
 													  <option value="饮料类">饮料类</option>
 													  <option value="食品类">食品类</option>
@@ -117,7 +115,7 @@
 		            					<tr>
 		            						<td rowspan="1">备注</td>
 		            						<td colspan="3" rowspan="7">
-		            							<textarea name="good_notes" rows="6" cols="" style="width:95%" ><c:out value="${good.good_notes}"/></textarea>
+		            							<textarea name="good_notes" rows="6" cols="" style="width:95%" ></textarea>
 		            						</td>
 		            					</tr>
 		            					<tr><td rowspan="6"></td></tr>
@@ -136,8 +134,8 @@
 		            		</tr>
 		            	</table>
 		            </TD>
-		            <TD width=15 background=${pageContext.request.contextPath }/images/new_023.jpg>
-		            	<IMG src="${pageContext.request.contextPath }/images/new_023.jpg" border=0> 
+		            <TD width=15 background=/personnel_matters/images/new_023.jpg>
+		            	<IMG src="/personnel_matters/images/new_023.jpg" border=0> 
 		            </TD>
 		        </TR>
 	        </TBODY>
@@ -145,9 +143,9 @@
 	    <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 	        <TBODY>
 		        <TR>
-		            <TD width=15><IMG src="${pageContext.request.contextPath }/images/new_024.jpg" border=0></TD>
-		            <TD align=middle width="100%" background=${pageContext.request.contextPath }/images/new_025.jpg height=15></TD>
-		            <TD width=15><IMG src="${pageContext.request.contextPath }/images/new_026.jpg" border=0></TD>
+		            <TD width=15><IMG src="/personnel_matters/images/new_024.jpg" border=0></TD>
+		            <TD align=middle width="100%" background=/personnel_matters/images/new_025.jpg height=15></TD>
+		            <TD width=15><IMG src="/personnel_matters/images/new_026.jpg" border=0></TD>
 		        </TR>
 	       	</TBODY>
 	    </TABLE>

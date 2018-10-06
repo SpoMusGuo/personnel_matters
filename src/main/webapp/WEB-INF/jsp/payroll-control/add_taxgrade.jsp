@@ -20,6 +20,15 @@
             })
         })
     </script>
+    <script>
+	    $(function(){
+	    	 var back=$("#back");
+	         back.click(function(){
+	        	 window.location.href="${pageContext.request.contextPath }/PersonalIncomeTaxSetting/1";
+	         })
+	    })
+      
+    </script>
     <style>
         *{
             margin: 0px;
@@ -65,7 +74,7 @@
 
     <META content="MSHTML 6.00.2900.3492" name=GENERATOR></HEAD>
 <BODY>
-	<FORM id=form1 name=form1 action=${pageContext.request.contextPath }/updateTaxGrade method=post>
+	<FORM id=form1 name=form1 action="${pageContext.request.contextPath }/addTaxGrade" method=post autocomplete="off" onSubmit="return $.addCheck()">
 	    
 
 	    <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
@@ -90,7 +99,7 @@
 				             <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
 				                <div class="place">
 				                 	<TR>
-				                        <TD class=manageHead>当前位置：工资管理 &gt; 个人所得税设置&gt; 修改个人所得税 </TD>
+				                        <TD class=manageHead>当前位置：工资管理 &gt; 个人所得税设置&gt; 新增个人所得税等级 </TD>
 				                    </TR>
 				                    <TR>
 				                     	<TD height=1></TD>
@@ -98,7 +107,7 @@
 				                </div>
 			                </TABLE>
 			                <div style="margin-top: 30px; margin-left: 38px; margin-bottom:  20px;">
-			                	<span id="lbl0" align="left" style="color:#FF9900;font-weight:bold;margin-left:40px;">[ 个人所得税设置表修改 ]</span>
+			                	<span id="lbl0" align="left" style="color:#FF9900;font-weight:bold;margin-left:40px;">[ 新增个人所得税等级 ]</span>
 			                </div>
 				             <div class="update">
 					            <TABLE cellSpacing=0 border=1>
@@ -112,11 +121,11 @@
 							                    <td class="text">速扣</td>
 							                </tr>
 							                <tr class="normal">
-							                    <td id="onlyread" class="onlyread"><input name="taxgrade_grade" type="text" readonly="readonly" value="${ taxGrade.taxgrade_grade} "/></td>
-							                    <td class="active"><input name="taxgrade_start" type="number" value="${ taxGrade.taxgrade_start}"/></td>
-							                    <td class="active"><input name="taxgrade_end" type="number" value="${ taxGrade.taxgrade_end}"/></td>
-							                    <td class="active"><input name="taxgrade_rate" type="number" value="${ taxGrade.taxgrade_rate}" step="0.01"/></td>
-							                    <td class="active"><input name="taxgrade_speed" type="number" value="${ taxGrade.taxgrade_speed}"/></td>
+							                    <td id="onlyread" class="active"><input id="grade" name="taxgrade_grade" type="number" required="required"/></td>
+							                    <td class="active"><input name="taxgrade_start" type="number" required="required"/></td>
+							                    <td class="active"><input name="taxgrade_end" type="number" required="required"/></td>
+							                    <td class="active"><input name="taxgrade_rate" type="number" step="0.01" required="required"/></td>
+							                    <td class="active"><input name="taxgrade_speed" type="number" required="required"/></td>
 							                </tr>
 							                
 						            	</tbody>
@@ -124,8 +133,8 @@
 					           	  
 					          	</TABLE> 
 					          	</div>
-				          	<input class="button" id="save" type="submit" value="保存" name="add" style="position: relative;right: -226px;top:-137px">
-			           
+				          	<input class="button" id="save" type="submit" value="新增" name="add" style="position: relative;right: -226px;top:-137px">
+			           		<input class="button" id="back" type="button" value="返回" name="add" style="position: relative;right: -220px;top:-137px">
 			            </TD>
 			           <TD width=15 background=${pageContext.request.contextPath }/images/new_023.jpg><IMG
 			                    src="${pageContext.request.contextPath }/images/new_023.jpg" border=0> 
@@ -147,5 +156,30 @@
 	       	</TBODY>
 	    </TABLE>
 	</FORM>
+    <script type="text/javascript">
+    $(function(){
+            $.addCheck = function(){
+            	var grade = $("#grade").val();
+            	var res;
+            	$.ajaxSetup({   
+                    async : false  
+                }); 
+            	$.post(
+					"${pageContext.request.contextPath }/checkTaxGrade",
+					"grade="+grade,
+					function(result){
+						res = result;
+				})
+				if(res=='true'){
+					alert("添加成功！")
+					return true;
+				}else{
+					alert("该个人所得税等级已存在，不能重复添加")
+					return false;
+				}
+            }
+    })
+    </script>
 </BODY>
+
 </HTML>

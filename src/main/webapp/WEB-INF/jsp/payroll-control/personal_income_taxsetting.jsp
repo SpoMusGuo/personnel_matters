@@ -16,8 +16,10 @@
 			open.click(function(){
 				var ul = $(this).siblings("ul");
 				if(ul.css("visibility")=="visible"){
+					
 					ul.css("visibility","hidden");
 				}else{
+					$(".open").siblings("ul").css("visibility","hidden");
 					ul.css("visibility","visible");
 				}
 				
@@ -95,14 +97,14 @@
 			                                <TBODY>
 				                                <TR>
 				                                	<div class="add">
-				                                		<INPUT class=button id="add" type=button value=新增 name=add>
+				                                		<a href="${pageContext.request.contextPath }/addTaxGradeView"><INPUT class=button id="add" type=button value=新增 name=add></a>
 				                                	</div>
 				                                	
 					                                <div class="search">
 					                                    <img src="${pageContext.request.contextPath }/images/icon_search.gif">
 					                                    <input name="txtSearch" type="text" size="30" id="txtSearch">
 					                                    <INPUT class=button id="search" type=button value=搜索 name=add>
-					                                    <a id="" href="" style="text-decoration: underline; color:black">查询条件...</a>
+					                                    <a id="" href="${pageContext.request.contextPath}/conditionSearchView" style="text-decoration: underline; color:black">查询条件...</a>
 					                                </div>
 				                                    <span id="lbl0" align="left" style="color:#FF9900;font-weight:bold;margin-left:40px;">[ 个人所得税设置 ]</span>
 				                                 </TR>
@@ -179,7 +181,15 @@
 				           					 	</c:otherwise>
 				           					 </c:choose>
 				           					 <c:if test="${pager.pageindex!=1}">
-				           					 	[<A href="${pager.pageindex-1 }" target=dmMain>前一页</A>]
+				           					 	<c:choose>
+				           					 		<c:when test="${type=='search'}">
+				           					 			[<A href="${pageContext.request.contextPath }/conditionSearchPageNum/${pager.pageindex-1 }" target=dmMain>前一页</A>]
+				           					 		</c:when>
+				           					 		<c:otherwise>
+				           					 			[<A href="${pageContext.request.contextPath }/PersonalIncomeTaxSetting/${pager.pageindex-1 }" target=dmMain>前一页</A>]
+				           					 		</c:otherwise>
+				           					 	</c:choose>
+				           					 	
 				           					 </c:if>
 				                			<c:forEach begin="1" end="${pager.pagecount}" var="i">
 				                				 <c:choose>
@@ -187,19 +197,37 @@
 				                				 		 <B>${i}</B> 
 				                				 	</c:when>
 				                				 	<c:otherwise>
-				                				 		<A class="" href="#"><c:out value="${i}"></c:out></A>
+				                				 		<c:if test="${type=='search'}">
+				                				 			<A class="" href="${pageContext.request.contextPath }/conditionSearchPageNum/${i }"><c:out value="${i}"></c:out></A>
+				                				 		</c:if>
+				                				 		<c:if test="${type=='searchAll'}">
+				                				 			<A class="" href="${pageContext.request.contextPath }/PersonalIncomeTaxSetting/${i }"><c:out value="${i}"></c:out></A>
+				                				 		</c:if>
 				                				 	</c:otherwise>
 				                				 </c:choose>
 				                			</c:forEach>
 				                			<c:if test="${pager.pageindex!=pager.pagecount}">
-				           					 	[<A class="" href="${pager.pageindex+1 }" target=dmMain>后一页</A>]
+				           					 	<c:choose>
+				           					 		<c:when test="${type=='search'}">
+				           					 			[<A href="${pageContext.request.contextPath }/conditionSearchPageNum/${pager.pageindex+1 }" target=dmMain>前一页</A>]
+				           					 		</c:when>
+				           					 		<c:otherwise>
+				           					 			[<A href="${pageContext.request.contextPath }/PersonalIncomeTaxSetting/${pager.pageindex+1 }" target=dmMain>前一页</A>]
+				           					 		</c:otherwise>
+				           					 	</c:choose>
 				           					</c:if>
 				                
 				                <SELECT onchange="window.location=this.value">
 					                <c:forEach begin="1" end="${pager.pagecount}" var="i">
 					                	<c:choose>
 					                		<c:when test="${i==pager.pageindex}">
-					                			<OPTION value="${i}" selected>第${i}页</OPTION>
+					                			<c:if test="${type=='search'}">
+					                				<OPTION value="${pageContext.request.contextPath }/conditionSearchPageNum/${i}" selected>第${i}页</OPTION>
+					                			</c:if>
+					                			<c:if test="${type=='searchAll'}">
+					                				<OPTION value="${pageContext.request.contextPath }/PersonalIncomeTaxSetting/${i}" selected>第${i}页</OPTION>
+					                			</c:if>
+					                			
 					                		</c:when>
 					                		<c:otherwise>
 					                			<OPTION value="${i}">第${i}页</OPTION>

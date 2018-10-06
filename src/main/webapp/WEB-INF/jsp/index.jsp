@@ -8,7 +8,7 @@
     <META content="MSHTML 6.00.2900.3492" name=GENERATOR></HEAD>
     
 </HEAD>
-<FRAMESET
+<FRAMESET name=all
         frameSpacing=0 rows=80,* frameBorder=0>
         <FRAME name=top src="${pageContext.request.contextPath }/index_head" frameBorder=0 noResize
                                                       scrolling=no>
@@ -17,9 +17,8 @@
                    src="${pageContext.request.contextPath }/index_menu" frameBorder=0 noResize>
             <FRAME name=dmMain
 
-                   src="${pageContext.request.contextPath }/index_body"
 
-                   src="${pageContext.request.contextPath }/index_menu" frameBorder=0 noResize>
+                   frameBorder=0 noResize>
 		</FRAMESET>
 </FRAMESET>
 </HTML>
