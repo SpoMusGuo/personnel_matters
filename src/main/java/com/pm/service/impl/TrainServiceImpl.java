@@ -53,11 +53,6 @@ public class TrainServiceImpl implements TrainService {
 	}
 
 	@Override
-	public int getCount(String train_plan_name) {
-		return trainMapper.getCount(train_plan_name);
-	}
-
-	@Override
 	public List<Train> listPager(Pager<Train> pager) {
 		return trainMapper.listPager(pager);
 	}

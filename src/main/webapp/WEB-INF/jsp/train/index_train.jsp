@@ -117,7 +117,7 @@
 			                                <TBODY>
 				                                <TR>
 				                                	<div class="add">
-				                                		<a href="${pageContext.request.contextPath }/train/addTrain"><INPUT class=button id="add" type=button value=新增 name=add></a>
+				                                		<a href="addTrain"><INPUT class=button id="add" type=button value=新增 name=add></a>
 				                                	</div>
 					                                <div class="search">
 					                                    <img src="${pageContext.request.contextPath }/images/icon_search.gif">
@@ -137,18 +137,18 @@
 			                                <TBODY>
 			                                <TR class="title" tyle="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;">
 			                                    <TD style="width:48px;white-space:nowrap;font-size:20;color:#FF9900;"></TD>
-			                                    <TD style="width:50px;white-space:nowrap;font-size:20;">锁状态</TD>
+			                                    <TD style="width:45px;white-space:nowrap;font-size:20;">锁状态</TD>
 			                                    <td style="width:60px;white-space:nowrap;font-size:20;">计划名称</td>
 												<td style="width:60px;white-space:nowrap;font-size:20;">主办部门</td>
-												<td style="width:60px;white-space:nowrap;font-size:20;">培训课程</td>
+												<td style="width:75px;white-space:nowrap;font-size:20;">培训课程</td>
 												<td style="width:60px;white-space:nowrap;font-size:20;">培训机构</td>
 												<td style="width:60px;white-space:nowrap;font-size:20;">培训类型</td>
 												<td style="width:60px;white-space:nowrap;font-size:20;">培训形式</td>
-												<td style="width:60px;white-space:nowrap;font-size:20;">培训地址</td>
+												<td style="width:105px;white-space:nowrap;font-size:20;">培训地址</td>
 												<td style="width:60px;white-space:nowrap;font-size:20;">授课老师</td>
 												<td style="width:60px;white-space:nowrap;font-size:20;">授课时数</td>
-												<td style="width:80px;white-space:nowrap;font-size:20;">起始时间</td>
-												<td style="width:80px;white-space:nowrap;font-size:20;">结束时间</td>
+												<td style="width:60px;white-space:nowrap;font-size:20;">起始时间</td>
+												<td style="width:60px;white-space:nowrap;font-size:20;">结束时间</td>
 												<td style="width:60px;white-space:nowrap;font-size:20;">计划费用</td>
 												<td style="width:60px;white-space:nowrap;font-size:20;">参加人数</td>
 												<td style="width:60px;white-space:nowrap;font-size:20;">培训对象</td>
@@ -192,8 +192,8 @@
 													<td>${train.train_address}</td>
 													<td>${train.train_teacher}</td>
 													<td>${train.train_periods}</td>
-													<td>${train.train_start_time}</td>
-													<td>${train.train_finish_time}</td>
+													<td><fmt:formatDate value="${train.train_start_time}" pattern="yyyy-MM-dd"/></td>
+													<td><fmt:formatDate value="${train.train_finish_time}" pattern="yyyy-MM-dd"/></td>
 													<td>${train.train_plan_cost}</td>
 													<td>${train.train_join_people}</td>
 													<td>${train.train_object}</td>

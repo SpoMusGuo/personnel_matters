@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.pm.mapper.EmpMapper;
 import com.pm.model.Condition;
@@ -11,6 +12,7 @@ import com.pm.model.Emp;
 import com.pm.service.EmpService;
 
 @Service
+@Transactional
 public class EmpServiceImpl implements EmpService {
 	
 	@Autowired
