@@ -14,4 +14,7 @@ public interface PayrollService {
 	public List<TaxGrade> getSearchTaxGrade(String keyWord);//模糊搜索查找所需个人所得税表
 	public void updateTaxGrade(TaxGrade taxGrade);//修改个人所得税设置
 	public TaxGrade getTaxGrade(String taxgradeGrade);//通过个人所得税等级获取整个税务等级的信息
+	public void addTaxGrade(TaxGrade taxGrade);//增加个人所得税设置
+//	public List<TaxGrade> getSpecialTaxGrade();
+	
 }

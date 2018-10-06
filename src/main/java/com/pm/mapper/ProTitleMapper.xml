@@ -5,7 +5,7 @@
 
 <mapper namespace="com.pm.mapper.ProTitleMapper">
         
-  <resultMap type="proTitle" id="proTitleResultMap">
+  <resultMap type="ProTitle" id="proTitleResultMap">
       <id column="pro_title_id" property="proTitleId"/>
       <result column="emp_id" property="empId"/>
       <result column="pro_title_obtain" property="proTitleObtain"/>

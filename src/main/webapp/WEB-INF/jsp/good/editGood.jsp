@@ -11,7 +11,6 @@
             href="${pageContext.request.contextPath }/css/index_body_Manage.css" type=text/css rel=stylesheet><LINK
             href="${pageContext.request.contextPath }/css/index_body_Style.css" type=text/css rel=stylesheet>
     <SCRIPT language=javascript src="${pageContext.request.contextPath }/js/FrameDiv.js"></SCRIPT>
-
     <SCRIPT language=javascript src="${pageContext.request.contextPath }/js/Common.js"></SCRIPT>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.min.js"></script>
 	<style>
@@ -20,28 +19,20 @@
 		margin:0;
 		}
 	</style>
-    
-
-    <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
-</head>
-<body>
-	<FORM id=form1 name=form1 action="${pageContext.request.contextPath }/good/updateGood" method=post onsubmit="return check()">
-	    <SCRIPT>
-	    function check(){
-	    	var value1=$("[name='good_name']").val();
-	        var value2=$("[name='good_price']").val();
-	        var value3=$("[name='good_count']").val();
-	        var value4=$("[name='good_repetory']").val();
-	        var value5=$("[name='good_register_date']").val();
-	        if((value1!="")&&(value2!="")&&(value3!="")&&(value4!="")&&(value5!="")){
-	        	return true;
-	        }else{
-	        	alert("请输入完整信息");
-	        	return false;
-	        }
-	    }
-	    </SCRIPT>
-	    <script>
+    <script>
+		    function check(){
+		    	var value1=$("[name='good_name']").val();
+		        var value2=$("[name='good_price']").val();
+		        var value3=$("[name='good_count']").val();
+		        var value4=$("[name='good_repetory']").val();
+		        var value5=$("[name='good_register_date']").val();
+		        if((value1!="")&&(value2!="")&&(value3!="")&&(value4!="")&&(value5!="")){
+		        	return true;
+		        }else{
+		        	alert("请输入完整信息");
+		        	return false;
+		        }
+		    }
 	    	$(function(){
 	    		$("[value='${good.good_type}']").attr("selected","selected");
 	 	        $('#sumPrice').val("${good.good_price*good.good_count}");
@@ -58,6 +49,10 @@
 	    	})
 	    </script>
 
+    <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
+</head>
+<body>
+	<FORM id=form1 name=form1 action="${pageContext.request.contextPath }/good/updateGood" method=post onsubmit="return check()">
 	    <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 	        <TBODY>
 		        <TR>

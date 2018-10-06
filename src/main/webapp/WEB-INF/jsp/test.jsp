@@ -12,6 +12,7 @@
 
 	<img src="images/捕获.PNG" />
 	<br />
+	<!-- 
 	<table border="1">
 		<c:forEach items="${list }" var="stu">
 			<tr>
@@ -25,9 +26,9 @@
 		<h1>${pageContext.request.contextPath }</h1>
 		<h1><%= request.getContextPath() %></h1>
 	</table>
-
+	 -->
 	进来了
-	
+	${requestScope.name }
 
 </body>
 </html>

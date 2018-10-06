@@ -15,4 +15,5 @@ public interface PayrollMapper {
 	public List<TaxGrade> searchTaxGrades(String keyWord);
 	public void updateTaxGrade(TaxGrade taxGrade);
 	public TaxGrade getTaxGrade(String taxgradeGrade);
+	public void addTaxGrade(TaxGrade taxGrade);
 }
