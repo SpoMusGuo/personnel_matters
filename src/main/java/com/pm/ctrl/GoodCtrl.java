@@ -159,55 +159,12 @@ public class GoodCtrl {
 			return "good/like";
 		}
 	}
-	//查询条件 按种类查询
-	@RequestMapping("/typeGood/{type}/{pageindex}")
-	public String typeGood(Model model,@PathVariable(value = "pageindex") int pageindex,@PathVariable(value = "type") String good_type) {
-		List<Good> goodlist=goodService.listType(good_type);
-		Pager<Good> pager = new Pager<Good>();
-		if(goodlist.size()==0) {
-			pageindex=1;
-			int pagesize =1;
-			int startindex=-1;
-			int records=0;
-			int pagecount=1;
-			pager.setPagesize(pagesize);
-			pager.setPageindex(pageindex);
-			pager.setStartindex(startindex);
-			pager.setPagecount(pagecount);
-			pager.setRecords(records);
-			List<Good> list = new ArrayList<Good>();
-			pager.setDatas(list);
-			model.addAttribute("value", good_type);
-			model.addAttribute("pager", pager);
-			return "good/type";
-		}else {
-			int pagesize = 10;
-			int startindex=(pageindex-1)*pagesize;
-			int records=goodlist.size();
-			int pagecount=(int)Math.ceil((double)records/pagesize);
-			pager.setPagesize(pagesize);
-			pager.setPageindex(pageindex);
-			pager.setStartindex(startindex);
-			pager.setPagecount(pagecount);
-			pager.setRecords(records);
-			List<Good> list = new ArrayList<Good>();
-			for(int i=startindex;i<(pagesize+startindex);i++) {
-				if(i>=records) {
-					break;
-				}
-				list.add(goodlist.get(i));
-			}
-			pager.setDatas(list);
-			model.addAttribute("value", good_type);
-			model.addAttribute("pager", pager);
-			return "good/type";
-		}
-	}
 	//删除物品
 	@RequestMapping("/querychoose")
 	public String querychoose() {
 		return "good/condition_good";
 	}
+	//条件查询（查询访问一次此控制层）
 	@RequestMapping("/queryGoodStrict")
 	public String queryGoodStrict(HttpServletRequest request,Model model) {
 		Map<Integer, String> conditions = new TreeMap<Integer, String>();
@@ -272,6 +229,7 @@ public class GoodCtrl {
 			return "good/strict";
 		}
 	}
+	//条件查询后的分页
 	@RequestMapping("/strict/{pageindex}")
 	public String strict(HttpServletRequest request,Model model,@PathVariable(value = "pageindex") int pageindex) {
 		HttpSession session = request.getSession();
