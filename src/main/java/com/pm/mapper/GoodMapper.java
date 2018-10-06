@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import com.pm.model.Condition;
+import com.pm.model.Emp;
 import com.pm.model.Good;
 import com.pm.model.Pager;
 @Repository(value="goodMapper")
@@ -21,4 +23,5 @@ public interface GoodMapper {
 	public int getRecords();//查询总记录条数
 	public String getLastId();//查询最后一个物品的id
 	public List<Good> listLike(String value);//模糊查找物品
+	public List<Good> queryGoodStrict(List<Condition> conditionList);//条件查询
 }

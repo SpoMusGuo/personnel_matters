@@ -29,11 +29,8 @@
         	var index=$(this).children('option:selected').val(); 
         	window.location.href='${pageContext.request.contextPath}/good/likeGood/${value}/'+index;
         	})
-        	$("#close").click(function(){
-        		$("#chooseSelect").hide();
-        	})
         	$("#chaxun").click(function(){
-        		$("#chooseSelect").show();
+        		window.location.href='${pageContext.request.contextPath}/good/querychoose';
         	})
         	$("#search").click(function(){
         		var value=$("#txtSearch").val();
@@ -41,10 +38,6 @@
        				value=" ";
        			}	        		
         		window.location.href="${pageContext.request.contextPath }/good/likeGood/"+value+"/1";
-        	});
-        	$("#select_btn").click(function(){
-        		var value=$("#selectType").val();
-        		window.location.href="${pageContext.request.contextPath }/good/typeGood/"+value+"/1";
         	});
 		})
 	</script>
@@ -220,27 +213,5 @@
 	       	</TBODY>
 	    </TABLE>
 	</FORM>
-	<div id="chooseSelect" style="width:150px;background-color:#C3D5E0;border:2px #80B2CC solid;padding:30px 50px 10px 60px;position:fixed;left:35%; top:10%; display:none">
-		<form>
-			<table>
-				<tr>
-					<td>种类：</td>
-					<td>
-						<select id="selectType">
-							<option value ="电脑类">电脑类</option>
-						  	<option value ="文具类">文具类</option>
-						  	<option value="服装类">服装类</option>
-						  	<option value="饮料类">饮料类</option>
-						  	<option value="食品类">食品类</option>
-						  	<option value="汽车类">汽车类</option>	
-						</select>
-					</td>
-				</tr>
-			</table>
-			<br><br>
-			<input id="select_btn" type="button" value="查询">&nbsp;&nbsp;
-			<input id="close" type="reset" value="取消">
-		</form>	
-	</div>
 </body>
 </html>

@@ -89,7 +89,7 @@
 		            						<td>
 		            							<select name="good_type" style="width:90%;height:100%;display:block" >
 													  <option value ="电脑类">电脑类</option>
-													  <option value ="文具">文具类</option>
+													  <option value ="文具类">文具类</option>
 													  <option value="服装类">服装类</option>
 													  <option value="饮料类">饮料类</option>
 													  <option value="食品类">食品类</option>
