@@ -110,14 +110,14 @@
 			                </div>
 		                </TABLE>
 		                <TABLE borderColor=#cccccc cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
-		                    <TBODY>
+		                   <TBODY>
 			                    <TR>
 			                        <TD height=25>
 			                            <TABLE cellSpacing=0 cellPadding=2 border=0>
 			                                <TBODY>
 				                                <TR>
 				                                	<div class="add">
-				                                		<a href="${pageContext.request.contextPath }/good/addGood"><INPUT class=button id="add" type=button value=新增 name=add></a>
+				                                		<a href="${pageContext.request.contextPath }/certificate/gotoadd"><INPUT class=button id="add" type=button value=新增 name=add></a>
 				                                	</div>
 					                                <div class="search">
 					                                    <img src="${pageContext.request.contextPath }/images/icon_search.gif">
@@ -166,7 +166,7 @@
 				                                    		打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif">
 				                                    	</A> 
 				                                    	<ul style="visibility: hidden;">
-				                                    		<li><img></img><a href="#">修改</a></li>
+				                                    		<li><img></img><a href="${pageContext.request.contextPath }/certificate/look/${certificate.certificateId}">修改</a></li>
 				                                    		<li><a href="${pageContext.request.contextPath }/certificate/delete/${certificate.certificateId}">删除</a></li>
 				                                    		<li><a href="#">上锁</a></li>
 				                                    	</ul>

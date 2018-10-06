@@ -58,4 +58,20 @@ public class CertificateServiceImpl implements CertificateService {
 		return certificateMapper.selectOne(certificateId);
 	}
 
+	// 更新某一条员工证照信息
+	@Override
+	public void updateByIdService(Certificate certificate) {
+
+		certificateMapper.updateById(certificate);
+
+	}
+
+	// 插入一条员工证照信息
+	@Override
+	public void insertService(Certificate certificate) {
+
+		certificateMapper.insert(certificate);
+
+	}
+
 }

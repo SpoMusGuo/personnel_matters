@@ -149,7 +149,7 @@
 			</div>
 		</div>
 		<div class="down-href" style="display: none;">
-			2、模板文件的下载链接：<a href="${pageContext.request.ContextPath }/file/down" id="file">下载</a>（在左边的链接上单击鼠标右键，在弹出的菜单上选择 [目标另存为..] 将该文件保存到本机。）
+			2、模板文件的下载链接：<a href="${pageContext.request.contextPath }/file/down" id="file">下载</a>（在左边的链接上单击鼠标右键，在弹出的菜单上选择 [目标另存为..] 将该文件保存到本机。）
 		</div>
 	</div>
 	<script type="text/javascript">

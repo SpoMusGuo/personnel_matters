@@ -28,4 +28,10 @@ public interface CertificateMapper {
 	// 删除某一条记录
 	public void deleteById(String certificateId);
 
+	// 更新某一条员工证照信息
+	public void updateById(Certificate certificate);
+
+	// 插入一条员工的信息
+	public void insert(Certificate certificate);
+
 }

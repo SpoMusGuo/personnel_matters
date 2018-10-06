@@ -4,8 +4,11 @@ import java.util.Date;
 
 public class Certificate {
 
-	// 员工编号
+	// 员工
 	private Emp emp;
+
+	// 员工编号
+	private Integer empId;
 
 	// 证照编号
 	private String certificateId;
@@ -17,7 +20,7 @@ public class Certificate {
 	private String certificateType;
 
 	// 有无期限
-	private Integer certificateIsDeadline;
+	private String certificateIsDeadline;
 
 	// 发证机关
 	private String certificateOffice;
@@ -39,6 +42,14 @@ public class Certificate {
 
 	public Certificate() {
 
+	}
+
+	public Integer getEmpId() {
+		return empId;
+	}
+
+	public void setEmpId(Integer empId) {
+		this.empId = empId;
 	}
 
 	public Emp getEmp() {
@@ -73,11 +84,11 @@ public class Certificate {
 		this.certificateType = certificateType;
 	}
 
-	public Integer getCertificateIsDeadline() {
+	public String getCertificateIsDeadline() {
 		return certificateIsDeadline;
 	}
 
-	public void setCertificateIsDeadline(Integer certificateIsDeadline) {
+	public void setCertificateIsDeadline(String certificateIsDeadline) {
 		this.certificateIsDeadline = certificateIsDeadline;
 	}
 

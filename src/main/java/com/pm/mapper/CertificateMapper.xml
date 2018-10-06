@@ -63,4 +63,15 @@
 	<delete id="deleteById" parameterType="String">
 		delete from certificate where certificate_id = #{certificateId};
 	</delete>
+	
+	<!-- 更新某一个员工的证照信息 -->
+	<update id="updateById" parameterType="Certificate">
+		update certificate set certificate_name = #{certificateName}, certificate_type = #{certificateType}, certificate_is_deadline = #{certificateIsDeadline}, certificate_office = #{certificateOffice},
+		certificate_get_date = #{certificateGetDate}, certificate_effective_date = #{certificateEffectiveDate}, certificate_deadline = #{certificateDeadline}, certificate_notes = #{certificateNotes};
+	</update>
+	
+	<!-- 插入一条员工证照信息 -->
+	<insert id="insert" parameterType="Certificate">
+		insert into certificate values(#{empId},#{certificateId},#{certificateName},#{certificateType},#{certificateIsDeadline},#{certificateOffice},#{certificateGetDate},#{certificateEffectiveDate},#{certificateDeadline},#{certificateNotes},#{certificatePic})
+	</insert>
 </mapper>

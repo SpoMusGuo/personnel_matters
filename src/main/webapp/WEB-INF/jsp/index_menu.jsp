@@ -291,7 +291,7 @@
                                             <TBODY>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2
-                                                                       href="#"
+                                                                       href="${pageContext.request.contextPath }/certificate/list"
                                                                        target=dmMain>－ 证照信息表</A>
                                                 </TD>
                                             </TR>
@@ -372,13 +372,13 @@
                                             <TBODY>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2
-                                                                       href="#"
+                                                                       href="${pageContext.request.contextPath }/file/gotodown"
                                                                        target=dmMain>－ 下载EXCEL模版</A>
                                                 </TD>
                                             </TR>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2
-                                                                       href="#"
+                                                                       href="${pageContext.request.contextPath }/file/gotoup"
                                                                        target=dmMain>－ 上传EXCEL模版</A>
                                                 </TD>
                                             </TR>
