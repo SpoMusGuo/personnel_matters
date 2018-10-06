@@ -117,7 +117,7 @@
 			                                <TBODY>
 				                                <TR>
 				                                	<div class="add">
-				                                		<a href="${pageContext.request.contextPath }/train/addGood"><INPUT class=button id="add" type=button value=新增 name=add></a>
+				                                		<a href="${pageContext.request.contextPath }/train/addTrain"><INPUT class=button id="add" type=button value=新增 name=add></a>
 				                                	</div>
 					                                <div class="search">
 					                                    <img src="${pageContext.request.contextPath }/images/icon_search.gif">
