@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
-<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><TITLE>模板</TITLE>
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><TITLE>合同管理系统</TITLE>
     <META http-equiv=Content-Type content="text/html; charset=utf-8"><LINK
             href="${pageContext.request.contextPath }/css/index_body_Manage.css" type=text/css rel=stylesheet><LINK
             href="${pageContext.request.contextPath }/css/index_body_Style.css" type=text/css rel=stylesheet>
@@ -22,11 +22,11 @@
 				}else{
 					ul.css("visibility","visible");
 				}
-				
-				
 			})
 		})
-
+    	if("${deresult}" == "false"){
+    		alert("合同被锁定等因素会导致删除失败！请检查后重试！");
+    	}
 	</script>
     <SCRIPT language=javascript>
         function selectallbox()
@@ -95,7 +95,7 @@
 		                <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
 			                <div class="place">
 			                 	<TR>
-			                        <TD class=manageHead>当前位置：&gt;合同管理</TD>
+			                        <TD class=manageHead>当前位置：&gt;<a href="${pageContext.request.contextPath}/agreements/index">合同管理</a></TD>
 			                    </TR>
 			                    <TR>
 			                     	<TD height=1></TD>
@@ -110,15 +110,15 @@
 			                            <TABLE cellSpacing=0 cellPadding=2 border=0>
 			                                <TBODY>
 				                                <TR>
-				                                	<div class="add">
-				                                		<INPUT class=button id="add" type=button value=新增 name=add>
+				                                	<div>
+				                                		<!-- <button onclick="add()" class=button >新增</button> -->
+				                                		<button class=button ><a style="color: white;" href="${pageContext.request.contextPath}/agreements/newagreement">新增</a></button>
 				                                	</div>
-				                                	
 					                                <div class="search">
 					                                    <img src="${pageContext.request.contextPath }/images/icon_search.gif">
 					                                    <input name="txtSearch" type="text" size="30" id="txtSearch">
 					                                    <INPUT class=button id="search" type=button value=搜索 name=add>
-					                                    <a id="" href="" style="text-decoration: underline; color:black">查询条件...</a>
+					                                    <a id="" href="${pageContext.request.contextPath}/agreements/select" style="text-decoration: underline; color:black">查询条件...</a>
 					                                </div>
 				                                    <span id="lbl0" align="left" style="color:#FF9900;font-weight:bold;margin-left:40px;">[ 合同信息 ]</span>
 				                                 </TR>
@@ -163,8 +163,8 @@
 				                                    <TD>
 				                                    	<A class="open" href="javascript:showMenu()" target=_blank style="text-decoration: underline;">打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A> 
 				                                    	<ul style="visibility: hidden;">
-				                                    		<li><img></img><a href="#">修改</a></li>
-				                                    		<li><a href="#">删除</a></li>
+				                                    		<li><a href="${pageContext.request.contextPath}/agreements/details/${agreement.agreementno}">修改</a></li>
+				                                    		<li><a href="${pageContext.request.contextPath}/agreements/delete/${agreement.agreementno}">删除</a></li>
 				                                    		<c:if test="${agreement.status eq '未锁定' }">
 				                                    			<li><a href="${pageContext.request.contextPath}/agreements/lock/${agreement.agreementno}">上锁</a></li>
 				                                    		</c:if>
@@ -205,50 +205,47 @@
 			                          </TABLE>
 			                       </TD>
 			                   </TR>
-			                    <TR>
+			                   <TR>
 			                        <TD>
 				                        <SPAN id=pagelink>
-				           					 <DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">[<B>${fn:length(agreements) }</B>]条记录
-				                [${pagenum }]页 当前是[${startCount }-${endCount }]条 
-				                <c:if test="${startIndex > 1}">
-				                	[<A href="${pageContext.request.contextPath}/agreements/index/${pagenum-1 }">前一页</A>]
-				                </c:if>
-				                <span id="nox"></span>
-				                <script type="text/javascript">
-				                	var span = document.getElementById("nox");
-				                	var page = ${pagenum };
-				                	var nowpage = ${startIndex};
-				                	for(var i = 1; i <= page;i++){
-				                		if(i == nowpage){
-				                			var add = "<strong>"+i+"</strong>";
-				                			span.append(add);
-				                		}else{
-				                			span.append('<A href="${pageContext.request.contextPath}/agreements/index/'+ i +'">i</A>');
-				                		}
-				                	}
-				                </script>
-				                <c:if test="${startIndex < pagenum}">
-				                	[<A href="${pageContext.request.contextPath}/agreements/index/${pagenum+1 }">后一页</A>]
-				                </c:if>
-				                
-				                <SELECT id="select" onchange="change()">
-				                <option>第1页</option>
-				                </SELECT>
-				                <script type="text/javascript">
-				                	var select = document.getElementById("select");
-				                	var page = ${pagenum };
-				                	for(var j = 1;j <= page ; j++){
-				                		select.append("<OPTION value="+ j +">第"+ j +"页</OPTION>");
-				                	}
-				                	function change(){
-				                		function change(){
-				                			var index = select.options[select.selectedIndex].value;
-				                			var url = "${pageContext.request.contextPath}/agreements/index/"+ index;
-				                			window.location.href=url;
-				                		}
-				                	}
-				                </script>
-				             </DIV>
+				           					<DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">[<B>${length }</B>]条记录
+				                				[${pagenum }]页 当前是[${startCount }-${endCount }]条 
+								                <c:if test="${startIndex > 1}">
+								                	[<A href="${pageContext.request.contextPath}/agreements/index/${startIndex-1 }">前一页</A>]
+								                </c:if>
+								               	<c:forEach begin="1" end="${pagenum }" var="i">
+								               		<c:if test="${i == startIndex }">
+								               			<strong><c:out value="${i}"/></strong>
+								               		</c:if>
+								               		<c:if test="${i != startIndex }">
+								               			<A href="${pageContext.request.contextPath}/agreements/index/${i}"><c:out value="${i }" /></A>
+								               		</c:if>
+								               	</c:forEach>
+								                <c:if test="${startIndex < pagenum}">
+								                	[<A href="${pageContext.request.contextPath}/agreements/index/${startIndex+1 }">后一页</A>]
+								                </c:if>
+					                
+								                <SELECT id="select" onchange="change()">
+								                	<c:forEach begin="1" end="${pagenum}" var="i">
+														<c:if test="${i==startIndex}">
+													    	<OPTION value="${i}" selected>第<c:out value="${i}"/>页</OPTION> 
+													    </c:if>
+														<c:if test="${i!=startIndex}">
+													    	<OPTION value="${i}">第<c:out value="${i}"/>页</OPTION>
+														</c:if>								                	
+													</c:forEach>
+								                </SELECT>
+								                <script type="text/javascript">
+								                	var select = document.getElementById("select");
+								                	function change(){
+								                		var index = select.options[select.selectedIndex].value;
+								                		window.location.href="${pageContext.request.contextPath}/agreements/index/"+index;
+								                	}
+								                	function add(){
+			                                			window.location.href="${pageContext.request.contextPath}/agreements/details";
+			                                		}
+								                </script>
+				             				</DIV>
 				              			</SPAN>
 			             			</TD>
 			            		</TR>

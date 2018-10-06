@@ -13,7 +13,7 @@ public interface AgreementsService {
 	
 	public String updateAgreement(Agreements agreements);
 	
-	public void deleteAgreement(String agreementno);
+	public String deleteAgreement(String agreementno);
 	
 	public void insertAgreement(Agreements agreements);
 	

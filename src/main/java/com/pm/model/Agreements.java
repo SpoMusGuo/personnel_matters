@@ -1,7 +1,7 @@
 package com.pm.model;
 
-import java.util.Date;
 import java.math.BigDecimal;
+import java.sql.Date;
 /**
  * emp_name				员工姓名
  * emp_id				员工编号
@@ -44,7 +44,7 @@ public class Agreements {
 	private String atype;
 	private String regular;
 	private Date signdata;
-	private Double probation_period;
+	private String probation_period;
 	private Date probation_begindata;
 	private BigDecimal probation_sal;
 	private Date probation_overdata;
@@ -214,13 +214,13 @@ public class Agreements {
 	/**
 	 * @return the probation_period
 	 */
-	public Double getProbation_period() {
+	public String getProbation_period() {
 		return probation_period;
 	}
 	/**
 	 * @param probation_period the probation_period to set
 	 */
-	public void setProbation_period(Double probation_period) {
+	public void setProbation_period(String probation_period) {
 		this.probation_period = probation_period;
 	}
 	/**
@@ -355,6 +355,8 @@ public class Agreements {
 				+ signdata + ", probation_period=" + probation_period + ", probation_begindata=" + probation_begindata
 				+ ", probation_sal=" + probation_sal + ", probation_overdata=" + probation_overdata
 				+ ", agreementperiod=" + agreementperiod + ", starttime=" + starttime + ", regularsal=" + regularsal
-				+ ", endtime=" + endtime + ", documents=" + documents + ", notes=" + notes + ", status=" + status + "]";
+				+ ", endtime=" + endtime + ", documents=" + documents + ", notes=" + notes + ", status=" + status
+				+ "]";
 	}
+	
 }
