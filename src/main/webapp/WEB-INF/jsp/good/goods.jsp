@@ -26,8 +26,17 @@
 				}
 			})
 			$("#selectPage").change(function(){
-        	var index=$(this).children('option:selected').val(); 
-        	window.location.href='${pageContext.request.contextPath}/good/list/'+index;
+	        	var index=$(this).children('option:selected').val();
+	        	if("${type}"=="list"){
+	        		window.location.href='${pageContext.request.contextPath}/good/list/'+index;
+	        	}
+	        	if("${type}"=="like"){
+	        		window.location.href='${pageContext.request.contextPath}/good/likeGood/${value}/'+index;
+	        	}
+	        	if("${type}"=="strict"){
+	        		window.location.href='${pageContext.request.contextPath}/good/strict/'+index;
+	        	}
+        	
         	})
         	$("#chaxun").click(function(){
         		window.location.href='${pageContext.request.contextPath}/good/querychoose';
@@ -170,18 +179,42 @@
 								                	当前是[${pager.startindex+1}-${pager.startindex+pager.pagesize}]条 
 								                </c:if>		               		 
 								                <c:if test="${pager.pageindex!=1 }">
-				           				   			[<A href="${pageContext.request.contextPath}/good/list/${pager.pageindex-1}">前一页</A>]
+								    				<c:if test="${type=='list'}">
+								    					[<A href="${pageContext.request.contextPath}/good/list/${pager.pageindex-1}">前一页</A>]
+								    				</c:if>
+								    				<c:if test="${type=='like'}">
+								    					[<A href="${pageContext.request.contextPath}/good/likeGood/${value}/${pager.pageindex-1}">前一页</A>]
+								    				</c:if>
+								    				<c:if test="${type=='strict'}">
+								    					[<A href="${pageContext.request.contextPath}/good/strict/${pager.pageindex-1}">前一页</A>]
+								    				</c:if>					         				 
 				           				   		</c:if>
 								                <c:forEach begin="1" end="${pager.pagecount}" var="i">
 								                	<c:if test="${i==pager.pageindex}">
 								                		<B><c:out value="${i}"/></B> 
 								                	</c:if>
-								                	<c:if test="${i!=pager.pageindex}">
-								                		<A class="" href="${pageContext.request.contextPath}/good/list/${i}"><c:out value="${i}"/></A> 
+								                	<c:if test="${i!=pager.pageindex}">								                		
+														<c:if test="${type=='list'}">
+								    						<A class="" href="${pageContext.request.contextPath}/good/list/${i}"><c:out value="${i}"/></A> 
+									    				</c:if>
+									    				<c:if test="${type=='like'}">
+									    					[<A href="${pageContext.request.contextPath}/good/likeGood/${value}/${i}"><c:out value="${i}"/></A>]
+									    				</c:if>
+									    				<c:if test="${type=='strict'}">
+									    					[<A href="${pageContext.request.contextPath}/good/strict/${i}"><c:out value="${i}"/></A>]
+									    				</c:if>		                	
 								                	</c:if>								                	
 								                </c:forEach>
-								                <c:if test="${pager.pageindex!=pager.pagecount}">
-								                	[<A class="" href="${pageContext.request.contextPath}/good/list/${pager.pageindex+1}">后一页</A>]
+								                <c:if test="${pager.pageindex!=pager.pagecount}">								                	
+								                	<c:if test="${type=='list'}">
+								    					[<A class="" href="${pageContext.request.contextPath}/good/list/${pager.pageindex+1}">后一页</A>]
+								    				</c:if>
+								    				<c:if test="${type=='like'}">
+								    					[<A href="${pageContext.request.contextPath}/good/likeGood/${value}/${pager.pageindex+1}">后一页</A>]
+								    				</c:if>
+								    				<c:if test="${type=='strict'}">
+								    					[<A href="${pageContext.request.contextPath}/good/strict/${pager.pageindex+1}">后一页</A>]
+								    				</c:if>	
 								                </c:if>						             
 								                
 								                <SELECT id="selectPage">

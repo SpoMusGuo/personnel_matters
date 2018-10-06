@@ -51,6 +51,7 @@ public class GoodCtrl {
 		pager.setRecords(records);
 		pager.setDatas(goodService.listPager(pager));
 		model.addAttribute("pager", pager);
+		model.addAttribute("type", "list");
 		return "good/goods";
 	}
 	//新增物品 跳转添加商品页面
@@ -133,9 +134,10 @@ public class GoodCtrl {
 			pager.setRecords(records);
 			List<Good> list = new ArrayList<Good>();
 			pager.setDatas(list);
+			model.addAttribute("type", "like");
 			model.addAttribute("value", value);
 			model.addAttribute("pager", pager);
-			return "good/like";
+			return "good/goods";
 		}else {
 			int pagesize = 10;
 			int startindex=(pageindex-1)*pagesize;
@@ -154,9 +156,10 @@ public class GoodCtrl {
 				list.add(goodlist.get(i));
 			}
 			pager.setDatas(list);
+			model.addAttribute("type", "like");
 			model.addAttribute("value", value);
 			model.addAttribute("pager", pager);
-			return "good/like";
+			return "good/goods";
 		}
 	}
 	//删除物品
@@ -203,8 +206,9 @@ public class GoodCtrl {
 			pager.setRecords(records);
 			List<Good> list = new ArrayList<Good>();
 			pager.setDatas(list);
+			model.addAttribute("type", "strict");
 			model.addAttribute("pager", pager);
-			return "good/strict";
+			return "good/goods";
 		}else {
 			int pagesize = 10;
 			int startindex=0;
@@ -225,8 +229,9 @@ public class GoodCtrl {
 			pager.setDatas(list);
 			HttpSession session = request.getSession();
 			session.setAttribute("goodlist",goodlist);
+			model.addAttribute("type", "strict");
 			model.addAttribute("pager", pager);
-			return "good/strict";
+			return "good/goods";
 		}
 	}
 	//条件查询后的分页
@@ -249,8 +254,9 @@ public class GoodCtrl {
 			pager.setRecords(records);
 			List<Good> list = new ArrayList<Good>();
 			pager.setDatas(list);
+			model.addAttribute("type", "strict");
 			model.addAttribute("pager", pager);
-			return "good/strict";
+			return "good/goods";
 		}else {
 			int pagesize = 10;
 			int startindex=(pageindex-1)*pagesize;
@@ -269,8 +275,9 @@ public class GoodCtrl {
 				list.add(goodlist.get(i));
 			}
 			pager.setDatas(list);
+			model.addAttribute("type", "strict");
 			model.addAttribute("pager", pager);
-			return "good/strict";
+			return "good/goods";
 		}
 	}
 	@InitBinder  
