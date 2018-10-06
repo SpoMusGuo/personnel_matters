@@ -33,5 +33,9 @@ public class LoginCtrl {
 
 			return "index_head";
 		}
+		@RequestMapping("/quit")
+		public String quit() {
+			return "login";
+		}
 
 }
