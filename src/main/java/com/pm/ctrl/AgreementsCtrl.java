@@ -29,8 +29,6 @@ public class AgreementsCtrl {
 	@RequestMapping(value="/index")
 	public void getAgreements(AgreementsSelectRequirement agreementsSelectRequirement, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		agmsr = agreementsSelectRequirement;
-		System.out.println(agreementsSelectRequirement);
-		System.out.println(agreementsService.getAgreements(agreementsSelectRequirement));
 		List<Agreements> agreements  = agreementsService.getAgreements(agreementsSelectRequirement);
 		List<Agreements> newAgreements = null ;
 		request.setAttribute("length", agreements.size());
