@@ -116,20 +116,9 @@ A:hover {
 }
 .normal td a{
 	position:relative;
-	top:-5px;
+	top:0px;
 	color:black;
 	
-}
-.normal td ul{
-	padding:1px;
-	border: 1px solid #718bb7;
-	width:77px;
-	height:74px;
-	position:absolute;
-	top:5px;
-	left:-5px;
-	background-image:url(../images/menu.gif);
-	z-index:500;
 }
 .normal td ul li{
 	list-style-type:none;

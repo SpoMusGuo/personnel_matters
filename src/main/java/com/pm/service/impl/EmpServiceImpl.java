@@ -43,4 +43,22 @@ public class EmpServiceImpl implements EmpService {
 		return empMapper.queryEmpStrict(conditionList);
 	}
 
+	@Override
+	public void insertEmp(Emp emp) {
+		
+		empMapper.insertEmp(emp);
+	}
+
+	@Override
+	public void updateEmp(Emp emp) {
+		
+		empMapper.updateEmp(emp);
+	}
+
+	@Override
+	public void deleteEmp(int empId) {
+		
+		empMapper.deleteEmp(empId);
+	}
+
 }

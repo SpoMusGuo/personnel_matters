@@ -221,7 +221,7 @@ return true;
 
 		</select></td><td><input name="txtv1_6" type="text" id="txtv1_6" onchange="javascript:document.getElementById(&quot;txtv1_6_a&quot;).value=chkDateType(document.getElementById(&quot;txtv1_6&quot;).value)" style="border-style:None;" /><span id="cpv1_6" style="color:Red;display:none;">*</span><input name="txtv1_6_a" type="text" value="1" id="txtv1_6_a" style="display:none;" /></td><td><input name="txtv2_6" type="text" id="txtv2_6" onchange="javascript:document.getElementById(&quot;txtv2_6_a&quot;).value=chkDateType(document.getElementById(&quot;txtv2_6&quot;).value)" style="border-style:None;" /><span id="cpv2_6" style="color:Red;display:none;">*</span><input name="txtv2_6_a" type="text" value="1" id="txtv2_6_a" style="display:none;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_7" type="checkbox" value="    " name="chkAlias_7" /><label for="chkAlias_7">曾用名</label></td><td><select name="cboop1_7" id="cboop1_7">
+		<td style="white-space:nowrap;"><input id="chkAlias_7" type="checkbox" value="emp_used_name" name="chkAlias_7" /><label for="chkAlias_7">曾用名</label></td><td><select name="cboop1_7" id="cboop1_7">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -235,7 +235,7 @@ return true;
 
 		</select></td><td><input name="txtv1_7" type="text" id="txtv1_7" style="border-style:None;" /></td><td><input name="txtv2_7" type="text" id="txtv2_7" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_8" type="checkbox" value="    " name="chkAlias_8" /><label for="chkAlias_8">民族</label></td><td><select name="cboop1_8" id="cboop1_8">
+		<td style="white-space:nowrap;"><input id="chkAlias_8" type="checkbox" value="emp_nation" name="chkAlias_8" /><label for="chkAlias_8">民族</label></td><td><select name="cboop1_8" id="cboop1_8">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -249,7 +249,7 @@ return true;
 
 		</select></td><td><input name="txtv1_8" type="text" id="txtv1_8" style="border-style:None;" /></td><td><input name="txtv2_8" type="text" id="txtv2_8" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_9" type="checkbox" value="    " name="chkAlias_9" /><label for="chkAlias_9">年龄</label></td><td><select name="cboop1_9" id="cboop1_9">
+		<td style="white-space:nowrap;"><input id="chkAlias_9" type="checkbox" value="emp_age" name="chkAlias_9" /><label for="chkAlias_9">年龄</label></td><td><select name="cboop1_9" id="cboop1_9">
 			<option selected="selected" value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -263,7 +263,7 @@ return true;
 
 		</select></td><td><input name="txtv1_9" type="text" id="txtv1_9" style="border-style:None;" /><span id="cpv1_9" style="color:Red;display:none;">*</span></td><td><input name="txtv2_9" type="text" id="txtv2_9" style="border-style:None;" /><span id="cpv2_9" style="color:Red;display:none;">*</span></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_10" type="checkbox" value="    " name="chkAlias_10" /><label for="chkAlias_10">英文名</label></td><td><select name="cboop1_10" id="cboop1_10">
+		<td style="white-space:nowrap;"><input id="chkAlias_10" type="checkbox" value="emp_english_name" name="chkAlias_10" /><label for="chkAlias_10">英文名</label></td><td><select name="cboop1_10" id="cboop1_10">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -277,7 +277,7 @@ return true;
 
 		</select></td><td><input name="txtv1_10" type="text" id="txtv1_10" style="border-style:None;" /></td><td><input name="txtv2_10" type="text" id="txtv2_10" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_11" type="checkbox" value="    " name="chkAlias_11" /><label for="chkAlias_11">政治面貌</label></td><td><select name="cboop1_11" id="cboop1_11">
+		<td style="white-space:nowrap;"><input id="chkAlias_11" type="checkbox" value="emp_political_status" name="chkAlias_11" /><label for="chkAlias_11">政治面貌</label></td><td><select name="cboop1_11" id="cboop1_11">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -291,7 +291,7 @@ return true;
 
 		</select></td><td><input name="txtv1_11" type="text" id="txtv1_11" style="border-style:None;" /></td><td><input name="txtv2_11" type="text" id="txtv2_11" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_12" type="checkbox" value="    " name="chkAlias_12" /><label for="chkAlias_12">婚否</label></td><td><select name="cboop1_12" id="cboop1_12">
+		<td style="white-space:nowrap;"><input id="chkAlias_12" type="checkbox" value="emp_marriage" name="chkAlias_12" /><label for="chkAlias_12">婚否</label></td><td><select name="cboop1_12" id="cboop1_12">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -305,7 +305,7 @@ return true;
 
 		</select></td><td><input name="txtv1_12" type="text" id="txtv1_12" style="border-style:None;" /></td><td><input name="txtv2_12" type="text" id="txtv2_12" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_13" type="checkbox" value="    " name="chkAlias_13" /><label for="chkAlias_13">第一学历</label></td><td><select name="cboop1_13" id="cboop1_13">
+		<td style="white-space:nowrap;"><input id="chkAlias_13" type="checkbox" value="emp_education_st" name="chkAlias_13" /><label for="chkAlias_13">第一学历</label></td><td><select name="cboop1_13" id="cboop1_13">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -319,7 +319,7 @@ return true;
 
 		</select></td><td><input name="txtv1_13" type="text" id="txtv1_13" style="border-style:None;" /></td><td><input name="txtv2_13" type="text" id="txtv2_13" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_14" type="checkbox" value="    " name="chkAlias_14" /><label for="chkAlias_14">第一专业</label></td><td><select name="cboop1_14" id="cboop1_14">
+		<td style="white-space:nowrap;"><input id="chkAlias_14" type="checkbox" value="emp_major_st" name="chkAlias_14" /><label for="chkAlias_14">第一专业</label></td><td><select name="cboop1_14" id="cboop1_14">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -333,7 +333,7 @@ return true;
 
 		</select></td><td><input name="txtv1_14" type="text" id="txtv1_14" style="border-style:None;" /></td><td><input name="txtv2_14" type="text" id="txtv2_14" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_15" type="checkbox" value="    " name="chkAlias_15" /><label for="chkAlias_15">第一毕业院校</label></td><td><select name="cboop1_15" id="cboop1_15">
+		<td style="white-space:nowrap;"><input id="chkAlias_15" type="checkbox" value="emp_graduated_st" name="chkAlias_15" /><label for="chkAlias_15">第一毕业院校</label></td><td><select name="cboop1_15" id="cboop1_15">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -347,7 +347,7 @@ return true;
 
 		</select></td><td><input name="txtv1_15" type="text" id="txtv1_15" style="border-style:None;" /></td><td><input name="txtv2_15" type="text" id="txtv2_15" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_16" type="checkbox" value="    " name="chkAlias_16" /><label for="chkAlias_16">第二学历</label></td><td><select name="cboop1_16" id="cboop1_16">
+		<td style="white-space:nowrap;"><input id="chkAlias_16" type="checkbox" value="emp_education_nd" name="chkAlias_16" /><label for="chkAlias_16">第二学历</label></td><td><select name="cboop1_16" id="cboop1_16">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -361,7 +361,7 @@ return true;
 
 		</select></td><td><input name="txtv1_16" type="text" id="txtv1_16" style="border-style:None;" /></td><td><input name="txtv2_16" type="text" id="txtv2_16" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_17" type="checkbox" value="    " name="chkAlias_17" /><label for="chkAlias_17">第二专业</label></td><td><select name="cboop1_17" id="cboop1_17">
+		<td style="white-space:nowrap;"><input id="chkAlias_17" type="checkbox" value="emp_major_nd" name="chkAlias_17" /><label for="chkAlias_17">第二专业</label></td><td><select name="cboop1_17" id="cboop1_17">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -375,7 +375,7 @@ return true;
 
 		</select></td><td><input name="txtv1_17" type="text" id="txtv1_17" style="border-style:None;" /></td><td><input name="txtv2_17" type="text" id="txtv2_17" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_18" type="checkbox" value="    " name="chkAlias_18" /><label for="chkAlias_18">第二毕业院校</label></td><td><select name="cboop1_18" id="cboop1_18">
+		<td style="white-space:nowrap;"><input id="chkAlias_18" type="checkbox" value="emp_graduated_nd" name="chkAlias_18" /><label for="chkAlias_18">第二毕业院校</label></td><td><select name="cboop1_18" id="cboop1_18">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -389,7 +389,7 @@ return true;
 
 		</select></td><td><input name="txtv1_18" type="text" id="txtv1_18" style="border-style:None;" /></td><td><input name="txtv2_18" type="text" id="txtv2_18" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_19" type="checkbox" value="    " name="chkAlias_19" /><label for="chkAlias_19">学位</label></td><td><select name="cboop1_19" id="cboop1_19">
+		<td style="white-space:nowrap;"><input id="chkAlias_19" type="checkbox" value="emp_degree" name="chkAlias_19" /><label for="chkAlias_19">学位</label></td><td><select name="cboop1_19" id="cboop1_19">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -403,7 +403,7 @@ return true;
 
 		</select></td><td><input name="txtv1_19" type="text" id="txtv1_19" style="border-style:None;" /></td><td><input name="txtv2_19" type="text" id="txtv2_19" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_20" type="checkbox" value="    " name="chkAlias_20" /><label for="chkAlias_20">毕业时间</label></td><td><select name="cboop1_20" id="cboop1_20">
+		<td style="white-space:nowrap;"><input id="chkAlias_20" type="checkbox" value="emp_graduate_time" name="chkAlias_20" /><label for="chkAlias_20">毕业时间</label></td><td><select name="cboop1_20" id="cboop1_20">
 			<option selected="selected" value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -417,7 +417,8 @@ return true;
 
 		</select></td><td><input name="txtv1_20" type="text" id="txtv1_20" onchange="javascript:document.getElementById(&quot;txtv1_20_a&quot;).value=chkDateType(document.getElementById(&quot;txtv1_20&quot;).value)" style="border-style:None;" /><span id="cpv1_20" style="color:Red;display:none;">*</span><input name="txtv1_20_a" type="text" value="1" id="txtv1_20_a" style="display:none;" /></td><td><input name="txtv2_20" type="text" id="txtv2_20" onchange="javascript:document.getElementById(&quot;txtv2_20_a&quot;).value=chkDateType(document.getElementById(&quot;txtv2_20&quot;).value)" style="border-style:None;" /><span id="cpv2_20" style="color:Red;display:none;">*</span><input name="txtv2_20_a" type="text" value="1" id="txtv2_20_a" style="display:none;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_21" type="checkbox" value="    " name="chkAlias_21" /><label for="chkAlias_21">电脑水平</label></td><td><select name="cboop1_21" id="cboop1_21">
+		<td style="white-space:nowrap;"><input id="chkAlias_21" type="checkbox" value="emp_computer_level" name="chkAlias_21" /><label for="chkAlias_21">电脑水平</label></td><td>
+		<select name="cboop1_21" id="cboop1_21">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -431,7 +432,7 @@ return true;
 
 		</select></td><td><input name="txtv1_21" type="text" id="txtv1_21" style="border-style:None;" /></td><td><input name="txtv2_21" type="text" id="txtv2_21" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_22" type="checkbox" value="    " name="chkAlias_22" /><label for="chkAlias_22">外语语种1</label></td><td><select name="cboop1_22" id="cboop1_22">
+		<td style="white-space:nowrap;"><input id="chkAlias_22" type="checkbox" value="emp_foreign_1" name="chkAlias_22" /><label for="chkAlias_22">外语语种1</label></td><td><select name="cboop1_22" id="cboop1_22">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -445,7 +446,7 @@ return true;
 
 		</select></td><td><input name="txtv1_22" type="text" id="txtv1_22" style="border-style:None;" /></td><td><input name="txtv2_22" type="text" id="txtv2_22" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_23" type="checkbox" value="    " name="chkAlias_23" /><label for="chkAlias_23">外语语种2</label></td><td><select name="cboop1_23" id="cboop1_23">
+		<td style="white-space:nowrap;"><input id="chkAlias_23" type="checkbox" value="emp_foreign_2" name="chkAlias_23" /><label for="chkAlias_23">外语语种2</label></td><td><select name="cboop1_23" id="cboop1_23">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -459,7 +460,7 @@ return true;
 
 		</select></td><td><input name="txtv1_23" type="text" id="txtv1_23" style="border-style:None;" /></td><td><input name="txtv2_23" type="text" id="txtv2_23" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_24" type="checkbox" value="    " name="chkAlias_24" /><label for="chkAlias_24">外语语种3</label></td><td><select name="cboop1_24" id="cboop1_24">
+		<td style="white-space:nowrap;"><input id="chkAlias_24" type="checkbox" value="emp_foreign_3" name="chkAlias_24" /><label for="chkAlias_24">外语语种3</label></td><td><select name="cboop1_24" id="cboop1_24">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -473,7 +474,7 @@ return true;
 
 		</select></td><td><input name="txtv1_24" type="text" id="txtv1_24" style="border-style:None;" /></td><td><input name="txtv2_24" type="text" id="txtv2_24" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_25" type="checkbox" value="    " name="chkAlias_25" /><label for="chkAlias_25">外语水平1</label></td><td><select name="cboop1_25" id="cboop1_25">
+		<td style="white-space:nowrap;"><input id="chkAlias_25" type="checkbox" value="emp_foreign_level_1" name="chkAlias_25" /><label for="chkAlias_25">外语水平1</label></td><td><select name="cboop1_25" id="cboop1_25">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -487,7 +488,7 @@ return true;
 
 		</select></td><td><input name="txtv1_25" type="text" id="txtv1_25" style="border-style:None;" /></td><td><input name="txtv2_25" type="text" id="txtv2_25" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_26" type="checkbox" value="    " name="chkAlias_26" /><label for="chkAlias_26">外语水平2</label></td><td><select name="cboop1_26" id="cboop1_26">
+		<td style="white-space:nowrap;"><input id="chkAlias_26" type="checkbox" value="emp_foreign_level_2" name="chkAlias_26" /><label for="chkAlias_26">外语水平2</label></td><td><select name="cboop1_26" id="cboop1_26">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -501,7 +502,7 @@ return true;
 
 		</select></td><td><input name="txtv1_26" type="text" id="txtv1_26" style="border-style:None;" /></td><td><input name="txtv2_26" type="text" id="txtv2_26" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_27" type="checkbox" value="    " name="chkAlias_27" /><label for="chkAlias_27">外语水平3</label></td><td><select name="cboop1_27" id="cboop1_27">
+		<td style="white-space:nowrap;"><input id="chkAlias_27" type="checkbox" value="emp_foreign_level_3" name="chkAlias_27" /><label for="chkAlias_27">外语水平3</label></td><td><select name="cboop1_27" id="cboop1_27">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -515,7 +516,7 @@ return true;
 
 		</select></td><td><input name="txtv1_27" type="text" id="txtv1_27" style="border-style:None;" /></td><td><input name="txtv2_27" type="text" id="txtv2_27" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_28" type="checkbox" value="    " name="chkAlias_28" /><label for="chkAlias_28">住房情况</label></td><td><select name="cboop1_28" id="cboop1_28">
+		<td style="white-space:nowrap;"><input id="chkAlias_28" type="checkbox" value="emp_apartment" name="chkAlias_28" /><label for="chkAlias_28">住房情况</label></td><td><select name="cboop1_28" id="cboop1_28">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -529,7 +530,7 @@ return true;
 
 		</select></td><td><input name="txtv1_28" type="text" id="txtv1_28" style="border-style:None;" /></td><td><input name="txtv2_28" type="text" id="txtv2_28" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_29" type="checkbox" value="    " name="chkAlias_29" /><label for="chkAlias_29">常住人口</label></td><td><select name="cboop1_29" id="cboop1_29">
+		<td style="white-space:nowrap;"><input id="chkAlias_29" type="checkbox" value="emp_inhabitant" name="chkAlias_29" /><label for="chkAlias_29">常住人口</label></td><td><select name="cboop1_29" id="cboop1_29">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -543,7 +544,7 @@ return true;
 
 		</select></td><td><input name="txtv1_29" type="text" id="txtv1_29" style="border-style:None;" /></td><td><input name="txtv2_29" type="text" id="txtv2_29" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_30" type="checkbox" value="    " name="chkAlias_30" /><label for="chkAlias_30">外籍人士</label></td><td><select name="cboop1_30" id="cboop1_30">
+		<td style="white-space:nowrap;"><input id="chkAlias_30" type="checkbox" value="emp_foreigners" name="chkAlias_30" /><label for="chkAlias_30">外籍人士</label></td><td><select name="cboop1_30" id="cboop1_30">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -557,7 +558,7 @@ return true;
 
 		</select></td><td><input name="txtv1_30" type="text" id="txtv1_30" style="border-style:None;" /></td><td><input name="txtv2_30" type="text" id="txtv2_30" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_31" type="checkbox" value="    " name="chkAlias_31" /><label for="chkAlias_31">联系电话</label></td><td><select name="cboop1_31" id="cboop1_31">
+		<td style="white-space:nowrap;"><input id="chkAlias_31" type="checkbox" value="emp_telphone" name="chkAlias_31" /><label for="chkAlias_31">联系电话</label></td><td><select name="cboop1_31" id="cboop1_31">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -571,7 +572,7 @@ return true;
 
 		</select></td><td><input name="txtv1_31" type="text" id="txtv1_31" style="border-style:None;" /></td><td><input name="txtv2_31" type="text" id="txtv2_31" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_32" type="checkbox" value="    " name="chkAlias_32" /><label for="chkAlias_32">手机号码</label></td><td><select name="cboop1_32" id="cboop1_32">
+		<td style="white-space:nowrap;"><input id="chkAlias_32" type="checkbox" value="emp_mobilephone" name="chkAlias_32" /><label for="chkAlias_32">手机号码</label></td><td><select name="cboop1_32" id="cboop1_32">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -585,7 +586,7 @@ return true;
 
 		</select></td><td><input name="txtv1_32" type="text" id="txtv1_32" style="border-style:None;" /></td><td><input name="txtv2_32" type="text" id="txtv2_32" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_33" type="checkbox" value="    " name="chkAlias_33" /><label for="chkAlias_33">电子邮件</label></td><td><select name="cboop1_33" id="cboop1_33">
+		<td style="white-space:nowrap;"><input id="chkAlias_33" type="checkbox" value="emp_email" name="chkAlias_33" /><label for="chkAlias_33">电子邮件</label></td><td><select name="cboop1_33" id="cboop1_33">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -599,7 +600,7 @@ return true;
 
 		</select></td><td><input name="txtv1_33" type="text" id="txtv1_33" style="border-style:None;" /></td><td><input name="txtv2_33" type="text" id="txtv2_33" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_34" type="checkbox" value="    " name="chkAlias_34" /><label for="chkAlias_34">家庭地址</label></td><td><select name="cboop1_34" id="cboop1_34">
+		<td style="white-space:nowrap;"><input id="chkAlias_34" type="checkbox" value="emp_home_address" name="chkAlias_34" /><label for="chkAlias_34">家庭地址</label></td><td><select name="cboop1_34" id="cboop1_34">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -613,7 +614,7 @@ return true;
 
 		</select></td><td><input name="txtv1_34" type="text" id="txtv1_34" style="border-style:None;" /></td><td><input name="txtv2_34" type="text" id="txtv2_34" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_35" type="checkbox" value="    " name="chkAlias_35" /><label for="chkAlias_35">特长</label></td><td><select name="cboop1_35" id="cboop1_35">
+		<td style="white-space:nowrap;"><input id="chkAlias_35" type="checkbox" value="emp_speciality" name="chkAlias_35" /><label for="chkAlias_35">特长</label></td><td><select name="cboop1_35" id="cboop1_35">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -627,7 +628,7 @@ return true;
 
 		</select></td><td><input name="txtv1_35" type="text" id="txtv1_35" style="border-style:None;" /></td><td><input name="txtv2_35" type="text" id="txtv2_35" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_36" type="checkbox" value="    " name="chkAlias_36" /><label for="chkAlias_36">所属部门</label></td><td><select name="cboop1_36" id="cboop1_36">
+		<td style="white-space:nowrap;"><input id="chkAlias_36" type="checkbox" value="emp_department" name="chkAlias_36" /><label for="chkAlias_36">所属部门</label></td><td><select name="cboop1_36" id="cboop1_36">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -641,7 +642,7 @@ return true;
 
 		</select></td><td><input name="txtv1_36" type="text" id="txtv1_36" style="border-style:None;" /></td><td><input name="txtv2_36" type="text" id="txtv2_36" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_37" type="checkbox" value="    " name="chkAlias_37" /><label for="chkAlias_37">职称</label></td><td><select name="cboop1_37" id="cboop1_37">
+		<td style="white-space:nowrap;"><input id="chkAlias_37" type="checkbox" value="emp_academic_title" name="chkAlias_37" /><label for="chkAlias_37">职称</label></td><td><select name="cboop1_37" id="cboop1_37">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -655,7 +656,7 @@ return true;
 
 		</select></td><td><input name="txtv1_37" type="text" id="txtv1_37" style="border-style:None;" /></td><td><input name="txtv2_37" type="text" id="txtv2_37" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_38" type="checkbox" value="    " name="chkAlias_38" /><label for="chkAlias_38">职务</label></td><td><select name="cboop1_38" id="cboop1_38">
+		<td style="white-space:nowrap;"><input id="chkAlias_38" type="checkbox" value="emp_job" name="chkAlias_38" /><label for="chkAlias_38">职务</label></td><td><select name="cboop1_38" id="cboop1_38">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -669,7 +670,7 @@ return true;
 
 		</select></td><td><input name="txtv1_38" type="text" id="txtv1_38" style="border-style:None;" /></td><td><input name="txtv2_38" type="text" id="txtv2_38" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_39" type="checkbox" value="    " name="chkAlias_39" /><label for="chkAlias_39">等级</label></td><td><select name="cboop1_39" id="cboop1_39">
+		<td style="white-space:nowrap;"><input id="chkAlias_39" type="checkbox" value="emp_grade" name="chkAlias_39" /><label for="chkAlias_39">等级</label></td><td><select name="cboop1_39" id="cboop1_39">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -683,7 +684,7 @@ return true;
 
 		</select></td><td><input name="txtv1_39" type="text" id="txtv1_39" style="border-style:None;" /></td><td><input name="txtv2_39" type="text" id="txtv2_39" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_40" type="checkbox" value="    " name="chkAlias_40" /><label for="chkAlias_40">在职类别</label></td><td><select name="cboop1_40" id="cboop1_40">
+		<td style="white-space:nowrap;"><input id="chkAlias_40" type="checkbox" value="emp_job_category" name="chkAlias_40" /><label for="chkAlias_40">在职类别</label></td><td><select name="cboop1_40" id="cboop1_40">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -697,7 +698,7 @@ return true;
 
 		</select></td><td><input name="txtv1_40" type="text" id="txtv1_40" style="border-style:None;" /></td><td><input name="txtv2_40" type="text" id="txtv2_40" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_41" type="checkbox" value="    " name="chkAlias_41" /><label for="chkAlias_41">工种</label></td><td><select name="cboop1_41" id="cboop1_41">
+		<td style="white-space:nowrap;"><input id="chkAlias_41" type="checkbox" value="emp_work_category" name="chkAlias_41" /><label for="chkAlias_41">工种</label></td><td><select name="cboop1_41" id="cboop1_41">
 			<option value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -711,7 +712,7 @@ return true;
 
 		</select></td><td><input name="txtv1_41" type="text" id="txtv1_41" style="border-style:None;" /></td><td><input name="txtv2_41" type="text" id="txtv2_41" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_42" type="checkbox" value="    " name="chkAlias_42" /><label for="chkAlias_42">参加工作时间</label></td><td><select name="cboop1_42" id="cboop1_42">
+		<td style="white-space:nowrap;"><input id="chkAlias_42" type="checkbox" value="emp_hiredate" name="chkAlias_42" /><label for="chkAlias_42">参加工作时间</label></td><td><select name="cboop1_42" id="cboop1_42">
 			<option selected="selected" value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -725,7 +726,7 @@ return true;
 
 		</select></td><td><input name="txtv1_42" type="text" id="txtv1_42" onchange="javascript:document.getElementById(&quot;txtv1_42_a&quot;).value=chkDateType(document.getElementById(&quot;txtv1_42&quot;).value)" style="border-style:None;" /><span id="cpv1_42" style="color:Red;display:none;">*</span><input name="txtv1_42_a" type="text" value="1" id="txtv1_42_a" style="display:none;" /></td><td><input name="txtv2_42" type="text" id="txtv2_42" onchange="javascript:document.getElementById(&quot;txtv2_42_a&quot;).value=chkDateType(document.getElementById(&quot;txtv2_42&quot;).value)" style="border-style:None;" /><span id="cpv2_42" style="color:Red;display:none;">*</span><input name="txtv2_42_a" type="text" value="1" id="txtv2_42_a" style="display:none;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_43" type="checkbox" value="    " name="chkAlias_43" /><label for="chkAlias_43">调入时间</label></td><td><select name="cboop1_43" id="cboop1_43">
+		<td style="white-space:nowrap;"><input id="chkAlias_43" type="checkbox" value="emp_transfer_time" name="chkAlias_43" /><label for="chkAlias_43">调入时间</label></td><td><select name="cboop1_43" id="cboop1_43">
 			<option selected="selected" value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -739,7 +740,7 @@ return true;
 
 		</select></td><td><input name="txtv1_43" type="text" id="txtv1_43" onchange="javascript:document.getElementById(&quot;txtv1_43_a&quot;).value=chkDateType(document.getElementById(&quot;txtv1_43&quot;).value)" style="border-style:None;" /><span id="cpv1_43" style="color:Red;display:none;">*</span><input name="txtv1_43_a" type="text" value="1" id="txtv1_43_a" style="display:none;" /></td><td><input name="txtv2_43" type="text" id="txtv2_43" onchange="javascript:document.getElementById(&quot;txtv2_43_a&quot;).value=chkDateType(document.getElementById(&quot;txtv2_43&quot;).value)" style="border-style:None;" /><span id="cpv2_43" style="color:Red;display:none;">*</span><input name="txtv2_43_a" type="text" value="1" id="txtv2_43_a" style="display:none;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_44" type="checkbox" value="    " name="chkAlias_44" /><label for="chkAlias_44">总工龄</label></td><td><select name="cboop1_44" id="cboop1_44">
+		<td style="white-space:nowrap;"><input id="chkAlias_44" type="checkbox" value="emp_sum_seniority" name="chkAlias_44" /><label for="chkAlias_44">总工龄</label></td><td><select name="cboop1_44" id="cboop1_44">
 			<option selected="selected" value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -753,7 +754,7 @@ return true;
 
 		</select></td><td><input name="txtv1_44" type="text" id="txtv1_44" style="border-style:None;" /><span id="cpv1_44" style="color:Red;display:none;">*</span></td><td><input name="txtv2_44" type="text" id="txtv2_44" style="border-style:None;" /><span id="cpv2_44" style="color:Red;display:none;">*</span></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_45" type="checkbox" value="    " name="chkAlias_45" /><label for="chkAlias_45">本单位工龄</label></td><td><select name="cboop1_45" id="cboop1_45">
+		<td style="white-space:nowrap;"><input id="chkAlias_45" type="checkbox" value="emp_unit_seniorty" name="chkAlias_45" /><label for="chkAlias_45">本单位工龄</label></td><td><select name="cboop1_45" id="cboop1_45">
 			<option selected="selected" value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -767,7 +768,7 @@ return true;
 
 		</select></td><td><input name="txtv1_45" type="text" id="txtv1_45" style="border-style:None;" /><span id="cpv1_45" style="color:Red;display:none;">*</span></td><td><input name="txtv2_45" type="text" id="txtv2_45" style="border-style:None;" /><span id="cpv2_45" style="color:Red;display:none;">*</span></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_46" type="checkbox" value="    " name="chkAlias_46" /><label for="chkAlias_46">银行帐号</label></td><td><select name="cboop1_46" id="cboop1_46">
+		<td style="white-space:nowrap;"><input id="chkAlias_46" type="checkbox" value="emp_bank_account" name="chkAlias_46" /><label for="chkAlias_46">银行帐号</label></td><td><select name="cboop1_46" id="cboop1_46">
 			<option value="=">=</option>
 			<option value="&lt;&gt;">&lt;&gt;</option>
 			<option value="&gt;">&gt;</option>
@@ -781,7 +782,7 @@ return true;
 
 		</select></td><td><input name="txtv1_46" type="text" id="txtv1_46" style="border-style:None;" /></td><td><input name="txtv2_46" type="text" id="txtv2_46" style="border-style:None;" /></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_47" type="checkbox" value="    " name="chkAlias_47" /><label for="chkAlias_47">基本工资</label></td><td><select name="cboop1_47" id="cboop1_47">
+		<td style="white-space:nowrap;"><input id="chkAlias_47" type="checkbox" value="emp_base_salary" name="chkAlias_47" /><label for="chkAlias_47">基本工资</label></td><td><select name="cboop1_47" id="cboop1_47">
 			<option selected="selected" value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
@@ -795,7 +796,7 @@ return true;
 
 		</select></td><td><input name="txtv1_47" type="text" id="txtv1_47" style="border-style:None;" /><span id="cpv1_47" style="color:Red;display:none;">*</span></td><td><input name="txtv2_47" type="text" id="txtv2_47" style="border-style:None;" /><span id="cpv2_47" style="color:Red;display:none;">*</span></td>
 	</tr><tr>
-		<td style="white-space:nowrap;"><input id="chkAlias_48" type="checkbox" value="    " name="chkAlias_48" /><label for="chkAlias_48">录入时间</label></td><td><select name="cboop1_48" id="cboop1_48">
+		<td style="white-space:nowrap;"><input id="chkAlias_48" type="checkbox" value="emp_register_time" name="chkAlias_48" /><label for="chkAlias_48">录入时间</label></td><td><select name="cboop1_48" id="cboop1_48">
 			<option selected="selected" value="=">=</option>
 			<option value="&lt;>">&lt;&gt;</option>
 			<option value=">">&gt;</option>
