@@ -57,19 +57,15 @@
                                             <TBODY>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2
-                                                                       href="#"
+                                                                       href="http://localhost:8080/personnel_matters/commonlyusedquery/driving/1"
                                                                        target=dmMain>－ 有驾照的员工</A></TD></TR>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2
-                                                                       href="#"
-                                                                       target=dmMain>－ 奖惩次数查询</A></TD></TR>
-                                            <TR>
-                                                <TD class=menuSmall><A class=style2
-                                                                       href="#"
+                                                                       href="http://localhost:8080/personnel_matters/commonlyusedquery/combination"
                                                                        target=dmMain>－ 员工信息组合条件查询</A></TD></TR>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2
-                                                                       href="#"
+                                                                       href="http://localhost:8080/personnel_matters/commonlyusedquery/contract/1"
                                                                        target=dmMain>－ 合同即将到期员工信息</A></TD></TR></TBODY></TABLE></TD></TR>
                                 <TR>
                                     <TD background=${pageContext.request.contextPath }/images/new_027.jpg height=1></TD></TR>
