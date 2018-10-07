@@ -145,7 +145,7 @@
                                             <TBODY>
                                             <TR>
                                                 <TD class=menuSmall><A class=style2
-                                                                       href="#"
+                                                                       href="${pageContext.request.contextPath}/agreements/index"
                                                                        target=dmMain>－ 合同信息</A></TD></TR>
 
                                             </TBODY>
