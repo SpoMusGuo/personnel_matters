@@ -11,4 +11,7 @@ public interface EmpService {
 	List<Emp> queryEmpList();
 	List<Emp> queryEmpVague(String keyword);
 	List<Emp> queryEmpStrict(List<Condition> conditionList);
+	void insertEmp(Emp emp);
+	void updateEmp(Emp emp);
+	void deleteEmp(int empId);
 }

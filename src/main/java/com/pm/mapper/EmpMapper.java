@@ -14,5 +14,7 @@ public interface EmpMapper {
 	List<Emp> queryEmpList();
 	List<Emp> queryEmpVague(String keyword);
 	List<Emp> queryEmpStrict(List<Condition> conditionList);
-	List<Emp> test(String empId);
+	void insertEmp(Emp emp);
+	void updateEmp(Emp emp);
+	void deleteEmp(int empId);
 }
