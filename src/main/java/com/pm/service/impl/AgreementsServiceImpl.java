@@ -15,7 +15,7 @@ public class AgreementsServiceImpl implements AgreementsService {
 	@Resource(name="agreementsMapper")
 	private com.pm.mapper.AgreementsMapper agreementsMapper;
 	
-	@Override
+	@Override 
 	public Agreements getAgreement(String agreementno) {
 		return agreementsMapper.getAgreement(agreementno);
 	}
@@ -37,10 +37,13 @@ public class AgreementsServiceImpl implements AgreementsService {
 	}
 
 	@Override
-	public void deleteAgreement(String agreementno) {
+	public String deleteAgreement(String agreementno) {
 		Agreements agreements2 =  agreementsMapper.getAgreement(agreementno);
 		if (agreements2.getStatus().equals("未锁定")) {
 			agreementsMapper.deleteAgreement(agreementno);
+			return "true";
+		}else {
+			return "false";
 		}
 	}
 
@@ -52,5 +55,10 @@ public class AgreementsServiceImpl implements AgreementsService {
 	@Override
 	public void updateAgreementLock(String agreementno) {
 		agreementsMapper.updateAgreementLock(agreementno);
+	}
+
+	@Override
+	public void updateAgreementUnLock(String agreementno) {
+		agreementsMapper.updateAgreementUnLock(agreementno);
 	}
 }

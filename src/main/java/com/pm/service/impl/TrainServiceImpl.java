@@ -2,7 +2,8 @@ package com.pm.service.impl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.pm.mapper.TrainMapper;
@@ -10,10 +11,10 @@ import com.pm.model.Pager;
 import com.pm.model.Train;
 import com.pm.service.TrainService;
 
-@Service
+@Service(value = "trainServiceImpl")
 public class TrainServiceImpl implements TrainService {
 
-	@Autowired
+	@Resource(name = "trainMapper")
 	private TrainMapper trainMapper;
 
 	@Override
@@ -49,11 +50,6 @@ public class TrainServiceImpl implements TrainService {
 	@Override
 	public int updateTrain(Train train_plan_name) {
 		return trainMapper.updateTrain(train_plan_name);
-	}
-
-	@Override
-	public int getCount(String train_plan_name) {
-		return trainMapper.getCount(train_plan_name);
 	}
 
 	@Override

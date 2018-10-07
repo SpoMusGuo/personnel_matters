@@ -1,16 +1,92 @@
-<%@page import="com.pm.model.Agreements"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<form action="">
-		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><TITLE>合同管理系统</TITLE>
+    <META http-equiv=Content-Type content="text/html; charset=utf-8"><LINK
+            href="${pageContext.request.contextPath }/css/index_body_Manage.css" type=text/css rel=stylesheet><LINK
+            href="${pageContext.request.contextPath }/css/index_body_Style.css" type=text/css rel=stylesheet>
+    <SCRIPT language=javascript src="${pageContext.request.contextPath }/js/FrameDiv.js"></SCRIPT>
+
+    <SCRIPT language=javascript src="${pageContext.request.contextPath }/js/Common.js"></SCRIPT>
+	
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var open = $(".open");
+			open.click(function(){
+				var ul = $(this).siblings("ul");
+				if(ul.css("visibility")=="visible"){
+					ul.css("visibility","hidden");
+				}else{
+					ul.css("visibility","visible");
+				}
+			})
+		})
+    	if("${deresult}" == "false"){
+    		alert("合同被锁定等因素会导致删除失败！请检查后重试！");
+    	}
+	</script>
+    <SCRIPT language=javascript>
+        function selectallbox()
+        {
+            var list = document.getElementsByName('setlist');
+            var listAllValue='';
+            if(document.getElementById('checkAll').checked)
+            {
+                for(var i=0;i<list.length;i++)
+                {
+                    list[i].checked = true;
+                    if(listAllValue=='')
+                        listAllValue=list[i].value;
+                    else
+                        listAllValue = listAllValue + ',' + list[i].value;
+                }
+                document.getElementById('boxListValue').value=listAllValue;
+            }
+            else
+            {
+                for(var i=0;i<list.length;i++)
+                {
+                    list[i].checked = false;
+                }
+                document.getElementById('boxListValue').value='';
+            }
+        }
+    </SCRIPT>
+
+    <META content="MSHTML 6.00.2900.3492" name=GENERATOR></HEAD>
+<BODY>
+	<FORM id=form1 name=form1 action=??? method=post>
+	    <SCRIPT type=text/javascript>
+	        //<![CDATA[
+	        var theForm = document.forms['form1'];
+	        if (!theForm) {
+	            theForm = document.form1;
+	        }
+	        function __doPostBack(eventTarget, eventArgument) {
+	            if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+	                theForm.__EVENTTARGET.value = eventTarget;
+	                theForm.__EVENTARGUMENT.value = eventArgument;
+	                theForm.submit();
+	            }
+	        }
+	        //]]>
+	    </SCRIPT>
+
+	    <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+	        <TBODY>
+		        <TR>
+		            <TD width=15><IMG src="${pageContext.request.contextPath }/images/new_019.jpg" border=0></TD>
+		            <TD width="100%" background=${pageContext.request.contextPath }/images/new_020.jpg height=20></TD>
+		            <TD width=15><IMG src="${pageContext.request.contextPath }/images/new_021.jpg"
+		                              border=0>
+		            </TD>
+		         </TR>
+	         </TBODY>
+	    </TABLE>
+	    <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 	        <TBODY>
 		        <TR>
 		            <TD width=15 background=${pageContext.request.contextPath }/images/new_022.jpg><IMG
@@ -19,7 +95,7 @@
 		                <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
 			                <div class="place">
 			                 	<TR>
-			                        <TD class=manageHead>当前位置：&gt;合同管理</TD>
+			                        <TD class=manageHead>当前位置：&gt;<a href="${pageContext.request.contextPath}/agreements/index">合同管理</a></TD>
 			                    </TR>
 			                    <TR>
 			                     	<TD height=1></TD>
@@ -34,18 +110,16 @@
 			                            <TABLE cellSpacing=0 cellPadding=2 border=0>
 			                                <TBODY>
 				                                <TR>
-				                                	<div class="add">
-				                                		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><INPUT class=button id="add" type=button value=新增 name=add>
+				                                	<div>
+				                                		<!-- <button onclick="add()" class=button >新增</button> -->
+				                                		<button class=button ><a style="color: white;" href="${pageContext.request.contextPath}/agreements/newagreement">新增</a></button>
 				                                	</div>
-				                                	<br />
 					                                <div class="search">
-					                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 					                                    <img src="${pageContext.request.contextPath }/images/icon_search.gif">
 					                                    <input name="txtSearch" type="text" size="30" id="txtSearch">
-					                                    <INPUT class=button id="add" type=button value=搜索 name=add>
-					                                    <a id="" href="" style="text-decoration: underline; color:black">查询条件...</a>
+					                                    <INPUT class=button id="search" type=button value=搜索 name=add>
+					                                    <a id="" href="${pageContext.request.contextPath}/agreements/select" style="text-decoration: underline; color:black">查询条件...</a>
 					                                </div>
-					                                 <br /> <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 				                                    <span id="lbl0" align="left" style="color:#FF9900;font-weight:bold;margin-left:40px;">[ 合同信息 ]</span>
 				                                 </TR>
 			                                 </TBODY>
@@ -54,11 +128,9 @@
 			                    </TR>
 			                    <TR>
 			                        <TD>
-			                        <br />
 			                            <TABLE id=grid cellSpacing=1 cellPadding=2 rules=all border=0>
 			                                <TBODY>
 			                                <TR class="title" tyle="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;">
-			                                    
 			                                    <TD style="width:48px;white-space:nowrap;font-size:20;color:#FF9900;"></TD>
 			                                    <TD>锁状态</TD>
 			                                    <TD>员工姓名</TD>
@@ -85,68 +157,95 @@
 			                                    <TD>合同文件</TD>
 			                                    <TD>合同备注</TD>
 			                                </TR>
-			                                <c:forEach items="${agreements }" var="agreements">
-			                               
-			                                <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none;height: 64px">
-			                                    <TD>
-			                                    	<A class="open" href="javascript:showMenu()" target=_blank style="text-decoration: underline;">打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A> 
-			                                    	<ul style="visibility: hidden;">
-			                                    		<li><img></img><a href="#">修改</a></li>
-			                                    		<li><a href="#">删除</a></li>
-			                                    		<li><a href="#">上锁</a></li>
-			                                    	</ul>
-			                                    </TD>
-			                                    <TD>${agreements.status }</TD>
-			                                    <TD>${agreements.emp_name }</TD>
-			                                    <TD>${agreements.emp_id }</TD>
-			                                    <TD>${agreements.emp_department }</TD>
-			                                    <TD>${agreements.emp_job }</TD>
-			                                    <TD>${agreements.emp_academic_title }</TD>
-			                                    <TD>${agreements.emp_work_category }</TD>
-			                                    <TD>${agreements.emp_grade }</TD>
-			                                    <TD>${agreements.emp_idnumber }</TD>
-			                                    <TD>${agreements.agreementno }</TD>
-			                                    <TD>${agreements.aname }</TD>
-			                                    <TD>${agreements.atype }</TD>
-			                                    <TD>${agreements.signdata }</TD>
-			                                    <TD>${agreements.probation_period }</TD>
-			                                    <TD>${agreements.probation_begindata }</TD>
-			                                    <TD>${agreements.probation_sal }</TD>
-			                                    <TD>${agreements.probation_overdata }</TD>
-			                                    <TD>${agreements.agreementperiod }</TD>
-			                                    <TD>${agreements.starttime }</TD>
-			                                    <TD>${agreements.regularsal }</TD>
-			                                    <TD>${agreements.endtime }</TD>
-			                                    <TD>${agreements.documents }</TD>
-			                                    <TD>${agreements.notes }</TD>
-			                                 </TR>
-			                                </c:forEach>
+			                                <c:forEach items="${agreements }" var="agreement">
+			                           
+				                                <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
+				                                    <TD>
+				                                    	<A class="open" href="javascript:showMenu()" target=_blank style="text-decoration: underline;">打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A> 
+				                                    	<ul style="visibility: hidden;">
+				                                    		<li><a href="${pageContext.request.contextPath}/agreements/details/${agreement.agreementno}">修改</a></li>
+				                                    		<li><a href="${pageContext.request.contextPath}/agreements/delete/${agreement.agreementno}">删除</a></li>
+				                                    		<c:if test="${agreement.status eq '未锁定' }">
+				                                    			<li><a href="${pageContext.request.contextPath}/agreements/lock/${agreement.agreementno}">上锁</a></li>
+				                                    		</c:if>
+				                                    		<c:if test="${agreement.status eq '已锁定' }">
+				                                    			<li><a href="${pageContext.request.contextPath}/agreements/unlock/${agreement.agreementno}">解锁</a></li>
+				                                    		</c:if>
+				                                    		
+				                                    	</ul>
+				                                    	
+				                                    </TD>
+				                                    <TD>${agreement.status }</TD>
+				                                    <TD>${agreement.emp_name }</TD>
+				                                    <TD>${agreement.emp_id }</TD>
+				                                    <TD>${agreement.emp_department }</TD>
+				                                    <TD>${agreement.emp_job }</TD>
+				                                    <TD>${agreement.emp_academic_title }</TD>
+				                                    <TD>${agreement.emp_work_category }</TD>
+				                                    <TD>${agreement.emp_grade }</TD>
+				                                    <TD>${agreement.emp_idnumber }</TD>
+				                                    <TD>${agreement.agreementno }</TD>
+				                                    <TD>${agreement.aname }</TD>
+				                                    <TD>${agreement.atype }</TD>
+				                                    <Td>${agreement.regular }</Td>
+				                                    <TD>${agreement.signdata }</TD>
+				                                    <TD>${agreement.probation_period }</TD>
+				                                    <TD>${agreement.probation_begindata }</TD>
+				                                    <TD>${agreement.probation_sal }</TD>
+				                                    <TD>${agreement.probation_overdata }</TD>
+				                                    <TD>${agreement.agreementperiod }</TD>
+				                                    <TD>${agreement.starttime }</TD>
+				                                    <TD>${agreement.regularsal }</TD>
+				                                    <TD>${agreement.endtime }</TD>
+				                                    <TD>${agreement.documents }</TD>
+				                                    <TD>${agreement.notes }</TD>
+				                                 </TR>
+			                                 </c:forEach>
 			                              </TBODY>
 			                          </TABLE>
 			                       </TD>
 			                   </TR>
-			                    <TR>
+			                   <TR>
 			                        <TD>
 				                        <SPAN id=pagelink>
-				           					 <DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">[<B>84</B>]条记录
-				                [6]页 当前是[46-60]条 [<A
-				                        href="#">前一页</A>]
-				                <A class=""
-				                   href="#">1</A>
-				                <A class=""
-				                   href="#">2</A>
-				                <A class=""
-				                   href="#">3</A>
-				                <B>4</B> 
-				                <A class="" href="#">5</A>
-				                <A class="" href="#">6</A>
-				                [<A class="" href="#">后一页</A>]
-				                <SELECT>
-				                <OPTION value=1>第1页</OPTION><OPTION value=2>第2页</OPTION>
-				                <OPTION value=3>第3页</OPTION><OPTION value=4 selected>第4页</OPTION>
-				                <OPTION value=5>第5页</OPTION><OPTION value=6>第6页</OPTION>
-				                </SELECT>
-				             </DIV>
+				           					<DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">[<B>${length }</B>]条记录
+				                				[${pagenum }]页 当前是[${startCount }-${endCount }]条 
+								                <c:if test="${startIndex > 1}">
+								                	[<A href="${pageContext.request.contextPath}/agreements/index/${startIndex-1 }">前一页</A>]
+								                </c:if>
+								               	<c:forEach begin="1" end="${pagenum }" var="i">
+								               		<c:if test="${i == startIndex }">
+								               			<strong><c:out value="${i}"/></strong>
+								               		</c:if>
+								               		<c:if test="${i != startIndex }">
+								               			<A href="${pageContext.request.contextPath}/agreements/index/${i}"><c:out value="${i }" /></A>
+								               		</c:if>
+								               	</c:forEach>
+								                <c:if test="${startIndex < pagenum}">
+								                	[<A href="${pageContext.request.contextPath}/agreements/index/${startIndex+1 }">后一页</A>]
+								                </c:if>
+					                
+								                <SELECT id="select" onchange="change()">
+								                	<c:forEach begin="1" end="${pagenum}" var="i">
+														<c:if test="${i==startIndex}">
+													    	<OPTION value="${i}" selected>第<c:out value="${i}"/>页</OPTION> 
+													    </c:if>
+														<c:if test="${i!=startIndex}">
+													    	<OPTION value="${i}">第<c:out value="${i}"/>页</OPTION>
+														</c:if>								                	
+													</c:forEach>
+								                </SELECT>
+								                <script type="text/javascript">
+								                	var select = document.getElementById("select");
+								                	function change(){
+								                		var index = select.options[select.selectedIndex].value;
+								                		window.location.href="${pageContext.request.contextPath}/agreements/index/"+index;
+								                	}
+								                	function add(){
+			                                			window.location.href="${pageContext.request.contextPath}/agreements/details";
+			                                		}
+								                </script>
+				             				</DIV>
 				              			</SPAN>
 			             			</TD>
 			            		</TR>
@@ -159,7 +258,18 @@
 		         </TR>
 	         </TBODY>
 	    </TABLE>
-	
-	</form>
-</body>
-</html>
+	    <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+	        <TBODY>
+		        <TR>
+		            <TD width=15><IMG src="${pageContext.request.contextPath }/images/new_024.jpg" border=0></TD>
+		            <TD align=middle width="100%" background=${pageContext.request.contextPath }/images/new_025.jpg
+		                height=15></TD>
+		            <TD width=15><IMG src="${pageContext.request.contextPath }/images/new_026.jpg"
+		                              border=0>
+		            </TD>
+		        </TR>
+	       	</TBODY>
+	    </TABLE>
+	</FORM>
+</BODY>
+</HTML>

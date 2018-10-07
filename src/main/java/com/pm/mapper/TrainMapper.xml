@@ -11,18 +11,15 @@
 	</select>
 	<!-- 查找某种类型培训 -->
 	<select id="listType" resultType="train" parameterType="String">
-		select *
-		from train where train_type=#{train_type}
+		select * from train where train_type=#{train_type}
 	</select>
 	<!-- 通过计划名称查找某个培训 -->
 	<select id="get" resultType="train" parameterType="String">
-		select * from
-		train where train_id=#{train_plan_name}
+		select * from train where train_id=#{train_plan_name}
 	</select>
 	<!-- 通过培训部门查找培训 -->
 	<select id="listName" resultType="train" parameterType="String">
-		select *
-		from train where train_name=#{train_sponsoring_dept}
+		select * from train where train_name=#{train_sponsoring_dept}
 	</select>
 
 	<!-- 插入新培训 -->
@@ -67,14 +64,8 @@
 		where train_plan_name=#{train_plan_name}
 	</update>
 
-	<!-- ??? -->
-	<select id="getCount" parameterType="String" resultType="int">
-		select
-		count(*) from train
-	</select>
 	<select id="listPager" resultType="train" parameterType="Pager">
-		select *
-		from train limit #{startindex},#{pagesize};
+		select * from train limit #{startindex},#{pagesize};
 	</select>
 	<select id="getRecords" resultType="int">
 		select count(*) from train
