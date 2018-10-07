@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>人员调动-新增</title>
+<title>人员离职-新增</title>
 <style>
 	img {
 		border: 0;
@@ -233,103 +233,32 @@
 </head>
 <body>
 <div class="pc-kk-form">
-	<h1 style="text-align: center; margin-bottom: 10px">人员调动表-新增</h1>
-	<form action="/personnel_matters/mobilizationToAdd">
-			<div class="pc-kk-form-list pc-kk-form-list-clear">
-			<div class="nice-text" >
-				<input type="text" placeholder="员工姓名" name="emp_name">
-			</div>
-			<div class="nice-text" style="float:right">
-				<input type="text" placeholder="员工编号" name="emp_id">
-			</div>
+	<h1 style="text-align: center; margin-bottom: 10px">人员离职表</h1>
+	<form action="/personnel_matters/turnoverToAdd">
+			<div class="pc-kk-form-list">
+			<input type="text" placeholder="员工编号" name="emp_id">
 		</div>
 		<div class="pc-kk-form-list">
 			<div class="nice-select" name="nice-select">
-				<input type="text" value="原部门" name="original_dept">
+				<input type="text" value="离职类型" name="turnover_type">
 				<ul>
-					<li data-value="技术支持部">技术支持部</li>
-					<li data-value="人力资源部">人力资源部</li>
-					<li data-value="行政部">行政部</li>
-					<li data-value="研发部">研发部</li>
-					<li data-value="销售部">销售部</li>
-					<li data-value="市场部">市场部</li>
-					<li data-value="财务部">财务部</li>
-					<li data-value="企管部">企管部</li>
+					<li data-value="技术支持部">辞退</li>
+					<li data-value="人力资源部">外修</li>
+					<li data-value="行政部">退休</li>
 				</ul>
 			</div>
 			
 		</div>
-		<div class="pc-kk-form-list">
-			<div class="nice-select" name="nice-select" >
-				<input type="text" value="原职务" name="original_post">
-				<ul>
-					<li data-value="总经理">总经理</li>
-					<li data-value="总经理助理">总经理助理</li>
-					<li data-value="主任">主任</li>
-					<li data-value="主任助理">主任助理</li>
-					<li data-value="项目经理">项目经理</li>
-					<li data-value="经理">经理</li>
-					<li data-value="经理助理">经理助理</li>
-					<li data-value="副经理">副经理</li>
-					<li data-value="普通职员">普通职员</li>
-				</ul>
-			</div>
-		</div>
-		<div class="pc-kk-form-list">
-			<div class="nice-select" name="nice-select">
-				<input type="text" value="新部门" name="new_dept">
-				<ul>
-					<li data-value="技术支持部">技术支持部</li>
-					<li data-value="人力资源部">人力资源部</li>
-					<li data-value="行政部">行政部</li>
-					<li data-value="研发部">研发部</li>
-					<li data-value="销售部">销售部</li>
-					<li data-value="市场部">市场部</li>
-					<li data-value="财务部">财务部</li>
-					<li data-value="企管部">企管部</li>
-				</ul>
-			</div>
-		</div>
-		<div class="pc-kk-form-list">
-			<div class="nice-select" name="nice-select">
-				<input type="text" value="新职务" name="new_post">
-				<ul>
-					<li data-value="总经理">总经理</li>
-					<li data-value="总经理助理">总经理助理</li>
-					<li data-value="主任">主任</li>
-					<li data-value="主任助理">主任助理</li>
-					<li data-value="项目经理">项目经理</li>
-					<li data-value="经理">经理</li>
-					<li data-value="经理助理">经理助理</li>
-					<li data-value="副经理">副经理</li>
-					<li data-value="普通职员">普通职员</li>
-				</ul>
-			</div>
-		</div>
-		<div class="pc-kk-form-list">
-			<input type="text" placeholder="新工资" name="new_sal">
-		</div>
-		<div class="pc-kk-form-list">
-			<div class="nice-select" name="nice-select">
-				<input type="text" value="调动类型" name="mobility_type" >
-				<ul>
-					<li data-value="晋升">晋升</li>
-					<li data-value="降级">降级</li>
-					<li data-value="平调">平调</li>
-					<li data-value="轮岗">轮岗</li>
-				</ul>
-			</div>
-		</div>
 		<div class="pc-kk-form-list pc-kk-form-list-clear">
 			<div class="nice-text1" >
-				调动时间
+				离职时间
 			</div>
 			<div class="nice-text2" style="float:right">
-				<input type="date" name="mobility_time">
+				<input type="date" name="turnover_time">
 			</div>
 		</div>
 		<div class="pc-kk-form-list" style="height:auto">
-			<textarea name="notes">备注信息</textarea>
+			<textarea name="turnover_notes">离职说明</textarea>
 		</div>
 		<div class="pc-kk-form-btn">
 			<button>提交</button>

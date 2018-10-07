@@ -26,7 +26,7 @@
 			
 			var add = $("#add");
 			add.click(function(){
-				window.location.href="/personnel_matters/mobilization_add";
+				window.location.href="/personnel_matters/turnover_add";
 			})
 			
 		})
@@ -137,39 +137,27 @@
 			                                    <TD style="width:28px;">全选</TD>
 			                                    <TD style="width:48px;white-space:nowrap;font-size:20;color:#FF9900;"></TD>
 			                                    <TD>锁状态</TD>
-			                                    <TD>员工姓名</TD>
 			                                    <TD>员工编号</TD>
-			                                    <TD>原部门</TD>
-			                                    <TD>原职务</TD>
-			                                    <TD>新部门</TD>
-			                                    <TD>新职务</TD>
-			                                    <TD>新工资</TD>
-			                                    <TD>调动类型</TD>
-			                                    <TD>调动时间</TD>
-			                                    <TD>备注信息</TD>
+			                                    <TD>离职类型</TD>
+			                                    <TD>离职时间</TD>
+			                                    <TD>离职说明</TD>
 			                                </TR>
-			                                <c:forEach items="${transfer}" var="taxGrade">
+			                                <c:forEach items="${turnover}" var="taxGrade">
 			                                	 <TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
 			                                    <TD style="width:28px;font-size:20;color:#FF9900;"><input name="" type="checkbox" id="" style="WIDTH: 28px"></TD>
 			                                    <TD>
 			                                    	<A class="open" href="javascript:" target=_blank style="text-decoration: underline;">打开<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A> 
 			                                    	<ul style="visibility: hidden;">
-			                                    		<li><img></img><a href="${pageContext.request.contextPath}/modifyTransfer/${taxGrade.mobility_id}">修改</a></li>
-			                                    		<li><a href="${pageContext.request.contextPath}/removeTransfer/${taxGrade.mobility_id}">删除</a></li>
+			                                    		<li><img></img><a href="${pageContext.request.contextPath}/modifyTurnover/${taxGrade.turnover_id}">修改</a></li>
+			                                    		<li><a href="${pageContext.request.contextPath}/removeTurnover/${taxGrade.turnover_id}">删除</a></li>
 			                                    		<li><a href="#">上锁</a></li>
 			                                    	</ul>
 			                                    </TD>
 			                                    <TD>        </TD>
-			                                    <TD>${taxGrade.emp_name}</TD>
 			                                    <TD>${taxGrade.emp_id}</TD>
-			                                    <TD>${taxGrade.original_dept}</TD>
-			                                    <TD>${taxGrade.original_post}</TD>
-			                                    <TD>${taxGrade.new_dept}</TD>
-			                                    <TD>${taxGrade.new_post}</TD>
-			                                    <TD>${taxGrade.new_sal}</TD>
-			                                    <TD>${taxGrade.mobility_type}</TD>
-			                                    <TD><fmt:formatDate value="${taxGrade.mobility_time}" pattern="yyyy-MM-dd"/></TD>
-			                                    <TD>${taxGrade.notes}</TD>
+			                                    <TD>${taxGrade.turnover_type}</TD>
+			                                    <TD><fmt:formatDate value="${taxGrade.turnover_time}" pattern="yyyy-MM-dd"/></TD>
+			                                    <TD>${taxGrade.turnover_notes}</TD>
 			                                 </TR>
 			                                </c:forEach>
 			                               
@@ -181,7 +169,7 @@
 			                    <TR>
 			                        <TD>
 				                        <SPAN id=pagelink>
-				           					 <DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">[<B>${transfer_sum}</B>]条记录
+				           					 <DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">[<B> ${turnover_sum}</B>]条记录
 				                [6]页 当前是[46-60]条 [<A
 				                        href="#">前一页</A>]
 				                <b>1</b>

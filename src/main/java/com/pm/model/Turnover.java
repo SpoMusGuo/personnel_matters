@@ -7,10 +7,13 @@ package com.pm.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Turnover {
 	private int turnover_id;
 	private int emp_id;
 	private String turnover_type;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date turnover_time;
 	private String turnover_notes;
 	public int getTurnover_id() {

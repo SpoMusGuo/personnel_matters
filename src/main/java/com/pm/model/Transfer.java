@@ -8,6 +8,8 @@ package com.pm.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Transfer {
 	private int mobility_id;
 	private int emp_id;
@@ -18,6 +20,7 @@ public class Transfer {
 	private String new_post;
 	private Double new_sal;
 	private String mobility_type;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date mobility_time;
 	private String notes;
 	public int getMobility_id() {

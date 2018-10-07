@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.pm.mapper.TurnoverMapper">
+  
+  <select id="getTurnoversByPage" parameterType="com.pm.model.Pager" resultType="Turnover">
+  		select * from employee_turnover ORDER BY emp_id LIMIT #{startindex},#{pagesize}
+  </select>
+  
+  <select id="getRecords" resultType="int">
+  		select count(emp_id) from employee_turnover
+  </select>
+  
+  <select id="queryRecords" parameterType="int" resultType="Emp">
+  	select emp_name as empName from emp where emp_id=#{empId}
+  </select>
+  
+  <select id="queryByEmpId" parameterType="int" resultType="Turnover" >
+  	select * from employee_turnover where emp_id=#{empId}
+  </select>
+  
+  <insert id="insertRecords" parameterType="Turnover">
+  		insert into employee_turnover values(null,#{emp_id},#{turnover_type},#{turnover_time},#{turnover_notes})
+  </insert>
+  
+  <delete id="removeEmp" parameterType="Turnover">
+  	delete from emp where emp_id = #{emp_id}
+  </delete>
+  
+  <select id="queryByTurnoverId" parameterType="int" resultType="Turnover">
+  	select * from employee_turnover where turnover_id = #{turnoverId}
+  </select>
+  
+  <update id="updateTurnover" parameterType="Turnover" >
+  	update employee_turnover set turnover_type = #{turnover_type},turnover_time=#{turnover_time},turnover_notes=#{turnover_notes} where emp_id=#{emp_id}
+  </update>
+  
+  <delete id="removeRecords" parameterType="int">
+  	delete from employee_turnover where turnover_id =#{turnoverId}
+  </delete>
+  
+  </mapper>
