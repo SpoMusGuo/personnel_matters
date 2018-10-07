@@ -269,10 +269,18 @@ public class PersonnelManageCtrl {
 	
 	
 	@RequestMapping("/remove_emp")
-	public String deleteEmp(String empId, Map<String, Object> map, String pageSize, String currentPage) {
+	public String deleteEmp(String empId, Map<String, Object> map, String pageSize, String currentPage, String keyword) {
 		
 		empservice.deleteEmp(Integer.parseInt(empId));
-		List<Emp> emps = empservice.queryEmpList();
+		
+		List<Emp> emps;
+		//	是否模糊查询
+		if(keyword == null || keyword.equals("")) {
+			emps = empservice.queryEmpList();
+		} else {
+			emps = empservice.queryEmpVague(keyword);
+		}
+		
 		map.put("EMPS", emps);
 		map.put("PAGING", this.getPaging(pageSize, currentPage, emps));
 		
