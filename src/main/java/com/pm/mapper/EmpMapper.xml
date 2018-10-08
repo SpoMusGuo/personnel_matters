@@ -64,6 +64,31 @@
   <select id="queryEmpList" resultMap="empResultMap">
     select * from emp
   </select>
+  
+  <insert id="insertEmp" parameterType="emp">
+      insert into emp values(#{empId},#{empIdNumber},#{empName},#{empNativePlace},#{empSex},#{empBirthday},#{empUsedName},#{empNation},#{empAge},#{empEnglishName},
+		#{empPoliticalStatus},#{empMarriage},#{empEducationSt},#{empMajorSt},#{empGraduatedSt},#{empEducationNd},#{empMajorNd},#{empGraduatedNd},#{empDegree},
+		#{empGraduateTime},#{empComputerLevel},#{empForeign1},#{empForeign2},#{empForeign3},#{empForeignLevel1},#{empForeignLevel2},#{empForeignLevel3},#{empApartment},	
+		#{empInhabitant},#{empForeigners},#{empTelphone},#{empMobilePhone},#{empEmail},#{empHomeAddress},#{empSpeciality},#{empDepartment},#{empAcademicTitle},
+		#{empJob},#{empGrade},#{empJobCategory},#{empWorkCategory},#{empHiredate},#{empTransferTime},#{empSumSeniorty},#{empUnitSeniorty},#{empBankAccount},
+		#{empBaseSalary},#{empRegisterTime},#{empPhoto})
+  </insert>
+  
+  <update id="updateEmp" parameterType="emp">
+      update emp set emp_idnumber=#{empIdNumber},emp_name=#{empName},emp_native_place=#{empNativePlace},emp_sex=#{empSex},
+      	emp_birthday=#{empBirthday},emp_used_name=#{empUsedName},emp_nation=#{empNation},emp_age=#{empAge},emp_english_name=#{empEnglishName},
+		emp_political_status=#{empPoliticalStatus},emp_marriage=#{empMarriage},emp_education_st=#{empEducationSt},emp_major_st=#{empMajorSt},emp_graduated_st=#{empGraduatedSt},
+		emp_education_nd=#{empEducationNd},emp_major_nd=#{empMajorNd},emp_graduated_nd=#{empGraduatedNd},emp_degree=#{empDegree},emp_graduate_time=#{empGraduateTime},
+		emp_computer_level=#{empComputerLevel},emp_foreign_1=#{empForeign1},emp_foreign_2=#{empForeign2},emp_foreign_3=#{empForeign3},emp_foreign_level_1=#{empForeignLevel1},
+		emp_foreign_level_2=#{empForeignLevel2},emp_foreign_level_3=#{empForeignLevel3},emp_apartment=#{empApartment},emp_inhabitant=#{empInhabitant},emp_foreigners=#{empForeigners},
+		emp_telphone=#{empTelphone},emp_mobilephone=#{empMobilePhone},emp_email=#{empEmail},emp_home_address=#{empHomeAddress},emp_speciality=#{empSpeciality},emp_department=#{empDepartment},emp_academic_title=#{empAcademicTitle},
+		emp_job=#{empJob},emp_grade=#{empGrade},emp_job_category=#{empJobCategory},emp_work_category=#{empWorkCategory},emp_hiredate=#{empHiredate},emp_transfer_time=#{empTransferTime},emp_sum_seniority=#{empSumSeniorty},emp_unit_seniorty=#{empUnitSeniorty},emp_bank_account=#{empBankAccount},
+		emp_base_salary=#{empBaseSalary},emp_register_time=#{empRegisterTime},emp_photo=#{empPhoto} where emp_id=#{empId}
+  </update>
+  
+  <delete id="deleteEmp" parameterType="int">
+      delete from emp where emp_id=#{empId}
+  </delete>
     
   <select id="queryEmpVague" resultMap="empResultMap" parameterType="String">
     select * from emp where locate(#{keyword}, emp_id)>0 OR
@@ -115,5 +140,218 @@
       locate(#{keyword}, emp_base_salary)>0 OR
       locate(#{keyword}, date_format(emp_register_time,"%Y-%m-%d"))>0
   </select>
+
+  <select id="queryEmpStrict" resultMap="empResultMap" parameterType="list">
+      select * from emp
+	      <where>
+	    	<foreach collection="list" item="condition" separator="AND">
+	    	    <choose>
+		    		<when test='condition.symbol == "="'>
+		    			<include refid="translate"></include> = #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "&lt;&gt;"'>
+		    			<include refid="translate"></include> != #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "&lt;"'>
+		    			<include refid="translate"></include> &lt; #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "&gt;"'>
+		    			<include refid="translate"></include> &gt; #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "&lt;="'>
+		    			<include refid="translate"></include> &lt;= #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "&gt;="'>
+		    			<include refid="translate"></include> &gt;= #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "between"'>
+		    			<include refid="translate"></include> between #{condition.parameter1} and #{condition.parameter2}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "like"'>
+		    			locate(#{condition.parameter1}, <include refid="translate"></include>)>0
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "is not null"'>
+		    			<include refid="translate"></include> is not null
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "is null"'>
+		    			<include refid="translate"></include> is null
+		   			</when>
+	   			</choose>
+	    	</foreach>
+	    </where>
+  </select>
   
+  <select id="test" resultMap="empResultMap" parameterType="String">
+      select * from emp where emp_id #{emp_id}
+  </select>
+    
+  <sql id="translate">
+      <choose>
+        <when test='condition.fieldName == "emp_id"'>
+   			emp_id
+   		</when>
+        <when test='condition.fieldName == "emp_idnumber"'>
+   			emp_idnumber
+   		</when>
+        <when test='condition.fieldName == "emp_native_place"'>
+   			emp_native_place
+   		</when>
+        <when test='condition.fieldName == "emp_sex"'>
+   			emp_sex
+   		</when>
+        <when test='condition.fieldName == "emp_birthday"'>
+   			emp_birthday
+   		</when>
+        <when test='condition.fieldName == "emp_name"'>
+   			emp_name
+   		</when>
+        <when test='condition.fieldName == "emp_used_name"'>
+   			emp_used_name
+   		</when>
+        <when test='condition.fieldName == "emp_nation"'>
+   			emp_nation
+   		</when>
+        <when test='condition.fieldName == "emp_age"'>
+   			emp_age
+   		</when>
+        <when test='condition.fieldName == "emp_english_name"'>
+   			emp_english_name
+   		</when>
+        <when test='condition.fieldName == "emp_political_status"'>
+   			emp_political_status
+   		</when>
+        <when test='condition.fieldName == "emp_marriage"'>
+   			emp_marriage
+   		</when>
+        <when test='condition.fieldName == "emp_education_st"'>
+   			emp_education_st
+   		</when>
+        <when test='condition.fieldName == "emp_major_st"'>
+   			emp_major_st
+   		</when>
+        <when test='condition.fieldName == "emp_graduated_st"'>
+   			emp_graduated_st
+   		</when>
+        <when test='condition.fieldName == "emp_education_nd"'>
+   			emp_education_nd
+   		</when>
+        <when test='condition.fieldName == "emp_major_nd"'>
+   			emp_major_nd
+   		</when>
+        <when test='condition.fieldName == "emp_graduated_nd"'>
+   			emp_graduated_nd
+   		</when>
+        <when test='condition.fieldName == "emp_degree"'>
+   			emp_degree
+   		</when>
+        <when test='condition.fieldName == "emp_graduate_time"'>
+   			emp_graduate_time
+   		</when>
+        <when test='condition.fieldName == "emp_computer_level"'>
+   			emp_computer_level
+   		</when>
+        <when test='condition.fieldName == "emp_foreign_1"'>
+   			emp_foreign_1
+   		</when>
+        <when test='condition.fieldName == "emp_foreign_2"'>
+   			emp_foreign_2
+   		</when>
+        <when test='condition.fieldName == "emp_foreign_3"'>
+   			emp_foreign_3
+   		</when>
+        <when test='condition.fieldName == "emp_foreign_level_1"'>
+   			emp_foreign_level_1
+   		</when>
+        <when test='condition.fieldName == "emp_foreign_level_2"'>
+   			emp_foreign_level_2
+   		</when>
+        <when test='condition.fieldName == "emp_foreign_level_3"'>
+   			emp_foreign_level_3
+   		</when>
+        <when test='condition.fieldName == "emp_apartment"'>
+   			emp_apartment
+   		</when>
+        <when test='condition.fieldName == "emp_inhabitant"'>
+   			emp_inhabitant
+   		</when>
+        <when test='condition.fieldName == "emp_foreigners"'>
+   			emp_foreigners
+   		</when>
+        <when test='condition.fieldName == "emp_telphone"'>
+   			emp_telphone
+   		</when>
+        <when test='condition.fieldName == "emp_mobilephone"'>
+   			emp_mobilephone
+   		</when>
+        <when test='condition.fieldName == "emp_email"'>
+   			emp_email
+   		</when>
+        <when test='condition.fieldName == "emp_home_address"'>
+   			emp_home_address
+   		</when>
+        <when test='condition.fieldName == "emp_speciality"'>
+   			emp_speciality
+   		</when>
+        <when test='condition.fieldName == "emp_department"'>
+   			emp_department
+   		</when>
+        <when test='condition.fieldName == "emp_academic_title"'>
+   			emp_academic_title
+   		</when>
+        <when test='condition.fieldName == "emp_job"'>
+   			emp_job
+   		</when>
+        <when test='condition.fieldName == "emp_grade"'>
+   			emp_grade
+   		</when>
+        <when test='condition.fieldName == "emp_job_category"'>
+   			emp_job_category
+   		</when>
+        <when test='condition.fieldName == "emp_work_category"'>
+   			emp_work_category
+   		</when>
+        <when test='condition.fieldName == "emp_hiredate"'>
+   			emp_hiredate
+   		</when>
+        <when test='condition.fieldName == "emp_transfer_time"'>
+   			emp_transfer_time
+   		</when>
+        <when test='condition.fieldName == "emp_sum_seniority"'>
+   			emp_sum_seniority
+   		</when>
+        <when test='condition.fieldName == "emp_unit_seniorty"'>
+   			emp_unit_seniorty
+   		</when>
+        <when test='condition.fieldName == "emp_bank_account"'>
+   			emp_bank_account
+   		</when>
+        <when test='condition.fieldName == "emp_base_salary"'>
+   			emp_base_salary
+   		</when>
+        <when test='condition.fieldName == "emp_register_time"'>
+   			emp_register_time
+   		</when>
+        <when test='condition.fieldName == "emp_photo"'>
+   			emp_photo
+   		</when>
+   	  </choose>
+  </sql>
 </mapper>

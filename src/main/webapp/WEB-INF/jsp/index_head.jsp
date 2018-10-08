@@ -21,7 +21,7 @@
                     <tr>
                         <td align=right height=35></td></tr>
                     <tr>
-                        <td height=35><a href="#" target=_top><font color=red><B>安全退出</B></font></a>
+                        <td height=35><a href="#" target=_all><font color=red><B><a href="${pageContext.request.contextPath }/quit" target="_all">安全退出<a></B></font></a>
                         </td></tr></tbody>
                     </TABLE>
                     </td>

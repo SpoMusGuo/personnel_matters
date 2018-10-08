@@ -4,9 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 
@@ -17,8 +20,11 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.pm.model.Condition;
+import com.pm.model.Emp;
 import com.pm.model.Good;
 import com.pm.model.Pager;
+import com.pm.model.Paging;
 import com.pm.service.GoodService;
 
 @RequestMapping("/good")
@@ -45,6 +51,7 @@ public class GoodCtrl {
 		pager.setRecords(records);
 		pager.setDatas(goodService.listPager(pager));
 		model.addAttribute("pager", pager);
+		model.addAttribute("type", "list");
 		return "good/goods";
 	}
 	//新增物品 跳转添加商品页面
@@ -127,9 +134,10 @@ public class GoodCtrl {
 			pager.setRecords(records);
 			List<Good> list = new ArrayList<Good>();
 			pager.setDatas(list);
+			model.addAttribute("type", "like");
 			model.addAttribute("value", value);
 			model.addAttribute("pager", pager);
-			return "good/like";
+			return "good/goods";
 		}else {
 			int pagesize = 10;
 			int startindex=(pageindex-1)*pagesize;
@@ -148,15 +156,90 @@ public class GoodCtrl {
 				list.add(goodlist.get(i));
 			}
 			pager.setDatas(list);
+			model.addAttribute("type", "like");
 			model.addAttribute("value", value);
 			model.addAttribute("pager", pager);
-			return "good/like";
+			return "good/goods";
 		}
 	}
-	//查询条件 按种类查询
-	@RequestMapping("/typeGood/{type}/{pageindex}")
-	public String typeGood(Model model,@PathVariable(value = "pageindex") int pageindex,@PathVariable(value = "type") String good_type) {
-		List<Good> goodlist=goodService.listType(good_type);
+	//删除物品
+	@RequestMapping("/querychoose")
+	public String querychoose() {
+		return "good/condition_good";
+	}
+	//条件查询（查询访问一次此控制层）
+	@RequestMapping("/queryGoodStrict")
+	public String queryGoodStrict(HttpServletRequest request,Model model) {
+		Map<Integer, String> conditions = new TreeMap<Integer, String>();
+		String chkAlias;
+		List<Condition> conditionList = new ArrayList<Condition>();
+		Condition condition = new Condition();
+		for(int i = 1; i < 9; i++) {
+			chkAlias = request.getParameter("chkAlias_" + i);
+			if(chkAlias != null) {
+				conditions.put(i, chkAlias);
+			}
+			chkAlias = null;
+		}
+		for(Map.Entry<Integer, String> entry: conditions.entrySet()) {
+			int i =  entry.getKey();
+			condition.setFieldName(entry.getValue());
+			condition.setParameter1(request.getParameter("txtv1_" + i));
+			condition.setParameter2(request.getParameter("txtv2_" + i));
+			condition.setSymbol(request.getParameter("cboop1_" + i));
+			conditionList.add(condition);
+			condition = new Condition();
+		}
+		List<Good> goodlist = goodService.queryGoodStrict(conditionList);
+		model.addAttribute("goodlist", goodlist);
+		Pager<Good> pager = new Pager<Good>();
+		if(goodlist.size()==0) {
+			int pageindex=1;
+			int pagesize =1;
+			int startindex=-1;
+			int records=0;
+			int pagecount=1;
+			pager.setPagesize(pagesize);
+			pager.setPageindex(pageindex);
+			pager.setStartindex(startindex);
+			pager.setPagecount(pagecount);
+			pager.setRecords(records);
+			List<Good> list = new ArrayList<Good>();
+			pager.setDatas(list);
+			model.addAttribute("type", "strict");
+			model.addAttribute("pager", pager);
+			return "good/goods";
+		}else {
+			int pagesize = 10;
+			int startindex=0;
+			int records=goodlist.size();
+			int pagecount=(int)Math.ceil((double)records/pagesize);
+			pager.setPagesize(pagesize);
+			pager.setPageindex(1);
+			pager.setStartindex(startindex);
+			pager.setPagecount(pagecount);
+			pager.setRecords(records);
+			List<Good> list = new ArrayList<Good>();
+			for(int i=startindex;i<(pagesize+startindex);i++) {
+				if(i>=records) {
+					break;
+				}
+				list.add(goodlist.get(i));
+			}
+			pager.setDatas(list);
+			HttpSession session = request.getSession();
+			session.setAttribute("goodlist",goodlist);
+			model.addAttribute("type", "strict");
+			model.addAttribute("pager", pager);
+			return "good/goods";
+		}
+	}
+	//条件查询后的分页
+	@RequestMapping("/strict/{pageindex}")
+	public String strict(HttpServletRequest request,Model model,@PathVariable(value = "pageindex") int pageindex) {
+		HttpSession session = request.getSession();
+		List<Good> goodlist=(List<Good>) session.getAttribute("goodlist");;
+		model.addAttribute("goodlist",goodlist);
 		Pager<Good> pager = new Pager<Good>();
 		if(goodlist.size()==0) {
 			pageindex=1;
@@ -171,9 +254,9 @@ public class GoodCtrl {
 			pager.setRecords(records);
 			List<Good> list = new ArrayList<Good>();
 			pager.setDatas(list);
-			model.addAttribute("value", good_type);
+			model.addAttribute("type", "strict");
 			model.addAttribute("pager", pager);
-			return "good/type";
+			return "good/goods";
 		}else {
 			int pagesize = 10;
 			int startindex=(pageindex-1)*pagesize;
@@ -192,9 +275,9 @@ public class GoodCtrl {
 				list.add(goodlist.get(i));
 			}
 			pager.setDatas(list);
-			model.addAttribute("value", good_type);
+			model.addAttribute("type", "strict");
 			model.addAttribute("pager", pager);
-			return "good/type";
+			return "good/goods";
 		}
 	}
 	@InitBinder  

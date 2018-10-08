@@ -17,23 +17,29 @@
 		$(function(){
 			var open = $(".open");
 			open.click(function(){
-				$(".open").siblings("ul").css("visibility","hidden");
 				var ul = $(this).siblings("ul");
-				if(ul.css("visibility")=="visible"){
-					ul.css("visibility","hidden");
-				}else{
+				if(ul.css("visibility")=="hidden"){
+					$(".open").siblings("ul").css("visibility","hidden");
 					ul.css("visibility","visible");
+				}else{
+					ul.css("visibility","hidden");
 				}
 			})
 			$("#selectPage").change(function(){
-        	var index=$(this).children('option:selected').val(); 
-        	window.location.href='${pageContext.request.contextPath}/good/list/'+index;
-        	})
-        	$("#close").click(function(){
-        		$("#chooseSelect").hide();
+	        	var index=$(this).children('option:selected').val();
+	        	if("${type}"=="list"){
+	        		window.location.href='${pageContext.request.contextPath}/good/list/'+index;
+	        	}
+	        	if("${type}"=="like"){
+	        		window.location.href='${pageContext.request.contextPath}/good/likeGood/${value}/'+index;
+	        	}
+	        	if("${type}"=="strict"){
+	        		window.location.href='${pageContext.request.contextPath}/good/strict/'+index;
+	        	}
+        	
         	})
         	$("#chaxun").click(function(){
-        		$("#chooseSelect").show();
+        		window.location.href='${pageContext.request.contextPath}/good/querychoose';
         	})
         	$("#search").click(function(){
         		var value=$("#txtSearch").val();
@@ -49,34 +55,6 @@
 		})
 
 	</script>
-    <SCRIPT language=javascript>
-        function selectallbox()
-        {
-            var list = document.getElementsByName('setlist');
-            var listAllValue='';
-            if(document.getElementById('checkAll').checked)
-            {
-                for(var i=0;i<list.length;i++)
-                {
-                    list[i].checked = true;
-                    if(listAllValue=='')
-                        listAllValue=list[i].value;
-                    else
-                        listAllValue = listAllValue + ',' + list[i].value;
-                }
-                document.getElementById('boxListValue').value=listAllValue;
-            }
-            else
-            {
-                for(var i=0;i<list.length;i++)
-                {
-                    list[i].checked = false;
-                }
-                document.getElementById('boxListValue').value='';
-            }
-        }
-        
-    </SCRIPT>
 	<SCRIPT type=text/javascript>
 	        var theForm = document.forms['form1'];
 	        if (!theForm) {
@@ -89,7 +67,7 @@
 	                theForm.submit();
 	            }
 	        }
-	    </SCRIPT>
+	</SCRIPT>
     <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </head>
 <body>
@@ -201,18 +179,42 @@
 								                	当前是[${pager.startindex+1}-${pager.startindex+pager.pagesize}]条 
 								                </c:if>		               		 
 								                <c:if test="${pager.pageindex!=1 }">
-				           				   			[<A href="${pageContext.request.contextPath}/good/list/${pager.pageindex-1}">前一页</A>]
+								    				<c:if test="${type=='list'}">
+								    					[<A href="${pageContext.request.contextPath}/good/list/${pager.pageindex-1}">前一页</A>]
+								    				</c:if>
+								    				<c:if test="${type=='like'}">
+								    					[<A href="${pageContext.request.contextPath}/good/likeGood/${value}/${pager.pageindex-1}">前一页</A>]
+								    				</c:if>
+								    				<c:if test="${type=='strict'}">
+								    					[<A href="${pageContext.request.contextPath}/good/strict/${pager.pageindex-1}">前一页</A>]
+								    				</c:if>					         				 
 				           				   		</c:if>
 								                <c:forEach begin="1" end="${pager.pagecount}" var="i">
 								                	<c:if test="${i==pager.pageindex}">
 								                		<B><c:out value="${i}"/></B> 
 								                	</c:if>
-								                	<c:if test="${i!=pager.pageindex}">
-								                		<A class="" href="${pageContext.request.contextPath}/good/list/${i}"><c:out value="${i}"/></A> 
+								                	<c:if test="${i!=pager.pageindex}">								                		
+														<c:if test="${type=='list'}">
+								    						<A class="" href="${pageContext.request.contextPath}/good/list/${i}"><c:out value="${i}"/></A> 
+									    				</c:if>
+									    				<c:if test="${type=='like'}">
+									    					[<A href="${pageContext.request.contextPath}/good/likeGood/${value}/${i}"><c:out value="${i}"/></A>]
+									    				</c:if>
+									    				<c:if test="${type=='strict'}">
+									    					[<A href="${pageContext.request.contextPath}/good/strict/${i}"><c:out value="${i}"/></A>]
+									    				</c:if>		                	
 								                	</c:if>								                	
 								                </c:forEach>
-								                <c:if test="${pager.pageindex!=pager.pagecount}">
-								                	[<A class="" href="${pageContext.request.contextPath}/good/list/${pager.pageindex+1}">后一页</A>]
+								                <c:if test="${pager.pageindex!=pager.pagecount}">								                	
+								                	<c:if test="${type=='list'}">
+								    					[<A class="" href="${pageContext.request.contextPath}/good/list/${pager.pageindex+1}">后一页</A>]
+								    				</c:if>
+								    				<c:if test="${type=='like'}">
+								    					[<A href="${pageContext.request.contextPath}/good/likeGood/${value}/${pager.pageindex+1}">后一页</A>]
+								    				</c:if>
+								    				<c:if test="${type=='strict'}">
+								    					[<A href="${pageContext.request.contextPath}/good/strict/${pager.pageindex+1}">后一页</A>]
+								    				</c:if>	
 								                </c:if>						             
 								                
 								                <SELECT id="selectPage">
@@ -249,27 +251,5 @@
 	       	</TBODY>
 	    </TABLE>
 	</FORM>
-	<div id="chooseSelect" style="width:150px;background-color:pink;padding:30px 50px 10px 60px;position:fixed;left:35%; top:10%; display:none">
-		<form>
-			<table border=1>
-				<tr>
-					<td>种类：</td>
-					<td>
-						<select id="selectType">
-							<option value ="电脑类">电脑类</option>
-						  	<option value ="文具类">文具类</option>
-						  	<option value="服装类">服装类</option>
-						  	<option value="饮料类">饮料类</option>
-						  	<option value="食品类">食品类</option>
-						  	<option value="汽车类">汽车类</option>	
-						</select>
-					</td>
-				</tr>
-			</table>
-			<br><br>
-			<input id="select_btn" type="button" value="查询">&nbsp;&nbsp;
-			<input id="close" type="reset" value="取消">
-		</form>	
-	</div>
 </body>
 </html>

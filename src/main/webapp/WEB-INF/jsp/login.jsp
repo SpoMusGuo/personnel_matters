@@ -5,7 +5,7 @@
 <HEAD id=Head1>
 	<TITLE>人力资源管理系统</TITLE>
     <META http-equiv=Content-Type content="text/html; charset=utf-8">
-    
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.min.js"></script>
     <STYLE type=text/css>BODY {
         FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: 宋体
     }
@@ -18,7 +18,7 @@
 </HEAD>
 <BODY>
 <FORM id=form1 name=form1
-      action="${pageContext.request.contextPath }/index" method=post onSubmit="return loginCheck()">
+      action="${pageContext.request.contextPath }/index" method=post onSubmit="return $.loginCheck()">
     <DIV id=UpdatePanel1>
         <DIV id=div1
              style="LEFT: 0px; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #0066ff"></DIV>
@@ -117,25 +117,34 @@
 
 </FORM>
 <script type="text/javascript">
-	function loginCheck(){
-		var form = document.getElementById("form1");
-		var userName = document.getElementById("txtName").value;
-		var userPassword = document.getElementById("txtPwd").value;
-		var cueUserName = document.getElementById("RequiredFieldValidator3");
-		var cueUserPassword = document.getElementById("RequiredFieldValidator4");
-		if(userName.trim().length==0||userPassword.trim().length==0){
-			cueUserName.style.visibility = "hidden";
-			cueUserPassword.style.visibility = "hidden";
-			if(userName.trim().length==0){
-				cueUserName.style.visibility = "visible";
+	$(function(){
+		$.loginCheck=function loginCheck(){
+			var form = document.getElementById("form1");
+			var userName = document.getElementById("txtName").value;
+			var userPassword = document.getElementById("txtPwd").value;
+			var cueUserName = document.getElementById("RequiredFieldValidator3");
+			var cueUserPassword = document.getElementById("RequiredFieldValidator4");
+			if(userName.trim().length==0||userPassword.trim().length==0){
+				cueUserName.style.visibility = "hidden";
+				cueUserPassword.style.visibility = "hidden";
+				if(userName.trim().length==0){
+					cueUserName.style.visibility = "visible";
+				}
+				if(userPassword.trim().length==0){
+					cueUserPassword.style.visibility = "visible";
+				}
+				return false;
 			}
-			if(userPassword.trim().length==0){
-				cueUserPassword.style.visibility = "visible";
+			var username=$("#txtName").val();
+			var password=$("#txtPwd").val();
+			if(username=='admin'&&password=="admin"){
+				return true;
+			}else{
+				alert("账号或密码输入错误");
+				return false;
 			}
-			return false;
 		}
-		return true; 
-	}
+	})
 </script>
 </BODY>
 </HTML>

@@ -15,10 +15,15 @@
 	<delete id="removeTaxGrade" parameterType="java.lang.Integer">
 		delete from taxgrade where taxgrade_grade=#{taxgrade_grade}
 	</delete>
+	<!--  通过关键字得到有该关键字的个人所得税条数-->
+	<select id="getSeacrhGradeCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+		select count(taxgrade_grade) from taxgrade where taxgrade_rate like "%"#{keyword}"%" or taxgrade_grade like "%"#{keyword}"%" or
+		 taxgrade_start like "%"#{keyword}"%" or taxgrade_end like "%"#{keyword}"%" or taxgrade_speed like "%"#{keyword}"%"
+	</select>
 	<!--  通过输入关键字搜索个人所得税设置-->
-	<select id="searchTaxGrades" parameterType="java.lang.String" resultType="taxGrade">
+	<select id="searchTaxGrades" resultType="taxGrade">
 		select * from taxgrade where taxgrade_rate like "%"#{keyword}"%" or taxgrade_grade like "%"#{keyword}"%" or
-		 taxgrade_start like "%"#{keyword}"%" or taxgrade_end like "%"#{keyword}"%" or taxgrade_speed like "%"#{keyword}"%";
+		 taxgrade_start like "%"#{keyword}"%" or taxgrade_end like "%"#{keyword}"%" or taxgrade_speed like "%"#{keyword}"%" limit #{pager.startindex},#{pager.pagesize};
 	</select>
 	<!--  修改个人所得税设置-->
 	<update id="updateTaxGrade" parameterType="taxGrade">
@@ -29,4 +34,76 @@
 	<select id="getTaxGrade" parameterType="java.lang.String" resultType="taxGrade">
 		select *from taxgrade where taxgrade_grade=#{taxgrade_grade}
 	</select>
+	<!--  增加一条税务信息-->
+	<insert id="addTaxGrade" parameterType="taxGrade">
+		insert into taxgrade values(#{taxgrade_grade},#{taxgrade_start},#{taxgrade_end},#{taxgrade_rate},#{taxgrade_speed})
+	</insert>
+	
+	<!--  判断是哪一个字段-->
+	<sql id="getFieldName">
+		<choose>
+			<when test='condition.fieldName=="taxgrade_grade"'>
+				taxgrade_grade
+			</when>
+			<when test='condition.fieldName=="taxgrade_start"'>
+				taxgrade_start
+			</when>
+			<when test='condition.fieldName=="taxgrade_end"'>
+				taxgrade_end
+			</when>
+			<when test='condition.fieldName=="taxgrade_rate"'>
+				taxgrade_rate
+			</when>
+			<when test='condition.fieldName=="taxgrade_speed"'>
+				taxgrade_speed
+			</when>
+		</choose>
+	</sql>
+	<!--  基于特殊条件查询-->
+	<select id="getSpecialTaxGrade" parameterType="java.util.List" resultType="taxGrade">
+		select *from taxgrade
+		<where>
+			<foreach collection="list" item="condition" separator="and">
+				<choose>
+				<!--  等于-->
+					<when test='condition.symbol=="="'>
+						<include refid="getFieldName"></include>=#{condition.parameter1}
+					</when>
+				<!--  不等于-->	
+					<when test='condition.symbol=="&lt;&gt;"'>
+						<include refid="getFieldName"></include>!=#{condition.parameter1}
+					</when>
+				<!--  小于-->
+					<when test='condition.symbol=="&lt;"'>
+						<include refid="getFieldName"></include>&lt;#{condition.parameter1}
+					</when>
+				<!--  大于-->
+					<when test='condition.symbol=="&gt;"'>
+						<include refid="getFieldName"></include>&gt;#{condition.parameter1}
+					</when>
+				<!--  小于等于-->
+					<when test='condition.symbol=="&lt;="'>
+						<include refid="getFieldName"></include>&lt;=#{condition.parameter1}
+					</when>
+				<!--  大于等于-->
+					<when test='condition.symbol=="&gt;="'>
+						<include refid="getFieldName"></include>&gt;=#{condition.parameter1}
+					</when>
+					<when test='condition.symbol=="between"'>
+						<include refid="getFieldName"></include> between #{condition.parameter1} and #{condition.parameter2}
+					</when>
+					<when test='condition.symbol=="like"'>
+						<include refid="getFieldName"></include> like #{condition.parameter1}
+					</when>
+					<when test='condition.symbol=="is not null"'>
+						<include refid="getFieldName"></include> is not null
+					</when>
+					<when test='condition.symbol=="null"'>
+						<include refid="getFieldName"></include> is null
+					</when>
+				</choose>
+			</foreach> 
+		</where>
+	</select>
+	
 </mapper>

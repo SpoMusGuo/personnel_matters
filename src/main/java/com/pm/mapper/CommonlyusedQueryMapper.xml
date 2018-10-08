@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.pm.mapper.CommonlyusedQueryMapper">
+ 	<!-- 查询驾驶证 -->
+ 	<select id="queryDriver" resultType="drivinglicenseQuery">
+		select e.emp_id,e.emp_name,e.emp_department,c.certificate_deadline from emp e,certificate c where e.emp_id = c.emp_id and c.certificate_type="驾驶证"
+ 	</select>
+ 	<!-- 查询到期合同 -->
+ 	<select id="queryContract" resultType="contractQuery">
+ 		select e.emp_id,e.emp_name,e.emp_department,a.agreementno,a.aname,a.atype,a.endtime from emp e,agreements a where e.emp_id=a.emp_id and 60>datediff(a.endtime,CURDATE())
+ 	</select>
+ 	<!-- 驾驶证分页 -->
+ 	<select id="listPager" resultType="drivinglicenseQuery" parameterType="Pager">
+		select * from (select e.emp_id,e.emp_name,e.emp_department,c.certificate_deadline from emp e,certificate c where e.emp_id = c.emp_id and c.certificate_type="驾驶证") as j limit #{startindex},#{pagesize};
+	</select>
+	<!-- 查询驾驶证信息的总数 -->
+	<select id="getRecords" resultType="int">
+		select count(*) from (select e.emp_id,e.emp_name,e.emp_department,c.certificate_deadline from emp e,certificate c where e.emp_id = c.emp_id and c.certificate_type="驾驶证") as j 
+	</select>
+	<!-- 合同到期分页查询 -->
+ 	<select id="listContractQueryPager" resultType="contractQuery" parameterType="Pager">
+		select * from (select e.emp_id,e.emp_name,e.emp_department,a.agreementno,a.aname,a.atype,a.endtime from emp e,agreements a where e.emp_id=a.emp_id and 60>datediff(a.endtime,CURDATE())) as a limit #{startindex},#{pagesize};
+	</select>
+	<!-- 查询到期合同的记录总数 -->
+	<select id="getContractQueryRecords" resultType="int">
+		select count(*) from (select e.emp_id,e.emp_name,e.emp_department,a.agreementno,a.aname,a.atype,a.endtime from emp e,agreements a where e.emp_id=a.emp_id and 60>datediff(a.endtime,CURDATE())) as a
+	</select>
+	<!-- 员工信息组合查询 -->
+	 <select id="combinationQuery" parameterType="emp" resultType="combinationQuery">
+        select emp_id,emp_name,emp_sex,emp_department,emp_academic_title,emp_job,emp_mobilephone,emp_age from emp
+        <!--where可以自动去掉条件中的第一个and  -->
+         <where>
+                <if test="empSex!=null and empSex!=''">
+                    and emp_sex=#{empSex}
+                </if>
+                <if test="empDepartment!=null and empDepartment!=''">
+                    and emp_department=#{empDepartment}
+                </if>
+                <if test="empAge!=null and empAge!='' and empAge!=0">
+                    and #{empAge}>emp_age
+                </if>
+                <if test="empEducationSt!=null and empEducationSt!=''">
+                    and emp_education_st=#{empEducationSt}
+                </if>
+                <if test="empMarriage!=null and empMarriage!=''">
+                    and emp_marriage=#{empMarriage}
+                </if>
+                
+        </where> 
+    </select>
+ </mapper>

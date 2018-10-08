@@ -24,8 +24,6 @@ public interface TrainMapper {
 
 	public int updateTrain(Train train_plan_name);// 修改培训信息
 
-	public int getCount(String train_plan_name);// 查看培训余量
-
 	public List<Train> listPager(Pager<Train> pager);// 分页查找培训
 
 	public int getRecords();// 查询总记录条数

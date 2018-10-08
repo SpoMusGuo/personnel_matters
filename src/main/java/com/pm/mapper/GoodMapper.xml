@@ -50,4 +50,103 @@
 		good_type like '%${value}%' or good_count like '%${value}%' or good_price like '%${value}%' or
 		good_repetory like '%${value}%' or date_format(good_register_date, '%Y-%m-%d') like '%${value}%' or good_notes like '%${value}%'
 	</select>
+	<sql id="translate">
+     	<choose>
+        	<when test='condition.fieldName == "good_id"'>
+   				good_id
+   			</when>
+   	  	</choose>
+   	  	<choose>
+        	<when test='condition.fieldName == "good_name"'>
+   				good_name
+   			</when>
+   	  	</choose>
+   	  	<choose>
+        	<when test='condition.fieldName == "good_type"'>
+   				good_type
+   			</when>
+   	  	</choose>
+   	  	<choose>
+        	<when test='condition.fieldName == "good_price"'>
+   				good_price
+   			</when>
+   	  	</choose>
+   	  	<choose>
+        	<when test='condition.fieldName == "good_count"'>
+   				good_count
+   			</when>
+   	  	</choose>
+   	  	<choose>
+        	<when test='condition.fieldName == "good_repetory"'>
+   				good_repetory
+   			</when>
+   	  	</choose>
+   	  	<choose>
+        	<when test='condition.fieldName == "good_register_date"'>
+   				good_register_date
+   			</when>
+   	  	</choose>
+   	  	<choose>
+        	<when test='condition.fieldName == "good_notes"'>
+   				good_notes
+   			</when>
+   	  	</choose>
+   	</sql>
+	<select id="queryGoodStrict" parameterType="list" resultType="good">
+		select * from good 
+		<where>
+			<foreach collection="list" item="condition" separator="and">
+				<choose>
+	    			<when test='condition.symbol == "="'>
+	    				<include refid="translate"></include> = #{condition.parameter1}
+	   				</when>
+   				</choose>
+   				<choose>
+		    		<when test='condition.symbol == "&lt;&gt;"'>
+		    			<include refid="translate"></include> != #{condition.parameter1}
+		   			</when>
+   				</choose>
+   				<choose>
+		    		<when test='condition.symbol == "&lt;"'>
+		    			<include refid="translate"></include> &lt; #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "&gt;"'>
+		    			<include refid="translate"></include> &gt; #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "&lt;="'>
+		    			<include refid="translate"></include> &lt;= #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "&gt;="'>
+		    			<include refid="translate"></include> &gt;= #{condition.parameter1}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "between"'>
+		    			<include refid="translate"></include> between #{condition.parameter1} and #{condition.parameter2}
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "like"'>
+		    			locate(#{condition.parameter1}, <include refid="translate"></include>)>0
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "is not null"'>
+		    			<include refid="translate"></include> is not null
+		   			</when>
+	   			</choose>
+	    	    <choose>
+		    		<when test='condition.symbol == "is null"'>
+		    			<include refid="translate"></include> is null
+		   			</when>
+	   			</choose>
+			</foreach>
+		</where>		
+	</select>
 </mapper>

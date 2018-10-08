@@ -113,10 +113,10 @@
 							                </tr>
 							                <tr class="normal">
 							                    <td id="onlyread" class="onlyread"><input name="taxgrade_grade" type="text" readonly="readonly" value="${ taxGrade.taxgrade_grade} "/></td>
-							                    <td class="active"><input name="taxgrade_start" type="text" value="${ taxGrade.taxgrade_start} "/></td>
-							                    <td class="active"><input name="taxgrade_end" type="text" value="${ taxGrade.taxgrade_end} "/></td>
-							                    <td class="active"><input name="taxgrade_rate" type="text" value="${ taxGrade.taxgrade_rate }"/></td>
-							                    <td class="active"><input name="taxgrade_speed" type="text" value="${ taxGrade.taxgrade_speed} "/></td>
+							                    <td class="active"><input name="taxgrade_start" type="number" value="${ taxGrade.taxgrade_start}"/></td>
+							                    <td class="active"><input name="taxgrade_end" type="number" value="${ taxGrade.taxgrade_end}"/></td>
+							                    <td class="active"><input name="taxgrade_rate" type="number" value="${ taxGrade.taxgrade_rate}" step="0.01"/></td>
+							                    <td class="active"><input name="taxgrade_speed" type="number" value="${ taxGrade.taxgrade_speed}"/></td>
 							                </tr>
 							                
 						            	</tbody>

@@ -7,15 +7,10 @@
 <HTML xmlns="http://www.w3.org/1999/xhtml">
 <HEAD>
 <TITLE>模板</TITLE>
-<META http-equiv=Content-Type content="text/html; charset=utf-8">
-<LINK
-	href="${pageContext.request.contextPath }/css/index_body_Manage.css"
-	type=text/css rel=stylesheet>
-<LINK
-	href="${pageContext.request.contextPath }/css/index_body_Style.css"
-	type=text/css rel=stylesheet>
-<LINK href="${pageContext.request.contextPath }/css/index_emp.css"
-	type=text/css rel=stylesheet>
+    <META http-equiv=Content-Type content="text/html; charset=utf-8"><LINK
+            href="${pageContext.request.contextPath }/css/index_body_Manage.css" type=text/css rel=stylesheet><LINK
+            href="${pageContext.request.contextPath }/css/index_body_Style.css" type=text/css rel=stylesheet>
+	<LINK href="${pageContext.request.contextPath }/css/index_emp.css" type=text/css rel=stylesheet>
 
 <SCRIPT language=javascript>
 	function selectallbox() {
@@ -42,7 +37,7 @@
 <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </HEAD>
 <BODY>
-	<FORM id=form1 name=form1 action=??? method=post>
+	<FORM id=form1 name=form1 action=??? method=post onkeydown="if(event.keyCode==13)return false;">
 		<SCRIPT type=text/javascript>
 			//<![CDATA[
 			var theForm = document.forms['form1'];
@@ -99,15 +94,15 @@
 											<TBODY>
 												<TR>
 													<div class="add">
-														<INPUT class=button id="add" type=button value=新增 name=add>
+														<INPUT class=button id="add" type=button value=新增 name=add onclick="add_emp()">
 													</div>
 
 													<div class="search">
-														<img
-															src="${pageContext.request.contextPath }/images/icon_search.gif">
-														<input name="txtSearch" type="text" size="30"
-															id="txtSearch"> <INPUT class=button id="add"
-															type=button value=搜索 name=add> <a id="" href=""
+														<img src="${pageContext.request.contextPath }/images/icon_search.gif">
+														<input type="text" size="30" id="txtSearch" value=${requestScope.KEYWORD }>
+														<INPUT class=button id="search_botton" onclick="search()"
+															type=button value=搜索 name=add> 
+														<a id="" href="search_condition"
 															style="text-decoration: underline; color: black">查询条件...</a>
 													</div>
 													<span id="lbl0" align="left"
@@ -126,6 +121,7 @@
 											<TBODY>
 												<TR
 													style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none; text-align: center;">
+													<TD style="white-space:nowrap;color:#FF9900;"></TD>
 													<TD>编号</TD>
 													<TD>身份证号</TD>
 													<TD>姓名</TD>
@@ -180,8 +176,13 @@
 												<c:forEach items="${requestScope.EMPS }" var="emp"
 													varStatus="status" begin="${pager.startIndex }"
 													end="${pager.startIndex + pager.pageSize - 1 }">
-													<TR
-														style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
+													<TR class="normal" style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
+														<TD>
+					                                    	<A class="open" href="javascript:" target=_blank style="text-decoration: none;">管理<img src="${pageContext.request.contextPath }/images/icon_xiaji.gif"></A> 
+					                                    	<ul style="visibility: hidden; height:49px;">
+					                                    		<li><img></img><a href="set_emp_view?empId=${emp.empId }">修改</a></li>
+					                                    		<li><a href="remove_emp?empId=${emp.empId }&keyword=${requestScope.KEYWORD }&currentPage=${pager.currentPage }">删除</a></li></ul>
+					                                    </TD>
 														<TD>${emp.empId }</TD>
 														<TD>${emp.empIdNumber }</TD>
 														<TD>${emp.empName }</TD>
@@ -236,10 +237,6 @@
 														<TD><fmt:formatDate value="${emp.empRegisterTime }"
 																pattern="yyyy-MM-dd HH:mm:ss" /></TD>
 														<TD>${emp.empPhoto }</TD>
-														<%-- <TD><A href="#" target=_blank>${request.emp.empId }</A></TD>
-	                                    <TD><IMG alt=申请通过 src="${pageContext.request.contextPath }/images/start.gif" border=0> </TD>
-	                                    <TD><INPUT id=setlist onClick="check(this,'boxListValue');"
-	                                               type=checkbox value=65 name=setlist> </TD> --%>
 													</TR>
 												</c:forEach>
 											</TBODY>
@@ -250,11 +247,33 @@
 									<TD><SPAN id=pagelink>
 											<div
 												style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right; position: fixed; right: 40px;">
-												[<B>${pager.sumRow }</B>]条记录 [${pager.sumPage }]页
-												当前是[${pager.startIndex + 1 }-${pager.startIndex + pager.pageSize }]条
+												[<B>${pager.sumRow }</B>]条记录 <B>[${pager.sumPage }</B>]页
+												当前是[ ${pager.startIndex + 1 }-
+												<c:choose>
+													<c:when test="${pager.currentPage == pager.sumPage }">
+														${pager.sumRow }
+													</c:when>
+													<c:otherwise>
+														${pager.startIndex + pager.pageSize }
+													</c:otherwise>
+												</c:choose>]
+												条
+												
+												<!-- 判断是什么查询 -->
+												<c:choose>
+													<c:when test="${requestScope.SEARCH == null }">
+														<c:set var="addr" value="index_emp"/>
+													</c:when>
+													<c:otherwise>
+														<c:set var="addr" value="search_strict"/>
+													</c:otherwise>
+												</c:choose>
+												
+												<!-- 选择页码 -->
 												<c:if test="${pager.currentPage != 1 }">
-													[<A href="index_emp?pageSize=15&currentPage=${pager.currentPage - 1}">前一页</A>]
+													[<A href="${addr }?keyword=${requestScope.KEYWORD }&currentPage=${pager.currentPage - 1}">前一页</A>]
 												</c:if>
+												
 												<c:forEach begin="1" end="${pager.sumPage }"
 													varStatus="status">
 													<c:choose>
@@ -262,15 +281,17 @@
 															<B>${status.index}</B>
 														</c:when>
 														<c:otherwise>
-															<A class=""
-																href="index_emp?pageSize=15&currentPage=${status.index}">${status.index}</A>
+															<A class="page_num"
+																href="${addr }?keyword=${requestScope.KEYWORD }&currentPage=${status.index}">${status.index}</A>
 														</c:otherwise>
 													</c:choose>
-
 												</c:forEach>
+												
 												<c:if test="${pager.currentPage != pager.sumPage }">
-													[<A class="" href="index_emp?pageSize=15&currentPage=${pager.currentPage + 1}">后一页</A>]
+													[<A class="" href="${addr }?keyword=${requestScope.KEYWORD }&currentPage=${pager.currentPage + 1}">后一页</A>]
 												</c:if>
+												
+												<!-- 下拉选择页码 -->
 												<SELECT id="pageSelect">
 													<c:forEach begin="1" end="${pager.sumPage }"
 														varStatus="status">
@@ -318,6 +339,20 @@
 	<SCRIPT language=javascript
 		src="${pageContext.request.contextPath }/js/Common.js"></SCRIPT>
 	<SCRIPT language=javascript
-		src="${pageContext.request.contextPath }/js/paging.js"></SCRIPT>
+		src="${pageContext.request.contextPath }/js/emp.js"></SCRIPT>
+		
+	<script type="text/javascript">
+		$(function(){
+			var open = $(".open");
+			open.click(function(){
+				var ul = $(this).siblings("ul");
+				if(ul.css("visibility")=="visible"){
+					ul.css("visibility","hidden");
+				}else{
+					ul.css("visibility","visible");
+				}
+			})
+		})
+	</script>
 </BODY>
 </HTML>

@@ -10,877 +10,856 @@
 	<select id="getAgreements" parameterType="agreementsSelectRequirement" resultType="agreements" >
 		select * from agreements 
 		<where>
-			<if test="emp_name != null">
+			<if test='emp_name != "null"'>
 				<choose>
-					<when test="semp_name == '='">
+					<when test="semp_name == '='.toString()">
 						emp_name = #{emp_name}
 					</when>
-					<when test="semp_name == '!='">
+					<when test="semp_name == '!='.toString()">
 						emp_name != #{emp_name}
 					</when>
-					<when test="semp_name == '>'">
+					<when test="semp_name == '>'.toString()">
 						emp_name &gt; #{emp_name}
 					</when>
-					<when test="semp_name == '>='">
+					<when test="semp_name == '>='.toString()">
 						emp_name &gt;= #{emp_name}
 					</when>
-					<when test="semp_name == '小于'">
+					<when test="semp_name == '&lt;'.toString()">
 						emp_name &lt; #{emp_name}
 					</when>
-					<when test="semp_name == '小于等于'">
+					<when test="semp_name == '&lt;='.toString()">
 						emp_name &lt;= #{emp_name}
 					</when>
-					<when test="semp_name == '介于'">
+					<when test="semp_name == '介于'.toString()">
 						emp_name between #{emp_name} and #{emp_name1}
 					</when>
-					<when test="semp_name == '形如'">
+					<when test="semp_name == '形如'.toString()">
 						emp_name like ${%emp_name%}
 					</when>
-					<when test="semp_name == '非空'">
+					<when test="semp_name == '有值'.toString()">
 					 	emp_name is not null
 					</when>
-					<when test="semp_name == '为空'">
+					<when test="semp_name == '无值'.toString()">
 						emp_name is null
 					</when>
-					<otherwise>
+					<!-- <otherwise>
 						emp_name is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="emp_id != null">
-				and
+			<if test='emp_id != "null"'>
 				<choose>
-					<when test="semp_id == '='">
-						emp_id = #{emp_id}
+					<when test="semp_id == '='.toString()">
+						and emp_id = #{emp_id}
 					</when>
-					<when test="semp_id == '!='">
-						emp_id != #{emp_id}
+					<when test="semp_id == '!='.toString()">
+						and emp_id != #{emp_id}
 					</when>
-					<when test="semp_id == '>'">
-						emp_id &gt; #{emp_id}
+					<when test="semp_id == '>'.toString()">
+						and emp_id &gt; #{emp_id}
 					</when>
-					<when test="semp_id == '>='">
-						emp_id &gt;= #{emp_id}
+					<when test="semp_id == '>='.toString()">
+						and emp_id &gt;= #{emp_id}
 					</when>
-					<when test="semp_id == '小于'">
-						emp_id &lt; #{emp_id}
+					<when test="semp_id == '&lt;'.toString()">
+						and emp_id &lt; #{emp_id}
 					</when>
-					<when test="semp_id == '小于等于'">
-						emp_id &lt;= #{emp_id}
+					<when test="semp_id == '&lt;='.toString()">
+						and emp_id &lt;= #{emp_id}
 					</when>
-					<when test="semp_id == '介于'">
-						emp_id between #{emp_id} and #{emp_id1}
+					<when test="semp_id == '介于'.toString()">
+						and emp_id between #{emp_id} and #{emp_id1}
 					</when>
-					<when test="semp_id == '形如'">
-						emp_id like ${%emp_id%}
+					<when test="semp_id == '形如'.toString()">
+						and emp_id like ${%emp_id%}
 					</when>
-					<when test="semp_id == '非空'">
-					 	emp_id is not null
+					<when test="semp_id == '有值'.toString()">
+					 	and emp_id is not null
 					</when>
-					<when test="semp_id == '为空'">
+					<when test="semp_id == '无值'.toString()">
+						and emp_id is null
+					</when>
+					<!-- <otherwise>
 						emp_id is null
-					</when>
-					<otherwise>
-						emp_id is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="emp_department != null">
-				and
+			<if test='emp_department != "null"'>
 				<choose>
-					<when test="semp_department == '='">
-						emp_department = #{emp_department}
+					<when test="semp_department == '='.toString()">
+						and emp_department = #{emp_department}
 					</when>
-					<when test="semp_department == '!='">
-						emp_department != #{emp_department}
+					<when test="semp_department == '!='.toString()">
+						and emp_department != #{emp_department}
 					</when>
-					<when test="semp_department == '>'">
-						emp_department &gt; #{emp_department}
+					<when test="semp_department == '>'.toString()">
+						and emp_department &gt; #{emp_department}
 					</when>
-					<when test="semp_department == '>='">
-						emp_department &gt;= #{emp_department}
+					<when test="semp_department == '>='.toString()">
+						and emp_department &gt;= #{emp_department}
 					</when>
-					<when test="semp_department == '小于'">
-						emp_department &lt; #{emp_department}
+					<when test="semp_department == '&lt;'.toString()">
+						and emp_department &lt; #{emp_department}
 					</when>
-					<when test="semp_department == '小于等于'">
-						emp_department &lt;= #{emp_department}
+					<when test="semp_department == '&lt;='.toString()">
+						and emp_department &lt;= #{emp_department}
 					</when>
-					<when test="semp_department == '介于'">
-						emp_department between #{emp_department} and #{emp_department1}
+					<when test="semp_department == '介于'.toString()">
+						and emp_department between #{emp_department} and #{emp_department1}
 					</when>
-					<when test="semp_department == '形如'">
-						emp_department like ${%emp_department%}
+					<when test="semp_department == '形如'.toString()">
+						and emp_department like ${%emp_department%}
 					</when>
-					<when test="semp_department == '非空'">
-					 	emp_department is not null
+					<when test="semp_department == '有值'.toString()">
+					 	and emp_department is not null
 					</when>
-					<when test="semp_department == '为空'">
+					<when test="semp_department == '无值'.toString()">
+						and emp_department is null
+					</when>
+					<!-- <otherwise>
 						emp_department is null
-					</when>
-					<otherwise>
-						emp_department is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="emp_job != null">
-				and
+			<if test='emp_job != "null"'>
 				<choose>
-					<when test="semp_job == '='">
-						emp_job = #{emp_job}
+					<when test="semp_job == '='.toString()">
+						and emp_job = #{emp_job}
 					</when>
-					<when test="semp_job == '!='">
-						emp_job != #{emp_job}
+					<when test="semp_job == '!='.toString()">
+						and emp_job != #{emp_job}
 					</when>
-					<when test="semp_job == '>'">
-						emp_job &gt; #{emp_job}
+					<when test="semp_job == '>'.toString()">
+						and emp_job &gt; #{emp_job}
 					</when>
-					<when test="semp_job == '>='">
-						emp_job &gt;= #{emp_job}
+					<when test="semp_job == '>='.toString()">
+						and emp_job &gt;= #{emp_job}
 					</when>
-					<when test="semp_job == '小于'">
-						emp_job &lt; #{emp_job}
+					<when test="semp_job == '&lt;'.toString()">
+						and emp_job &lt; #{emp_job}
 					</when>
-					<when test="semp_job == '小于等于'">
-						emp_job &lt;= #{emp_job}
+					<when test="semp_job == '&lt;='.toString()">
+						and emp_job &lt;= #{emp_job}
 					</when>
-					<when test="semp_job == '介于'">
-						emp_job between #{emp_job} and #{emp_job1}
+					<when test="semp_job == '介于'.toString()">
+						and emp_job between #{emp_job} and #{emp_job1}
 					</when>
-					<when test="semp_job == '形如'">
-						emp_job like ${%emp_job%}
+					<when test="semp_job == '形如'.toString()">
+						and emp_job like ${%emp_job%}
 					</when>
-					<when test="semp_job == '非空'">
-					 	emp_job is not null
+					<when test="semp_job == '有值'.toString()">
+					 	and emp_job is not null
 					</when>
-					<when test="semp_job == '为空'">
+					<when test="semp_job == '无值'.toString()">
+						and emp_job is null
+					</when>
+					<!-- <otherwise>
 						emp_job is null
-					</when>
-					<otherwise>
-						emp_job is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="emp_academic_title != null">
-				and
+			<if test='emp_academic_title != "null"'>
 				<choose>
-					<when test="semp_academic_title == '='">
-						emp_academic_title = #{emp_academic_title}
+					<when test="semp_academic_title == '='.toString()">
+						and emp_academic_title = #{emp_academic_title}
 					</when>
-					<when test="semp_academic_title == '!='">
-						emp_academic_title != #{emp_academic_title}
+					<when test="semp_academic_title == '!='.toString()">
+						and emp_academic_title != #{emp_academic_title}
 					</when>
-					<when test="semp_academic_title == '>'">
-						emp_academic_title &gt; #{emp_academic_title}
+					<when test="semp_academic_title == '>'.toString()">
+						and emp_academic_title &gt; #{emp_academic_title}
 					</when>
-					<when test="semp_academic_title == '>='">
-						emp_academic_title &gt;= #{emp_academic_title}
+					<when test="semp_academic_title == '>='.toString()">
+						and emp_academic_title &gt;= #{emp_academic_title}
 					</when>
-					<when test="semp_academic_title == '小于'">
-						emp_academic_title &lt; #{emp_academic_title}
+					<when test="semp_academic_title == '&lt;'.toString()">
+						and emp_academic_title &lt; #{emp_academic_title}
 					</when>
-					<when test="semp_academic_title == '小于等于'">
-						emp_academic_title &lt;= #{emp_academic_title}
+					<when test="semp_academic_title == '&lt;='.toString()">
+						and emp_academic_title &lt;= #{emp_academic_title}
 					</when>
-					<when test="semp_academic_title == '介于'">
-						emp_academic_title between #{emp_academic_title} and #{emp_academic_title1}
+					<when test="semp_academic_title == '介于'.toString()">
+						and emp_academic_title between #{emp_academic_title} and #{emp_academic_title1}
 					</when>
-					<when test="semp_academic_title == '形如'">
-						emp_academic_title like ${%emp_academic_title%}
+					<when test="semp_academic_title == '形如'.toString()">
+						and emp_academic_title like ${%emp_academic_title%}
 					</when>
-					<when test="semp_academic_title == '非空'">
-					 	emp_academic_title is not null
+					<when test="semp_academic_title == '有值'.toString()">
+					 	and emp_academic_title is not null
 					</when>
-					<when test="semp_academic_title == '为空'">
+					<when test="semp_academic_title == '无值'.toString()">
+						and emp_academic_title is null
+					</when>
+					<!-- <otherwise>
 						emp_academic_title is null
-					</when>
-					<otherwise>
-						emp_academic_title is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="emp_work_category != null">
-				and
+			<if test='emp_work_category != "null"'>
 				<choose>
-					<when test="semp_work_category == '='">
-						emp_work_category = #{emp_work_category}
+					<when test="semp_work_category == '='.toString()">
+						and emp_work_category = #{emp_work_category}
 					</when>
-					<when test="semp_work_category == '!='">
-						emp_work_category != #{emp_work_category}
+					<when test="semp_work_category == '!='.toString()">
+						and emp_work_category != #{emp_work_category}
 					</when>
-					<when test="semp_work_category == '>'">
-						emp_work_category &gt; #{emp_work_category}
+					<when test="semp_work_category == '>'.toString()">
+						and emp_work_category &gt; #{emp_work_category}
 					</when>
-					<when test="semp_work_category == '>='">
-						emp_work_category &gt;= #{emp_work_category}
+					<when test="semp_work_category == '>='.toString()">
+						and emp_work_category &gt;= #{emp_work_category}
 					</when>
-					<when test="semp_work_category == '小于'">
-						emp_work_category &lt; #{emp_work_category}
+					<when test="semp_work_category == '&lt;'.toString()">
+						and emp_work_category &lt; #{emp_work_category}
 					</when>
-					<when test="semp_work_category == '小于等于'">
-						emp_work_category &lt;= #{emp_work_category}
+					<when test="semp_work_category == '&lt;='.toString()">
+						and emp_work_category &lt;= #{emp_work_category}
 					</when>
-					<when test="semp_work_category == '介于'">
-						emp_work_category between #{emp_work_category} and #{emp_work_category1}
+					<when test="semp_work_category == '介于'.toString()">
+						and emp_work_category between #{emp_work_category} and #{emp_work_category1}
 					</when>
-					<when test="semp_work_category == '形如'">
-						emp_work_category like ${%emp_work_category%}
+					<when test="semp_work_category == '形如'.toString()">
+						and emp_work_category like ${%emp_work_category%}
 					</when>
-					<when test="semp_work_category == '非空'">
-					 	emp_work_category is not null
+					<when test="semp_work_category == '有值'.toString()">
+					 	and emp_work_category is not null
 					</when>
-					<when test="semp_work_category == '为空'">
+					<when test="semp_work_category == '无值'.toString()">
+						and emp_work_category is null
+					</when>
+					<!-- <otherwise>
 						emp_work_category is null
-					</when>
-					<otherwise>
-						emp_work_category is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="emp_grade != null">
-				and
+			<if test='emp_grade != "null"'>
 				<choose>
-					<when test="semp_grade == '='">
-						emp_grade = #{emp_grade}
+					<when test="semp_grade == '='.toString()">
+						and emp_grade = #{emp_grade}
 					</when>
-					<when test="semp_grade == '!='">
-						emp_grade != #{emp_grade}
+					<when test="semp_grade == '!='.toString()">
+						and emp_grade != #{emp_grade}
 					</when>
-					<when test="semp_grade == '>'">
-						emp_grade &gt; #{emp_grade}
+					<when test="semp_grade == '>'.toString()">
+						and emp_grade &gt; #{emp_grade}
 					</when>
-					<when test="semp_grade == '>='">
-						emp_grade &gt;= #{emp_grade}
+					<when test="semp_grade == '>='.toString()">
+						and emp_grade &gt;= #{emp_grade}
 					</when>
-					<when test="semp_grade == '小于'">
-						emp_grade &lt; #{emp_grade}
+					<when test="semp_grade == '&lt;'.toString()">
+						and emp_grade &lt; #{emp_grade}
 					</when>
-					<when test="semp_grade == '小于等于'">
-						emp_grade &lt;= #{emp_grade}
+					<when test="semp_grade == '&lt;='.toString()">
+						and emp_grade &lt;= #{emp_grade}
 					</when>
-					<when test="semp_grade == '介于'">
-						emp_grade between #{emp_grade} and #{emp_grade1}
+					<when test="semp_grade == '介于'.toString()">
+						and emp_grade between #{emp_grade} and #{emp_grade1}
 					</when>
-					<when test="semp_grade == '形如'">
-						emp_grade like ${%emp_grade%}
+					<when test="semp_grade == '形如'.toString()">
+						and emp_grade like ${%emp_grade%}
 					</when>
-					<when test="semp_grade == '非空'">
-					 	emp_grade is not null
+					<when test="semp_grade == '有值'.toString()">
+					 	and emp_grade is not null
 					</when>
-					<when test="semp_grade == '为空'">
+					<when test="semp_grade == '无值'.toString()">
+						and emp_grade is null
+					</when>
+					<!-- <otherwise>
 						emp_grade is null
-					</when>
-					<otherwise>
-						emp_grade is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="emp_idnumber != null">
-				and
+			<if test='emp_idnumber != "null"'>
 				<choose>
-					<when test="semp_idnumber == '='">
-						emp_idnumber = #{emp_idnumber}
+					<when test="semp_idnumber == '='.toString()">
+						and emp_idnumber = #{emp_idnumber}
 					</when>
-					<when test="semp_idnumber == '!='">
-						emp_idnumber != #{emp_idnumber}
+					<when test="semp_idnumber == '!='.toString()">
+						and emp_idnumber != #{emp_idnumber}
 					</when>
-					<when test="semp_idnumber == '>'">
-						emp_idnumber &gt; #{emp_idnumber}
+					<when test="semp_idnumber == '>'.toString()">
+						and emp_idnumber &gt; #{emp_idnumber}
 					</when>
-					<when test="semp_idnumber == '>='">
-						emp_idnumber &gt;= #{emp_idnumber}
+					<when test="semp_idnumber == '>='.toString()">
+						and emp_idnumber &gt;= #{emp_idnumber}
 					</when>
-					<when test="semp_idnumber == '小于'">
-						emp_idnumber &lt; #{emp_idnumber}
+					<when test="semp_idnumber == '&lt;'.toString()">
+						and emp_idnumber &lt; #{emp_idnumber}
 					</when>
-					<when test="semp_idnumber == '小于等于'">
-						emp_idnumber &lt;= #{emp_idnumber}
+					<when test="semp_idnumber == '&lt;='.toString()">
+						and emp_idnumber &lt;= #{emp_idnumber}
 					</when>
-					<when test="semp_idnumber == '介于'">
-						emp_idnumber between #{emp_idnumber} and #{emp_idnumber1}
+					<when test="semp_idnumber == '介于'.toString()">
+						and emp_idnumber between #{emp_idnumber} and #{emp_idnumber1}
 					</when>
-					<when test="semp_idnumber == '形如'">
-						emp_idnumber like ${%emp_idnumber%}
+					<when test="semp_idnumber == '形如'.toString()">
+						and emp_idnumber like ${%emp_idnumber%}
 					</when>
-					<when test="semp_idnumber == '非空'">
-					 	emp_idnumber is not null
+					<when test="semp_idnumber == '有值'.toString()">
+					 	and emp_idnumber is not null
 					</when>
-					<when test="semp_idnumber == '为空'">
+					<when test="semp_idnumber == '无值'.toString()">
+						and emp_idnumber is null
+					</when>
+					<!-- <otherwise>
 						emp_idnumber is null
-					</when>
-					<otherwise>
-						emp_idnumber is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="agreementno != null">
-				and
+			<if test='agreementno != "null"'>
 				<choose>
-					<when test="sagreementno == '='">
-						agreementno = #{agreementno}
+					<when test="sagreementno == '='.toString()">
+						and agreementno = #{agreementno}
 					</when>
-					<when test="sagreementno == '!='">
-						agreementno != #{agreementno}
+					<when test="sagreementno == '!='.toString()">
+						and agreementno != #{agreementno}
 					</when>
-					<when test="sagreementno == '>'">
-						agreementno &gt; #{agreementno}
+					<when test="sagreementno == '>'.toString()">
+						and agreementno &gt; #{agreementno}
 					</when>
-					<when test="sagreementno == '>='">
-						agreementno &gt;= #{agreementno}
+					<when test="sagreementno == '>='.toString()">
+						and agreementno &gt;= #{agreementno}
 					</when>
-					<when test="sagreementno == '小于'">
-						agreementno &lt; #{agreementno}
+					<when test="sagreementno == '&lt;'.toString()">
+						and agreementno &lt; #{agreementno}
 					</when>
-					<when test="sagreementno == '小于等于'">
-						agreementno &lt;= #{agreementno}
+					<when test="sagreementno == '&lt;='.toString()">
+						and agreementno &lt;= #{agreementno}
 					</when>
-					<when test="sagreementno == '介于'">
-						agreementno between #{agreementno} and #{agreementno1}
+					<when test="sagreementno == '介于'.toString()">
+						and agreementno between #{agreementno} and #{agreementno1}
 					</when>
-					<when test="sagreementno == '形如'">
-						agreementno like ${%agreementno%}
+					<when test="sagreementno == '形如'.toString()">
+						and agreementno like ${%agreementno%}
 					</when>
-					<when test="sagreementno == '非空'">
-					 	agreementno is not null
+					<when test="sagreementno == '有值'.toString()">
+					 	and agreementno is not null
 					</when>
-					<when test="sagreementno == '为空'">
+					<when test="sagreementno == '无值'.toString()">
+						and agreementno is null
+					</when>
+					<!-- <otherwise>
 						agreementno is null
-					</when>
-					<otherwise>
-						agreementno is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="aname != null">
-				and
+			<if test='aname != "null"'>
 				<choose>
-					<when test="saname == '='">
-						aname = #{aname}
+					<when test="saname == '='.toString()">
+						and aname = #{aname}
 					</when>
-					<when test="saname == '!='">
-						aname != #{aname}
+					<when test="saname == '!='.toString()">
+						and aname != #{aname}
 					</when>
-					<when test="saname == '>'">
-						aname &gt; #{aname}
+					<when test="saname == '>'.toString()">
+						and aname &gt; #{aname}
 					</when>
-					<when test="saname == '>='">
-						aname &gt;= #{aname}
+					<when test="saname == '>='.toString()">
+						and aname &gt;= #{aname}
 					</when>
-					<when test="saname == '小于'">
-						aname &lt; #{aname}
+					<when test="saname == '&lt;'.toString()">
+						and aname &lt; #{aname}
 					</when>
-					<when test="saname == '小于等于'">
-						aname &lt;= #{aname}
+					<when test="saname == '&lt;='.toString()">
+						and aname &lt;= #{aname}
 					</when>
-					<when test="saname == '介于'">
-						aname between #{aname} and #{aname1}
+					<when test="saname == '介于'.toString()">
+						and aname between #{aname} and #{aname1}
 					</when>
-					<when test="saname == '形如'">
-						aname like ${%aname%}
+					<when test="saname == '形如'.toString()">
+						and aname like ${%aname%}
 					</when>
-					<when test="saname == '非空'">
-					 	aname is not null
+					<when test="saname == '有值'.toString()">
+					 	and aname is not null
 					</when>
-					<when test="saname == '为空'">
+					<when test="saname == '无值'.toString()">
+						and aname is null
+					</when>
+					<!-- <otherwise>
 						aname is null
-					</when>
-					<otherwise>
-						aname is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="atype != null">
-				and
+			<if test='atype != "null"'>
 				<choose>
-					<when test="satype == '='">
-						atype = #{atype}
+					<when test="satype == '='.toString()">
+						and atype = #{atype}
 					</when>
-					<when test="satype == '!='">
-						atype != #{atype}
+					<when test="satype == '!='.toString()">
+						and atype != #{atype}
 					</when>
-					<when test="satype == '>'">
-						atype &gt; #{atype}
+					<when test="satype == '>'.toString()">
+						and atype &gt; #{atype}
 					</when>
-					<when test="satype == '>='">
-						atype &gt;= #{atype}
+					<when test="satype == '>='.toString()">
+						and atype &gt;= #{atype}
 					</when>
-					<when test="satype == '小于'">
-						atype &lt; #{atype}
+					<when test="satype == '&lt;'.toString()">
+						and atype &lt; #{atype}
 					</when>
-					<when test="satype == '小于等于'">
-						atype &lt;= #{atype}
+					<when test="satype == '&lt;='.toString()">
+						and atype &lt;= #{atype}
 					</when>
-					<when test="satype == '介于'">
-						atype between #{atype} and #{atype1}
+					<when test="satype == '介于'.toString()">
+						and atype between #{atype} and #{atype1}
 					</when>
-					<when test="satype == '形如'">
-						atype like ${%atype%}
+					<when test="satype == '形如'.toString()">
+						and atype like ${%atype%}
 					</when>
-					<when test="satype == '非空'">
-					 	atype is not null
+					<when test="satype == '有值'.toString()">
+					 	and atype is not null
 					</when>
-					<when test="satype == '为空'">
+					<when test="satype == '无值'.toString()">
+						and atype is null
+					</when>
+					<!-- <otherwise>
 						atype is null
-					</when>
-					<otherwise>
-						atype is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="regular != null">
-				and
+			<if test='regular != "null"'>
 				<choose>
-					<when test="sregular == '='">
-						regular = #{regular}
+					<when test="sregular == '='.toString()">
+						and regular = #{regular}
 					</when>
-					<when test="sregular == '!='">
-						regular != #{regular}
+					<when test="sregular == '!='.toString()">
+						and regular != #{regular}
 					</when>
-					<when test="sregular == '>'">
-						regular &gt; #{regular}
+					<when test="sregular == '>'.toString()">
+						and regular &gt; #{regular}
 					</when>
-					<when test="sregular == '>='">
-						regular &gt;= #{regular}
+					<when test="sregular == '>='.toString()">
+						and regular &gt;= #{regular}
 					</when>
-					<when test="sregular == '小于'">
-						regular &lt; #{regular}
+					<when test="sregular == '&lt;'.toString()">
+						and regular &lt; #{regular}
 					</when>
-					<when test="sregular == '小于等于'">
-						regular &lt;= #{regular}
+					<when test="sregular == '&lt;='.toString()">
+						and regular &lt;= #{regular}
 					</when>
-					<when test="sregular == '介于'">
-						regular between #{regular} and #{regular1}
+					<when test="sregular == '介于'.toString()">
+						and regular between #{regular} and #{regular1}
 					</when>
-					<when test="sregular == '形如'">
-						regular like ${%regular%}
+					<when test="sregular == '形如'.toString()">
+						and regular like ${%regular%}
 					</when>
-					<when test="sregular == '非空'">
-					 	regular is not null
+					<when test="sregular == '有值'.toString()">
+					 	and regular is not null
 					</when>
-					<when test="sregular == '为空'">
+					<when test="sregular == '无值'.toString()">
+						and regular is null
+					</when>
+					<!-- <otherwise>
 						regular is null
-					</when>
-					<otherwise>
-						regular is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="signdata != null">
-				and
+			<if test='signdata != "null"'>
 				<choose>
-					<when test="ssigndata == '='">
-						signdata = #{signdata}
+					<when test="ssigndata == '='.toString()">
+						and signdata = #{signdata}
 					</when>
-					<when test="ssigndata == '!='">
-						signdata != #{signdata}
+					<when test="ssigndata == '!='.toString()">
+						and signdata != #{signdata}
 					</when>
-					<when test="ssigndata == '>'">
-						signdata &gt; #{signdata}
+					<when test="ssigndata == '>'.toString()">
+						and signdata &gt; #{signdata}
 					</when>
-					<when test="ssigndata == '>='">
-						signdata &gt;= #{signdata}
+					<when test="ssigndata == '>='.toString()">
+						and signdata &gt;= #{signdata}
 					</when>
-					<when test="ssigndata == '小于'">
-						signdata &lt; #{signdata}
+					<when test="ssigndata == '&lt;'.toString()">
+						and signdata &lt; #{signdata}
 					</when>
-					<when test="ssigndata == '小于等于'">
-						signdata &lt;= #{signdata}
+					<when test="ssigndata == '&lt;='.toString()">
+						and signdata &lt;= #{signdata}
 					</when>
-					<when test="ssigndata == '介于'">
-						signdata between #{signdata} and #{signdata1}
+					<when test="ssigndata == '介于'.toString()">
+						and signdata between #{signdata} and #{signdata1}
 					</when>
-					<when test="ssigndata == '形如'">
-						signdata like ${%signdata%}
+					<when test="ssigndata == '形如'.toString()">
+						and signdata like ${%signdata%}
 					</when>
-					<when test="ssigndata == '非空'">
-					 	signdata is not null
+					<when test="ssigndata == '有值'.toString()">
+					 	and signdata is not null
 					</when>
-					<when test="ssigndata == '为空'">
+					<when test="ssigndata == '无值'.toString()">
+						and signdata is null
+					</when>
+					<!-- <otherwise>
 						signdata is null
-					</when>
-					<otherwise>
-						signdata is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="probation_period != null">
-				and
+			<if test='probation_period != 0'>
 				<choose>
-					<when test="sprobation_period == '='">
-						probation_period = #{probation_period}
+					<when test="sprobation_period == '='.toString()">
+						and probation_period = #{probation_period}
 					</when>
-					<when test="sprobation_period == '!='">
-						probation_period != #{probation_period}
+					<when test="sprobation_period == '!='.toString()">
+						and probation_period != #{probation_period}
 					</when>
-					<when test="sprobation_period == '>'">
-						probation_period &gt; #{probation_period}
+					<when test="sprobation_period == '>'.toString()">
+						and probation_period &gt; #{probation_period}
 					</when>
-					<when test="sprobation_period == '>='">
-						probation_period &gt;= #{probation_period}
+					<when test="sprobation_period == '>='.toString()">
+						and probation_period &gt;= #{probation_period}
 					</when>
-					<when test="sprobation_period == '小于'">
-						probation_period &lt; #{probation_period}
+					<when test="sprobation_period == '&lt;'.toString()">
+						and probation_period &lt; #{probation_period}
 					</when>
-					<when test="sprobation_period == '小于等于'">
-						probation_period &lt;= #{probation_period}
+					<when test="sprobation_period == '&lt;='.toString()">
+						and probation_period &lt;= #{probation_period}
 					</when>
-					<when test="sprobation_period == '介于'">
-						probation_period between #{probation_period} and #{probation_period1}
+					<when test="sprobation_period == '介于'.toString()">
+						and probation_period between #{probation_period} and #{probation_period1}
 					</when>
-					<when test="sprobation_period == '形如'">
-						probation_period like ${%probation_period%}
+					<when test="sprobation_period == '形如'.toString()">
+						and probation_period like ${%probation_period%}
 					</when>
-					<when test="sprobation_period == '非空'">
-					 	probation_period is not null
+					<when test="sprobation_period == '有值'.toString()">
+					 	and probation_period is not null
 					</when>
-					<when test="sprobation_period == '为空'">
+					<when test="sprobation_period == '无值'.toString()">
+						and probation_period is null
+					</when>
+					<!-- <otherwise>
 						probation_period is null
-					</when>
-					<otherwise>
-						probation_period is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="probation_begindata != null">
-				and
+			<if test='probation_begindata != "null"'>
 				<choose>
-					<when test="sprobation_begindata == '='">
-						probation_begindata = #{probation_begindata}
+					<when test="sprobation_begindata == '='.toString()">
+						and probation_begindata = #{probation_begindata}
 					</when>
-					<when test="sprobation_begindata == '!='">
-						probation_begindata != #{probation_begindata}
+					<when test="sprobation_begindata == '!='.toString()">
+						and probation_begindata != #{probation_begindata}
 					</when>
-					<when test="sprobation_begindata == '>'">
-						probation_begindata &gt; #{probation_begindata}
+					<when test="sprobation_begindata == '>'.toString()">
+						and probation_begindata &gt; #{probation_begindata}
 					</when>
-					<when test="sprobation_begindata == '>='">
-						probation_begindata &gt;= #{probation_begindata}
+					<when test="sprobation_begindata == '>='.toString()">
+						and probation_begindata &gt;= #{probation_begindata}
 					</when>
-					<when test="sprobation_begindata == '小于'">
-						probation_begindata &lt; #{probation_begindata}
+					<when test="sprobation_begindata == '&lt;'.toString()">
+						and probation_begindata &lt; #{probation_begindata}
 					</when>
-					<when test="sprobation_begindata == '小于等于'">
-						probation_begindata &lt;= #{probation_begindata}
+					<when test="sprobation_begindata == '&lt;='.toString()">
+						and probation_begindata &lt;= #{probation_begindata}
 					</when>
-					<when test="sprobation_begindata == '介于'">
-						probation_begindata between #{probation_begindata} and #{probation_begindata1}
+					<when test="sprobation_begindata == '介于'.toString()">
+						and probation_begindata between #{probation_begindata} and #{probation_begindata1}
 					</when>
-					<when test="sprobation_begindata == '形如'">
-						probation_begindata like ${%probation_begindata%}
+					<when test="sprobation_begindata == '形如'.toString()">
+						and probation_begindata like ${%probation_begindata%}
 					</when>
-					<when test="sprobation_begindata == '非空'">
-					 	probation_begindata is not null
+					<when test="sprobation_begindata == '有值'.toString()">
+					 	and probation_begindata is not null
 					</when>
-					<when test="sprobation_begindata == '为空'">
+					<when test="sprobation_begindata == '无值'.toString()">
+						and probation_begindata is null
+					</when>
+					<!-- <otherwise>
 						probation_begindata is null
-					</when>
-					<otherwise>
-						probation_begindata is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="probation_sal != null">
-				and
+			<if test='probation_sal != 0'>
 				<choose>
-					<when test="sprobation_sal == '='">
-						probation_sal = #{probation_sal}
+					<when test="sprobation_sal == '='.toString()">
+						and probation_sal = #{probation_sal}
 					</when>
-					<when test="sprobation_sal == '!='">
-						probation_sal != #{probation_sal}
+					<when test="sprobation_sal == '!='.toString()">
+						and probation_sal != #{probation_sal}
 					</when>
-					<when test="sprobation_sal == '>'">
-						probation_sal &gt; #{probation_sal}
+					<when test="sprobation_sal == '>'.toString()">
+						and probation_sal &gt; #{probation_sal}
 					</when>
-					<when test="sprobation_sal == '>='">
-						probation_sal &gt;= #{probation_sal}
+					<when test="sprobation_sal == '>='.toString()">
+						and probation_sal &gt;= #{probation_sal}
 					</when>
-					<when test="sprobation_sal == '小于'">
-						probation_sal &lt; #{probation_sal}
+					<when test="sprobation_sal == '&lt;'.toString()">
+						and probation_sal &lt; #{probation_sal}
 					</when>
-					<when test="sprobation_sal == '小于等于'">
-						probation_sal &lt;= #{probation_sal}
+					<when test="sprobation_sal == '&lt;='.toString()">
+						and probation_sal &lt;= #{probation_sal}
 					</when>
-					<when test="sprobation_sal == '介于'">
-						probation_sal between #{probation_sal} and #{probation_sal1}
+					<when test="sprobation_sal == '介于'.toString()">
+						and probation_sal between #{probation_sal} and #{probation_sal1}
 					</when>
-					<when test="sprobation_sal == '形如'">
-						probation_sal like ${%probation_sal%}
+					<when test="sprobation_sal == '形如'.toString()">
+						and probation_sal like ${%probation_sal%}
 					</when>
-					<when test="sprobation_sal == '非空'">
-					 	probation_sal is not null
+					<when test="sprobation_sal == '有值'.toString()">
+					 	and probation_sal is not null
 					</when>
-					<when test="sprobation_sal == '为空'">
+					<when test="sprobation_sal == '无值'.toString()">
+						and probation_sal is null
+					</when>
+					<!-- <otherwise>
 						probation_sal is null
-					</when>
-					<otherwise>
-						probation_sal is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="probation_overdata != null">
-				and
+			<if test='probation_overdata != "null"'>
 				<choose>
-					<when test="sprobation_overdata == '='">
-						probation_overdata = #{probation_overdata}
+					<when test="sprobation_overdata == '='.toString()">
+						and probation_overdata = #{probation_overdata}
 					</when>
-					<when test="sprobation_overdata == '!='">
-						probation_overdata != #{probation_overdata}
+					<when test="sprobation_overdata == '!='.toString()">
+						and probation_overdata != #{probation_overdata}
 					</when>
-					<when test="sprobation_overdata == '>'">
-						probation_overdata &gt; #{probation_overdata}
+					<when test="sprobation_overdata == '>'.toString()">
+						and probation_overdata &gt; #{probation_overdata}
 					</when>
-					<when test="sprobation_overdata == '>='">
-						probation_overdata &gt;= #{probation_overdata}
+					<when test="sprobation_overdata == '>='.toString()">
+						and probation_overdata &gt;= #{probation_overdata}
 					</when>
-					<when test="sprobation_overdata == '小于'">
-						probation_overdata &lt; #{probation_overdata}
+					<when test="sprobation_overdata == '&lt;'.toString()">
+						and probation_overdata &lt; #{probation_overdata}
 					</when>
-					<when test="sprobation_overdata == '小于等于'">
-						probation_overdata &lt;= #{probation_overdata}
+					<when test="sprobation_overdata == '&lt;='.toString()">
+						and probation_overdata &lt;= #{probation_overdata}
 					</when>
-					<when test="sprobation_overdata == '介于'">
-						probation_overdata between #{probation_overdata} and #{probation_overdata1}
+					<when test="sprobation_overdata == '介于'.toString()">
+					 	and probation_overdata between #{probation_overdata} and #{probation_overdata1}
 					</when>
-					<when test="sprobation_overdata == '形如'">
-						probation_overdata like ${%probation_overdata%}
+					<when test="sprobation_overdata == '形如'.toString()">
+						and probation_overdata like ${%probation_overdata%}
 					</when>
-					<when test="sprobation_overdata == '非空'">
-					 	probation_overdata is not null
+					<when test="sprobation_overdata == '有值'.toString()">
+					 	and probation_overdata is not null
 					</when>
-					<when test="sprobation_overdata == '为空'">
+					<when test="sprobation_overdata == '无值'.toString()">
+						and probation_overdata is null
+					</when>
+					<!-- <otherwise>
 						probation_overdata is null
-					</when>
-					<otherwise>
-						probation_overdata is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="agreementperiod != null">
-				and
+			<if test='agreementperiod != "null"'>
 				<choose>
-					<when test="sagreementperiod == '='">
-						agreementperiod = #{agreementperiod}
+					<when test="sagreementperiod == '='.toString()">
+						and agreementperiod = #{agreementperiod}
 					</when>
-					<when test="sagreementperiod == '!='">
-						agreementperiod != #{agreementperiod}
+					<when test="sagreementperiod == '!='.toString()">
+						and agreementperiod != #{agreementperiod}
 					</when>
-					<when test="sagreementperiod == '>'">
-						agreementperiod &gt; #{agreementperiod}
+					<when test="sagreementperiod == '>'.toString()">
+						and agreementperiod &gt; #{agreementperiod}
 					</when>
-					<when test="sagreementperiod == '>='">
-						agreementperiod &gt;= #{agreementperiod}
+					<when test="sagreementperiod == '>='.toString()">
+						and agreementperiod &gt;= #{agreementperiod}
 					</when>
-					<when test="sagreementperiod == '小于'">
-						agreementperiod &lt; #{agreementperiod}
+					<when test="sagreementperiod == '&lt;'.toString()">
+						and agreementperiod &lt; #{agreementperiod}
 					</when>
-					<when test="sagreementperiod == '小于等于'">
-						agreementperiod &lt;= #{agreementperiod}
+					<when test="sagreementperiod == '&lt;='.toString()">
+						and agreementperiod &lt;= #{agreementperiod}
 					</when>
-					<when test="sagreementperiod == '介于'">
-						agreementperiod between #{agreementperiod} and #{agreementperiod1}
+					<when test="sagreementperiod == '介于'.toString()">
+						and agreementperiod between #{agreementperiod} and #{agreementperiod1}
 					</when>
-					<when test="sagreementperiod == '形如'">
-						agreementperiod like ${%agreementperiod%}
+					<when test="sagreementperiod == '形如'.toString()">
+						and agreementperiod like ${%agreementperiod%}
 					</when>
-					<when test="sagreementperiod == '非空'">
-					 	agreementperiod is not null
+					<when test="sagreementperiod == '有值'.toString()">
+					 	and agreementperiod is not null
 					</when>
-					<when test="sagreementperiod == '为空'">
+					<when test="sagreementperiod == '无值'.toString()">
+						and agreementperiod is null
+					</when>
+					<!-- <otherwise>
 						agreementperiod is null
-					</when>
-					<otherwise>
-						agreementperiod is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="starttime != null">
-				and
+			<if test='starttime != "null"'>
 				<choose>
-					<when test="sstarttime == '='">
-						starttime = #{starttime}
+					<when test="sstarttime == '='.toString()">
+						and starttime = #{starttime}
 					</when>
-					<when test="sstarttime == '!='">
-						starttime != #{starttime}
+					<when test="sstarttime == '!='.toString()">
+						and starttime != #{starttime}
 					</when>
-					<when test="sstarttime == '>'">
-						starttime &gt; #{starttime}
+					<when test="sstarttime == '>'.toString()">
+						and starttime &gt; #{starttime}
 					</when>
-					<when test="sstarttime == '>='">
-						starttime &gt;= #{starttime}
+					<when test="sstarttime == '>='.toString()">
+						and starttime &gt;= #{starttime}
 					</when>
-					<when test="sstarttime == '小于'">
-						starttime &lt; #{starttime}
+					<when test="sstarttime == '&lt;'.toString()">
+						and starttime &lt; #{starttime}
 					</when>
-					<when test="sstarttime == '小于等于'">
-						starttime &lt;= #{starttime}
+					<when test="sstarttime == '&lt;='.toString()">
+						and starttime &lt;= #{starttime}
 					</when>
-					<when test="sstarttime == '介于'">
-						starttime between #{starttime} and #{starttime1}
+					<when test="sstarttime == '介于'.toString()">
+						and starttime between #{starttime} and #{starttime1}
 					</when>
-					<when test="sstarttime == '形如'">
-						starttime like ${%starttime%}
+					<when test="sstarttime == '形如'.toString()">
+						and starttime like ${%starttime%}
 					</when>
-					<when test="sstarttime == '非空'">
-					 	starttime is not null
+					<when test="sstarttime == '有值'.toString()">
+					 	and starttime is not null
 					</when>
-					<when test="sstarttime == '为空'">
+					<when test="sstarttime == '无值'.toString()">
+						and starttime is null
+					</when>
+					<!-- <otherwise>
 						starttime is null
-					</when>
-					<otherwise>
-						starttime is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="regularsal != null">
-				and
+			<if test='regularsal != 0'>
+				
 				<choose>
-					<when test="sregularsal == '='">
-						regularsal = #{regularsal}
+					<when test="sregularsal == '='.toString()">
+						and regularsal = #{regularsal}
 					</when>
-					<when test="sregularsal == '!='">
-						regularsal != #{regularsal}
+					<when test="sregularsal == '!='.toString()">
+						and regularsal != #{regularsal}
 					</when>
-					<when test="sregularsal == '>'">
-						regularsal &gt; #{regularsal}
+					<when test="sregularsal == '>'.toString()">
+						and regularsal &gt; #{regularsal}
 					</when>
-					<when test="sregularsal == '>='">
-						regularsal &gt;= #{regularsal}
+					<when test="sregularsal == '>='.toString()">
+						and regularsal &gt;= #{regularsal}
 					</when>
-					<when test="sregularsal == '小于'">
-						regularsal &lt; #{regularsal}
+					<when test="sregularsal == '&lt;'.toString()">
+						and regularsal &lt; #{regularsal}
 					</when>
-					<when test="sregularsal == '小于等于'">
-						regularsal &lt;= #{regularsal}
+					<when test="sregularsal == '&lt;='.toString()">
+						and regularsal &lt;= #{regularsal}
 					</when>
-					<when test="sregularsal == '介于'">
-						regularsal between #{regularsal} and #{regularsal1}
+					<when test="sregularsal == '介于'.toString()">
+						and regularsal between #{regularsal} and #{regularsal1}
 					</when>
-					<when test="sregularsal == '形如'">
-						regularsal like ${%regularsal%}
+					<when test="sregularsal == '形如'.toString()">
+						and regularsal like ${%regularsal%}
 					</when>
-					<when test="sregularsal == '非空'">
-					 	regularsal is not null
+					<when test="sregularsal == '有值'.toString()">
+					 	and regularsal is not null
 					</when>
-					<when test="sregularsal == '为空'">
+					<when test="sregularsal == '无值'.toString()">
+						and regularsal is null
+					</when>
+					<!-- <otherwise>
 						regularsal is null
-					</when>
-					<otherwise>
-						regularsal is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="endtime != null">
-				and
+			<if test='endtime != "null"'>
 				<choose>
-					<when test="sendtime == '='">
-						endtime = #{endtime}
+					<when test="sendtime == '='.toString()">
+						and endtime = #{endtime}
 					</when>
-					<when test="sendtime == '!='">
-						endtime != #{endtime}
+					<when test="sendtime == '!='.toString()">
+						and endtime != #{endtime}
 					</when>
-					<when test="sendtime == '>'">
-						endtime &gt; #{endtime}
+					<when test="sendtime == '>'.toString()">
+						and endtime &gt; #{endtime}
 					</when>
-					<when test="sendtime == '>='">
-						endtime &gt;= #{endtime}
+					<when test="sendtime == '>='.toString()">
+						and endtime &gt;= #{endtime}
 					</when>
-					<when test="sendtime == '小于'">
-						endtime &lt; #{endtime}
+					<when test="sendtime == '&lt;'.toString()">
+						and endtime &lt; #{endtime}
 					</when>
-					<when test="sendtime == '小于等于'">
-						endtime &lt;= #{endtime}
+					<when test="sendtime == '&lt;='.toString()">
+						and endtime &lt;= #{endtime}
 					</when>
-					<when test="sendtime == '介于'">
-						endtime between #{endtime} and #{endtime1}
+					<when test="sendtime == '介于'.toString()">
+						and endtime between #{endtime} and #{endtime1}
 					</when>
-					<when test="sendtime == '形如'">
-						endtime like ${%endtime%}
+					<when test="sendtime == '形如'.toString()">
+						and endtime like ${%endtime%}
 					</when>
-					<when test="sendtime == '非空'">
-					 	endtime is not null
+					<when test="sendtime == '有值'.toString()">
+					 	and endtime is not null
 					</when>
-					<when test="sendtime == '为空'">
+					<when test="sendtime == '无值'.toString()">
+						and endtime is null
+					</when>
+					<!-- <otherwise>
 						endtime is null
-					</when>
-					<otherwise>
-						endtime is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="documents != null">
-				and
+			<if test='documents != "null"'>
 				<choose>
-					<when test="sdocuments == '='">
-						documents = #{documents}
+					<when test="sdocuments == '='.toString()">
+						and documents = #{documents}
 					</when>
-					<when test="sdocuments == '!='">
-						documents != #{documents}
+					<when test="sdocuments == '!='.toString()">
+						and documents != #{documents}
 					</when>
-					<when test="sdocuments == '>'">
-						documents &gt; #{documents}
+					<when test="sdocuments == '>'.toString()">
+						and documents &gt; #{documents}
 					</when>
-					<when test="sdocuments == '>='">
-						documents &gt;= #{documents}
+					<when test="sdocuments == '>='.toString()">
+						and documents &gt;= #{documents}
 					</when>
-					<when test="sdocuments == '小于'">
-						documents &lt; #{documents}
+					<when test="sdocuments == '&lt;'.toString()">
+						and documents &lt; #{documents}
 					</when>
-					<when test="sdocuments == '小于等于'">
-						documents &lt;= #{documents}
+					<when test="sdocuments == '&lt;='.toString()">
+						and documents &lt;= #{documents}
 					</when>
-					<when test="sdocuments == '介于'">
-						documents between #{documents} and #{documents1}
+					<when test="sdocuments == '介于'.toString()">
+						and documents between #{documents} and #{documents1}
 					</when>
-					<when test="sdocuments == '形如'">
-						documents like ${%documents%}
+					<when test="sdocuments == '形如'.toString()">
+						and documents like ${%documents%}
 					</when>
-					<when test="sdocuments == '非空'">
-					 	documents is not null
+					<when test="sdocuments == '有值'.toString()">
+					 	and documents is not null
 					</when>
-					<when test="sdocuments == '为空'">
+					<when test="sdocuments == '无值'.toString()">
+						and documents is null
+					</when>
+					<!-- <otherwise>
 						documents is null
-					</when>
-					<otherwise>
-						documents is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
-			<if test="notes != null">
-				and
+			<if test='notes != "null"'>
 				<choose>
-					<when test="snotes == '='">
-						notes = #{notes}
+					<when test="snotes == '='.toString()">
+						and notes = #{notes}
 					</when>
-					<when test="snotes == '!='">
-						notes != #{notes}
+					<when test="snotes == '!='.toString()">
+						and notes != #{notes}
 					</when>
-					<when test="snotes == '>'">
-						notes &gt; #{notes}
+					<when test="snotes == '>'.toString()">
+						and notes &gt; #{notes}
 					</when>
-					<when test="snotes == '>='">
-						notes &gt;= #{notes}
+					<when test="snotes == '>='.toString()">
+						and notes &gt;= #{notes}
 					</when>
-					<when test="snotes == '小于'">
-						notes &lt; #{notes}
+					<when test="snotes == '&lt;'.toString()">
+						and notes &lt; #{notes}
 					</when>
-					<when test="snotes == '小于等于'">
-						notes &lt;= #{notes}
+					<when test="snotes == '&lt;='.toString()">
+						and notes &lt;= #{notes}
 					</when>
-					<when test="snotes == '介于'">
-						notes between #{notes} and #{notes1}
+					<when test="snotes == '介于'.toString()">
+						and notes between #{notes} and #{notes1}
 					</when>
-					<when test="snotes == '形如'">
-						notes like ${%notes%}
+					<when test="snotes == '形如'.toString()">
+						and notes like ${%notes%}
 					</when>
-					<when test="snotes == '非空'">
-					 	notes is not null
+					<when test="snotes == '有值'.toString()">
+					 	and notes is not null
 					</when>
-					<when test="snotes == '为空'">
+					<when test="snotes == '无值'.toString()">
+						and notes is null
+					</when>
+					<!-- <otherwise>
 						notes is null
-					</when>
-					<otherwise>
-						notes is null
-					</otherwise>
+					</otherwise> -->
 				</choose>
 			</if>
 		</where>
@@ -896,7 +875,7 @@
 		agreementno=#{agreementno}, aname=#{aname}, atype=#{atype}, regular=#{regular}, signdata=#{signdata}, probation_period=#{probation_period}, 
 		probation_begindata=#{probation_begindata}, probation_sal=#{probation_sal}, probation_overdata=#{probation_overdata}, 
 		agreementperiod=#{agreementperiod}, starttime=#{starttime}, regularsal=#{regularsal}, endtime=#{endtime}, documents=#{documents}, 
-		notes=#{notes}, status=#{status} where agreementno=#{agreementno}
+		notes=#{notes} where agreementno=#{agreementno}
 	</update>
 	
 	<update id="updateAgreementLock" parameterType="java.lang.String">
@@ -914,8 +893,8 @@
 	<insert id="insertAgreement" parameterType="agreements" >
 		insert into agreements(emp_name,emp_id,emp_department, emp_job, emp_academic_title, emp_work_category, emp_grade, emp_idnumber, agreementno, 
 		aname, atype, regular, signdata, probation_period, probation_begindata, probation_sal, probation_overdata, agreementperiod, starttime, 
-		regularsal,endtime,documents,notes,status) values(#{emp_name},#{emp_id},#{emp_department},#{emp_job},#{emp_academic_title},#{emp_work_category},
+		regularsal,endtime,documents,notes) values(#{emp_name},#{emp_id},#{emp_department},#{emp_job},#{emp_academic_title},#{emp_work_category},
 		#{emp_grade},#{emp_idnumber},#{agreementno},#{aname},#{atype},#{regular},#{signdata},#{probation_period},#{probation_begindata},
-		#{probation_sal},#{probation_overdata},#{agreementperiod},#{starttime},#{regularsal},#{endtime},#{documents},#{notes},#{status})
+		#{probation_sal},#{probation_overdata},#{agreementperiod},#{starttime},#{regularsal},#{endtime},#{documents},#{notes})
 	</insert>
 </mapper>
