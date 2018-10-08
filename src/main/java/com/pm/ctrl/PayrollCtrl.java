@@ -58,16 +58,13 @@ public class PayrollCtrl {
 		map.put("pager", pager);
 		return "payroll-control/personal_income_taxsetting";
 	}
-<<<<<<< HEAD
-	
-=======
+
 	/**
 	 * 删除个人税设置
 	 * @param taxgrade_grade:个人税等级
 	 * @param 
 	 * @return
 	 */
->>>>>>> f873c4d01ff5943692ae544e66aa9f3a5f9dfa2f
 	@RequestMapping("/removeTaxGrade/{taxgrade_grade}")
 	public String removeTaxGrade(@PathVariable(value="taxgrade_grade")int taxgrade_grade,ModelMap map) {
 		
